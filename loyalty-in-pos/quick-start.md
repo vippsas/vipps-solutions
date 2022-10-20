@@ -9,8 +9,8 @@ END_METADATA -->
 
 This is the step-by-step guide for how to implement _Loyalty in POS_.
 
-## Step 1 - Scan the QR
-When scanning the QR, you will get a url like this:
+## Step 1 - Scan the QR code
+When scanning the QR code, you will get a url like this:
 ```
 https://qr.vipps.no/28/2/01/031/4791504800?v=1
 ```
@@ -58,7 +58,7 @@ Once membership status is confirmed, all wares are scanned and all discounts are
 }
 ```
 
-The skipLandingPage flag will send a push directly to the customer (the one that scanned the QR), and after the payment is completed by the user you should be all set!
+The skipLandingPage flag will send a push directly to the customer (the one that scanned the QR code), and after the payment is completed by the user you should be all set!
 
 ## Questions?
 
