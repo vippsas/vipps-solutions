@@ -7,6 +7,20 @@ END_METADATA -->
 
 # Vipps Loyalty in Point-Of-Sale
 
+<!-- START_TOC -->
+
+## Table of Contents
+
+* [Vipps Loyalty in Point-Of-Sale](#vipps-loyalty-in-point-of-sale)
+  * [How it works](#how-it-works)
+    * [Step 1 - Scan the QR code](#step-1---scan-the-qr-code)
+    * [Step 2 - POS check membership](#step-2---pos-check-membership)
+    * [Step 3 Initiate a login (optional)](#step-3-initiate-a-login-optional)
+    * [Step 4 Initiate a eCom payment](#step-4-initiate-a-ecom-payment)
+  * [Questions?](#questions)
+
+<!-- END_TOC -->
+
 ## How it works
 
 Vipps Loyalty in point of sale (POS) is a solution that combines multiple Vipps products and makes a great market fit for retail stores that want to combine loyalty with payments. Its a great way to improve the payment experience for users and remove friction for adding customers to the merchant loyalty club.
