@@ -9,7 +9,14 @@ END_METADATA -->
 
 ## How it works
 
-Vipps Loyalty in point of sale (POS) is a solution that combines multiple Vipps products and makes a great market fit for retail stores that want to combine loyalty with payments. Its a great way to improve the payment experience for users and remove friction for adding customers to the merchant loyalty club. The solution is a mix of the personal QR codes in the Vipps app, Vipps Login, Vipps Check-in and Vipps eCommerce.
+Vipps Loyalty in point of sale (POS) is a solution that combines multiple Vipps products and makes a great market fit for retail stores that want to combine loyalty with payments. Its a great way to improve the payment experience for users and remove friction for adding customers to the merchant loyalty club.
+
+The solution is a combination of the personal QR codes in the Vipps app,
+the
+[Vipps Login API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api),
+ther Vipps Check-In API
+and the
+[Vipps eComm API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
 
  See the [Quick Start](quick-start.md) guide.
 
@@ -36,7 +43,9 @@ At this stage, you should trigger a Vipps Check-In to inform the user if they ar
 
 Okay - the status here is that the POS knows the phone number of a user - but the user isn't a member of the loyalty program. There should be a button in the POS that the cashier can press that will trigger a Vipps Login flow to gather consent from the user. When this login flow is completed the user will be enrolled in the customer club.
 
-The login flow is explained in detail [here](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api/vipps-login-api#vipps-login-from-phone-number). After the user has accepted the terms and has been enrolled in the loyalty club, continue to step 4.
+The login flow is explained in detail
+[here](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api/vipps-login-api#vipps-login-from-phone-number).
+After the user has accepted the terms and has been enrolled in the loyalty club, continue to step 4.
 
 ![Loyalty Flow](images/POS_step_3.png)
 
