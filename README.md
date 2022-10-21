@@ -10,6 +10,8 @@ END_METADATA -->
 
 # Vipps Solutions
 
+💥 **Important:** This is work in progress. 💥
+
 The Vipps APIs can be combined for different use-cases and market segments.
 
 In addition to the documentation for each
@@ -17,17 +19,9 @@ In addition to the documentation for each
 we also have documentation for how to combine APIs, such as:
 
 * [Vipps Loyalty in Point-Of-Sale](https://vippsas.github.io/vipps-developer-docs/docs/vipps-solutions/loyalty-in-pos/)
-* Taxi Companies (coming)
-* Vending Machines (coming)
-
-💥 **Important:** This is work in progress. 💥
-
-<!-- START_COMMENT -->
-
-Jira: https://jira.vipps.io/browse/CI-1913
-
-GitHub PR: https://github.com/vippsas/vipps-developers/pull/184
-<!-- END_COMMENT -->
+* Electric vehicle charging (coming)
+* Vending machines (coming)
+* Taxi companies (coming)
 
 ## Questions?
 
