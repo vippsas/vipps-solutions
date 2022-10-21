@@ -28,3 +28,12 @@ Jira: https://jira.vipps.io/browse/CI-1913
 
 GitHub PR: https://github.com/vippsas/vipps-developers/pull/184
 <!-- END_COMMENT -->
+
+## Questions?
+
+We're always happy to help with code or other questions you might have!
+Please create an [issue](https://github.com/vippsas/vipps-solutions/issues),
+a [pull request](https://github.com/vippsas/vipps-solutions/pulls),
+or [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md).
+
+Sign up for our [Technical newsletter for developers](https://github.com/vippsas/vipps-developers/tree/master/newsletters).

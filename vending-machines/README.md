@@ -1,7 +1,7 @@
 <!-- START_METADATA
 ---
 title: Vending Machines
-sidebar_position: 5
+sidebar_position: 10
 ---
 END_METADATA -->
 
