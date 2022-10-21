@@ -12,6 +12,14 @@ END_METADATA -->
 
 The Vipps APIs can be combined for different use-cases and market segments.
 
+In addition to the documentation for each
+[Vipps API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/),
+we also have documentation for how to combine APIs, such as:
+
+* [Vipps Loyalty in Point-Of-Sale](https://vippsas.github.io/vipps-developer-docs/docs/vipps-solutions/loyalty-in-pos/)
+* Taxi Companies (coming)
+* Vending Machines (coming)
+
 💥 **Important:** This is work in progress. 💥
 
 <!-- START_COMMENT -->
