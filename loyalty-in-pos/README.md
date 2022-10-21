@@ -27,7 +27,7 @@ Vipps Loyalty in point of sale (POS) is a solution that combines multiple Vipps 
 The solution is a combination of the personal QR codes in the Vipps app,
 the
 [Vipps Login API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api),
-ther Vipps Check-In API
+the Vipps Check-In API
 and the
 [Vipps eComm API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
 
