@@ -10,9 +10,9 @@ END_METADATA -->
 
 # Vipps Solutions
 
-Information about how to combine Vipps APIs for different use-cases.
+The Vipps APIs can be combined for different use-cases and market segments.
 
-💥 **Important:** This is work in progress. 💥 
+💥 **Important:** This is work in progress. 💥
 
 <!-- START_COMMENT -->
 

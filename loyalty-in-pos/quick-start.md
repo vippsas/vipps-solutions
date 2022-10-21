@@ -5,7 +5,7 @@ sidebar_position: 1
 ---
 END_METADATA -->
 
-# Vipps Loyalty in POS step by step guide
+# Quick start
 
 This is the step-by-step guide for how to implement _Loyalty in POS_.
 

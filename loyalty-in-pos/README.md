@@ -1,6 +1,6 @@
 <!-- START_METADATA
 ---
-title: Loyalty in Point-Of-Sale
+title: Loyalty in POS
 sidebar_position: 1
 ---
 END_METADATA -->
