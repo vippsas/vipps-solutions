@@ -11,13 +11,13 @@ This is the step-by-step guide for how to implement _Loyalty at the POS_.
 
 ## Step 1 - Scan the QR code
 
-When scanning the QR code, you will get a url like this:
+When scanning the QR code, you will get a URL like this:
 
 ```HTTP
 https://qr.vipps.no/28/2/01/031/4791234567?v=1
 ```
 
-In this example, the customer's mobile number is `4791234567`. Note, this is in the international format, but is entered without the `+`. 
+In this example, the customer's mobile number is `4791234567`, where `47` is the country code. 
 Store the number in the POS, as it will be used in subsequent steps.
 
 ## Step 2 - POS check membership
