@@ -17,7 +17,8 @@ When scanning the QR code, you will get a URL like this:
 https://qr.vipps.no/28/2/01/031/4791234567?v=1
 ```
 
-In this example, the customer's mobile number is `4791234567`, where `47` is the country code. 
+In this example, the customer's mobile number is +4791234567, where +47 is the country code, entered without the `+`.
+
 Store the number in the POS, as it will be used in subsequent steps.
 
 ## Step 2 - POS check membership
