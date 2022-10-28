@@ -22,6 +22,16 @@ with the Vipps app or the phone's camera. Vipps provides a
 that can be used in combination with the Vipps eCom API to set up and start a
 Vipps payment.
 
+The general flow:
+
+1. Scan the QR code with Vipps
+2. Get sent to the EV charging company's website
+3. Select Vipps as payment process and click "Pay with Vipps"
+4. Vipps is automatically opened, with the payment ready for confirming the maximum amount
+5. Get sent back to the EV charging company's website where the status of the charge is presented
+6. When the charging is complete: Get a push message with the final sum to pay in Vipps
+7. Get the receipt with the payment details in Vipps
+
 (TODO: Add image and some more details)
 
 ## Questions?
