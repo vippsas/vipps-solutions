@@ -7,8 +7,6 @@ END_METADATA -->
 
 # Electric vehicle charging
 
-💥 TODO. This is just a placeholder for now. 💥
-
 Vipps is an excellent choice for EV charging as practically all Norwegians have
 the Vipps app in their pocket, simplifying charging with out downloading a
 specific charging app.
