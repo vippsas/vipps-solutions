@@ -5,6 +5,13 @@ sidebar_position: 5
 ---
 END_METADATA -->
 
+<!-- START_COMMENT -->
+
+ℹ️ Please use the new documentation:
+[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
+
+<!-- END_COMMENT -->
+
 # Electric vehicle charging
 
 Vipps is an excellent choice for EV charging as practically all Norwegians have
@@ -36,7 +43,7 @@ Vipps payment.
 ## Charging operator recommendations
 As the charging provider we recommend that your technical flow resembles the steps below:
 
-1. The QR code on the charging station contains a link to a website provided by the charging provider. It is also recommended that the particular charging station / charging point is identified in the QR code. QR codes should be Vipps-branded. This is achieved by generating QR codes using the [QR API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api). 
+1. The QR code on the charging station contains a link to a website provided by the charging provider. It is also recommended that the particular charging station / charging point is identified in the QR code. QR codes should be Vipps-branded. This is achieved by generating QR codes using the [QR API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api).
 2. The website the user lands on should contain payment options in addition to terms & conditions. If the QR code contained an identification of the charging point the user does not have to type in any identification code to start charging. It is also possible to let the user choose max amount / reserved amount.
 3. When the user clicks "Pay with Vipps" you should [initiate](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#initiate) a payment with an amount that will cover most charging sessions. Usually between 350 NOK and 500 NOK is sufficient but with higher electricity cost this may change.  If payment is approved by the user, this amount will be reserved on users account.
 4. To get confirmation that payment was approved, you should both listen to  [callbacks](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#callbacks) and poll the [details API-call](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#get-payment-details). Once you know that payment was approved you can start charging.
