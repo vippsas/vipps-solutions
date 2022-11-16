@@ -39,7 +39,9 @@ With body:
 }
 ```
 
-Let's continue the scenario where the user isn't a member already. You will then set `isMember` to false and use the [Vipps Login API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api) to enroll the user.
+Let's continue the scenario where the user isn't a member already. You will then set `isMember` to false and use the
+[Vipps Login API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api)
+ to enroll the user.
 
 ## Step 3 Initiate a login
 
@@ -49,7 +51,7 @@ from the Login API. The steps needed to get a consent from the user are explaine
 ## Step 4 Initiate an eCom payment
 
 Once membership status is confirmed, all wares are scanned and all discounts are added, it is time to send a payment request to the user. This is done by sending a payment-push to the user using the
-[skiplandingpage parameter in the eCom API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#skip-landing-page)
+[`skiplandingpage` parameter in the eCom API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#skip-landing-page).
 
 Here is an example of the HTTP POST you can use:
 
@@ -83,6 +85,6 @@ The `skipLandingPage` flag will send a push directly to the customer who scanned
 We're always happy to help with code or other questions you might have!
 Please create an [issue](https://github.com/vippsas/vipps-solutions/issues),
 a [pull request](https://github.com/vippsas/vipps-solutions/pulls),
-or [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md).
+or [contact us](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/contact).
 
-Sign up for our [Technical newsletter for developers](https://github.com/vippsas/vipps-developers/tree/master/newsletters).
+Sign up for our [Technical newsletter for developers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/newsletters).
