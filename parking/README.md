@@ -12,8 +12,6 @@ END_METADATA -->
 
 # Parking
 
-💥 DRAFT! Unfinished work in progress. 💥
-
 There are many ways to use Vipps for paying for parking.
 
 One way is to use the

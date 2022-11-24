@@ -27,6 +27,7 @@ we also have documentation for how to combine APIs, such as:
 
 * [Vipps Loyalty in Point-Of-Sale](https://vippsas.github.io/vipps-developer-docs/docs/vipps-solutions/loyalty-in-pos/)
 * [Electric vehicle charging](https://vippsas.github.io/vipps-developer-docs/docs/vipps-solutions/ev-charging/)
+* [Parking](https://vippsas.github.io/vipps-developer-docs/docs/vipps-solutions/parking/)
 * Vending machines (coming)
 * Taxi companies (coming)
 
