@@ -38,7 +38,7 @@ is "No", but with an important exception:
 > and that there are no relevant terms and conditions or that the user has
 > accepted any terms and conditions at an earlier stage.
 
-This means that for printed QR codes there are some alternatives:
+This means that for printed QR codes there are two alternatives:
 
 * Use a QR code that contains a URL to the merchant's website, and
   use
