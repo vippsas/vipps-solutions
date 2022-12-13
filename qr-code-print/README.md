@@ -14,7 +14,7 @@ END_METADATA -->
 
 # QR codes for print
 
-It is possible to use QR codes in two ways:
+It is possible to use QR codes with Vipps in two ways:
 1. QR code that contains a URL to the merchant's website. We call these
    [Merchant Redirect QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes).
 2. QR code that leads directly to the payment confirmation screen in Vipps.
