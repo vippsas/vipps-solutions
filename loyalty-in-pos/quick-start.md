@@ -2,6 +2,8 @@
 ---
 title: Quick Start
 sidebar_position: 2
+pagination_next: null
+pagination_prev: null
 ---
 END_METADATA -->
 

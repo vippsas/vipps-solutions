@@ -2,6 +2,8 @@
 ---
 title: Taxi Companies
 sidebar_position: 5
+pagination_next: null
+pagination_prev: null
 ---
 END_METADATA -->
 
