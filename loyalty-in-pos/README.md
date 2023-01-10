@@ -31,7 +31,8 @@ the
 [Vipps Login API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api),
 the
 [Vipps eCom API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api),
-and the Vipps Check-In API (_coming soon_).
+and the
+[Vipps Check-in API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/check-in-api).
 
 The following describes the _Loyalty at the POS_ process at a high-level. For a detailed step-by-step guide for how to implement _Loyalty at the POS_, see the [Quick Start](quick-start.md) guide.
 
