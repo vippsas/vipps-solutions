@@ -17,8 +17,6 @@ END_METADATA -->
 
 <!-- END_COMMENT -->
 
-💥 **Important:** This is work in progress. 💥
-
 The Vipps APIs can be combined for different use-cases and market segments.
 
 In addition to the documentation for each

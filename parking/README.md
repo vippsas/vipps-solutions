@@ -26,7 +26,7 @@ and
 2. The user parks one or more times.
 3. The accumulated parking fees are used to create one charge with the
    accumulated amount. See:
-   [Create a charge](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#create-a-charge).   
+   [Create a charge](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#create-a-charge).
 
 See also:
 * [Vipps QR API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api)

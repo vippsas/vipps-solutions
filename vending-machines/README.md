@@ -4,6 +4,7 @@ title: Vending Machines
 sidebar_position: 10
 pagination_next: null
 pagination_prev: null
+draft: true
 ---
 END_METADATA -->
 

@@ -7,14 +7,15 @@ pagination_prev: null
 ---
 END_METADATA -->
 
+# Electric vehicle charging
+
+
 <!-- START_COMMENT -->
 
 ℹ️ Please use the new documentation:
 [Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
 
 <!-- END_COMMENT -->
-
-# Electric vehicle charging
 
 Vipps is an excellent choice for EV charging as practically all Norwegians have
 the Vipps app in their pocket, simplifying charging with out downloading a
@@ -43,6 +44,7 @@ Vipps payment.
 6. A receipt with the payment details is available in Vipps.
 
 ## Charging operator recommendations
+
 As the charging provider we recommend that your technical flow resembles the steps below:
 
 1. The QR code on the charging station contains a link to a website provided by the charging provider. It is also recommended that the particular charging station / charging point is identified in the QR code. QR codes should be Vipps-branded. This is achieved by generating QR codes using the [QR API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api).
