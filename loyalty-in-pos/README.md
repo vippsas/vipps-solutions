@@ -9,7 +9,7 @@ END_METADATA -->
 
 # Vipps Loyalty at the Point Of Sale
 
-<!-- START_TOC -->
+<!-- START_COMMENT -->
 
 ## Table of Contents
 
@@ -20,7 +20,7 @@ END_METADATA -->
 * [Step 4: Send a payment request](#step-4-send-a-payment-request)
 * [Questions?](#questions)
 
-<!-- END_TOC -->
+<!-- END_COMMENT -->
 
 ## How it works
 
