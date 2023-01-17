@@ -81,12 +81,3 @@ With body:
 ```
 
 The `skipLandingPage` flag will send a push directly to the customer who scanned the QR code, and after the payment is completed, the POS will be updated with the status of the payment.
-
-## Questions?
-
-We're always happy to help with code or other questions you might have!
-Please create an [issue](https://github.com/vippsas/vipps-solutions/issues),
-a [pull request](https://github.com/vippsas/vipps-solutions/pulls),
-or [contact us](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/contact).
-
-Sign up for our [Technical newsletter for developers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/newsletters).

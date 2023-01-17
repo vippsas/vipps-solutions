@@ -54,12 +54,3 @@ As the charging provider we recommend that your technical flow resembles the ste
 5. When the charging session is completed you will know the amount the user should pay and you can [capture](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#capture) the amount due. After you have captured the amount due, you should release the remaining reserved amount on the user's account. This is done by doing a [cancel](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#cancelling-a-partially-captured-order) API-call.
 6. If you are set up in Vipps' systems with the correct MCC (Merchant Category Code) for EV charging (5552) we will automatically send a push notification to the user with the captured amount.
 7. We recommend sending a digital receipt and a hyperlink to the charging session after charging is done. To do this the [Order Management API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/order-management-api) is used.  
-
-## Questions?
-
-We're always happy to help with code or other questions you might have!
-Please create an [issue](https://github.com/vippsas/vipps-solutions/issues),
-a [pull request](https://github.com/vippsas/vipps-solutions/pulls),
-or [contact us](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/contact).
-
-Sign up for our [Technical newsletter for developers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/newsletters).

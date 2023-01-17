@@ -5,6 +5,8 @@ sidebar_position: 8
 ---
 END_METADATA -->
 
+# QR codes for print
+
 <!-- START_COMMENT -->
 
 ℹ️ Please use the new documentation:
@@ -12,9 +14,8 @@ END_METADATA -->
 
 <!-- END_COMMENT -->
 
-# QR codes for print
-
 It is possible to use QR codes with Vipps in two ways:
+
 1. QR code that contains a URL to the merchant's website. We call these
    [Merchant Redirect QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes).
 2. QR code that leads directly to the payment confirmation screen in Vipps.
@@ -48,12 +49,3 @@ This means that for printed QR codes there are two alternatives:
   QR code. Use a QR code that contains a URL to the website, but simply
   create a payment instantly and then redirect the user directly to the Vipps
   payment instead of showing and content on the website.
-
-## Questions?
-
-We're always happy to help with code or other questions you might have!
-Please create an [issue](https://github.com/vippsas/vipps-solutions/issues),
-a [pull request](https://github.com/vippsas/vipps-solutions/pulls),
-or [contact us](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/contact).
-
-Sign up for our [Technical newsletter for developers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/newsletters).

@@ -7,12 +7,12 @@ pagination_prev: null
 ---
 END_METADATA -->
 
+# Parking
+
 <!-- START_COMMENT -->
 ℹ️ Please use the new documentation:
 [Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
 <!-- END_COMMENT -->
-
-# Parking
 
 There are many ways to use Vipps for paying for parking.
 
@@ -29,13 +29,5 @@ and
    [Create a charge](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#create-a-charge).
 
 See also:
+
 * [Vipps QR API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api)
-
-## Questions?
-
-We're always happy to help with code or other questions you might have!
-Please create an [issue](https://github.com/vippsas/vipps-solutions/issues),
-a [pull request](https://github.com/vippsas/vipps-solutions/pulls),
-or [contact us](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/contact).
-
-Sign up for our [Technical newsletter for developers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/newsletters).

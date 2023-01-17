@@ -18,7 +18,6 @@ END_METADATA -->
 * [Step 2: Check membership](#step-2-check-membership)
 * [Step 3: Request membership (optional)](#step-3-request-membership-optional)
 * [Step 4: Send a payment request](#step-4-send-a-payment-request)
-* [Questions?](#questions)
 
 <!-- END_COMMENT -->
 
@@ -83,12 +82,3 @@ You already have the mobile number, so just provide a button in your user interf
 Once they authorize the, the POS will be updated with the status of the payment. Done!
 
 ![Loyalty Flow](images/POS_step_4.png)
-
-## Questions?
-
-We're always happy to help with code or other questions you might have!
-Please create an [issue](https://github.com/vippsas/vipps-solutions/issues),
-a [pull request](https://github.com/vippsas/vipps-solutions/pulls),
-or [contact us](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/contact).
-
-Sign up for our [Technical newsletter for developers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/newsletters).

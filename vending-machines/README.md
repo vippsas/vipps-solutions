@@ -4,9 +4,10 @@ title: Vending Machines
 sidebar_position: 10
 pagination_next: null
 pagination_prev: null
-draft: true
 ---
 END_METADATA -->
+
+# Vending Machines
 
 <!-- START_COMMENT -->
 
@@ -15,6 +16,5 @@ END_METADATA -->
 
 <!-- END_COMMENT -->
 
-# Vending Machines
 
 💥 TODO. This is just a placeholder for now. 💥
