@@ -7,7 +7,7 @@ pagination_prev: null
 ---
 END_METADATA -->
 
-# Vipps Loyalty at the Point Of Sale
+# Vipps loyalty at the Point Of Sale
 
 <!-- START_COMMENT -->
 

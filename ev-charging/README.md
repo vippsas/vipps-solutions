@@ -1,6 +1,6 @@
 <!-- START_METADATA
 ---
-title: EV Charging
+title: EV charging
 sidebar_position: 5
 pagination_next: null
 pagination_prev: null
@@ -29,8 +29,7 @@ solution that let's your customers use your charging network with no hassle.
 Drop in charging with Vipps is best implemented using QR codes, scanned either
 with the Vipps app or the phone's camera. Vipps provides a
 [QR API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api)
-that can be used in combination with the [Vipps eCom API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api) to set up and start a
-Vipps payment.
+that can be used in combination with the [Vipps eCom API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api) to set up and start a Vipps payment.
 
 ## User experience
 
