@@ -1,13 +1,12 @@
 <!-- START_METADATA
 ---
 title: Loyalty at POS
-sidebar_position: 1
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Vipps loyalty at the Point Of Sale
+# Loyalty at the Point Of Sale
 
 <!-- START_COMMENT -->
 

@@ -1,7 +1,6 @@
 <!-- START_METADATA
 ---
 title: Vending machines
-sidebar_position: 10
 pagination_next: null
 pagination_prev: null
 ---

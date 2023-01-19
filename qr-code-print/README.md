@@ -1,7 +1,6 @@
 <!-- START_METADATA
 ---
 title: QR codes for print
-sidebar_position: 8
 ---
 END_METADATA -->
 

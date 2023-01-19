@@ -1,7 +1,6 @@
 <!-- START_METADATA
 ---
 title: EV charging
-sidebar_position: 5
 pagination_next: null
 pagination_prev: null
 ---
