@@ -1,6 +1,6 @@
 <!-- START_METADATA
 ---
-title: Quick Start
+title: Quick start
 sidebar_position: 2
 pagination_next: null
 pagination_prev: null
