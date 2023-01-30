@@ -41,7 +41,7 @@ The same solution can of course be used to charge weekly, monthly or yearly.
 3. The user enters an Agreement as usual. See
    [Create an agreement](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#create-an-agreement).
 4. The user parks one or more times.
-5. The accumulated parking fees are used to create one charge with the totalt amount.
+5. The accumulated parking fees are used to create one charge with the total amount.
    Vipps supports
    [Recurring agreements with variable amount](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
    See:
