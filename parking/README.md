@@ -13,20 +13,35 @@ END_METADATA -->
 [Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
 <!-- END_COMMENT -->
 
-There are many ways to use Vipps for paying for parking.
+Vipps may be used in many ways to make paying for parking easy.
 
-One way is to use the
+By combining the
+[Login API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api),
 [Recurring API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api)
 and
 [Recurring agreements with variable amount](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount):
 
-1. The user enters an Agreement as usual. See
+## Illustration
+
+This illustration shows how Vipps can be used to charge for parking.
+The user has an agreement that allows the parking company to charge for parking
+every day, with the total amount for all parkings that day.
+
+![Paying for parking with Vipps](parking-recurring-flow.png)
+
+## Details
+
+1. The user scans a QR code and is sent to the parking company's website.
+   See [Merchant Redirect QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes).
+2. The user logs in or creates an account with
+   [Vipps Login](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api/vipps-login-api-howitworks).
+   The user now has an account, with verified user data, and is able to both log in and pay.
+3. The user enters an Agreement as usual. See
    [Create an agreement](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#create-an-agreement).
-2. The user parks one or more times.
-3. The accumulated parking fees are used to create one charge with the
-   accumulated amount. See:
+4. The user parks one or more times.
+5. The accumulated parking fees are used to create one charge with the totalt amount.
+   The accumulated charges may be charges daily, weekly, monthly or yearly.
+   Vipps supports
+   [Recurring agreements with variable amount](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
+   See:
    [Create a charge](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#create-a-charge).
-
-See also:
-
-* [Vipps QR API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api)
