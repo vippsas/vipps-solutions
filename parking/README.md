@@ -23,11 +23,13 @@ and
 
 ## Illustration
 
-This illustration shows how Vipps can be used to charge for parking.
-The user has an agreement that allows the parking company to charge for parking
-every day, with the total amount for all parkings that day.
+This illustration shows how Vipps can be used to charge for parking:
+The user has entered an agreement that allows the parking company to charge for
+parking every day, with the total amount for all parkings that day.
 
 ![Paying for parking with Vipps](parking-recurring-flow.png)
+
+The same solution can of course be used to charge weekly, monthly or yearly.
 
 ## Details
 
@@ -40,7 +42,6 @@ every day, with the total amount for all parkings that day.
    [Create an agreement](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#create-an-agreement).
 4. The user parks one or more times.
 5. The accumulated parking fees are used to create one charge with the totalt amount.
-   The accumulated charges may be charges daily, weekly, monthly or yearly.
    Vipps supports
    [Recurring agreements with variable amount](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
    See:
