@@ -29,7 +29,7 @@ Now that you have the customer's mobile number, check your internal systems if t
 
 Here is an example of the HTTP POST you can use:
 
-[`POST:/point-of-sale/v1/loyalty-check-in`](https://vippsas.github.io/vipps-check-in-api/redoc.html#tag/point-of-sale/operation/initiateLoyaltyCheckIn)
+[`POST:/point-of-sale/v1/loyalty-check-in`](https://vippsas.github.io/vipps-developer-docs/api/check-in#tag/Loyalty-check-in/operation/initiateLoyaltyCheckIn)
 
 With body:
 
