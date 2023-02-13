@@ -51,7 +51,13 @@ When the Vipps QR code is scanned, you will get the customer's mobile number. No
 
 Check the customer's membership status by using the mobile number you received in the last step.
 
-Automatically trigger a Vipps Check-In to inform the customer whether or not they are a member of your loyalty program. This will help them through the payment process.
+Use the
+[Vipps Check-In API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/check-in-api)
+and the
+[`POST/v1/loyalty-check-in`](https://vippsas.github.io/vipps-developer-docs/api/check-in#tag/Loyalty-check-in)
+endpoint to trigger a "waiting screen" in Vipps to inform the customer whether
+or not they are a member of your loyalty program. This will help them through
+the payment process.
 
 If the customer is a not member, proceed to step 3 where you can enroll them by using Vipps Login.
 
