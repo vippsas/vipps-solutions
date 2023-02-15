@@ -1,6 +1,6 @@
 <!-- START_METADATA
 ---
-title: Long expiry time for payments to merchants (More than 10 minutes)
+title: Longer expiry time
 sidebar_position: 48
 ---
 END_METADATA -->
@@ -12,11 +12,11 @@ END_METADATA -->
 
 <!-- END_COMMENT -->
 
-# Long expiry time for payments to merchants (More than 10 minutes)
+# Longer expiry time
 
 💥 WIP 💥
 
-The expiration time for a normal ecommerce payment is 10 minutes. The payment requests will timeout after that. Read about timeouts here [Online payment timeout](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/timeouts)
+The expiration time for an ecommerce payment is 10 minutes. The payment requests will timeout after that. Read about timeouts here [Online payment timeout](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/timeouts)
 
 Scenarios like paying toll or paying at the doctor's office require payments to be active for more than 10 minutes to 24 hours (in some cases even longer).
 
