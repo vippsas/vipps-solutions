@@ -1,6 +1,6 @@
 <!-- START_METADATA
 ---
-title: Longer expiry time
+title: Long-living payment
 sidebar_position: 48
 ---
 END_METADATA -->
@@ -12,7 +12,7 @@ END_METADATA -->
 
 <!-- END_COMMENT -->
 
-# Longer expiry time
+# Long-living payment
 
 💥 WIP 💥
 

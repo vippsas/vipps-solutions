@@ -29,4 +29,4 @@ we also have documentation for how to combine APIs, such as:
 * [QR codes for print](./qr-code-print/README.md)
 * [Taxi companies](./taxi-companies/README.md)
 * [Vending machines](./vending-machines/README.md)
-* [Longer expiry time (More than 10 minutes)](./long-expiry-time-for-payments-to-merchants/README.md)
+* [Long-living payment (More than 10 minutes)](./long-expiry-time-for-payments-to-merchants/README.md)
