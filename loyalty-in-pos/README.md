@@ -45,7 +45,14 @@ The flow begins with the customer presenting their QR code to the merchant. This
 
 ![Loyalty Flow](images/POS_step_1.png)
 
-When the Vipps QR code is scanned, you will get the customer's mobile number. Now, proceed to step 2 and check their membership status.
+When the Vipps QR code is scanned, you will get the customer's mobile number.
+The user's personal QR code in Vipps contains a URL like this:
+`https://qr.vipps.no/28/2/01/031/4791234567?v=1`, where `4791234567` is the
+user's phone number in
+[MSISDN](https://en.wikipedia.org/wiki/MSISDN)
+format.
+
+Now, proceed to step 2 and check their membership status.
 
 ## Step 2: Check membership
 
