@@ -109,16 +109,13 @@ eg: `https://api.vipps.no/v2/ecom/categories/{orderId}`
 ```
 4. User receives a push notification
 5. User clicks on `See details` in the payment confirmation screen
-6. User will be presented with the url that was provided by the merchant in
-   step 1 in a web view. This way the user can see the invoice without leaving
-   the Vipps App
+6. User will be presented with the url that was provided by the merchant in a web view. This way the user can see the invoice without leaving the Vipps App
 7. User approves the payment
 
 ![Subsequent payment of an invoice](images/subsequent-invoice-payment.png)
 
 The subsequent invoice payments are long-living payments (because the merchants
-define the expiration time) the users can The user can soft dismiss this payment
-by clicking `Cancel` -> `I'll pay later` and come back into the app to pay it at
-a later time.
+define the expiration time). Users can soft dismiss this payment
+by clicking `Cancel` -> `I'll pay later` and come back into the app to pay at a later time.
 
 Link to [Long-living payment (More than 10 minutes)](./long-expiry-time-for-payments-to-merchants/README.md)
