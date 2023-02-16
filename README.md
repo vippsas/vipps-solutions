@@ -30,3 +30,4 @@ we also have documentation for how to combine APIs, such as:
 * [Taxi companies](./taxi-companies/README.md)
 * [Vending machines](./vending-machines/README.md)
 * [Long-living payment (More than 10 minutes)](./long-expiry-time-for-payments-to-merchants/README.md)
+* [Invoice through epayments](./invoice-through-epayments/README.md)
