@@ -14,7 +14,7 @@ END_METADATA -->
 
 # Long-living payment
 
-💥 Work in progress. The functionality is available now. 💥
+💥 Work in progress. 💥
 
 The expiration time for payments in the
 [eCom API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api)

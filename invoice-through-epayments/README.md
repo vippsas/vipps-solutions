@@ -14,7 +14,7 @@ END_METADATA -->
 
 # Invoice through epayments
 
-💥 Work in progress. The functionality is available now. 💥
+💥 Work in progress. 💥
 
 Vipps may be used as a channel through which merchants can send invoices to their users by combining the
 [ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api)
