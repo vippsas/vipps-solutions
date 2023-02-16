@@ -64,7 +64,7 @@ request with `expiresAt` looks like this:
 
 This will send a push message in Vipps to the specified user.
 
-The `expiresAt` value must be between 10 minutes and 28 days (40320 minutes).
+The `expiresAt` must be between 10 minutes and 28 days (40320 minutes) in the future.
 
 If the above is attempted for a sale unit that is not whitelisted, it will result in
 an error similar to this:
