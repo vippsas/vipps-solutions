@@ -69,7 +69,7 @@ The `expiresAt` value must be between 10 minutes and 28 days (40320 minutes).
 If the above is attempted for a sale unit that is not whitelisted, it will result in
 an error similar to this:
 
-```
+```json
 {
     "type": "",
     "title": "Long living Ecom not allowed",

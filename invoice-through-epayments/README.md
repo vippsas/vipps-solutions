@@ -89,7 +89,7 @@ eg: `https://api.vipps.no/v2/ecom/categories/{orderId}`
     - `userFlow: "PUSH_MESSAGE"` must be set
     - User's phone number which the merchant retrived earlier during the first time payment must be set
 
-```
+```json
 {
    "amount":{
       "currency":"NOK",
