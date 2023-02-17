@@ -126,13 +126,7 @@ eg: `https://api.vipps.no/v2/ecom/categories/{orderId}`
 ![Subsequent payment of an invoice](images/subsequent-invoice-payment.png)
 
 The subsequent invoice payments are long-living payments (because the merchants
-<<<<<<< HEAD
-define the expiration time) the users can The user can _soft dismiss_ this payment
-by clicking `Cancel` -> `I'll pay later` and come back into the app to pay it at
-a later time.
-=======
 define the expiration time). Users can soft dismiss this payment
 by clicking `Cancel` -> `I'll pay later` and come back into the app to pay at a later time.
->>>>>>> 5247b70af2fa3f2a889e1149f912eb362e876cc3
 
 See: [Long-living payment](long-expiry-time-for-payments-to-merchants).
