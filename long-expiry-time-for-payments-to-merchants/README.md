@@ -1,9 +1,12 @@
 <!-- START_METADATA
 ---
-title: Long-living payment
-sidebar_position: 48
+title: Long-living payments
 ---
 END_METADATA -->
+
+# Long-living payments
+
+
 
 <!-- START_COMMENT -->
 
@@ -11,8 +14,6 @@ END_METADATA -->
 [Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
 
 <!-- END_COMMENT -->
-
-# Long-living payment
 
 💥 Work in progress. 💥
 
@@ -22,6 +23,7 @@ payment is 10 minutes, as described in
 [Timeouts](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/timeouts).
 
 In some cases this is not enough, for instance:
+
 * Paying at a doctor's office, where the payment request may arrive as the patient
   is leaving the office and doesn't notice it.
 * Paying at a toll road where the driver can not stop to complete the payment.

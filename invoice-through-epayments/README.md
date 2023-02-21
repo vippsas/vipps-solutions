@@ -1,9 +1,10 @@
 <!-- START_METADATA
 ---
-title: Invoice through ePayment
-sidebar_position: 54
+title: Invoicing through ePayment
 ---
 END_METADATA -->
+
+# Invoicing through ePayment
 
 <!-- START_COMMENT -->
 
@@ -11,8 +12,6 @@ END_METADATA -->
 [Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
 
 <!-- END_COMMENT -->
-
-# Invoice through epayments
 
 💥 Work in progress. 💥
 
