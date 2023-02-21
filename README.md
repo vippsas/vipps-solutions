@@ -17,13 +17,14 @@ END_METADATA -->
 
 <!-- END_COMMENT -->
 
-The [Vipps APIs](https://vippsas.github.io/vipps-developer-docs/docs/APIs) can be combined for different use cases and market segments, such as:
+The [Vipps APIs](https://vippsas.github.io/vipps-developer-docs/docs/APIs) can be combined for specific market segments, such as:
 
 * [Electric vehicle charging](./ev-charging/README.md)
-* [Extended expiration for payments to merchants](./long-expiry-time-for-payments-to-merchants/README.md)
-* [Invoicing through ePayment](./invoice-through-epayments/README.md)
 * [Loyalty in Point-Of-Sale](./loyalty-in-pos/README.md)
 * [Parking](./parking/README.md)
-* [QR codes for print](./qr-code-print/README.md)
-* [Taxi companies](./taxi-companies/README.md)
-* [Vending machines](./vending-machines/README.md)
+* [QR codes for printing](./qr-code-print/README.md)
+
+You can also design solutions for special use cases:
+
+* [Extended expiration for payments to merchants](./long-expiry-time-for-payments-to-merchants/README.md)
+* [Invoicing through ePayment](./invoice-through-epayments/README.md)
