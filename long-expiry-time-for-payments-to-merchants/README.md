@@ -1,12 +1,10 @@
 <!-- START_METADATA
 ---
-title: Long-living payments
+title: Extended expiration payments
 ---
 END_METADATA -->
 
-# Long-living payments
-
-
+# Extended expiration for payments to merchants
 
 <!-- START_COMMENT -->
 
