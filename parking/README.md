@@ -47,7 +47,7 @@ The same solution can of course be used to charge weekly, monthly or yearly.
    See:
    [Create a charge](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#create-a-charge).
    
-   ##Relevant comments  
+   ## Relevant comments  
    * For parking and "pay-as-you-go" cases we usually recommend that you set up a Recurring agreement with variable amount and daily interval.
    * You are able to create as many charges you want within the interval, but we recommend that you "sum up" the usage over the day and create one charge      for the day.
    * You need to take the "maximum amount" limit into account. For example if the agreement is set to "daily" and maximum amount is "1000". You will not be    able to create charges that sum up to more than 1000 in one day. Remember that it is you as the merchant that will set a "suggested maximum amount" so      you can guide the users to a suitable limit. 
