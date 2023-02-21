@@ -1,10 +1,10 @@
 <!-- START_METADATA
 ---
-title: QR codes for print
+title: QR codes for printing
 ---
 END_METADATA -->
 
-# QR codes for print
+# QR codes for printing
 
 <!-- START_COMMENT -->
 
