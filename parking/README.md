@@ -13,40 +13,41 @@ END_METADATA -->
 [Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
 <!-- END_COMMENT -->
 
-Vipps may be used in many ways to make paying for parking easy.
+Vipps can make it easier for your customers to pay for parking and other and "pay-as-you-go" services.
 
-By combining the
-[Login API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api),
-[Recurring API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api)
-and
-[Recurring agreements with variable amount](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount):
+The solution is a combination of the
+[Login](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api) and
+[Recurring](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api) APIs,
+and makes special use of:
+[Recurring agreements with variable amount](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
 
-## Illustration
+## Parking scenario
 
-This illustration shows how Vipps can be used to charge for parking:
-The user has entered an agreement that allows the parking company to charge for
-parking every day, with the total amount for all parkings that day.
+The following illustration shows how Vipps can be used to charge for parking.
 
 ![Paying for parking with Vipps](parking-recurring-flow.png)
 
-The same solution can of course be used to charge weekly, monthly or yearly.
+The customer has entered an agreement that allows the parking company to charge for
+parking every day. They specify the total amount they are allowed to be for all parking that day.
+
+The same solution can of course be used to charge weekly, monthly, or yearly.
 
 ## Details
 
-1. The user scans a QR code and is sent to the parking company's website.
+1. The customer scans a QR code and is sent to the parking company's website.
    See [Merchant Redirect QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes).
-2. The user logs in or creates an account with
+2. The customer logs in or creates an account with
    [Vipps Login](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api/vipps-login-api-howitworks).
-   The user now has an account, with verified user data, and is able to both log in and pay.
-3. The user enters an Agreement as usual. See
+   The customer now has an account, with verified user data, and is able to both log in and pay.
+3. The customer enters an agreement, as usual. See
    [Create an agreement](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#create-an-agreement).
-4. The user parks one or more times.
+4. The customer parks one or more times.
 5. The accumulated parking fees are used to create one charge with the total amount.
    Vipps supports
    [Recurring agreements with variable amount](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
    See:
    [Create a charge](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#create-a-charge).
-   
+
 ## Relevant comments
 
 * For parking and "pay-as-you-go" cases, we usually recommend that you set up a
