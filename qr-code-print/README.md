@@ -13,24 +13,25 @@ END_METADATA -->
 
 <!-- END_COMMENT -->
 
-It is possible to use QR codes with Vipps in two ways:
+You can use QR codes with Vipps in two ways:
 
-1. QR code that contains a URL to the merchant's website. We call these
-   [Merchant Redirect QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes).
-2. QR code that leads directly to the payment confirmation screen in Vipps.
-   We call these
-   [One-Time Payment QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#one-time-payment-qr-codes).
+* [Merchant Redirect QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes) -
+  QRs that contain a URL to a merchant's website.
 
-Merchant redirect QR codes may be printed, but one-time payment QR codes may not.
-The reason for this is that a one-time payment QR code requires that the payment
-has already been initiated, and that Vipps payments time out after 5 minutes.
-See [Timeouts](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/timeouts).
+* [One-Time Payment QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#one-time-payment-qr-codes) -
+  QRs that lead directly to a payment confirmation screen in Vipps.
 
-Another important thing: The user must be presented with the terms and conditions
+Only
+[Merchant Redirect QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+should be printed, as [One-Time Payment QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#one-time-payment-qr-codes) typically expire after 5 minutes.
+
+## Relevant comments
+
+The user must be presented with the terms and conditions
 of the purchase before confirming the payment in Vipps. There is no functionality
 for showing terms and conditions on the payment screen in Vipps. This is why
 the answer to
-[Can I send a Vipps payment link in an SMS, QR or email?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/reserve-and-capture-faq#can-i-send-a-vipps-payment-link-in-an-sms-qr-or-email)
+[Can I send a Vipps payment link in an SMS, QR, or email?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/reserve-and-capture-faq#can-i-send-a-vipps-payment-link-in-an-sms-qr-or-email)
 is "No", but with an important exception:
 
 > It may be acceptable to automatically trigger the Vipps payment when the user
