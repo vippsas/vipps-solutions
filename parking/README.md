@@ -1,12 +1,12 @@
 <!-- START_METADATA
 ---
-title: Parking
+title: Parking and "Pay-as-you-go"
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Parking
+# Parking and "Pay-as-you-go"
 
 <!-- START_COMMENT -->
 ℹ️ Please use the new documentation:
@@ -46,3 +46,12 @@ The same solution can of course be used to charge weekly, monthly or yearly.
    [Recurring agreements with variable amount](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
    See:
    [Create a charge](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#create-a-charge).
+   
+## Relevant comments
+
+* For parking and "pay-as-you-go" cases, we usually recommend that you set up a
+[Recurring agreements with variable amount](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount)
+and daily interval.
+* You are able to create as many charges as you want within the interval, but we recommend that you sum up the usage over the day and create one charge for that day.
+* You need to take the `maximum amount` limit into account. For example, if the agreement is set to `daily` and maximum amount is `1000`, you will not be able to create charges that bring the total to more than 1000 for that day. Remember that it is you, as the merchant, who will set the `suggested maximum amount`, so you can guide the users to a suitable limit.
+* If the total for the usage of your service sums up to more than `maximum amount` and you create a charge that is larger than `maximum amount`, the end user will be notified in Vipps and asked to increase their limit for this agreement.
