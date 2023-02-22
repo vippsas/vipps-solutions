@@ -3,6 +3,7 @@
 title: Vending machines
 pagination_next: null
 pagination_prev: null
+draft: true
 ---
 END_METADATA -->
 
