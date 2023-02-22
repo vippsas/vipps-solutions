@@ -13,119 +13,133 @@ END_METADATA -->
 
 <!-- END_COMMENT -->
 
-💥 Work in progress. 💥
+You can use Vipps to send invoices to your customers! This is possible by combining requests for the
+[ePayment](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api)
+and
+[Order Management](https://vippsas.github.io/vipps-developer-docs/docs/APIs/order-management-api) APIs.
 
-Vipps may be used as a channel through which merchants can send invoices to
-their users by combining the
-[ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api)
-and the
-[Order Management API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/order-management-api).
+## First-time payment of an invoice
 
-## Illustration
+You can set up invoicing through the Vipps APIs by following these steps.
 
-### First time payment of an invoice
-
-1. Merchants in their website or mobile app can have an option for their users
-   to opt for receiving invoices sent to their Vipps app
-2. User is presented with their invoice in the merchant website or the merchant
-   app with `Pay with Vipps` as an option
-3. User clicks on `Pay with Vipps`
-4. Merchant makes a
+1. In your website or mobile app, provide your customers with an option for opting-in to receive
+   invoices in the Vipps app.
+1. Present them also with the *Pay with Vipps* option where they view their invoice in your website or app.
+1. When they select *Pay with Vipps*, send the
    [create payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments)
-   call requesting for a profile scope `phoneNumber`:
+   request.
 
-```json
-{
-   "amount":{
-      "currency":"NOK",
-      "value":2000
-   },
-   "customer":{
-      "phoneNumber":4748658141
-   },
-   "paymentMethod":{
-      "type":"wallet"
-   },
-   "profile":{
-      "scope":"phoneNumber"
-   },
-   "reference":"acme-shop-123-order123abc",
-   "returnUrl":"https://example.io/redirect?orderId=1512202",
-   "userFlow":"WEB_REDIRECT"
-}
-```
+   Request access to the user' mobile number by including the `scope` parameter with a value of `phoneNumber`.
 
-5. User is enters their phone number in Vipps landing page or the Vipps app is
-   opened (if the user is on mobile and has Vipps app)
-6. User consents for sharing phone number with the merchant
-7. User approves the payment in Vipps app
 
-![First time payment of an invoice](images/first-time-invoice-payment.png)
+   Here is an example of a valid request body:
 
-8. Merchant retrieves the user's sub by making a call to
-   [Get Payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/QueryPayments/operation/getPayment)
-9. Merchant retrieves the user's phone number by making a call to
-   [UserInfo](https://vippsas.github.io/vipps-developer-docs/api/login#tag/Userinfo-API/operation/userinfoAuthorizationCode)
-10. Merchant can use the phone number to send direct payment request to the user
-    for subsequent invoices
+   ```json
+   {
+      "amount":{
+         "currency":"NOK",
+         "value":2000
+      },
+      "customer":{
+         "phoneNumber":4791234567
+      },
+      "paymentMethod":{
+         "type":"wallet"
+      },
+      "profile":{
+         "scope":"phoneNumber"
+      },
+      "reference":"acme-shop-123-order123abc",
+      "returnUrl":"https://example.com/redirect?orderId=1512202",
+      "userFlow":"WEB_REDIRECT"
+   }
+   ```
+
+1. If the customer is on a desktop computer, the
+   [Vipps Landing page](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/vipps-landing-page)
+   opens. If on a mobile device, the Vipps app opens.
+1. The customer consents to share their mobile number.
+1. The customer approves the payment in the Vipps app.
+
+   These steps can be visualized as:
+
+   ![First time payment of an invoice](images/first-time-invoice-payment.png)
+
+1. To retrieve the user's mobile number, start by making a request to
+   [Get Payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/QueryPayments/operation/getPayment) to get the `sub` value.
+1. Then, make a request to
+   [getUserinfo](https://vippsas.github.io/vipps-developer-docs/api/userinfo#operation/getUserinfo).
+   For details and more examples, see the
+   [UserInfo API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api).
+
+1. Finally, use the customer's mobile number to send them direct payment requests for subsequent invoices.
+
+
 
 ## Subsequent invoice payments
 
-1. Merchant makes a request to
-  [Adding and changing Category](https://vippsas.github.io/vipps-developer-docs/docs/APIs/order-management-api/vipps-order-management-api#adding-and-changing-category)
-  to add invoice data (link to the invoice pdf)
+Once you have the customer's mobile number and their approval to send invoices through Vipps, you can send
+them invoices directly. Your invoices should include an image or a link to a web view where they can get more details about the charges.
 
-PaymentType in the path must be `ecom`,
-eg: `https://api.vipps.no/v2/ecom/categories/{orderId}`
+1. Start by adding the invoice data, such as images or links to a web view, to a payment through the
+   [Order Management](https://vippsas.github.io/vipps-developer-docs/docs/APIs/order-management-api) API.
 
-```json
-{
-  "category": "GENERAL",
-  "orderDetailsUrl": "https://example.com/orderdetails/acme-shop-123-order123abc"
-}
-```
-2. Merchant must use the **orderId** that they use in step 1 in step 3 in order
-   to link the order data and the payment.
+   Send the
+  [Add category to an order](https://vippsas.github.io/vipps-developer-docs/api/order-management#operation/putCategoryV2)
+  request.
+  Note that the request path allows for different `{paymentType}` options. In this case, it must be set  to `ecom`.
+  For example: `https://api.vipps.no/v2/ecom/categories/{orderId}`.
 
-3. Merchant makes a
+   Here is an example of a valid request body:
+
+   ```json
+   {
+   "category": "GENERAL",
+   "orderDetailsUrl": "https://example.com/orderdetails/acme-shop-123-order123abc"
+   }
+   ```
+
+1. Make a
    [create payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments)
-  request with the following in the `CreatePaymentRequest`:
-    - `orderId` used in Step 1 must be passed as the value for `reference`
-    - `expiresAt` must be set as the future date until which the user must be
-      able to make payment for the invoice
-    - If the merchant wants to allow the user to pay even after the last date
-      for an invoice, then `expiresAt` must be set accordingly
-    - `userFlow: "PUSH_MESSAGE"` must be set
-    - The user's phone number, which the merchant retrieved earlier during the
-      first time payment, must be set
+  request where the following are set:
+    - `reference` - The `orderId` used in Step 1.
+    - `expiresAt` - The expiration date for the payment.
+    - `userFlow`  - Must be `"PUSH_MESSAGE"`.
+    - `customer.phoneNumber` - The customer's phone number.
 
-```json
-{
-   "amount":{
-      "currency":"NOK",
-      "value":2000
-   },
-   "customer":{
-      "phoneNumber":4791234567
-   },
-   "paymentMethod":{
-      "type":"wallet"
-   },
-   "reference":"acme-shop-123-order123abc",
-   "returnUrl":"https://example.io/redirect?orderId=1512202",
-   "userFlow":"PUSH_MESSAGE",
-   "expiresAt":"2023-09-15T00:00:00Z"
-}
-```
-4. User receives a push notification
-5. User clicks on `See details` in the payment confirmation screen
-6. User will be presented with the url that was provided by the merchant in a web view. This way the user can see the invoice without leaving the Vipps App
-7. User approves the payment
+
+   Here is an example of a valid request body:
+
+   ```json
+   {
+      "amount":{
+         "currency":"NOK",
+         "value":2000
+      },
+      "customer":{
+         "phoneNumber":4791234567
+      },
+      "paymentMethod":{
+         "type":"wallet"
+      },
+      "reference":"acme-shop-123-order123abc",
+      "returnUrl":"https://example.com/redirect?orderId=1512202",
+      "userFlow":"PUSH_MESSAGE",
+      "expiresAt":"2023-09-15T00:00:00Z"
+   }
+   ```
+
+1. The customer will receive a push notification in their Vipps app.
+1. When the customer selects `See details` in the payment confirmation screen, they are presented with the order information provided by the merchant.
+   If they are provided with a link, they can tap this to view the invoice data in a web view without leaving the Vipps app.
+1. The customer approves the payment.
 
 ![Subsequent payment of an invoice](images/subsequent-invoice-payment.png)
 
-The subsequent invoice payments are long-living payments (because the merchants
-define the expiration time). Users can soft dismiss this payment
-by clicking `Cancel` -> `I'll pay later` and come back into the app to pay at a later time.
+The invoice payments must have extended expiration dates, as specified in the
+[create payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments) request.
 
-See: [Long-living payment](long-expiry-time-for-payments-to-merchants).
+Users can soft dismiss this payment
+by clicking `Cancel` -> `I'll pay later` and come back into the Vipps app to pay at a later time.
+
+See [Extended expiration for payments to merchants](long-expiry-time-for-payments-to-merchants) for more information.
