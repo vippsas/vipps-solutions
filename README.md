@@ -21,7 +21,7 @@ The [Vipps APIs](https://vippsas.github.io/vipps-developer-docs/docs/APIs) can b
 
 * [Electric vehicle charging](./ev-charging/README.md)
 * [Loyalty in Point-Of-Sale](./loyalty-in-pos/README.md)
-* [Parking](./parking/README.md)
+* [Parking and "Pay-as-you-go"](./parking/README.md)
 
 You can also design solutions for special use cases:
 
