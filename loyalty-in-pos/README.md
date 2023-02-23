@@ -35,15 +35,15 @@ The flow begins with the customer presenting their QR code to the merchant. This
 ![Loyalty Flow](images/POS_step_1.png)
 
 The customer's personal Vipps QR code contains a URL like this:
-`https://qr.vipps.no/28/2/01/031/4791234567?v=1`, where `4791234567` is their mobile number in
+`https://qr.vipps.no/28/2/01/031/4791234567?v=1`, where `4791234567` is their phone number in
 [MSISDN](https://en.wikipedia.org/wiki/MSISDN) format.
 
-When the customer's Vipps QR code is scanned in the store, the POS will get their mobile number.
+When the customer's Vipps QR code is scanned in the store, the POS will get their phone number.
 This can be used for checking membership, in the next step.
 
 ## Step 2: Check membership
 
-Check the customer's membership status by using the mobile number you received in the previous step.
+Check the customer's membership status by using the phone number you received in the previous step.
 
 Use the
 [Vipps Check-In API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/check-in-api)
@@ -64,7 +64,7 @@ If they are already a member, skip to step 4.
 If the customer is not a member of the loyalty program, you can request to enroll them by using
 the [Vipps Login API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api).
 
-You already have their mobile number from step 1, so just provide a button in your user interface to allow the cashier to initiate the login.
+You already have their phone number from step 1, so just provide a button in your user interface to allow the cashier to initiate the login.
 
 Pressing the button will trigger a
 [Vipps Login flow](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api/vipps-login-api#vipps-login-from-phone-number)
@@ -77,7 +77,7 @@ When this login flow is completed, the customer will be enrolled in the loyalty 
 
 After membership status has been determined and all wares have been scanned, send a payment request to the customer.
 
-You already have the mobile number from step 1, so just provide a button in your user interface to allow the cashier to send the payment request. A notification will appear on the customer's Vipps app.
+You already have the phone number from step 1, so just provide a button in your user interface to allow the cashier to send the payment request. A notification will appear on the customer's Vipps app.
 
 Once they authorize the payment, the POS will be updated with the status.
 

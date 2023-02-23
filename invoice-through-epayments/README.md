@@ -13,6 +13,9 @@ END_METADATA -->
 
 <!-- END_COMMENT -->
 
+
+💥 Work in progress 💥
+
 You can use Vipps to send invoices to your customers! This is possible by combining requests for the
 [ePayment](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api)
 and
@@ -29,7 +32,7 @@ You can set up invoicing through the Vipps APIs by following these steps.
    [create payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments)
    request.
 
-   Request access to the user' mobile number by including the `scope` parameter with a value of `phoneNumber`.
+   Request access to the user' phone number by including the `scope` parameter with a value of `phoneNumber`.
 
 
    Here is an example of a valid request body:
@@ -58,27 +61,27 @@ You can set up invoicing through the Vipps APIs by following these steps.
 1. If the customer is on a desktop computer, the
    [Vipps Landing page](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/vipps-landing-page)
    opens. If on a mobile device, the Vipps app opens.
-1. The customer consents to share their mobile number.
+1. The customer consents to share their phone number.
 1. The customer approves the payment in the Vipps app.
 
    These steps can be visualized as:
 
    ![First time payment of an invoice](images/first-time-invoice-payment.png)
 
-1. To retrieve the user's mobile number, start by making a request to
+1. To retrieve the user's phone number, start by making a request to
    [Get Payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/QueryPayments/operation/getPayment) to get the `sub` value.
 1. Then, make a request to
    [getUserinfo](https://vippsas.github.io/vipps-developer-docs/api/userinfo#operation/getUserinfo).
    For details and more examples, see the
    [UserInfo API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api).
 
-1. Finally, use the customer's mobile number to send them direct payment requests for subsequent invoices.
+1. Finally, use the customer's phone number to send them direct payment requests for subsequent invoices.
 
 
 
 ## Subsequent invoice payments
 
-Once you have the customer's mobile number and their approval to send invoices through Vipps, you can send
+Once you have the customer's phone number and their approval to send invoices through Vipps, you can send
 them invoices directly. Your invoices should include an image or a link to a web view where they can get more details about the charges.
 
 1. Start by adding the invoice data, such as images or links to a web view, to a payment through the

@@ -13,6 +13,9 @@ END_METADATA -->
 
 <!-- END_COMMENT -->
 
+💥 Work in progress 💥
+
+
 The typical expiration time for payments is
 payment is
 [10 minutes](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/timeouts).
