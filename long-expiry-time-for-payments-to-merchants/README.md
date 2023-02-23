@@ -78,8 +78,7 @@ an error similar to this:
 }
 ```
 
-You can design your system so that, if the customer's phone number is unknown, it will
-send the request again with the `userFlow` set to `"QR"`.
+If the customer's phone number is unknown, the system can request with `userFlow` set to `QR`.
 This will return the QR code for a payment with the expiration time that you have specified.
 
 The customer either clicks on the notification or scans the QR code to complete the payment flow in the Vipps app.

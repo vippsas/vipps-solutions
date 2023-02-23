@@ -137,6 +137,7 @@ them invoices directly. Your invoices should include an image or a link to a web
    If they are provided with a link, they can tap this to view the invoice data in a web view without leaving the Vipps app.
 1. The customer approves the payment.
 
+For example, the sequence might look like this:
 ![Subsequent payment of an invoice](images/subsequent-invoice-payment.png)
 
 The invoice payments must have extended expiration dates, as specified in the
@@ -145,4 +146,4 @@ The invoice payments must have extended expiration dates, as specified in the
 Users can soft dismiss this payment
 by clicking `Cancel` -> `I'll pay later` and come back into the Vipps app to pay at a later time.
 
-See [Extended expiration for payments to merchants](long-expiry-time-for-payments-to-merchants) for more information.
+For more information about extended expiration dates, see [Extended expiration for payments to merchants](long-expiry-time-for-payments-to-merchants).
