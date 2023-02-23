@@ -22,9 +22,9 @@ The [Vipps APIs](https://vippsas.github.io/vipps-developer-docs/docs/APIs) can b
 * [Electric vehicle charging](./ev-charging/README.md)
 * [Loyalty in Point-Of-Sale](./loyalty-in-pos/README.md)
 * [Parking](./parking/README.md)
-* [QR codes for printing](./qr-code-print/README.md)
 
 You can also design solutions for special use cases:
 
 * [Extended expiration for payments to merchants](./long-expiry-time-for-payments-to-merchants/README.md)
 * [Invoicing through ePayment](./invoice-through-epayments/README.md)
+* [QR codes for printing](./qr-code-print/README.md)
