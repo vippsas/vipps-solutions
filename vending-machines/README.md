@@ -25,10 +25,9 @@ When the customer scans the QR code, they go directly to the Vipps payment scree
 
 ![qr_direct_to_payment](images/1_qr_direct_to_payment.png)
 
-
 This is the most recommended flow, because it is simplest for the user.
 
-## QR to a merchant site waiting for product entry on vending buttons
+## QR to a merchant site for payment options
 
 Post a merchant-generated QR code on the vending machine.
 
