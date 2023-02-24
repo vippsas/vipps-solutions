@@ -13,7 +13,6 @@ END_METADATA -->
 
 <!-- END_COMMENT -->
 
-
 💥 Work in progress 💥
 
 You can use Vipps to send invoices to your customers! This is possible by combining requests for the
@@ -25,15 +24,11 @@ and
 
 You can set up invoicing through the Vipps APIs by following these steps.
 
-1. In your website or mobile app, provide your customers with an option for opting-in to receive
-   invoices in the Vipps app.
+1. In your website or mobile app, provide your customers with an option for opting-in to receive invoices in the Vipps app.
 1. Present them also with the *Pay with Vipps* option where they view their invoice in your website or app.
-1. When they select *Pay with Vipps*, send the
-   [create payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments)
-   request.
+1. When they select *Pay with Vipps*, send the [create payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments) request.
 
    Request access to the user' phone number by including the `scope` parameter with a value of `phoneNumber`.
-
 
    Here is an example of a valid request body:
 
@@ -87,11 +82,7 @@ them invoices directly. Your invoices should include an image or a link to a web
 1. Start by adding the invoice data, such as images or links to a web view, to a payment through the
    [Order Management](https://vippsas.github.io/vipps-developer-docs/docs/APIs/order-management-api) API.
 
-   Send the
-  [Add category to an order](https://vippsas.github.io/vipps-developer-docs/api/order-management#operation/putCategoryV2)
-  request.
-  Note that the request path allows for different `{paymentType}` options. In this case, it must be set  to `ecom`.
-  For example: `https://api.vipps.no/v2/ecom/categories/{orderId}`.
+   Send the [Add category to an order](https://vippsas.github.io/vipps-developer-docs/api/order-management#operation/putCategoryV2) request. Note that the request path allows for different `{paymentType}` options. In this case, it must be set  to `ecom`. For example: `https://api.vipps.no/v2/ecom/categories/{orderId}`.
 
    Here is an example of a valid request body:
 
@@ -102,14 +93,7 @@ them invoices directly. Your invoices should include an image or a link to a web
    }
    ```
 
-1. Make a
-   [create payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments)
-  request where the following are set:
-    - `reference` - The `orderId` used in Step 1.
-    - `expiresAt` - The expiration date for the payment.
-    - `userFlow`  - Must be `"PUSH_MESSAGE"`.
-    - `customer.phoneNumber` - The customer's phone number.
-
+1. Make a [create payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments) request.
 
    Here is an example of a valid request body:
 
@@ -132,18 +116,25 @@ them invoices directly. Your invoices should include an image or a link to a web
    }
    ```
 
+    For this solution, the following parameters must be set:
+
+      * `reference` - The `orderId` used in Step 1.
+      * `expiresAt` - The expiration date for the payment.
+      * `userFlow`  - Must be `"PUSH_MESSAGE"`.
+      * `customer.phoneNumber` - The customer's phone number.
+
 1. The customer will receive a push notification in their Vipps app.
 1. When the customer selects `See details` in the payment confirmation screen, they are presented with the order information provided by the merchant.
    If they are provided with a link, they can tap this to view the invoice data in a web view without leaving the Vipps app.
 1. The customer approves the payment.
 
-For example, the sequence might look like this:
-![Subsequent payment of an invoice](images/subsequent-invoice-payment.png)
+   For example, the sequence might look like this:
+   ![Subsequent payment of an invoice](images/subsequent-invoice-payment.png)
 
-The invoice payments must have extended expiration dates, as specified in the
-[create payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments) request.
+   Invoice payments must have extended expiration dates, as specified in the
+   [create payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments) request.
 
-Users can soft dismiss this payment
-by clicking `Cancel` -> `I'll pay later` and come back into the Vipps app to pay at a later time.
+   Users can soft dismiss this payment
+   by clicking `Cancel` -> `I'll pay later` and come back into the Vipps app to pay at a later time.
 
-For more information about extended expiration dates, see [Extended expiration for payments to merchants](long-expiry-time-for-payments-to-merchants).
+   For more information about extended expiration dates, see [Extended expiration for payments to merchants](long-expiry-time-for-payments-to-merchants).
