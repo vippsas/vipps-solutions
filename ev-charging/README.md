@@ -1,6 +1,6 @@
 <!-- START_METADATA
 ---
-title: EV charging
+title: Electric vehicle charging
 pagination_next: null
 pagination_prev: null
 ---
