@@ -34,7 +34,7 @@ You can extend this expiration time for payments through the
 [ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api).
 
 
-**Please note:** Sale units (i.e., Merchant Serial Numbers (MSNs)) must be especially approved to use this feature.
+**Please note:** Sales units (i.e., Merchant Serial Numbers (MSNs)) must be especially approved to use this feature.
 Vipps wants the user experience, including the standard timeout, to be as
 consistent as possible, so `expiresAt` should only be used in special cases.
 Please contact your key account manager (KAM) to get access to this feature.
