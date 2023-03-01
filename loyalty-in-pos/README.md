@@ -1,12 +1,12 @@
 <!-- START_METADATA
 ---
-title: Loyalty at POS
+title: Loyalty at Point of Sale
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Loyalty at the Point Of Sale
+# Loyalty at the Point of Sale
 
 ## How it works
 
