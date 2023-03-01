@@ -20,7 +20,7 @@ END_METADATA -->
 The [Vipps APIs](https://vippsas.github.io/vipps-developer-docs/docs/APIs) can be combined for specific market segments, such as:
 
 * [Electric vehicle charging](./ev-charging/README.md)
-* [Loyalty in Point-Of-Sale](./loyalty-in-pos/README.md)
+* [Loyalty in Point of Sale](./loyalty-in-pos/README.md)
 * [Parking and "Pay-as-you-go"](./parking/README.md)
 * [Vending machines](./vending-machines/README.md)
 
