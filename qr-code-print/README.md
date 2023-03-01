@@ -1,6 +1,8 @@
 <!-- START_METADATA
 ---
 title: QR codes for printing
+pagination_next: null
+pagination_prev: null
 ---
 END_METADATA -->
 
