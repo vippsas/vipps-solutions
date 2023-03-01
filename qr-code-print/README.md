@@ -1,6 +1,7 @@
 <!-- START_METADATA
 ---
 title: QR codes for printing
+sidebar_position: 130
 pagination_next: null
 pagination_prev: null
 ---
