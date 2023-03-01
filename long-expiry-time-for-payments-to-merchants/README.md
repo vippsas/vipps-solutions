@@ -67,7 +67,7 @@ Here is an example of a valid request body:
 
 This will send a push message to the customer's Vipps app on their mobile phone.
 
-If the above is attempted for a sale unit that is not authorized, it will result in
+If the above is attempted for a sales unit that is not authorized, it will result in
 an error similar to this:
 
 ```json
