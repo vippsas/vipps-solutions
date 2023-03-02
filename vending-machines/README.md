@@ -16,6 +16,9 @@ END_METADATA -->
 
 <!-- END_COMMENT -->
 
+
+💥 Improvements coming soon. 💥
+
 ## QR direct to payment in Vipps app (recommended!)
 
 A [Vipps QR code](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes) is posted on the vending machine.
@@ -42,3 +45,4 @@ they are taken to the merchant's landing page, where products can selected.
 The price is presented and the user pays for the product in their Vipps app.
 
 ![3_qr_to_landing_page_providing_selection](images/3_qr_to_landing_page_providing_selection.png)
+
