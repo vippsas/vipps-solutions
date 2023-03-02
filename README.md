@@ -28,4 +28,4 @@ You can also design solutions for special use cases:
 
 * [Extended expiration for payments to merchants](./long-expiry-time-for-payments-to-merchants/README.md)
 * [Invoicing through ePayment](./invoice-through-epayments/README.md)
-* [QR codes for printing](./qr-code-print/README.md)
+* [QR codes](./qr-code-print/README.md)

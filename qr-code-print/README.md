@@ -1,13 +1,13 @@
 <!-- START_METADATA
 ---
-title: QR codes for printing
+title: QR codes
 sidebar_position: 130
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# QR codes for printing
+# QR codes
 
 <!-- START_COMMENT -->
 
