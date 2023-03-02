@@ -8,7 +8,7 @@ pagination_prev: null
 ---
 END_METADATA -->
 
-# Vipps Solutions
+# Vipps solutions
 
 <!-- START_COMMENT -->
 
