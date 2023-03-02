@@ -38,7 +38,7 @@ The same solution can of course be used to charge weekly, monthly, or yearly.
 1. The customer scans a QR code and is sent to the parking company's website.
    See [Merchant Redirect QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes).
 2. The customer logs in or creates an account with
-   [Vipps Login](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api/vipps-login-api-howitworks).
+   [Vipps Login](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api/how-it-works/vipps-login-api-howitworks).
    The customer now has an account, with verified user data, and is able to both log in and pay.
 3. The customer enters an agreement, as usual. See
    [Create an agreement](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#create-an-agreement).
