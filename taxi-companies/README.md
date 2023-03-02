@@ -18,6 +18,9 @@ END_METADATA -->
 
 💥 Improvements coming soon. 💥
 
+
+Use Vipps to simplify the payment flow in your taxi solutions.
+
 ## Scenario 1 - Customer scans QR code which leads to payment page
 
 The customer scans a QR and follows instructions to pay from the taxi company's landing page.
