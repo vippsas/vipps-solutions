@@ -32,7 +32,7 @@ The QR code is a dynamic representation of the payment url, and user need to sca
 
 ### When to use
 
-* The One-Time payment QR code is preferred flow when it possible to show a QR code on the vending machine.
+* The One-Time payment QR code is the preferred flow when it's possible to show a QR code on the vending machine.
 
 ![one_time_payment_qr](images/0_one_time_payment_qr.jpg)
 
