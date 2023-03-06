@@ -28,7 +28,7 @@ A [Vipps QR code](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-ap
 
 When the customer scans the QR code, they go directly to the Vipps payment screen on their phone, where they can approve the payment.
 
-The QR code is a dynamic representation of the payment url, and user need to scan the QR code within 5 minutes.  
+The QR code is a dynamic representation of the payment url, and user needs to scan the QR code within 5 minutes.  
 
 ### When to use
 
