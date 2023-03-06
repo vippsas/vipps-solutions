@@ -68,7 +68,7 @@ the [Vipps Login API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/l
 You already have their phone number from step 1, so just provide a button in your user interface to allow the cashier to initiate the login.
 
 Pressing the button will trigger a
-[Vipps Login flow](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api/vipps-login-api#vipps-login-from-phone-number)
+[Vipps Login flow](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api/api-guide/flows/phone-number-ciba-flows)
 to gather consent from the customer.
 When this login flow is completed, the customer will be enrolled in the loyalty program.
 

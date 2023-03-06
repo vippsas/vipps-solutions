@@ -47,7 +47,8 @@ Let's continue the scenario where the user isn't a member already. You will then
 
 ## Step 3 Initiate a login
 
-To send a login request to a user, you will need to use the [CIBA flow](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api/vipps-login-api#activating-vipps-login-from-phone-number)
+To send a login request to a user, you will need to use the
+[CIBA flow](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api/api-guide/flows/phone-number-ciba-flows)
 from the Login API. The steps needed to get a consent from the user are explained in detail there. The CIBA flow will send a push to the user, and once the user has finished the flow, it should be reflected in the POS.
 
 ## Step 4 Initiate an eCom payment
