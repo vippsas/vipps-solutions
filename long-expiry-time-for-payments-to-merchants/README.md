@@ -33,7 +33,17 @@ For instance:
 You can extend this expiration time for payments through the
 [ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api).
 
-See [How to create a payment request with extended expiration time](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/features/long-living-payments) for all the technical details.
+Extending the payment expiration time is done by setting the `expiresAt` parameter in the
+[`POST:/epayment/v1/payments`](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments)
+request.
+The `expiresAt` must be between 10 minutes and 28 days (40320 minutes) in the future.
+
+This will send a push message to the customer's Vipps app on their mobile phone.
+If the customer's phone number is unknown, the system can request with `userFlow` set to `QR`.
+This will return the QR code for a payment with the expiration time that you have specified.
+
+The customer either clicks on the notification or scans the QR code to complete the payment flow in the Vipps app.
+
 
 ![Payment flow in the app](images/Long-expiry-time-payment-request.png)
 
@@ -47,3 +57,6 @@ Soft-dismissed payments will be available in the Vipps app until expiry.
 Vipps will remind the user when the payment is about to expire. For example:
 
 ![Soft dismiss a payment](images/Soft-dismissed-payment-in-home-screen.png)
+
+
+See [How to create a payment request with extended expiration time](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/features/long-living-payments) for all the technical details.
