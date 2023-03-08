@@ -33,7 +33,7 @@ For instance:
 You can extend this expiration time for payments through the
 [ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api).
 
-[How to create a payment request with extended expiration time](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/features/long-living-payments)
+See [How to create a payment request with extended expiration time](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/features/long-living-payments) for all the technical details.
 
 ![Payment flow in the app](images/Long-expiry-time-payment-request.png)
 
