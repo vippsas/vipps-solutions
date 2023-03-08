@@ -18,15 +18,40 @@ END_METADATA -->
 
 You can use QR codes with Vipps in two ways:
 
-* [Merchant Redirect QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes) -
-  QRs that contain a URL to a merchant's website.
-
-* [One-Time Payment QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#one-time-payment-qr-codes) -
-  QRs that lead directly to a payment confirmation screen in Vipps.
+* [Merchant redirect QR](#merchant-redirect-qr-codes)
+* [One-Time payment QR](#one-time-payment-qr-codes)
 
 Only
 [Merchant Redirect QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
 should be printed, as [One-Time Payment QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#one-time-payment-qr-codes) typically expire after 5 minutes.
+
+## Merchant Redirect QR codes
+
+Merchant Redirect QR codes contain a URL to a merchant's website.
+
+
+![Demo QR code](images/demo-qr.png)
+
+
+The user flow is like this:
+
+![Merchant redirect QR flow](images/merchant-redirect-qr-flow.png)
+
+This creates a QR that works as a redirect back to the merchant. The website is specified as the `redirectUrl` in the [`POST:/qr/v1/merchant-redirect`](https://vippsas.github.io/vipps-developer-docs/api/qr#tag/Merchant-redirect-QR/operation/CreateMerchantRedirectQr) request.
+
+
+Learn more about these on the [Merchant Redirect QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes) page.
+
+## One-Time Payment QR codes
+
+One-Time Payment QR codes lead directly to a payment confirmation screen in Vipps.
+
+![One-Time Payment QR flow](images/one-time-payment-qr-flow.png)
+
+After you initiate a payment through the eCom API, you can generate a One-Time Payment QR code
+by sending the [`POST:/qr/v1`](https://vippsas.github.io/vipps-developer-docs/api/qr#tag/One-time-payment-QR/operation/generateOtpQr) request. The `vippsLandingPageUrl` parameter provides the URL that is used to show a QR code
+
+Learn more about these on the [One-Time Payment QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#one-time-payment-qr-codes) page.
 
 ## Relevant comments
 
