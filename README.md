@@ -29,4 +29,5 @@ You can also design solutions for special use cases:
 
 * [Extended expiration for payments to merchants](./long-expiry-time-for-payments-to-merchants/README.md)
 * [Invoicing through ePayment](./invoice-through-epayments/README.md)
+* [Making registration and payment simple](./recurring-and-login/README.md)
 * [QR codes](./qr-code-print/README.md)

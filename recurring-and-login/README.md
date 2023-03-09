@@ -1,15 +1,15 @@
 <!-- START_METADATA
 ---
-title: How Login works with the Recurring API
-sidebar_label: With the Recurring API
+title: Making registration and payment simple
+sidebar_label: Making registration and payment simple
 sidebar_position: 16
-description: How Login works with Vipps Recurring.
+description: Making registration and payment simple by using the Login API and Recurring API together.
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Using Login and Recurring together
+# Making registration and payment simple
 
 <!-- START_COMMENT -->
 
@@ -20,7 +20,6 @@ END_METADATA -->
 
 The [Login API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api) and the [Recurring API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api)
 can be used together making registration and payment of subscriptions simple for your customers.
-
 
 ## The process
 
