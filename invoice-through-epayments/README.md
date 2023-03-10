@@ -1,13 +1,13 @@
 <!-- START_METADATA
 ---
-title: Request payment for an invoice
+title: Requesting payment for an invoice
 sidebar_position: 120
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Request payment for an invoice
+# Requesting payment for an invoice
 
 <!-- START_COMMENT -->
 

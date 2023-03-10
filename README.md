@@ -28,5 +28,5 @@ The [Vipps APIs](https://vippsas.github.io/vipps-developer-docs/docs/APIs) can b
 You can also design solutions for special use cases:
 
 * [Extended expiration for payments to merchants](./long-expiry-time-for-payments-to-merchants/README.md)
-* [Invoicing through ePayment](./invoice-through-epayments/README.md)
+* [Requesting payment for an invoice](./invoice-through-epayments/README.md)
 * [QR codes](./qr-code-print/README.md)
