@@ -142,7 +142,6 @@ Please note
       * `reference` - The `orderId` used in Step 3.
       * `paymentDescription` - Short description with relevant information about the invoice.
 
-
 1. If the customer is on a desktop computer, the
    [Vipps Landing page](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/vipps-landing-page)
    opens. If on a mobile device, the Vipps app opens.
