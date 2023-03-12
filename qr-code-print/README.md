@@ -1,7 +1,9 @@
 <!-- START_METADATA
 ---
 title: QR codes
+sidebar_label: QR codes
 sidebar_position: 130
+description: Learn how to use QR codes with Vipps MobilePay.
 pagination_next: null
 pagination_prev: null
 ---

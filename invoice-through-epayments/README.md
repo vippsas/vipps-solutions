@@ -1,6 +1,7 @@
 <!-- START_METADATA
 ---
 title: Requesting payment for an invoice
+sidebar_label: Requesting payment for an invoice
 sidebar_position: 120
 pagination_next: null
 pagination_prev: null

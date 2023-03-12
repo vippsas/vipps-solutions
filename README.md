@@ -1,6 +1,7 @@
 <!-- START_METADATA
 ---
-title: Introduction
+title: Introduction to the Solutions
+sidebar_label: Introduction
 sidebar_position: 1
 hide_table_of_contents: true
 pagination_next: null
@@ -8,7 +9,7 @@ pagination_prev: null
 ---
 END_METADATA -->
 
-# Vipps solutions
+# Solutions
 
 <!-- START_COMMENT -->
 
@@ -17,7 +18,7 @@ END_METADATA -->
 
 <!-- END_COMMENT -->
 
-The [Vipps APIs](https://vippsas.github.io/vipps-developer-docs/docs/APIs) can be combined for specific market segments, such as:
+The [APIs](https://vippsas.github.io/vipps-developer-docs/docs/APIs) can be combined for specific market segments, such as:
 
 * [Electric vehicle charging](./ev-charging/README.md)
 * [Loyalty in Point of Sale](./loyalty-in-pos/README.md)

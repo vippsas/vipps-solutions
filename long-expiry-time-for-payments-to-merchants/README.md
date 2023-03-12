@@ -1,6 +1,7 @@
 <!-- START_METADATA
 ---
-title: Extended expiration payments
+title: Extended expiration for payments to merchants
+sidebar_label: Extended expiration payments
 sidebar_position: 110
 pagination_next: null
 pagination_prev: null

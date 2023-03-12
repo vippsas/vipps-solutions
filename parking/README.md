@@ -1,6 +1,7 @@
 <!-- START_METADATA
 ---
 title: Parking and "Pay-as-you-go"
+sidebar_label: Parking and "Pay-as-you-go"
 sidebar_position: 30
 pagination_next: null
 pagination_prev: null
@@ -14,7 +15,7 @@ END_METADATA -->
 [Vipps MobilePay Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
 <!-- END_COMMENT -->
 
-Vipps can make it easier for your customers to pay for parking and other and "pay-as-you-go" services.
+Vipps MobilePay can make it easier for your customers to pay for parking and other and "pay-as-you-go" services.
 
 The solution is a combination of the
 [Login](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api) and
