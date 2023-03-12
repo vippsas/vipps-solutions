@@ -10,8 +10,8 @@ END_METADATA -->
 # Parking and "Pay-as-you-go"
 
 <!-- START_COMMENT -->
-ℹ️ Please use the new documentation:
-[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
+ℹ️ Please use the website:
+[Vipps MobilePay Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
 <!-- END_COMMENT -->
 
 Vipps can make it easier for your customers to pay for parking and other and "pay-as-you-go" services.
