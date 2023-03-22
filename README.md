@@ -28,7 +28,10 @@ The [APIs](https://vippsas.github.io/vipps-developer-docs/docs/APIs) can be comb
 
 You can also design solutions for special use cases:
 
-* [Extended expiration for payments to merchants](./long-expiry-time-for-payments-to-merchants/README.md)
-* [Requesting payment for an invoice](./invoice-through-epayments/README.md)
-* [QR codes](./qr-code-print/README.md)
-* [Simplifying registration and payment](./recurring-and-login/README.md)
+* [Extend payment time-outs](./long-expiry-time-for-payments-to-merchants/README.md) - Create long-living payments (e.g., doctor's office, toll road) through [ePayment](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api).
+* [Send payment invoices](./invoice-through-epayments/README.md) - Request payment for an invoice by combining the
+[ePayment](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api)
+and
+[Order Management](https://vippsas.github.io/vipps-developer-docs/docs/APIs/order-management-api).
+* [Simplify subscriptions](./recurring-and-login/README.md) - Simplify subscriptions with [Login](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api) and [Recurring](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api).
+* [Provide QR codes](./qr-code-print/README.md) - Provide QR codes with the [QR API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api).

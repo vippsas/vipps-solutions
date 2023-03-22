@@ -1,15 +1,15 @@
 <!-- START_METADATA
 ---
-title: QR codes
-sidebar_label: QR codes
-sidebar_position: 130
-description: Learn how to use QR codes with Vipps MobilePay.
+title: Provide QR codes
+sidebar_label: Provide QR codes
+sidebar_position: 150
+description: Provide QR codes with Vipps MobilePay
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# QR codes
+# Provide QR codes
 
 <!-- START_COMMENT -->
 
@@ -17,6 +17,10 @@ END_METADATA -->
 [Vipps MobilePay Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
 
 <!-- END_COMMENT -->
+
+QR codes can give your users easy access to your payment pages.
+Provide QR codes with the [QR API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api) and
+[eCom API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
 
 You can use QR codes with Vipps in two ways:
 

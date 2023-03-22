@@ -1,14 +1,14 @@
 <!-- START_METADATA
 ---
-title: Requesting payment for an invoice
-sidebar_label: Requesting payment for an invoice
+title: Send payment invoices
+sidebar_label: Send payment invoices
 sidebar_position: 120
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Requesting payment for an invoice
+# Send payment invoices
 
 <!-- START_COMMENT -->
 
@@ -19,7 +19,7 @@ END_METADATA -->
 
 💥 Work in progress 💥
 
-You can use Vipps to request payment from your customers for an invoice! This is possible by combining requests for the
+Use Vipps to request payment from your customers for an invoice by combining requests for the
 [ePayment](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api)
 and
 [Order Management](https://vippsas.github.io/vipps-developer-docs/docs/APIs/order-management-api) APIs.
@@ -28,16 +28,19 @@ This section will explain how to implement for different scenarios.
 
 ## Customer's phone number is known
 
-When the merchant has the customer's phone number and their approval to send a payment request through Vipps, they can send payment requests for invoices directly. 
+When the merchant has the customer's phone number and their approval to send a payment request through Vipps, they can send payment requests for invoices directly.
 
-Please note
+Please note:
+
 * The invoices should a link to a web view where the customer can get more details about the charges.
 * The invoices must be hosted by the merchant.
 
 1. Start by adding  to the payment the invoice link to a web view by using the
    [Order Management](https://vippsas.github.io/vipps-developer-docs/docs/APIs/order-management-api) API.
 
-   Send the [Add category to an order](https://vippsas.github.io/vipps-developer-docs/api/order-management#operation/putCategoryV2) request. Note that the request path allows for different `{paymentType}` options. In this case, it must be set  to `ecom`. For example: `https://api.vipps.no/v2/ecom/categories/{orderId}`.
+   Send the [Add category to an order](https://vippsas.github.io/vipps-developer-docs/api/order-management#operation/putCategoryV2) request. Note that the request path allows for different
+   `{paymentType}` options. In this case, it must be set  to `ecom`.
+   For example: `https://api.vipps.no/v2/ecom/categories/{orderId}`.
 
    Here is an example of a valid request body:
 

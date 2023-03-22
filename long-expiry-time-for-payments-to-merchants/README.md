@@ -1,14 +1,14 @@
 <!-- START_METADATA
 ---
-title: Extended expiration for payments to merchants
-sidebar_label: Extended expiration payments
+title: Extend payment time-outs
+sidebar_label: Extend payment time-outs
 sidebar_position: 110
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Extended expiration for payments to merchants
+# Extend payment time-outs
 
 <!-- START_COMMENT -->
 
@@ -19,12 +19,9 @@ END_METADATA -->
 
 💥 Work in progress 💥
 
-
-The typical expiration time for payments is
-payment is
+You can extend the expiration time for payments beyond the default,
 [10 minutes](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/timeouts).
-But, in some cases, this is not enough time for a customer to complete the payment.
-
+In some cases, this is not enough time for a customer to complete the payment.
 For instance:
 
 * Paying at a doctor's office, where the payment request may arrive as the patient

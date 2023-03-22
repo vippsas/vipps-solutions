@@ -1,9 +1,9 @@
 <!-- START_METADATA
 ---
-title: Simplifying registration and payment
-sidebar_label: Simplifying registration and payment
+title: Simplify subscriptions
+sidebar_label: Simplify subscriptions
 sidebar_position: 140
-description: Simplifying registration and payment by using the Login API and Recurring API together.
+description: Simplify subscriptions by using the Login API and Recurring API together.
 pagination_next: null
 pagination_prev: null
 ---
