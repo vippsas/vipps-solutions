@@ -29,7 +29,7 @@ For instance:
 * Paying at a toll road where the driver cannot stop to complete the payment.
 
 You can extend this expiration time for payments through the
-[ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api).
+[ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/features/long-living-payments).
 
 Extending the payment expiration time is done by setting the `expiresAt` parameter in the
 [`POST:/epayment/v1/payments`](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments)
