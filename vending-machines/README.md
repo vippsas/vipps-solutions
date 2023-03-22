@@ -57,7 +57,7 @@ The price is presented and the user pays for the product in their Vipps app.
 
 ### How to use
 
-* Generate a static QR code with a [merchant redirect QR](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes) linking to a webshop connected to the specific vending machine. The user selects the products and clicks the `pay` button that generates a [CreatePaymentRequest](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/getting-started#step-2---create-a-payment) based on the selected products.
+* Generate a static QR code with a [merchant redirect QR](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes) linking to a webshop connected to the specific vending machine. The user selects the products and clicks the `pay` button that generates a [CreatePaymentRequest](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/quick-start) based on the selected products.
 
 Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to Vipps. 
 
