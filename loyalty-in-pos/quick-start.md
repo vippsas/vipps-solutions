@@ -52,9 +52,10 @@ To send a login request to a user, you will need to use the
 [CIBA flow](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api/api-guide/flows/phone-number-ciba-flows)
 from the Login API. The steps needed to get a consent from the user are explained in detail there. The CIBA flow will send a push to the user, and once the user has finished the flow, it should be reflected in the POS.
 
-## Step 4 Initiate an eCom payment
+## Step 4 Initiate a payment
 
-Once membership status is confirmed, all wares are scanned and all discounts are added, it is time to send a payment request to the user. This is done by sending a payment-push to the user using the
+Once membership status is confirmed, all wares are scanned, and all discounts are added, it is time to send a payment request to the user.
+This is done by sending a payment-push using the
 [`skiplandingpage` parameter in the eCom API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#skip-landing-page).
 
 Here is an example of the HTTP POST you can use:
