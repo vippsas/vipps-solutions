@@ -35,11 +35,11 @@ Please note:
 * The invoices should a link to a web view where the customer can get more details about the charges.
 * The invoices must be hosted by the merchant.
 
-1. Start by adding  to the payment the invoice link to a web view by using the
+1. Start by adding a web view link to a payment by using the
    [Order Management](https://vippsas.github.io/vipps-developer-docs/docs/APIs/order-management-api) API.
 
    Send the [Add category to an order](https://vippsas.github.io/vipps-developer-docs/api/order-management#operation/putCategoryV2) request. Note that the request path allows for different
-   `{paymentType}` options. In this case, it must be set  to `ecom`.
+   `{paymentType}` options. In this case, `{paymentType}` must be set  to `ecom`.
    For example: `https://api.vipps.no/v2/ecom/categories/{orderId}`.
 
    Here is an example of a valid request body:
