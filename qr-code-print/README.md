@@ -20,7 +20,7 @@ END_METADATA -->
 
 QR codes can give your users easy access to your payment pages.
 Provide QR codes with the [QR API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api) and
-[eCom API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
+[ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api).
 
 You can use QR codes with Vipps in two ways:
 
@@ -35,16 +35,13 @@ should be printed, as [One-Time Payment QR codes](https://vippsas.github.io/vipp
 
 Merchant Redirect QR codes contain a URL to a merchant's website.
 
-
 ![Demo QR code](images/demo-qr.png)
-
 
 The user flow is like this:
 
 ![Merchant redirect QR flow](images/merchant-redirect-qr-flow.png)
 
 This creates a QR that works as a redirect back to the merchant. The website is specified as the `redirectUrl` in the [`POST:/qr/v1/merchant-redirect`](https://vippsas.github.io/vipps-developer-docs/api/qr#tag/Merchant-redirect-QR/operation/CreateMerchantRedirectQr) request.
-
 
 Learn more about these on the [Merchant Redirect QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes) page.
 
@@ -54,10 +51,11 @@ One-Time Payment QR codes lead directly to a payment confirmation screen in Vipp
 
 ![One-Time Payment QR flow](images/one-time-payment-qr-flow.png)
 
-After you initiate a payment through the eCom API, you can generate a One-Time Payment QR code
-by sending the [`POST:/qr/v1`](https://vippsas.github.io/vipps-developer-docs/api/qr#tag/One-time-payment-QR/operation/generateOtpQr) request. The `vippsLandingPageUrl` parameter provides the URL that is used to show a QR code
+Initiate a payment which generates a One-Time Payment QR code through the
+[ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api).
+Send the [`POST:/epayment/v1/payments`](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments/operation/createPayment) request.
 
-Learn more about these on the [One-Time Payment QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#one-time-payment-qr-codes) page.
+Learn more about these on the [One-Time Payment QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/features/qr-payments) page.
 
 ## Relevant comments
 
