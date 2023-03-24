@@ -18,7 +18,7 @@ The solution is a combination of the personal QR codes in the Vipps app,
 the
 [Vipps Login API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api),
 the
-[Vipps eCom API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api),
+[Vipps ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api),
 and the
 [Vipps Check-in API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/check-in-api).
 
