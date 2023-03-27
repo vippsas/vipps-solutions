@@ -26,7 +26,7 @@ Store the number in the POS, as it will be used in subsequent steps.
 
 ## Step 2 - POS check membership
 
-Now that you have the customer's phone number, check your internal systems if this user is a member or not. After that check is completed, trigger a check in using the [Vipps Check-in API](https://github.com/vippsas/vipps-check-in-api) to let the customer know whether or not they are a member.
+Now that you have the customer's phone number, check your internal systems if this user is a member or not. After that check is completed, trigger a check in using the [Vipps Check-in API](https://developer.vippsmobilepay.com/docs/APIs/check-in-api) to let the customer know whether or not they are a member.
 
 Here is an example of the HTTP POST you can use:
 
