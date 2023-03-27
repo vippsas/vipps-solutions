@@ -14,11 +14,11 @@ END_METADATA -->
 <!-- START_COMMENT -->
 
 ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api).
+[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/APIs/login-api).
 
 <!-- END_COMMENT -->
 
-The [Login API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api) and the [Recurring API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api)
+The [Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api) and the [Recurring API](https://developer.vippsmobilepay.com/docs/APIs/recurring-api)
 can be used together making registration and payment of subscriptions simple for your customers.
 
 ## The process

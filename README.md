@@ -14,11 +14,11 @@ END_METADATA -->
 <!-- START_COMMENT -->
 
 ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://vippsas.github.io/vipps-developer-docs/docs/vipps-solutions).
+[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/vipps-solutions).
 
 <!-- END_COMMENT -->
 
-The [APIs](https://vippsas.github.io/vipps-developer-docs/docs/APIs) can be combined for specific market segments, such as:
+The [APIs](https://developer.vippsmobilepay.com/docs/APIs) can be combined for specific market segments, such as:
 
 * [Electric vehicle charging](./ev-charging/README.md)
 * [Loyalty in Point of Sale](./loyalty-in-pos/README.md)
@@ -29,10 +29,10 @@ The [APIs](https://vippsas.github.io/vipps-developer-docs/docs/APIs) can be comb
 
 You can also design solutions for special use cases:
 
-* [Extend payment time-outs](./long-expiry-time-for-payments-to-merchants/README.md) - Create long-living payments (e.g., doctor's office, toll road) through [ePayment](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api).
+* [Extend payment time-outs](./long-expiry-time-for-payments-to-merchants/README.md) - Create long-living payments (e.g., doctor's office, toll road) through [ePayment](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 * [Send payment invoices](./invoice-through-epayments/README.md) - Request payment for an invoice by combining the
-[ePayment](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api)
+[ePayment](https://developer.vippsmobilepay.com/docs/APIs/epayment-api)
 and
-[Order Management](https://vippsas.github.io/vipps-developer-docs/docs/APIs/order-management-api).
-* [Simplify subscriptions](./recurring-and-login/README.md) - Simplify subscriptions with [Login](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api) and [Recurring](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api).
-* [Provide QR codes](./qr-code-print/README.md) - Provide QR codes with the [QR API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api).
+[Order Management](https://developer.vippsmobilepay.com/docs/APIs/order-management-api).
+* [Simplify subscriptions](./recurring-and-login/README.md) - Simplify subscriptions with [Login](https://developer.vippsmobilepay.com/docs/APIs/login-api) and [Recurring](https://developer.vippsmobilepay.com/docs/APIs/recurring-api).
+* [Provide QR codes](./qr-code-print/README.md) - Provide QR codes with the [QR API](https://developer.vippsmobilepay.com/docs/APIs/qr-api).

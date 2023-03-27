@@ -13,7 +13,7 @@ END_METADATA -->
 <!-- START_COMMENT -->
 
 ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
+[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/).
 
 <!-- END_COMMENT -->
 
@@ -24,7 +24,7 @@ The following are the most common scenarios.
 
 ## Scenario 1 - One-time payment QR direct to payment in Vipps app
 
-A [Vipps QR code](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-one-time-payment-api-howitworks) is presented on the vending machine.
+A [Vipps QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-one-time-payment-api-howitworks) is presented on the vending machine.
 
 When the customer scans the QR code, they go directly to the Vipps payment screen on their phone, where they can approve the payment.
 
@@ -36,8 +36,8 @@ The QR code is a dynamic representation of the payment url, and the user needs t
 
 ### How to use
 
-* Vipps [ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api) supports both the One-time payment QR and payment in the
-[CreatePaymentRequest](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments).
+* Vipps [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api) supports both the One-time payment QR and payment in the
+[CreatePaymentRequest](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments).
 Specify `"customerInteraction": "CUSTOMER_PRESENT"` and  `"userFlow": "QR"` to generate the QR code to be presented on the customer facing screen.
 
 ![one_time_payment_qr](images/0_one_time_payment_qr.jpg)
@@ -56,9 +56,9 @@ The price is presented and the user pays for the product in their Vipps app.
 
 ### How to use
 
-* Generate a static QR code with a [merchant redirect QR](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+* Generate a static QR code with a [merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
 linking to a webshop connected to the specific vending machine. The user selects the products and clicks the `pay` button that generates a
-[CreatePaymentRequest](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/quick-start) based on the selected products.
+[CreatePaymentRequest](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/quick-start) based on the selected products.
 
 * Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to Vipps.
 
@@ -74,9 +74,9 @@ The price is presented and the user pays for the product in their Vipps app.
 ### How to use
 
 * Generate a static QR code with a
-  [merchant redirect QR](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+  [merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
   linking to a web page containing the selected product from the vending machine. The user clicks the pay button that generates a
-  [CreatePaymentRequest](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/quick-start) with the selected amount.
+  [CreatePaymentRequest](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/quick-start) with the selected amount.
 
 * Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect the user to Vipps.
 
@@ -84,7 +84,7 @@ The price is presented and the user pays for the product in their Vipps app.
 
 ## Scenario 4 - QR direct to payment in Vipps app
 
-A [Vipps QR code](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes) is posted on the vending machine.
+A [Vipps QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes) is posted on the vending machine.
 
 When the customer scans the QR code, they go directly to the Vipps payment screen on their phone, where they can approve the payment.
 
@@ -96,12 +96,12 @@ The payment amount should be the max amount of the vending machine products. Aft
 
 ### How to use
 
-* Generate a static QR code with [merchant redirect QR](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+* Generate a static QR code with [merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
 linking to a web service that generates a
-[CreatePaymentRequest](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/quick-start) with a specific amount.
+[CreatePaymentRequest](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/quick-start) with a specific amount.
 Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to Vipps.
 
-* After reservation and product selection, [capture](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/operations/capture) the set amount before
-[cancelling the remaining amount](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture).
+* After reservation and product selection, [capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture) the set amount before
+[cancelling the remaining amount](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture).
 
 ![qr_direct_to_payment](images/1_qr_direct_to_payment.png)

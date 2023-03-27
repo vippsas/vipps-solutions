@@ -16,11 +16,11 @@ _Vipps Loyalty at Point Of Sale (POS)_ is a solution that combines multiple Vipp
 
 The solution is a combination of the personal QR codes in the Vipps app,
 the
-[Vipps Login API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api),
+[Vipps Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api),
 the
-[Vipps ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api),
+[Vipps ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api),
 and the
-[Vipps Check-in API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/check-in-api).
+[Vipps Check-in API](https://developer.vippsmobilepay.com/docs/APIs/check-in-api).
 
 The following describes the _Loyalty at the POS_ process at a high-level.
 
@@ -48,9 +48,9 @@ This can be used for checking membership, in the next step.
 Check the customer's membership status by using the phone number you received in the previous step.
 
 Use the
-[Vipps Check-In API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/check-in-api)
+[Vipps Check-In API](https://developer.vippsmobilepay.com/docs/APIs/check-in-api)
 and the
-[`POST/v1/loyalty-check-in`](https://vippsas.github.io/vipps-developer-docs/api/check-in#tag/Loyalty-check-in)
+[`POST/v1/loyalty-check-in`](https://developer.vippsmobilepay.com/api/check-in#tag/Loyalty-check-in)
 endpoint to trigger a "waiting screen" in Vipps to inform the customer whether
 or not they are a member of your loyalty program. This will help them through
 the payment process.
@@ -64,12 +64,12 @@ If they are already a member, skip to step 4.
 ## Step 3: Request membership (optional)
 
 If the customer is not a member of the loyalty program, you can request to enroll them by using
-the [Vipps Login API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api).
+the [Vipps Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api).
 
 You already have their phone number from step 1, so just provide a button in your user interface to allow the cashier to initiate the login.
 
 Pressing the button will trigger a
-[Vipps Login flow](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api/api-guide/flows/phone-number-ciba-flows)
+[Vipps Login flow](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/flows/phone-number-ciba-flows)
 to gather consent from the customer.
 When this login flow is completed, the customer will be enrolled in the loyalty program.
 

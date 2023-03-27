@@ -30,7 +30,7 @@ Now that you have the customer's phone number, check your internal systems if th
 
 Here is an example of the HTTP POST you can use:
 
-[`POST:/point-of-sale/v1/loyalty-check-in`](https://vippsas.github.io/vipps-developer-docs/api/check-in#tag/Loyalty-check-in/operation/initiateLoyaltyCheckIn)
+[`POST:/point-of-sale/v1/loyalty-check-in`](https://developer.vippsmobilepay.com/api/check-in#tag/Loyalty-check-in/operation/initiateLoyaltyCheckIn)
 
 With body:
 
@@ -43,27 +43,27 @@ With body:
 ```
 
 Let's continue the scenario where the user isn't a member already. You will then set `isMember` to false and use the
-[Vipps Login API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api)
+[Vipps Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api)
  to enroll the user.
 
 ## Step 3 Initiate a login
 
 To send a login request to a user, you will need to use the
-[CIBA flow](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api/api-guide/flows/phone-number-ciba-flows)
+[CIBA flow](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/flows/phone-number-ciba-flows)
 from the Login API. The steps needed to get a consent from the user are explained in detail there. The CIBA flow will send a push to the user, and once the user has finished the flow, it should be reflected in the POS.
 
 ## Step 4 Initiate a payment
 
 Once membership status is confirmed, all wares are scanned, and all discounts are added, it is time to send a payment request to the user.
 This is done by sending a payment-push using the
-[create payment endpoint](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments/operation/createPayment)
-in the [ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api).
+[create payment endpoint](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+in the [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 
 Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer who scanned the QR code, and after the payment is completed, the POS will be updated with the status of the payment.
 
 Here is an example of the HTTP POST you can use:
 
-[`POST:/epayment/v1/payments`](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments/operation/createPayment)
+[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 
 With body:
 

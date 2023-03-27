@@ -13,14 +13,14 @@ END_METADATA -->
 <!-- START_COMMENT -->
 
 ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
+[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/).
 
 <!-- END_COMMENT -->
 
 💥 Work in progress 💥
 
 You can extend the expiration time for payments beyond the default,
-[10 minutes](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/timeouts).
+[10 minutes](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/timeouts).
 In some cases, this is not enough time for a customer to complete the payment.
 For instance:
 
@@ -29,10 +29,10 @@ For instance:
 * Paying at a toll road where the driver cannot stop to complete the payment.
 
 You can extend this expiration time for payments through the
-[ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/features/long-living-payments).
+[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/long-living-payments).
 
 Extending the payment expiration time is done by setting the `expiresAt` parameter in the
-[`POST:/epayment/v1/payments`](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments)
+[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments)
 request.
 The `expiresAt` must be between 10 minutes and 28 days (40320 minutes) in the future.
 
@@ -57,4 +57,4 @@ Vipps will remind the user when the payment is about to expire. For example:
 ![Soft dismiss a payment](images/Soft-dismissed-payment-in-home-screen.png)
 
 
-See [How to create a payment request with extended expiration time](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/features/long-living-payments) for all the technical details.
+See [How to create a payment request with extended expiration time](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/long-living-payments) for all the technical details.

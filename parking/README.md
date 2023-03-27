@@ -12,16 +12,16 @@ END_METADATA -->
 
 <!-- START_COMMENT -->
 ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
+[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/).
 <!-- END_COMMENT -->
 
 Vipps MobilePay can make it easier for your customers to pay for parking and other and "pay-as-you-go" services.
 
 The solution is a combination of the
-[Login](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api) and
-[Recurring](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api) APIs,
+[Login](https://developer.vippsmobilepay.com/docs/APIs/login-api) and
+[Recurring](https://developer.vippsmobilepay.com/docs/APIs/recurring-api) APIs,
 and makes special use of:
-[Recurring agreements with variable amount](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
+[Recurring agreements with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
 
 ## Parking scenario
 
@@ -37,23 +37,23 @@ The same solution can of course be used to charge weekly, monthly, or yearly.
 ## Details
 
 1. The customer scans a QR code and is sent to the parking company's website.
-   See [Merchant Redirect QR codes](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes).
+   See [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes).
 2. The customer logs in or creates an account with
-   [Vipps Login](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api/how-it-works/vipps-login-api-howitworks).
+   [Vipps Login](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-api-howitworks).
    The customer now has an account, with verified user data, and is able to both log in and pay.
 3. The customer enters an agreement, as usual. See
-   [Create an agreement](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#create-an-agreement).
+   [Create an agreement](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#create-an-agreement).
 4. The customer parks one or more times.
 5. The accumulated parking fees are used to create one charge with the total amount.
    Vipps supports
-   [Recurring agreements with variable amount](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
+   [Recurring agreements with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
    See:
-   [Create a charge](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#create-a-charge).
+   [Create a charge](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#create-a-charge).
 
 ## Relevant comments
 
 * For parking and "pay-as-you-go" cases, we usually recommend that you set up a
-[Recurring agreements with variable amount](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount)
+[Recurring agreements with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount)
 and daily interval.
 * You are able to create as many charges as you want within the interval, but we recommend that you sum up the usage over the day and create one charge for that day.
 * You need to take the `maximum amount` limit into account. For example, if the agreement is set to `daily` and maximum amount is `1000`, you will not be able to create charges that bring the total to more than 1000 for that day. Remember that it is you, as the merchant, who will set the `suggested maximum amount`, so you can guide the users to a suitable limit.

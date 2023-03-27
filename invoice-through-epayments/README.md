@@ -13,16 +13,16 @@ END_METADATA -->
 <!-- START_COMMENT -->
 
 ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
+[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/).
 
 <!-- END_COMMENT -->
 
 💥 Work in progress 💥
 
 Use Vipps to request payment from your customers for an invoice by combining requests for the
-[ePayment](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api)
+[ePayment](https://developer.vippsmobilepay.com/docs/APIs/epayment-api)
 and
-[Order Management](https://vippsas.github.io/vipps-developer-docs/docs/APIs/order-management-api) APIs.
+[Order Management](https://developer.vippsmobilepay.com/docs/APIs/order-management-api) APIs.
 
 This section will explain how to implement for different scenarios.
 
@@ -36,9 +36,9 @@ Please note:
 * The invoices must be hosted by the merchant.
 
 1. Start by adding a web view link to a payment by using the
-   [Order Management](https://vippsas.github.io/vipps-developer-docs/docs/APIs/order-management-api) API.
+   [Order Management](https://developer.vippsmobilepay.com/docs/APIs/order-management-api) API.
 
-   Send the [Add category to an order](https://vippsas.github.io/vipps-developer-docs/api/order-management#operation/putCategoryV2) request. Note that the request path allows for different
+   Send the [Add category to an order](https://developer.vippsmobilepay.com/api/order-management#operation/putCategoryV2) request. Note that the request path allows for different
    `{paymentType}` options. In this case, `{paymentType}` must be set  to `ecom`.
    For example: `https://api.vipps.no/v2/ecom/categories/{orderId}`.
 
@@ -51,7 +51,7 @@ Please note:
    }
    ```
 
-1. Make a [create payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments) request.
+1. Make a [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
 
    Here is an example of a valid request body:
 
@@ -92,7 +92,7 @@ Please note:
    ![Subsequent payment of an invoice](images/subsequent-invoice-payment.png)
 
    Invoice payments must have extended expiration dates, as specified in the
-   [create payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments) request.
+   [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
 
    Users can soft dismiss this payment
    by clicking `Cancel` -> `I'll pay later` and come back into the Vipps app to pay at a later time.
@@ -107,9 +107,9 @@ Please note:
 1. In your website or mobile app or email you send, provide your customers with an option for opting-in to receive payment request for invoices in the Vipps app.
 1. Present them with the *Pay with Vipps*  option.
 1. When they select *Pay with Vipps*, start by adding the invoice link to a web view, to a payment through the
-   [Order Management](https://vippsas.github.io/vipps-developer-docs/docs/APIs/order-management-api) API.
+   [Order Management](https://developer.vippsmobilepay.com/docs/APIs/order-management-api) API.
 
-   Send the [Add category to an order](https://vippsas.github.io/vipps-developer-docs/api/order-management#operation/putCategoryV2) request. Note that the request path allows for different `{paymentType}` options. In this case, it must be set  to `ecom`. For example: `https://api.vipps.no/v2/ecom/categories/{orderId}`.
+   Send the [Add category to an order](https://developer.vippsmobilepay.com/api/order-management#operation/putCategoryV2) request. Note that the request path allows for different `{paymentType}` options. In this case, it must be set  to `ecom`. For example: `https://api.vipps.no/v2/ecom/categories/{orderId}`.
 
    Here is an example of a valid request body:
 
@@ -120,7 +120,7 @@ Please note:
    }
    ```
 
-1. Send the [create payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments) request.
+1. Send the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
 
    Request access to the user' phone number by including the `scope` parameter with a value of `phoneNumber`. In the `paymentDescription` field provide relevant information about the invoice.
 
@@ -147,7 +147,7 @@ Please note:
       * `paymentDescription` - Short description with relevant information about the invoice.
 
 1. If the customer is on a desktop computer, the
-   [Vipps Landing page](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/vipps-landing-page)
+   [Vipps Landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page)
    opens. If on a mobile device, the Vipps app opens.
 1. The customer approves the payment in the Vipps app.
 
@@ -164,7 +164,7 @@ When a merchant does not know the phone number of the user, they can request pay
 1. In your website or mobile app or email you send, provide your customers with an option for opting-in to receive payment request for invoices in the Vipps app.
 1. They view their invoice in your website or app.
 1. Present them also with the *Pay with Vipps* option.
-1. When they select *Pay with Vipps*, send the [create payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments) request.
+1. When they select *Pay with Vipps*, send the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
 
    Request access to the user' phone number by including the `scope` parameter with a value of `phoneNumber`. In the `paymentDescription` field provide relevant information about the invoice.
 
@@ -193,7 +193,7 @@ When a merchant does not know the phone number of the user, they can request pay
    ```
 
 1. If the customer is on a desktop computer, the
-   [Vipps Landing page](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/vipps-landing-page)
+   [Vipps Landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page)
    opens. If on a mobile device, the Vipps app opens.
 1. The customer consents to share their phone number.
 1. The customer approves the payment in the Vipps app.
@@ -203,10 +203,10 @@ When a merchant does not know the phone number of the user, they can request pay
    ![First time payment of an invoice](images/first-time-invoice-payment.png)
 
 1. To retrieve the user's phone number, start by making a request to
-   [Get Payment](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/QueryPayments/operation/getPayment) to get the `sub` value.
+   [Get Payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment) to get the `sub` value.
 1. Then, make a request to
-   [getUserinfo](https://vippsas.github.io/vipps-developer-docs/api/userinfo#operation/getUserinfo).
+   [getUserinfo](https://developer.vippsmobilepay.com/api/userinfo#operation/getUserinfo).
    For details and more examples, see the
-   [UserInfo API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api).
+   [UserInfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api).
 
 1. Finally, use the customer's phone number to send them direct payment requests in the future.

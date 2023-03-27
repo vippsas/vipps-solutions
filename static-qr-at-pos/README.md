@@ -15,9 +15,9 @@ END_METADATA -->
 _Static QR at point of sale (POS)_ is a solution where a user tells that they want to pay by scanning a QR (could be on a sticker), followed by the merchant sending a payment to that user.
 
 The solution is a combination of the
-[Merchant Callback QRs](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api),
+[Merchant Callback QRs](https://developer.vippsmobilepay.com/docs/APIs/qr-api),
 and the
-[Vipps ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api).
+[Vipps ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 
 The following describes the _Static QR at point of sale_ process at a high-level.
 
