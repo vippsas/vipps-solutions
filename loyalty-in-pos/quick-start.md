@@ -16,7 +16,7 @@ This is the step-by-step guide for how to implement _Loyalty at the POS_.
 
 When scanning the QR code, you will get a URL like this:
 
-```HTTP
+```text
 https://qr.vipps.no/28/2/01/031/4791234567?v=1
 ```
 
