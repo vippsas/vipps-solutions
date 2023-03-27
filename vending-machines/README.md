@@ -101,7 +101,7 @@ linking to a web service that generates a
 [CreatePaymentRequest](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/quick-start) with a specific amount.
 Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to Vipps.
 
-* After reservation and product selection, [capture](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/modifications/capture) the set amount before
-[cancelling the remaining amount](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/modifications/cancel#cancel-after-a-partial-capture).
+* After reservation and product selection, [capture](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/operations/capture) the set amount before
+[cancelling the remaining amount](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture).
 
 ![qr_direct_to_payment](images/1_qr_direct_to_payment.png)
