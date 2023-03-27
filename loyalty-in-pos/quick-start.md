@@ -16,7 +16,7 @@ This is the step-by-step guide for how to implement _Loyalty at the POS_.
 
 When scanning the QR code, you will get a URL like this:
 
-```HTTP
+```text
 https://qr.vipps.no/28/2/01/031/4791234567?v=1
 ```
 
@@ -52,34 +52,38 @@ To send a login request to a user, you will need to use the
 [CIBA flow](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api/api-guide/flows/phone-number-ciba-flows)
 from the Login API. The steps needed to get a consent from the user are explained in detail there. The CIBA flow will send a push to the user, and once the user has finished the flow, it should be reflected in the POS.
 
-## Step 4 Initiate an eCom payment
+## Step 4 Initiate a payment
 
-Once membership status is confirmed, all wares are scanned and all discounts are added, it is time to send a payment request to the user. This is done by sending a payment-push to the user using the
-[`skiplandingpage` parameter in the eCom API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#skip-landing-page).
+Once membership status is confirmed, all wares are scanned, and all discounts are added, it is time to send a payment request to the user.
+This is done by sending a payment-push using the
+[create payment endpoint](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments/operation/createPayment)
+in the [ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api).
+
+Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer who scanned the QR code, and after the payment is completed, the POS will be updated with the status of the payment.
 
 Here is an example of the HTTP POST you can use:
 
-[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#skip-landing-page)
+[`POST:/epayment/v1/payments`](https://vippsas.github.io/vipps-developer-docs/api/epayment#tag/CreatePayments/operation/createPayment)
 
 With body:
 
 ```json
 {
-  "customerInfo": {
-    "mobileNumber": "4791234567"
+  "amount": {
+    "value": 49900,
+    "currency": "NOK"
   },
-  "merchantInfo": {
-    "merchantSerialNumber": "123456",
-    "callbackPrefix": "https://example.com/vipps/callbacks-for-payment-update-from-vipps",
-    "fallBack": "https://example.com/vipps/fallback-result-page-for-both-success-and-failure/acme-shop-123-order123abc"
+  "paymentMethod": {
+    "type": "WALLET"
   },
-  "transaction": {
-    "orderId": "acme-shop-123-order123abc",
-    "amount": 20000,
-    "transactionText": "One pair of Vipps socks",
-    "skipLandingPage": true
-  }
+  "customer": {
+    "phoneNumber": 4796574209
+  },
+  "reference": 2486791679658155992,
+  "userFlow": "PUSH_MESSAGE",
+  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
+  "paymentDescription": "Purchase of socks"
 }
 ```
 
-The `skipLandingPage` flag will send a push directly to the customer who scanned the QR code, and after the payment is completed, the POS will be updated with the status of the payment.
+
