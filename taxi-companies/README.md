@@ -43,8 +43,8 @@ The Vipps app opens on the customer's phone and the customer pays the amount due
 
 Use the [ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api) with `userFlow:PUSH_MESSAGE` and `customerInteraction: CUSTOMER_PRESENT` while initiating the payment.
 
-After final amount is confirmed do a [partial capture](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/modifications/capture#partial-capture)
-and release the remaining amount from reservation with a [partial cancel](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/modifications/cancel#cancel-after-a-partial-capture) request.
+After final amount is confirmed do a [partial capture](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/operations/capture#partial-capture)
+and release the remaining amount from reservation with a [partial cancel](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture) request.
 
 
 
@@ -54,4 +54,4 @@ The driver enters the customer's mobile number into the taximeter, which initiat
 The Vipps app opens on the customer's phone and the customer pays the amount due.
 
 Use the [ePayment API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api) with `userFlow:PUSH_MESSAGE` and `"customerInteraction": "CUSTOMER_PRESENT"` while initiating the payment.
-Finally when reservation is completed perform a [full capture](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/modifications/capture#capture-via-the-api).
+Finally when reservation is completed perform a [full capture](https://vippsas.github.io/vipps-developer-docs/docs/APIs/epayment-api/operations/capture#capture-via-the-api).
