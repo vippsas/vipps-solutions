@@ -26,11 +26,11 @@ The following describes the _Static QR at point of sale_ process at a high-level
 
 ## Step 1: The user scan the QR
 
-The user scan the static merchant callback QR. The QR might be shown on a screen or it could be a sticker placed in a store, on the cash register, on a vending machine++. 
+The user scans the static merchant callback QR. The QR could for example be shown on a screen, or be printed out and placed on a cash register, a portable pos or a vending machine
 
 ## Step 2: Merchant receives an ID
 
-When the user scans the QR, the merchant will receive a notification that the QR has been scanned. Meanwhile, the Vipps/Mobilepay app is showing a waiting screen to the user – so the user understands that the scan went through.
+When the user scans the QR, the merchant will receive a notification that the QR has been scanned. Meanwhile, the Vipps/Mobilepay app will show a waiting screen to the user. Thus, the user understands that the scan was successful.
 
 ## Step 3: Merchant sends payment
 
@@ -38,4 +38,4 @@ When the merchant is ready to get paid, the merchant uses the ID received in pre
 
 ## Step 4: The user pays and get a receipt in the app
 
-Once the payment is sent by the merchant the user will be shown the payment screen. If the user still has their app open, the payment will open automatically.
+Once the payment is sent by the merchant, the user will be shown the payment screen. If the user still has their app open, the payment will open automatically.
