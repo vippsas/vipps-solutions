@@ -104,7 +104,7 @@ Please note:
 
    When a merchant does not know the phone number of the user and want to send a one-time request for payment for an invoice, they can use the Vipps API by following these steps.
 
-1. In your website or mobile app or email you send, provide your customers with an option for opting-in to receive payment request for invoices in the Vipps app.
+1. In your website, mobile app, on paper document or email you send, provide your customers with an option for opting-in to receive payment request for invoices in the Vipps app.
 1. Present them with the *Pay with Vipps*  option.
 1. When they select *Pay with Vipps*, start by adding the invoice link to a web view, to a payment through the
    [Order Management](https://developer.vippsmobilepay.com/docs/APIs/order-management-api) API.
@@ -161,7 +161,7 @@ Please note:
 
 When a merchant does not know the phone number of the user, they can request payment through the Vipps APIs by following these steps.
 
-1. In your website or mobile app or email you send, provide your customers with an option for opting-in to receive payment request for invoices in the Vipps app.
+1. In your website, mobile app, on paper document or email you send, provide your customers with an option for opting-in to receive payment request for invoices in the Vipps app.
 1. They view their invoice in your website or app.
 1. Present them also with the *Pay with Vipps* option.
 1. When they select *Pay with Vipps*, send the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
