@@ -1,6 +1,6 @@
 <!-- START_METADATA
 ---
-title: Send payment invoices
+title: Send payment request for invoices
 sidebar_label: Send payment invoices
 sidebar_position: 120
 pagination_next: null
