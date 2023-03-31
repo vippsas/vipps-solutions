@@ -8,7 +8,7 @@ pagination_prev: null
 ---
 END_METADATA -->
 
-# Send payment invoices
+# Payment request for invoices
 
 <!-- START_COMMENT -->
 
