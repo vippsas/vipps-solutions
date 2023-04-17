@@ -157,7 +157,7 @@ Please note:
 
 
 
-## Payment request with a phone sharing
+## Payment request when sharing telephone number
 
 When a merchant does not know the phone number of the user, they can request payment through the Vipps APIs by following these steps.
 
