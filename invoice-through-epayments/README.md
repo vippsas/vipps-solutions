@@ -97,7 +97,7 @@ Please note:
    Users can soft dismiss this payment
    by clicking `Cancel` -> `I'll pay later` and come back into the Vipps app to pay at a later time.
 
-   For more information about extended expiration dates, see [Extended expiration for payments to merchants](long-expiry-time-for-payments-to-merchants).
+   For more information about extended expiration dates, see [Extended expiration for payments to merchants](../long-expiry-time-for-payments-to-merchants/README.md).
 
 
 ## One time payment request
