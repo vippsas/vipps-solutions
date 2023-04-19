@@ -26,7 +26,7 @@ and
 
 This section will explain how to implement for different scenarios.
 
-## Customer's phone number is known
+## Payment request sent directly to app
 
 When the merchant has the customer's phone number and their approval to send a payment request through Vipps, they can send payment requests for invoices directly.
 
@@ -100,7 +100,7 @@ Please note:
    For more information about extended expiration dates, see [Extended expiration for payments to merchants](../long-expiry-time-for-payments-to-merchants/README.md).
 
 
-## One time payment request
+## Payment request as a link
 
    When a merchant does not know the phone number of the user and want to send a one-time request for payment for an invoice, they can use the Vipps API by following these steps.
 
@@ -157,7 +157,7 @@ Please note:
 
 
 
-## Customer's phone number is not known
+## Payment request when sharing telephone number
 
 When a merchant does not know the phone number of the user, they can request payment through the Vipps APIs by following these steps.
 
