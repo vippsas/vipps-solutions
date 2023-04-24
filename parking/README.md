@@ -1,4 +1,3 @@
-<!-- START_METADATA
 ---
 title: Parking and "Pay-as-you-go"
 sidebar_label: Parking and "Pay-as-you-go"
@@ -6,14 +5,8 @@ sidebar_position: 30
 pagination_next: null
 pagination_prev: null
 ---
-END_METADATA -->
 
 # Parking and "Pay-as-you-go"
-
-<!-- START_COMMENT -->
-ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/).
-<!-- END_COMMENT -->
 
 Vipps MobilePay can make it easier for your customers to pay for parking and other and "pay-as-you-go" services.
 
@@ -53,7 +46,7 @@ The same solution can of course be used to charge weekly, monthly, or yearly.
 ## Relevant comments
 
 * For parking and "pay-as-you-go" cases, we usually recommend that you set up a
-[Recurring agreements with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount)
+[Recurring agreement with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount)
 and daily interval.
 * You are able to create as many charges as you want within the interval, but we recommend that you sum up the usage over the day and create one charge for that day.
 * You need to take the `maximum amount` limit into account. For example, if the agreement is set to `daily` and maximum amount is `1000`, you will not be able to create charges that bring the total to more than 1000 for that day. Remember that it is you, as the merchant, who will set the `suggested maximum amount`, so you can guide the users to a suitable limit.

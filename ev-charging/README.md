@@ -1,4 +1,3 @@
-<!-- START_METADATA
 ---
 title: Electric vehicle charging
 sidebar_label: Electric vehicle charging
@@ -6,17 +5,11 @@ sidebar_position: 10
 pagination_next: null
 pagination_prev: null
 ---
-END_METADATA -->
 
 # Electric vehicle charging
 
 
-<!-- START_COMMENT -->
 
-ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/).
-
-<!-- END_COMMENT -->
 
 Vipps is an excellent choice for Electric vehicle (EV) charging as practically all Norwegians have
 the Vipps app in their pocket. This removes the need to download a

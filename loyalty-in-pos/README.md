@@ -1,4 +1,3 @@
-<!-- START_METADATA
 ---
 title: Loyalty at Point of Sale
 sidebar_label: Loyalty at Point of Sale
@@ -6,7 +5,6 @@ sidebar_position: 20
 pagination_next: null
 pagination_prev: null
 ---
-END_METADATA -->
 
 # Loyalty at the Point of Sale
 

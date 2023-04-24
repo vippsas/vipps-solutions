@@ -1,4 +1,3 @@
-<!-- START_METADATA
 ---
 title: Extend payment time-outs
 sidebar_label: Extend payment time-outs
@@ -6,16 +5,10 @@ sidebar_position: 110
 pagination_next: null
 pagination_prev: null
 ---
-END_METADATA -->
 
 # Extend payment time-outs
 
-<!-- START_COMMENT -->
 
-ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/).
-
-<!-- END_COMMENT -->
 
 💥 Work in progress 💥
 

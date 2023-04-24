@@ -1,4 +1,3 @@
-<!-- START_METADATA
 ---
 title: Vending machines
 sidebar_label: Vending machines
@@ -6,16 +5,10 @@ sidebar_position: 80
 pagination_next: null
 pagination_prev: null
 ---
-END_METADATA -->
 
 # Vending machines
 
-<!-- START_COMMENT -->
 
-ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/).
-
-<!-- END_COMMENT -->
 
 💥 Improvements coming soon. 💥
 
