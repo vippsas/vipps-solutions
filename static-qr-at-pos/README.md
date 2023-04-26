@@ -1,4 +1,3 @@
-<!-- START_METADATA
 ---
 title: Static QR at Point of Sale
 sidebar_label: Static QR at Point of Sale
@@ -6,7 +5,6 @@ sidebar_position: 20
 pagination_next: null
 pagination_prev: null
 ---
-END_METADATA -->
 
 # Static QR at Point of Sale
 

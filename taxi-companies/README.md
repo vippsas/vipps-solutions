@@ -1,4 +1,3 @@
-<!-- START_METADATA
 ---
 title: Taxi companies
 sidebar_label: Taxi companies
@@ -6,16 +5,10 @@ sidebar_position: 70
 pagination_next: null
 pagination_prev: null
 ---
-END_METADATA -->
 
 # Taxi companies
 
-<!-- START_COMMENT -->
 
-ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/).
-
-<!-- END_COMMENT -->
 
 
 Use Vipps to simplify the payment flow in your taxi solutions.
