@@ -8,9 +8,8 @@ pagination_prev: null
 
 # Payment request for invoices
 
-
-
 💥 Work in progress 💥  
+
 > **_NOTE:_** This product will get a UX and api update in june 2023, as well as a finalized guideline on how to use it
 
 Use Vipps to request payment from your customers for an invoice by doing a request to the  the
@@ -64,7 +63,7 @@ Please note:
       * `userFlow`  - Must be `"PUSH_MESSAGE"`.
       * `customer.phoneNumber` - The customer's phone number.
       * `paymentDescription` - Short description with relevant information about the invoice.
-      * `receiptInfo` (might be renamed)- Invoice information for the payment. It might be a link to a pdf or orderlines, more info will come june 2023.
+      * `receiptInfo` (might be renamed)- Invoice information for the payment. It might be a link to a PDF or orderlines, more info will come June 2023.
 
 2. The customer will receive a push notification in their Vipps app.
 3. When the customer selects `See details` in the payment confirmation screen, they are presented with the order information provided by the merchant.
