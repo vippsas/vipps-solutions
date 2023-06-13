@@ -55,9 +55,9 @@ Learn more about these on the [One-Time Payment QR codes](https://developer.vipp
 The user must be presented with the terms and conditions
 of the purchase before confirming the payment in Vipps. There is no functionality
 for showing terms and conditions on the payment screen in Vipps. This is why
-the answer to
+the answer to the following question is "No":
 [Can I send a Vipps payment link in an SMS, QR, or email?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/reserve-and-capture-faq#can-i-send-a-vipps-payment-link-in-an-sms-qr-or-email)
-is "No", but with an important exception:
+But, there is an important exception:
 
 > It may be acceptable to automatically trigger the Vipps payment when the user
 > enters your website. This requires that the payment process is user initiated,

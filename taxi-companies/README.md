@@ -18,7 +18,7 @@ The customer scans a QR and follows instructions to pay from the taxi company's 
 
 The flow is described in our [merchant redirect QR section](https://developer.vippsmobilepay.com/docs/vipps-solutions/qr-code-print#merchant-redirect-qr-codes).
 
-![labeling_in_the_taxi](images/labeling_in_the_taxi.png)
+![Labeling in the taxi](images/labeling_in_the_taxi.png)
 
 ## Scenario 2 - Customer orders and pays through taxi app
 
@@ -26,7 +26,7 @@ The customer pays the taxi company from their app when ordering the taxi. The am
 
 Read more about the flow in our [how it works guide](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/how-it-works/vipps-epayment-api-how-it-works-online).
 
-![taxi_route](images/taxi_route.png)
+![Taxi route](images/taxi_route.png)
 
 ## Scenario 3 - Customer orders through taxi app and taximeter initiates Vipps push
 
@@ -38,12 +38,10 @@ Use the [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-a
 After final amount is confirmed do a [partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture)
 and release the remaining amount from reservation with a [partial cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture) request.
 
-
-
 ## Scenario 4 - Taximeter initiates Vipps push with manually entered phone number
 
 The driver enters the customer's mobile number into the taximeter, which initiates a push.
 The Vipps app opens on the customer's phone and the customer pays the amount due.
 
 Use the [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api) with `userFlow:PUSH_MESSAGE` and `"customerInteraction": "CUSTOMER_PRESENT"` while initiating the payment.
-Finally when reservation is completed perform a [full capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#capture-via-the-api).
+Finally, when reservation is completed perform a [full capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#capture-via-the-api).

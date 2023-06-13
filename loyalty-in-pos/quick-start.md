@@ -85,5 +85,3 @@ With body:
   "paymentDescription": "Purchase of socks"
 }
 ```
-
-

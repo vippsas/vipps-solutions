@@ -35,10 +35,9 @@ This will return the QR code for a payment with the expiration time that you hav
 
 The customer either clicks on the notification or scans the QR code to complete the payment flow in the Vipps app.
 
-
 ![Payment flow in the app](images/Long-expiry-time-payment-request.png)
 
-The customer can soft dismiss this payment by clicking `Cancel` -> `I'll pay later`.
+The customer can soft-dismiss this payment by clicking *Cancel* > *I'll pay later*.
 This option will only be shown to payments that have `expiresAt` property set,
 as shown below:
 
@@ -48,6 +47,5 @@ Soft-dismissed payments will be available in the Vipps app until expiry.
 Vipps will remind the user when the payment is about to expire. For example:
 
 ![Soft dismiss a payment](images/Soft-dismissed-payment-in-home-screen.png)
-
 
 See [How to create a payment request with extended expiration time](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/long-living-payments) for all the technical details.

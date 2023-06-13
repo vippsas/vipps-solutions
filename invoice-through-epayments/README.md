@@ -10,13 +10,13 @@ END_METADATA -->
 
 # Payment request for invoices
 
-💥 Work in progress 💥  
+💥 Work in progress 💥
 
-> **_NOTE:_** This product will get a UX and api update in june 2023, as well as a finalized guideline on how to use it
+> **Please note:** This product will get a UX and API update in June 2023, as well as finalized guidelines on how to use it.
 
-Use Vipps to request payment from your customers for an invoice by doing a request to the  the
+Use Vipps to request payment from your customers for an invoice by doing a request to the
 [ePayment](https://developer.vippsmobilepay.com/docs/APIs/epayment-api)
-API with receiptInfo from the
+API. Include `receiptInfo` from the
 [Order Management](https://developer.vippsmobilepay.com/docs/APIs/order-management-api) API.
 
 This section will explain how to implement for different scenarios.
@@ -78,11 +78,10 @@ Please note:
    Invoice payments must have extended expiration dates, as specified in the
    [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
 
-   Users can soft dismiss this payment
+   Users can soft-dismiss this payment
    by clicking `Cancel` -> `I'll pay later` and come back into the Vipps app to pay at a later time.
 
    For more information about extended expiration dates, see [Extended expiration for payments to merchants](../long-expiry-time-for-payments-to-merchants/README.md).
-
 
 ## Payment request as a link
 
@@ -91,7 +90,7 @@ Please note:
 1. In your website, mobile app, on paper document or email you send, provide your customers with an option for opting-in to receive payment request for invoices in the Vipps app.
 1. Present them with the *Pay with Vipps*  option.
 
-2. Send the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
+1. Send the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
 
    Request access to the user' phone number by including the `scope` parameter with a value of `phoneNumber`. In the `paymentDescription` field provide relevant information about the invoice.
 
@@ -112,21 +111,21 @@ Please note:
       "userFlow":"WEB_REDIRECT"
    }
    ```
+
    For this solution, the following parameters must be set:
 
       * `reference` - The `orderId` used in Step 3.
       * `paymentDescription` - Short description with relevant information about the invoice.
 
-3. If the customer is on a desktop computer, the
+1. If the customer is on a desktop computer, the
    [Vipps Landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page)
    opens. If on a mobile device, the Vipps app opens.
-4. The customer approves the payment in the Vipps app.
+
+1. The customer approves the payment in the Vipps app.
 
    These steps can be visualized as:
 
    ![One-time request for payment](images/one-time-payment-of-invoice.png)
-
-
 
 ## Payment request when sharing telephone number
 

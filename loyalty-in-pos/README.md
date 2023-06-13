@@ -22,10 +22,9 @@ the
 and the
 [Vipps Check-in API](https://developer.vippsmobilepay.com/docs/APIs/check-in-api).
 
-The following describes the _Loyalty at the POS_ process at a high-level.
+The following describes the _Loyalty at the POS_ process at a high level.
 
 ![Loyalty Flow](images/POS_flow.png)
-
 
 ## Step 1: Scan the QR code
 
