@@ -1,18 +1,18 @@
 <!-- START_METADATA
 ---
-title: Static QR at Point of Sale
-sidebar_label: Static QR at Point of Sale
+title: In-store QR code
+sidebar_label: In-store QR code
 sidebar_position: 20
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Static QR at Point of Sale
+# In-store QR code
 
 ## How it works
 
-_Static QR at point of sale (POS)_ is a solution where a user tells that they want to pay by scanning a QR (could be on a sticker), followed by the merchant sending a payment to that user.
+In-store QR code is a solution where a user tells that they want to pay by scanning a QR (could be on a sticker), followed by the merchant sending a payment to that user.
 
 The solution is a combination of the
 [Merchant Callback QRs](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-callback-qr-codes) and the
