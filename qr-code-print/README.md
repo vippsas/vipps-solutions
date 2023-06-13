@@ -1,3 +1,4 @@
+<!-- START_METADATA
 ---
 title: Provide QR codes
 sidebar_label: Provide QR codes
@@ -6,10 +7,9 @@ description: Provide QR codes with Vipps MobilePay
 pagination_next: null
 pagination_prev: null
 ---
+END_METADATA -->
 
 # Provide QR codes
-
-
 
 QR codes can give your users easy access to your payment pages.
 Provide QR codes with the [QR API](https://developer.vippsmobilepay.com/docs/APIs/qr-api) and

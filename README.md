@@ -1,3 +1,4 @@
+<!-- START_METADATA
 ---
 title: Introduction to the Solutions
 sidebar_label: Introduction
@@ -6,8 +7,14 @@ hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
 ---
+END_METADATA -->
 
 # Solutions
+
+<!-- START_COMMENT -->
+ℹ️ Please use the website:
+[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/vipps-developers/).
+<!-- END_COMMENT -->
 
 The [APIs](https://developer.vippsmobilepay.com/docs/APIs) can be combined for specific market segments, such as:
 

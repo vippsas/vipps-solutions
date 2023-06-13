@@ -1,3 +1,4 @@
+<!-- START_METADATA
 ---
 title: Quick start with Loyalty in POS
 sidebar_label: Quick start
@@ -5,6 +6,7 @@ sidebar_position: 2
 pagination_next: null
 pagination_prev: null
 ---
+END_METADATA -->
 
 # Quick start
 

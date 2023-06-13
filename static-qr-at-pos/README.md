@@ -1,3 +1,4 @@
+<!-- START_METADATA
 ---
 title: Static QR at Point of Sale
 sidebar_label: Static QR at Point of Sale
@@ -5,6 +6,7 @@ sidebar_position: 20
 pagination_next: null
 pagination_prev: null
 ---
+END_METADATA -->
 
 # Static QR at Point of Sale
 
@@ -19,7 +21,6 @@ The solution is a combination of the
 The following describes the _Static QR at point of sale_ process at a high-level.
 
 ![Loyalty Flow](images/static_qr_at_pos.png)
-
 
 ## Step 1: The user scan the QR
 

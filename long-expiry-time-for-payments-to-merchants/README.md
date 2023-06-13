@@ -1,3 +1,4 @@
+<!-- START_METADATA
 ---
 title: Extend payment time-outs
 sidebar_label: Extend payment time-outs
@@ -5,10 +6,9 @@ sidebar_position: 110
 pagination_next: null
 pagination_prev: null
 ---
+END_METADATA -->
 
 # Extend payment time-outs
-
-
 
 💥 Work in progress 💥
 
