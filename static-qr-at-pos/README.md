@@ -16,7 +16,7 @@ In this solution, a user pays by scanning a QR (could be on a sticker), followed
 
 The solution is a combination of the
 [Merchant Callback QRs](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-callback-qr-codes) and the
-[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
+[Vipps ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 
 The following describes the process at a high level.
 
@@ -24,14 +24,11 @@ The following describes the process at a high level.
 
 ## Step 1: The user scan the QR
 
-The user scans the static merchant callback QR. The QR could for example be shown on a screen,
-or be printed out and placed on a cash register, a portable POS, or a vending machine.
+The user scans the static merchant callback QR. The QR could for example be shown on a screen, or be printed out and placed on a cash register, a portable POS, or a vending machine.
 
 ## Step 2: Merchant receives an ID
 
-When the user scans the QR, the merchant will receive a notification that the QR has been scanned.
-Meanwhile, the Vipps or MobilePay app will show a waiting screen to the user.
-Thus, the user understands that the scan was successful.
+When the user scans the QR, the merchant will receive a notification that the QR has been scanned. Meanwhile, the Vipps/MobilePay app will show a waiting screen to the user. Thus, the user understands that the scan was successful.
 
 ## Step 3: Merchant sends payment
 

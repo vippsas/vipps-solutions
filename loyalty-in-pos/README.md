@@ -12,12 +12,12 @@ END_METADATA -->
 
 ## How it works
 
-This solution combines multiple Vipps MobilePay products and makes a great product-market fit for
+This solution combines multiple Vipps products and makes a great product-market fit for
 retail stores that want to combine loyalty with payments.
 It's a great way to improve the payment experience for customers and simplify the process
 of adding customers to the merchant loyalty club.
 
-The solution is a combination of the personal QR codes in the Vipps or MobilePay app,
+The solution is a combination of the personal QR codes in the Vipps app,
 the
 [Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api),
 the
@@ -78,7 +78,7 @@ If they are already a member, skip to step 4.
 ## Step 3: Request membership (optional)
 
 If the customer is not a member of the loyalty program, you can request to enroll them by using
-the [Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api).
+the [Vipps Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api).
 
 You already have their phone number from step 1, so just provide a button in
 your user interface to allow the cashier to initiate the login.
@@ -129,7 +129,7 @@ With body:
 }
 ```
 
-A notification will appear on the customer's Vipps or MobilePay app.
+A notification will appear on the customer's Vipps app.
 
 Once they authorize the payment, the POS will be updated with the status.
 
