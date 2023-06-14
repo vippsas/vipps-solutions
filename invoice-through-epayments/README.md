@@ -44,7 +44,7 @@ Please note:
          "phoneNumber":4791234567
       },
       "paymentMethod":{
-         "type":"wallet"
+         "type":"WALLET"
       },
       "receiptInfo":{
          "category": "GENERAL",
@@ -103,7 +103,7 @@ Please note:
          "value":2000
       },
       "paymentMethod":{
-         "type":"wallet"
+         "type":"WALLET"
       },
       "reference":"acme-shop-123-order123abc",
       "paymentDescription": "Invoice# 424242, due date: 31 Dec 2024",
@@ -150,7 +150,7 @@ When a merchant does not know the phone number of the user, they can request pay
          "phoneNumber":4791234567
       },
       "paymentMethod":{
-         "type":"wallet"
+         "type":"WALLET"
       },
       "profile":{
          "scope":"phoneNumber"
