@@ -19,8 +19,8 @@ END_METADATA -->
 The [APIs](https://developer.vippsmobilepay.com/docs/APIs) can be combined for specific market segments, such as:
 
 * [Electric vehicle charging](./ev-charging/README.md)
-* [In-store loyalty](./loyalty-in-pos/README.md)
-* [In-store QR code](./static-qr-at-pos/README.md)
+* [In-store using merchant scan](./loyalty-in-pos/README.md)
+* [In-store using QR](./static-qr-at-pos/README.md)
 * [Parking and "Pay-as-you-go"](./parking/README.md)
 * [Taxi companies](./taxi-companies/README.md)
 * [Vending machines](./vending-machines/README.md)

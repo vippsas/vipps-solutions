@@ -1,28 +1,31 @@
 <!-- START_METADATA
 ---
-title: In-store loyalty
-sidebar_label: In-store loyalty
+title: In-store using merchant scan
+sidebar_label: In-store using merchant scan
 sidebar_position: 20
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# In-store loyalty
+# In-store using merchant scan
 
 ## How it works
 
-In-store loyalty is a solution that combines multiple Vipps products and makes a great product-market fit for retail stores that want to combine loyalty with payments. It's a great way to improve the payment experience for customers and simplify the process of adding customers to the merchant loyalty club.
+This solution combines multiple Vipps MobilePay products and makes a great product-market fit for
+retail stores that want to combine loyalty with payments.
+It's a great way to improve the payment experience for customers and simplify the process
+of adding customers to the merchant loyalty club.
 
-The solution is a combination of the personal QR codes in the Vipps app,
+The solution is a combination of the personal QR codes in the Vipps or MobilePay app,
 the
-[Vipps Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api),
+[Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api),
 the
-[Vipps ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api),
+[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api),
 and the
-[Vipps Check-in API](https://developer.vippsmobilepay.com/docs/APIs/check-in-api).
+[Check-in API](https://developer.vippsmobilepay.com/docs/APIs/check-in-api).
 
-The following describes the _Loyalty at the POS_ process at a high level.
+The following describes the process at a high level.
 
 ![Loyalty Flow](images/POS_flow.png)
 
@@ -75,7 +78,7 @@ If they are already a member, skip to step 4.
 ## Step 3: Request membership (optional)
 
 If the customer is not a member of the loyalty program, you can request to enroll them by using
-the [Vipps Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api).
+the [Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api).
 
 You already have their phone number from step 1, so just provide a button in
 your user interface to allow the cashier to initiate the login.
@@ -126,8 +129,7 @@ With body:
 }
 ```
 
-
-A notification will appear on the customer's Vipps app.
+A notification will appear on the customer's Vipps or MobilePay app.
 
 Once they authorize the payment, the POS will be updated with the status.
 
