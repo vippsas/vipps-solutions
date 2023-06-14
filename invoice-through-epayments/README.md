@@ -1,14 +1,14 @@
 <!-- START_METADATA
 ---
-title: Payment request for invoices
-sidebar_label: Payment request for invoices
+title: Invoices
+sidebar_label: Invoices
 sidebar_position: 120
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Payment request for invoices
+# Invoices
 
 💥 Work in progress 💥
 
