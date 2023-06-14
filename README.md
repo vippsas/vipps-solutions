@@ -1,6 +1,6 @@
 <!-- START_METADATA
 ---
-title: Introduction to the Solutions
+title: Vipps MobilePay API Solutions
 sidebar_label: Introduction
 sidebar_position: 1
 hide_table_of_contents: true
@@ -18,8 +18,8 @@ END_METADATA -->
 
 ## Recommended flows
 
-* [In-store loyalty](./loyalty-in-pos/README.md)
-* [In-store QR code](./static-qr-at-pos/README.md)
+* [In-store using merchant scan](./loyalty-in-pos/README.md)
+* [In-store using QR](./static-qr-at-pos/README.md)
 * [Vending machines](./vending-machines/README.md)
 
 ## Additional flows
