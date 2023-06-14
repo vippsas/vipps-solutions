@@ -1,14 +1,14 @@
 <!-- START_METADATA
 ---
-title: Extend payment time-outs
-sidebar_label: Extend payment time-outs
+title: Long-living payments
+sidebar_label: Long-living payments
 sidebar_position: 110
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Extend payment time-outs
+# Long-living payments
 
 💥 Work in progress 💥
 

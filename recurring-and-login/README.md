@@ -1,7 +1,7 @@
 <!-- START_METADATA
 ---
-title: Simplify subscriptions
-sidebar_label: Simplify subscriptions
+title: Subscriptions
+sidebar_label: Subscriptions
 sidebar_position: 140
 description: Simplify subscriptions by using the Login API and Recurring API together.
 pagination_next: null
@@ -9,7 +9,7 @@ pagination_prev: null
 ---
 END_METADATA -->
 
-# Simplifying registration and payment
+# Subscriptions
 
 The [Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api) and the [Recurring API](https://developer.vippsmobilepay.com/docs/APIs/recurring-api)
 can be used together making registration and payment of subscriptions simple for your customers.
