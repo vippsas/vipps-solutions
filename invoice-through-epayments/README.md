@@ -14,7 +14,7 @@ END_METADATA -->
 
 > **Please note:** This product will get a UX and API update in June 2023, as well as finalized guidelines on how to use it.
 
-Use Vipps to request payment from your customers for an invoice by doing a request to the
+Use Vipps MobilePay to request payment from your customers for an invoice by doing a request to the
 [ePayment](https://developer.vippsmobilepay.com/docs/APIs/epayment-api)
 API. Include `receiptInfo` from the
 [Order Management](https://developer.vippsmobilepay.com/docs/APIs/order-management-api) API.
@@ -23,12 +23,12 @@ This section will explain how to implement for different scenarios.
 
 ## Payment request sent directly to app
 
-When the merchant has the customer's phone number and their approval to send a payment request through Vipps, they can send payment requests for invoices directly.
+If you have the customer's phone number and their consent to send payment requests through Vipps, you can send payment requests for invoices directly.
 
 Please note:
 
 * The invoices should a link to a web view where the customer can get more details about the charges.
-* The invoices must be hosted by the merchant.
+* The invoices must be hosted by you, the merchant.
 
 1. Make a [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
 
