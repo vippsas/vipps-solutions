@@ -1,14 +1,14 @@
 <!-- START_METADATA
 ---
-title: Vending machines
-sidebar_label: Vending machines
+title: Vending machine using QR
+sidebar_label: Vending machine using QR
 sidebar_position: 80
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Vending machines
+# Vending machine using QR
 
 💥 Improvements coming soon. 💥
 
