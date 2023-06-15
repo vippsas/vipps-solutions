@@ -17,7 +17,7 @@ The following are the most common scenarios.
 
 ## Scenario 1 - One-time payment QR direct to payment in Vipps app
 
-A [Vipps QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-one-time-payment-api-howitworks) is presented on the vending machine.
+A [Vipps QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#one-time-payment-qr-codes) is presented on the vending machine.
 
 When the customer scans the QR code, they go directly to the Vipps payment screen on their phone, where they can approve the payment.
 
