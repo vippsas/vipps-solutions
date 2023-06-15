@@ -5,6 +5,7 @@ sidebar_label: Long-living payments
 sidebar_position: 110
 pagination_next: null
 pagination_prev: null
+hide_table_of_contents: true
 ---
 END_METADATA -->
 

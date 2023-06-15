@@ -5,6 +5,7 @@ sidebar_label: Taxi companies
 sidebar_position: 70
 pagination_next: null
 pagination_prev: null
+hide_table_of_contents: true
 ---
 END_METADATA -->
 
