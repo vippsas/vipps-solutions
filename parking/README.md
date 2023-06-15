@@ -48,9 +48,14 @@ The same solution can of course be used to charge weekly, monthly, or yearly.
 ## Relevant comments
 
 * For parking and "pay-as-you-go" cases, we usually recommend that you set up a
-[Recurring agreement with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount)
-and daily interval.
-* You are able to create as many charges as you want within the interval, but we recommend that you sum up the usage over the day and create one charge for that day.
-* You need to take the `maximum amount` limit into account. For example, if the agreement is set to `daily` and maximum amount is `1000`, you will not be able to create charges that bring the total to more than 1000 for that day. Remember that it is you, as the merchant, who will set the `suggested maximum amount`, so you can guide the users to a suitable limit.
-* If the total for the usage of your service sums up to more than `maximum amount` and you create a charge that is larger than `maximum amount`, the end user will be notified in Vipps and asked to increase their limit for this agreement.
+  [Recurring agreement with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount)
+  and `daily` interval.
+* You can create as many charges as you want within the interval, but we recommend that you
+  sum up the usage over the day and create one charge for that day.
+* You need to take the `maxAmount` limit into account. For example, if the agreement is set to `daily`
+  and `maxAmount` is `1000`, you will not be able to create charges that bring the total to more
+  than 1000 for that day. Remember that it is you, as the merchant, who set the `suggestMaxAmount`,
+  so you can guide the users to a suitable limit.
+* If the total sum is more than `maxAmount` and you create a charge that is larger than `maxAmount`,
+  the end user will be notified in Vipps to increase their limit for this agreement.
 * In general using the Recurring API you need to send in the charge two days before due date. However, for use cases like parking and "pay-as-you-go" we allow for creating charges that will be due the day after (for example you send in the charge at 10pm at day 0, the user will be charged in the morning of day 1). Do get access to this opportunity you need to be part of a whitelist. Contact VippsMobilePay if this is relevant for you.
