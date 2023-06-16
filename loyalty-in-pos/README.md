@@ -1,14 +1,14 @@
 <!-- START_METADATA
 ---
-title: In-store using merchant scan
-sidebar_label: In-store using merchant scan
+title: In-store with customer club
+sidebar_label: In-store with customer club
 sidebar_position: 20
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# In-store using merchant scan
+# In-store with customer club
 
 ## How it works
 

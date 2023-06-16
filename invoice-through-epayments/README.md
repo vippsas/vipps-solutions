@@ -1,7 +1,5 @@
 <!-- START_METADATA
 ---
-title: Invoices
-sidebar_label: Invoices
 sidebar_position: 120
 pagination_next: null
 pagination_prev: null
@@ -11,9 +9,7 @@ END_METADATA -->
 
 # Invoices
 
-💥 Work in progress 💥
-
-> **Please note:** This product will get a UX and API update in June 2023, as well as finalized guidelines on how to use it.
+**Please note:** This product will get a UX and API update in June 2023, as well as finalized guidelines on how to use it.
 
 Use Vipps MobilePay to request payment from your customers for an invoice by doing a request to the
 [ePayment](https://developer.vippsmobilepay.com/docs/APIs/epayment-api)

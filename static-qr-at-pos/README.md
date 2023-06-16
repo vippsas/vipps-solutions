@@ -1,7 +1,5 @@
 <!-- START_METADATA
 ---
-title: In-store using QR
-sidebar_label: In-store using QR
 sidebar_position: 20
 pagination_next: null
 pagination_prev: null

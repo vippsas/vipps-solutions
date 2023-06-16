@@ -1,16 +1,12 @@
 <!-- START_METADATA
 ---
-title: Vending machine using QR
-sidebar_label: Vending machine using QR
 sidebar_position: 80
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Vending machine using QR
-
-💥 Improvements coming soon. 💥
+# Vending machines
 
 Vipps can make it easier for your customers to pay for products in vending machines.
 The following are the most common scenarios.
