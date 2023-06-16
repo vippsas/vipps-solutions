@@ -5,6 +5,7 @@ description: Provide QR codes with Vipps MobilePay
 pagination_next: null
 pagination_prev: null
 hide_table_of_contents: true
+draft: true
 ---
 END_METADATA -->
 
