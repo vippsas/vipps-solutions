@@ -16,14 +16,14 @@ END_METADATA -->
 [Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/vipps-solutions/).
 <!-- END_COMMENT -->
 
-Recommendations for interaction in a physical setting:
+Recommendation for interaction in a physical setting:
 
 * [In-store using merchant scan](./loyalty-in-pos/README.md)
+
+## Alternative flows
+
 * [In-store using QR](./static-qr-at-pos/README.md)
 * [Vending machines](./vending-machines/README.md)
-
-## Additional flows
-
 * [Invoices](./invoice-through-epayments/README.md)
 * [Long-living payments](./long-expiry-time-for-payments-to-merchants/README.md)
 * [Subscriptions](./recurring-and-login/README.md)
