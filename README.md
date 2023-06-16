@@ -24,6 +24,8 @@ Recommendation for interaction in a physical setting:
 
 ## Alternative flows
 
+Examples of how to combine APIs for specific use cases:
+
 * [In-store using QR](./static-qr-at-pos/README.md)
 * [Vending machines](./vending-machines/README.md)
 * [Invoices](./invoice-through-epayments/README.md)
