@@ -1,7 +1,5 @@
 <!-- START_METADATA
 ---
-title: QR codes
-sidebar_label: QR codes
 sidebar_position: 150
 description: Provide QR codes with Vipps MobilePay
 pagination_next: null
@@ -25,7 +23,7 @@ Only
 [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
 should be printed, as [One-Time Payment QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#one-time-payment-qr-codes) typically expire after 5 minutes.
 
-## Merchant Redirect QR codes
+## Merchant redirect QR codes
 
 Merchant Redirect QR codes contain a URL to a merchant's website.
 
@@ -39,17 +37,17 @@ This creates a QR that works as a redirect back to the merchant. The website is 
 
 Learn more about these on the [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes) page.
 
-## One-Time Payment QR codes
+## One-time payment QR codes
 
-One-Time Payment QR codes lead directly to a payment confirmation screen in Vipps.
+One-time payment  QR codes lead directly to a payment confirmation screen in Vipps.
 
-![One-Time Payment QR flow](images/one-time-payment-qr-flow.png)
+![One-time payment  QR flow](images/one-time-payment-qr-flow.png)
 
-Initiate a payment which generates a One-Time Payment QR code through the
+Initiate a payment which generates a one-time payment  QR code through the
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 Send the [`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment) request.
 
-Learn more about these on the [One-Time Payment QR codes](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/qr-payments) page.
+Learn more about these on the [one-time payment QR codes](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/qr-payments) page.
 
 ## Relevant comments
 

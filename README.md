@@ -18,7 +18,7 @@ END_METADATA -->
 
 Recommendation for interaction in a physical setting:
 
-* [Recommended for in-store, if you have loyalty](./loyalty-in-pos/README.md)
+* [Recommended for in-store, if you have a customer club](./loyalty-in-pos/README.md)
 
 *More recommendations coming soon.*
 

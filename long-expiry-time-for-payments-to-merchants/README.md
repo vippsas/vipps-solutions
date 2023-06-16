@@ -1,7 +1,5 @@
 <!-- START_METADATA
 ---
-title: Long-living payments
-sidebar_label: Long-living payments
 sidebar_position: 110
 pagination_next: null
 pagination_prev: null
@@ -10,8 +8,6 @@ hide_table_of_contents: true
 END_METADATA -->
 
 # Long-living payments
-
-💥 Work in progress 💥
 
 You can extend the expiration time for payments beyond the default,
 [10 minutes](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/timeouts).

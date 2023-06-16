@@ -1,7 +1,5 @@
 <!-- START_METADATA
 ---
-title: Subscriptions
-sidebar_label: Subscriptions
 sidebar_position: 140
 description: Simplify subscriptions by using the Login API and Recurring API together.
 pagination_next: null
