@@ -18,7 +18,9 @@ END_METADATA -->
 
 Recommendation for interaction in a physical setting:
 
-* [In-store using merchant scan](./loyalty-in-pos/README.md)
+* [Recommended for in-store, if you have loyalty](./loyalty-in-pos/README.md)
+
+*More recommendations coming soon.*
 
 ## Alternative flows
 
