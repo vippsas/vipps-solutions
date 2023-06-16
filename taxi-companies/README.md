@@ -15,7 +15,8 @@ Use Vipps to simplify the payment flow in your taxi solutions.
 
 The customer scans a QR and follows instructions to pay from the taxi company's landing page.
 
-The flow is described in our [merchant redirect QR section](https://developer.vippsmobilepay.com/docs/vipps-solutions/qr-code-print#merchant-redirect-qr-codes).
+The flow is described in the
+[merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-redirect-qr-codes) section.
 
 ![Labeling in the taxi](images/labeling_in_the_taxi.png)
 
