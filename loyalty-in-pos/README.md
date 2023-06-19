@@ -50,7 +50,7 @@ This can be used for checking membership, in the next step.
 In your internal system, check the customer's membership status by using the phone number you received in the previous step.
 
 Use the
-[`POST/v1/loyalty-check-in`](https://developer.vippsmobilepay.com/api/check-in#tag/Loyalty-check-in)
+[`POST:/v1/loyalty-check-in`](https://developer.vippsmobilepay.com/api/check-in#tag/Loyalty-check-in)
 endpoint to trigger a "waiting screen" in the app. This will inform the customer whether
 they are a member of your loyalty program and otherwise help them through the payment process.
 
