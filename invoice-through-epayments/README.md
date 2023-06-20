@@ -91,6 +91,9 @@ Please note:
 
    Request access to the user' phone number by including the `scope` parameter with a value of `phoneNumber`. In the `paymentDescription` field provide relevant information about the invoice.
 
+   <details>
+   <summary>Detailed example</summary>
+   <div>
    Here is an example of a valid request body:
 
    ```json
@@ -108,6 +111,8 @@ Please note:
       "userFlow":"WEB_REDIRECT"
    }
    ```
+   </div>
+   </details>
 
    For this solution, the following parameters must be set:
 
@@ -135,6 +140,10 @@ When a merchant does not know the phone number of the user, they can request pay
 
    Request access to the user' phone number by including the `scope` parameter with a value of `phoneNumber`. In the `paymentDescription` field provide relevant information about the invoice.
 
+
+   <details>
+   <summary>Detailed example</summary>
+   <div>
    Here is an example of a valid request body:
 
    ```json
@@ -162,6 +171,8 @@ When a merchant does not know the phone number of the user, they can request pay
       "userFlow":"WEB_REDIRECT"
    }
    ```
+   </div>
+   </details>
 
 1. If the customer is on a desktop computer, the
    [Vipps Landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page)

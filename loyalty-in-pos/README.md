@@ -50,10 +50,13 @@ In your internal system, check the customer's membership status by using the pho
 
 Use the
 [`POST:/v1/loyalty-check-in`](https://developer.vippsmobilepay.com/api/check-in#tag/Loyalty-check-in)
-endpoint to trigger a "waiting screen" in the app. This will inform the customer whether
+endpoint to trigger a *waiting screen* in the app. This will inform the customer whether
 they are a member of your loyalty program and otherwise help them through the payment process.
 
-Here is an example of the HTTP POST you can use:
+<details>
+<summary>Detailed example</summary>
+<div>
+Here is an example HTTP POST:
 
 [`POST:/point-of-sale/v1/loyalty-check-in`](https://developer.vippsmobilepay.com/api/check-in#tag/Loyalty-check-in/operation/initiateLoyaltyCheckIn)
 
@@ -66,6 +69,9 @@ With body:
     "isMember": false
 }
 ```
+
+</div>
+</details>
 
 If the customer is a not member, proceed to step 3 where you can enroll them by using the
 [Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api).
@@ -103,7 +109,10 @@ Your system can send the payment request by using the
 
 Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer who scanned the QR code, and after the payment is completed, the POS will be updated with the status of the payment.
 
-Here is an example of the HTTP POST you can use:
+<details>
+<summary>Detailed example</summary>
+<div>
+Here is an example HTTP POST:
 
 [`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 
@@ -127,6 +136,9 @@ With body:
   "paymentDescription": "Purchase of socks"
 }
 ```
+
+</div>
+</details>
 
 A notification will appear on the customer's Vipps app.
 

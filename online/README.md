@@ -22,30 +22,37 @@ Your system can send the payment request by using the
 
 Set `userFlow` to `WEB_REDIRECT` and users browser will either do an automatic app-switch or open the landing page to confirm the mobile number.
 
-Here is an example of the HTTP POST you can use:
+<details>
+  <summary>Detailed payment example</summary>
+  <div>
+    Here is an example HTTP POST:
 
-[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+    [`POST:/epayment/v1/payments`](/api/epayment#tag/CreatePayments/operation/createPayment)
 
-With body:
+    With body:
 
-```json
-{
-  "amount": {
-    "value": 49900,
-    "currency": "NOK"
-  },
-  "paymentMethod": {
-    "type": "WALLET"
-  },
-  "customer": {
-    "phoneNumber": 4796574209
-  },
-  "reference": 2486791679658155992,
-  "userFlow": "WEB_REDIRECT",
-  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
-  "paymentDescription": "Purchase of socks"
-}
-```
+    ```json
+    {
+      "amount": {
+        "value": 49900,
+        "currency": "NOK"
+      },
+      "paymentMethod": {
+        "type": "WALLET"
+      },
+      "customer": {
+        "phoneNumber": 4796574209
+      },
+      "reference": 2486791679658155992,
+      "userFlow": "WEB_REDIRECT",
+      "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
+      "paymentDescription": "Purchase of socks"
+    }
+    ```
+</div>
+</details>
+
+![Pay with Vipps](images/vipps-ecom-step1-2.png)
 
 ![Pay with Vipps](images/vipps-ecom-step1-2.png)
 
