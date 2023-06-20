@@ -23,7 +23,7 @@ Your system can send the payment request by using the
 Set `userFlow` to `WEB_REDIRECT` and users browser will either do an automatic app-switch or open the landing page to confirm the mobile number.
 
 <details>
-  <summary>Detailed payment example</summary>
+  <summary>Detailed example</summary>
   <div>
     Here is an example HTTP POST:
 
