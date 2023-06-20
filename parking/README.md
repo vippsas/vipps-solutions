@@ -1,9 +1,11 @@
 <!-- START_METADATA
 ---
-sidebar_position: 30
+title: 'Vipps MobilePay parking and "Pay-as-you-go" flow'
+sidebar_label: 'Parking and "Pay-as-you-go"'
+description: Using Vipps MobilePay in a parking solution
+hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
-hide_table_of_contents: true
 ---
 END_METADATA -->
 

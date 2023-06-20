@@ -1,9 +1,11 @@
 <!-- START_METADATA
 ---
-sidebar_position: 110
+title: Vipps MobilePay long-living payments flow
+sidebar_label: Long-living payments
+description: Extending the expiration time for payments.
+hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
-hide_table_of_contents: true
 ---
 END_METADATA -->
 

@@ -1,15 +1,15 @@
 <!-- START_METADATA
 ---
-sidebar_position: 120
+title: Vipps MobilePay invoicing flow
+sidebar_label: Invoices
+description: Using Vipps MobilePay for sending invoices.
+hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
-hide_table_of_contents: true
 ---
 END_METADATA -->
 
 # Invoices
-
-**Please note:** This product will get a UX and API update in June 2023, as well as finalized guidelines on how to use it.
 
 Use Vipps MobilePay to request payment from your customers for an invoice by doing a request to the
 [ePayment](https://developer.vippsmobilepay.com/docs/APIs/epayment-api)

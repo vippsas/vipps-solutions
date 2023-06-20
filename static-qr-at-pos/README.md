@@ -1,14 +1,14 @@
 <!-- START_METADATA
 ---
-sidebar_position: 20
+title: Vipps MobilePay in-store using QR flow
+sidebar_label: In-store using QR
+description: Using Vipps in a physical setting with the QR code
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
 # In-store using QR
-
-## How it works
 
 In this solution, a user pays by scanning a QR (could be on a sticker), followed by the merchant sending a payment to that user.
 

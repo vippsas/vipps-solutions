@@ -1,6 +1,8 @@
 <!-- START_METADATA
 ---
-sidebar_position: 80
+title: Vipps MobilePay vending machine flow
+sidebar_label: Vending machines
+description: Using Vipps with vending machines
 pagination_next: null
 pagination_prev: null
 ---

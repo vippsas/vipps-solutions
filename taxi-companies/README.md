@@ -1,13 +1,15 @@
 <!-- START_METADATA
 ---
-sidebar_position: 70
+title: Vipps MobilePay taxi payments flow
+sidebar_label: Taxi payments
+description: Using Vipps for taxi payments
+hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
-hide_table_of_contents: true
 ---
 END_METADATA -->
 
-# Taxi companies
+# Taxi payments
 
 Use Vipps to simplify the payment flow in your taxi solutions.
 

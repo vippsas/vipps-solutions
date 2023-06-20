@@ -1,16 +1,15 @@
 <!-- START_METADATA
 ---
-title: In-store with customer club
+title: Vipps MobilePay in-store with customer club flow
 sidebar_label: In-store with customer club
-sidebar_position: 20
+description: Using Vipps MobilePay in a physical setting with customer club
+hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
 # In-store with customer club
-
-## How it works
 
 This solution combines multiple Vipps products and makes a great product-market fit for
 retail stores that want to combine loyalty with payments.

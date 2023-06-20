@@ -1,9 +1,11 @@
 <!-- START_METADATA
 ---
-sidebar_position: 10
+title: Vipps MobilePay electric vehicle charging flow
+sidebar_label: Electric vehicle charging
+description: Using Vipps MobilePay for EV charging.
+hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
-hide_table_of_contents: true
 ---
 END_METADATA -->
 

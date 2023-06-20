@@ -18,8 +18,8 @@ END_METADATA -->
 
 Recommended flows for physical and online settings:
 
-* [Recommended for online purchases](./online/README.md)
-* [Recommended for interaction in a physical setting, if you have a customer club](./loyalty-in-pos/README.md)
+* [Online payments](./online/README.md)
+* [Interaction in a physical setting, with customer club](./loyalty-in-pos/README.md)
 
 ## Alternative flows
 
