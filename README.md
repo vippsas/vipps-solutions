@@ -19,13 +19,14 @@ END_METADATA -->
 Recommended flows for physical and online settings:
 
 * [Online payments](./online/README.md)
-* [Interaction in a physical setting, with customer club](./loyalty-in-pos/README.md)
+* [In-store payments](./in-store/README.md)
+* [In-store payments with customer club](./loyalty-in-pos/README.md)
 
 ## Alternative flows
 
 Examples of how to combine APIs for specific use cases:
 
-* [In-store using QR](./static-qr-at-pos/README.md)
+* [In-store payments using QR](./static-qr-at-pos/README.md)
 * [Vending machines](./vending-machines/README.md)
 * [Invoices](./invoice-through-epayments/README.md)
 * [Long-living payments](./long-expiry-time-for-payments-to-merchants/README.md)
