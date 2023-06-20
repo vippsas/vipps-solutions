@@ -16,10 +16,9 @@ This solution is a combination of the personal QR codes in the Vipps app
 and the
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 
-
 ![Loyalty Flow](./images/POS_simple_flow.png)
 
-## Step 1: Scan the QR code
+## Step 1: Scan the customer's QR code
 
 The flow begins with the customer presenting their QR code to the merchant. This can happen in two ways:
 
@@ -34,9 +33,13 @@ The customer's personal QR code contains a URL like this:
 
 When this QR code is scanned in the store, the POS will get their phone number.
 
-## Step 2: Send a payment request
+## Step 2: Add products to sell
 
-After all wares have been scanned, send a payment request to the customer.
+Add the products that the customer wants to buy in the POS system.
+
+![The POS system](images/vipps-in-store-step1.svg)
+
+## Step 3: Send a payment request
 
 You already have the phone number from step 1, so you don't need to ask for it again.
 Just provide a button in your user interface to allow the cashier to send the payment request.
@@ -58,7 +61,7 @@ With body:
 ```json
 {
   "amount": {
-    "value": 49900,
+    "value": 49800,
     "currency": "NOK"
   },
   "paymentMethod": {
@@ -70,15 +73,17 @@ With body:
   "reference": 2486791679658155992,
   "userFlow": "PUSH_MESSAGE",
   "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
-  "paymentDescription": "Winter jacket"
+  "paymentDescription": "Payment to Butikken"
 }
 ```
 
 </div>
 </details>
 
-A notification will appear on the customer's Vipps app.
+The customer confirms the payment in the app.
 
-Once they authorize the payment, the POS will be updated with the status.
+![Confirm payment](images/vipps-in-store-step3-2.svg)
 
-![Loyalty Flow](images/POS_step_4.png)
+## Step 4: Register the payment
+
+Once the customer authorizes the payment, the POS will be updated with the status.
