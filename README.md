@@ -16,11 +16,10 @@ END_METADATA -->
 [Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/vipps-solutions/).
 <!-- END_COMMENT -->
 
-Recommendation for interaction in a physical setting:
+Recommended flows for physical and online settings:
 
-* [Recommended for in-store, if you have a customer club](./loyalty-in-pos/README.md)
-
-*More recommendations coming soon.*
+* [Recommended for online purchases](./online/README.md)
+* [Recommended for interaction in a physical setting, if you have a customer club](./loyalty-in-pos/README.md)
 
 ## Alternative flows
 
