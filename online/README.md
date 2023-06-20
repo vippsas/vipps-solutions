@@ -8,7 +8,6 @@ sidebar_position: 10
 
 This is how payments in web shops or merchant websites work using the ePayment and order management API.
 
-
 ## 1. Pay with Vipps
 
 The user chooses “Pay with Vipps”, on the product page of a merchant’s website or app.
@@ -16,7 +15,7 @@ The user chooses “Pay with Vipps”, on the product page of a merchant’s web
 Your system can send the payment request by using the
 [create payment endpoint](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment).
 
-Set `userFlow` to `WEB_REDIRECT` and users browser will either do an automatic appswitch or open the landing page to confirm the mobile number.
+Set `userFlow` to `WEB_REDIRECT` and users browser will either do an automatic app-switch or open the landing page to confirm the mobile number.
 
 Here is an example of the HTTP POST you can use:
 
@@ -43,8 +42,7 @@ With body:
 }
 ```
 
-
-![Pay with Vipps](../images/vipps-ecom-step1-2.png)
+![Pay with Vipps](images/vipps-ecom-step1-2.png)
 
 ## 2. The Vipps landing page (If customer started on desktop)
 
@@ -53,37 +51,37 @@ The user confirms their number, and is prompted to log in to Vipps.
 
 If the payment was started from a mobile device, the app will automatically switch over to Vipps.
 
-![Vipps landing page](../images/vipps-ecom-step2.svg)
+![Vipps landing page](images/vipps-ecom-step2.svg)
 
 ## 3. Confirm payment in Vipps
 
 The user receives a push notification on their phone. They log in to Vipps, and confirm the payment.
 The payment is reserved, and the user gets a receipt of the successful payment
 
-![Confirm payment](../images/vipps-ecom-confirm2.png)
+![Confirm payment](images/vipps-ecom-confirm2.png)
 
 ## 4. Order Confirmation
 
 The user is redirected back to the merchant’s store, and the order is confirmed.
 
-![Order confirmation](../images/vipps-ecom-step4.png)
+![Order confirmation](images/vipps-ecom-step4-2.png)
 
 ## 5. Add order receipts
 
 After payment, enrich the users Vipps app with a receipt from the payment.
 
-This postReceipt endpoint [`POST:/order-management/v2/{paymentType}/receipts/{orderId}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2) is for sending receipt information. Receipt information is a combination of order lines and a bottom line with sum and VAT. An OrderLine is a description of each item present in the order. 
+This `postReceipt` endpoint [`POST:/order-management/v2/{paymentType}/receipts/{orderId}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2) is for sending receipt information. Receipt information is a combination of order lines and a bottom line with sum and VAT. An OrderLine is a description of each item present in the order.
 
-![Order receipt](../images/order-receipt.png)
+![Order receipt](images/order-receipt.png)
 
 ## 6. Completing the order and shipping
 
 The merchant completes the order, and ships the order to the customer.
 
-![Shipping](../images/vipps-shipping.svg)
+![Shipping](images/vipps-shipping.svg)
 
 ## 7. Money in the bank
 
 The payment is transferred to the merchant’s account. This may take 2-3 days depending on your bank.
 
-![Money](../images/vipps-money.svg)
+![Money](images/vipps-money.svg)
