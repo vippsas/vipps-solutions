@@ -16,7 +16,7 @@ This solution is a combination of the personal QR codes in the Vipps app
 and the
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 
-![Loyalty Flow](./images/POS_simple_flow.png)
+![Loyalty Flow](./images/POS_simple_flow_blue.png)
 
 ## Step 1: Scan the customer's QR code
 
@@ -47,7 +47,7 @@ You already have the phone number from step 1, so you don't need to ask for it a
 Just provide a button in your user interface to allow the cashier to send the payment request.
 
 Your system can send the payment request by using the
-[create payment endpoint](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment).
+[`createPayment` endpoint](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment).
 
 Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer who scanned the QR code, and after the payment is completed, the POS will be updated with the status of the payment.
 
@@ -89,3 +89,13 @@ The customer confirms the payment in the app.
 ## Step 4: Register the payment
 
 Once the customer authorizes the payment, the POS will be updated with the status.
+
+## Step 5. Add the order receipt
+
+After payment, add a payment receipt. This will appear in the Vipps MobilePay app.
+
+The
+[`postReceipt` endpoint](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+allows you to send receipt information to the customer's app.
+This is a combination of *order lines* and a *bottom line* with sum and VAT.
+An *order line* is a description of each item present in the order.
