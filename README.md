@@ -16,7 +16,7 @@ END_METADATA -->
 [Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/vipps-solutions/).
 <!-- END_COMMENT -->
 
-Vipps MobilePay offers several APIs that together from the [Vipps MobilePay API platform](https://developer.vippsmobilepay.com/docs/APIs/). 
+Vipps MobilePay offers several APIs that together form the [Vipps MobilePay API platform](https://developer.vippsmobilepay.com/docs/APIs/). 
 All APIs use the same API keys, authentication methods, terminology, etc. and they can be combined in many ways, to offer the best user experience in various scenarios.
 We want everyone to get the most out of our API platform, and below are recommended ways to implement API platform for most common scenarios.
 
