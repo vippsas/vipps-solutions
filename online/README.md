@@ -18,7 +18,7 @@ This flow combines multiple Vipps products to illustrate the recommended online 
 The user chooses *Pay with Vipps*, on the product page of your website or app.
 
 Your system can send the payment request by using the
-[create payment endpoint](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment).
+[create payment endpoint](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/create/).
 
 Set `userFlow` to `WEB_REDIRECT` and users browser will either do an automatic app-switch or open the landing page to confirm the mobile number.
 
@@ -88,7 +88,28 @@ This `postReceipt` endpoint [`POST:/order-management/v2/{paymentType}/receipts/{
 
 ## 6. Completing the order and shipping
 
-The merchant completes the order and ships the order to the customer.
+The merchant completes the order and ships the order to the customer. Finally capture the payment using the [Capture endpoint](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture/). 
+
+<details>
+  <summary>Detailed example</summary>
+  <div>
+    Here is an example HTTP POST:
+
+    [`POST:/epayment/v1/payments/{reference}/capture`](/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+    With body:
+
+    ```json
+    {
+      "modificationAmount": {
+        "value": 49900,
+        "currency": "NOK"
+      }
+    }
+    ```
+</div>
+</details>
+
 
 ![Shipping](images/vipps-shipping.svg)
 
