@@ -16,7 +16,7 @@ This solution is a combination of the personal QR codes in the Vipps app
 and the
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 
-![Loyalty Flow](./images/POS_simple_flow_blue.png)
+![Loyalty Flow](./images/POS_simple_flow_orange.png)
 
 ## Step 1: Scan the customer's QR code
 
