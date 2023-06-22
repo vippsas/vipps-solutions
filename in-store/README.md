@@ -18,7 +18,7 @@ and the
 
 ![Loyalty Flow](./images/POS_simple_flow.png)
 
-## Step 1: Scan the customer's QR code
+## Step 1: Identify the customer
 
 The flow begins with the customer presenting their QR code to the merchant. This can happen in two ways:
 
@@ -35,7 +35,7 @@ The customer's personal QR code contains a URL like this:
 
 When this QR code is scanned in the store, the POS will get their phone number.
 
-## Step 2: Add products to sell
+## Step 2: Add products to the order
 
 Add the products that the customer wants to buy in the POS system.
 
@@ -82,17 +82,19 @@ With body:
 </div>
 </details>
 
+## Step 4: Customer confirms the order
+
 The customer confirms the payment in the app.
 
 ![Confirm payment](images/vipps-in-store-step3-2.png)
 
-## Step 4: Register the payment
+## Step 5: Register the payment
 
-Once the customer authorizes the payment, the POS will be updated with the status.
+Once the customer authorizes the payment, update the POS system with the status.
 
-## Step 5. Add the order receipt
+## Step 6. Add the order receipt
 
-After payment, add a payment receipt. This will appear in the Vipps MobilePay app.
+Add a payment receipt that will appear in the Vipps MobilePay app.
 
 The
 [`postReceipt` endpoint](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
