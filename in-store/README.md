@@ -33,9 +33,20 @@ The customer's personal QR code contains a URL like this:
 `https://qr.vipps.no/28/2/01/031/4791234567?v=1`, where `4791234567` is their phone number in
 [MSISDN](https://en.wikipedia.org/wiki/MSISDN) format.
 
-When this QR code is scanned in the store, the POS will get their phone number.
 
-## Step 2: Add products to the order
+
+
+
+
+
+
+
+
+
+
+When this QR code is scanned, your POS system will get their phone number.
+
+## Step 2: Add the products to be purchased
 
 Add the products that the customer wants to buy in the POS system.
 
