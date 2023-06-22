@@ -25,26 +25,14 @@ The flow begins with the customer presenting their QR code to the merchant. This
 * Customer-facing scanner - The store will have a permanent customer-facing scanner and customers can scan their QR code at any time.
 * Cashier scanner - The QR code is scanned by the cashier using a wired scanner. This could happen while the cashier is scanning wares or immediately before the payment.
 
-If you don't have a scanner, you can enter the customer's phone number manually.
-
 ![Loyalty Flow](images/POS_step_1.png)
 
 The customer's personal QR code contains a URL like this:
 `https://qr.vipps.no/28/2/01/031/4791234567?v=1`, where `4791234567` is their phone number in
 [MSISDN](https://en.wikipedia.org/wiki/MSISDN) format.
 
-
-
-
-
-
-
-
-
-
-
-
 When this QR code is scanned, your POS system will get their phone number.
+If you don't have a scanner, you can enter the customer's phone number manually.
 
 ## Step 2: Add the products to be purchased
 
