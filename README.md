@@ -17,7 +17,7 @@ END_METADATA -->
 <!-- END_COMMENT -->
 
 Vipps MobilePay offers several APIs that together form the [Vipps MobilePay API platform](https://developer.vippsmobilepay.com/docs/APIs/).
-All APIs use the same API keys, authentication methods, terminology, etc. and they can be combined in many ways, to offer the best user experience in various scenarios.
+All APIs use the same API keys, authentication methods, terminology, etc. and they can be combined in many ways to offer the best user experience in various scenarios.
 We want everyone to get the most out of our API platform, and below are recommended ways to implement API platform for most common scenarios.
 
 **Recommended flows for physical and online settings:**
@@ -26,7 +26,7 @@ We want everyone to get the most out of our API platform, and below are recommen
 * [In-store payments](./in-store/README.md)
 * [In-store payments with customer club](./loyalty-in-pos/README.md)
 
-## Alternative flows
+**Alternative flows:**
 
 Examples of how to combine APIs for specific use cases:
 
