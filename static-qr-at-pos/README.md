@@ -10,7 +10,7 @@ END_METADATA -->
 
 # In-store using QR
 
-In this solution, a user pays by scanning a QR (could be on a sticker), followed by the merchant sending a payment to that user.
+In this solution, a user pays by scanning a QR (could be on a sticker), followed by the merchant sending a payment request to that user.
 
 The solution is a combination of the
 [Merchant Callback QRs](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-callback-qr-codes) and the
