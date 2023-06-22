@@ -54,8 +54,6 @@ Set `userFlow` to `WEB_REDIRECT` and users browser will either do an automatic a
 
 ![Pay with Vipps](images/vipps-ecom-step1-2.png)
 
-![Pay with Vipps](images/vipps-ecom-step1-2.png)
-
 ## Step 2. The Vipps landing page (If customer started on desktop)
 
 If the payment was started on a desktop device, the user will be sent to the
