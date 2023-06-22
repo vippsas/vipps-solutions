@@ -16,7 +16,7 @@ This solution is a combination of the personal QR codes in the Vipps app
 and the
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 
-![Loyalty Flow](./images/POS_simple_flow_blue.png)
+![Loyalty Flow](./images/POS_simple_flow.png)
 
 ## Step 1: Scan the customer's QR code
 
@@ -27,7 +27,7 @@ The flow begins with the customer presenting their QR code to the merchant. This
 
 If you don't have a scanner, you can enter the customer's phone number manually.
 
-![Loyalty Flow](images/POS_step_1_blue.png)
+![Loyalty Flow](images/POS_step_1.png)
 
 The customer's personal QR code contains a URL like this:
 `https://qr.vipps.no/28/2/01/031/4791234567?v=1`, where `4791234567` is their phone number in
@@ -39,7 +39,7 @@ When this QR code is scanned in the store, the POS will get their phone number.
 
 Add the products that the customer wants to buy in the POS system.
 
-![The POS system](images/vipps-in-store-step1.svg)
+![The POS system](images/vipps-in-store-step1.png)
 
 ## Step 3: Send a payment request
 
@@ -84,7 +84,7 @@ With body:
 
 The customer confirms the payment in the app.
 
-![Confirm payment](images/vipps-in-store-step3-2.svg)
+![Confirm payment](images/vipps-in-store-step3-2.png)
 
 ## Step 4: Register the payment
 
