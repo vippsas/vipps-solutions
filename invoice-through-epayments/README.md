@@ -1,41 +1,70 @@
 <!-- START_METADATA
 ---
-title: Vipps MobilePay invoicing flow
-sidebar_label: Invoices
-description: Using Vipps MobilePay for sending invoices.
+title: Vipps MobilePay Payment Request
+sidebar_label: Payment Request
+description: Using Vipps MobilePay for sending payment requests.
 hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Invoices
+# Payment Requests
 
-Use Vipps MobilePay to request payment from your customers for an invoice by doing a request to the
+Use Vipps MobilePay to make *long living payment requests* for your customers by using the `"expiresAt"` feature in 
 [ePayment](https://developer.vippsmobilepay.com/docs/APIs/epayment-api)
-API. Include `receiptInfo` from the
-[Order Management](https://developer.vippsmobilepay.com/docs/APIs/order-management-api) API.
+API and receipt information from 
+[Order Management](https://developer.vippsmobilepay.com/docs/APIs/order-management-api) API. This will create payment requests that can be seen and and postponed by the user, up to 28 days. Note: The APIs are ready, but it is not testable before app updates planned summer 2023.
 
-This section will explain how to implement for different scenarios.
+The following section will explain how to implement this feature for a couple scenarios:
 
-## Payment request sent directly to app
+## 1. Payment request sent directly to app
 
-If you have the customer's phone number and their consent to send payment requests through Vipps, you can send payment requests for invoices directly.
+If you have the customer's phone number and their consent to send payment requests through Vipps, you can send payment requests directly to the customer.
 
-Please note:
+The flow for the customer will look like this: ![Payment Request Push flow](images/Payment-request-sent-directly-to-app.png)
 
-* The invoices should a link to a web view where the customer can get more details about the charges.
-* The invoices must be hosted by you, the merchant.
 
-1. Make a [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
+1. To create this payment, you first need to make a [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request where `customer.phoneNumber` is set. 
+2. The customer will receive a push notification in their Vipps app.
+3. When the customer selects `See details` in the payment confirmation screen, they are presented with the order information provided by the merchant without leaving the Vipps Mobilepay app.
+4. The customer approves the payment.
 
-   Here is an example of a valid request body:
+   Users also have the option of soft-dismissing the payment and postponing it for later.
+
+
+
+## 2. Payment request as a link
+When a merchant does not know the phone number of the user and want to start a payment request, you could send them a link to your own landing page that in turn triggers a payment request through Vipps Mobilepay Api.
+
+The flow for the customer will look like this: ![Payment Request landing page flow](images/Payment-request-with-link.png)
+
+1. In your website, mobile app, on paper document or email you send, provide your customers with an option for opting-in to receive payment request for payment Requests in the Vipps app.
+2. Present them with the *Pay with Vipps* option.
+3. Send the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
+
+4. If the customer is on a desktop computer, the
+   [Vipps Landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page)
+   opens. If on a mobile device, the Vipps Mobilepay app opens automatically.
+
+
+## 3. Payment request with sharing of telephone number
+The flow for the customer will look like this: ![Payment Request landing page flow with userinfo](images/Payment-request-with-sharing-phone-number.png)
+
+
+This is very similar as scenario 2, explained above. The difference is that you will also ask the user to share their telephone number. This is done by setting the `scope` parameter with a value of `phoneNumber` in the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
+
+After the user have finished the payment, you will get the phoneNumber of the customer. This means you can proceed with scenario 1 in the future and send the payment request directly to the customer. There is more info about fetching user data in the [profile sharing](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/profile-sharing/) section of epayments.
+
+
+## General create request example:
+Example body:
 
    ```json
    {
       "amount":{
          "currency":"NOK",
-         "value":2000
+         "value":6000
       },
       "customer":{
          "phoneNumber":4791234567
@@ -44,8 +73,58 @@ Please note:
          "type":"WALLET"
       },
       "receiptInfo":{
-         "category": "GENERAL",
-         "orderDetailsUrl": "https://example.com/orderdetails/acme-shop-123-order123abc"
+         "orderLines": [
+            {
+               "name": "Vipps socks",
+               "id": "line_item_1",
+               "totalAmount": 1000,
+               "totalAmountExcludingTax": 800,
+               "totalTaxAmount": 200,
+               "taxPercentage": 25,
+               "unitInfo": {
+               "unitPrice": 400,
+               "quantity": "2.5",
+               "quantityUnit": "KG"
+               },
+               "discount": 0,
+               "productUrl": "https://example.com/store/socks",
+               "isReturn": false,
+               "isShipping": false
+            },
+            {
+               "name": "Vipps flip-flops",
+               "id": "line_item_2",
+               "totalAmount": 5000,
+               "totalAmountExcludingTax": 4000,
+               "totalTaxAmount": 1000,
+               "taxPercentage": 25,
+               "unitInfo": {
+               "unitPrice": 2500,
+               "quantity": "3",
+               "quantityUnit": "PCS"
+               },
+               "discount": 2500,
+               "productUrl": "https://example.com/store/flipflops",
+               "isReturn": false,
+               "isShipping": false
+            }
+         ],
+         "bottomLine": {
+            "currency": "NOK",
+            "tipAmount": 0,
+            "posId": "vipps_pos_122",
+            "paymentSources": {
+               "giftCard": 0,
+               "card": 0,
+               "voucher": 0,
+               "cash": 0
+            },
+            "barcode": {
+               "format": "CODE 39",
+               "data": "SC0527013501 "
+            },
+            "receiptNumber": "0527013501"
+         }
       },
       "reference":"acme-shop-123-order123abc",
       "paymentDescription": "Invoice# 424243, due date: 01 Jan 2025",
@@ -55,140 +134,18 @@ Please note:
    }
    ```
 
-    For this solution, the following parameters must be set:
+To create a _payment request_, the following parameters can/must be used, depending on the scenario:
 
-      * `reference` - The `orderId` used in Step 1.
-      * `expiresAt` - The expiration date for the payment.
-      * `userFlow`  - Must be `"PUSH_MESSAGE"`.
-      * `customer.phoneNumber` - The customer's phone number.
-      * `paymentDescription` - Short description with relevant information about the invoice.
-      * `receiptInfo` (might be renamed)- Invoice information for the payment. It might be a link to a PDF or orderlines, more info will come June 2023.
-
-2. The customer will receive a push notification in their Vipps app.
-3. When the customer selects `See details` in the payment confirmation screen, they are presented with the order information provided by the merchant.
-   In this scenario, they can tap this to view the invoice data hosted by the merchant in a web view without leaving the Vipps app or be shown orderlines directly.
-4. The customer approves the payment.
-
-   For example, the sequence might look like this:
-   ![Subsequent payment of an invoice](images/subsequent-invoice-payment.png)
-
-   Invoice payments must have extended expiration dates, as specified in the
-   [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
-
-   Users can soft-dismiss this payment
-   by clicking `Cancel` -> `I'll pay later` and come back into the Vipps app to pay at a later time.
-
-   For more information about extended expiration dates, see [Extended expiration for payments to merchants](../long-expiry-time-for-payments-to-merchants/README.md).
-
-## Payment request as a link
-
-   When a merchant does not know the phone number of the user and want to send a one-time request for payment for an invoice, they can use the Vipps API by following these steps.
-
-1. In your website, mobile app, on paper document or email you send, provide your customers with an option for opting-in to receive payment request for invoices in the Vipps app.
-1. Present them with the *Pay with Vipps*  option.
-
-1. Send the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
-
-   Request access to the user' phone number by including the `scope` parameter with a value of `phoneNumber`. In the `paymentDescription` field provide relevant information about the invoice.
-
-   <details>
-   <summary>Detailed example</summary>
-   <div>
-   Here is an example of a valid request body:
-
-   ```json
-   {
-      "amount":{
-         "currency":"NOK",
-         "value":2000
-      },
-      "paymentMethod":{
-         "type":"WALLET"
-      },
-      "reference":"acme-shop-123-order123abc",
-      "paymentDescription": "Invoice# 424242, due date: 31 Dec 2024",
-      "returnUrl":"https://example.com/redirect?orderId=1512202",
-      "userFlow":"WEB_REDIRECT"
-   }
-   ```
-   </div>
-   </details>
-
-   For this solution, the following parameters must be set:
-
-      * `reference` - The `orderId` used in Step 3.
-      * `paymentDescription` - Short description with relevant information about the invoice.
-
-1. If the customer is on a desktop computer, the
-   [Vipps Landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page)
-   opens. If on a mobile device, the Vipps app opens.
-
-1. The customer approves the payment in the Vipps app.
-
-   These steps can be visualized as:
-
-   ![One-time request for payment](images/one-time-payment-of-invoice.png)
-
-## Payment request when sharing telephone number
-
-When a merchant does not know the phone number of the user, they can request payment through the Vipps APIs by following these steps.
-
-1. In your website, mobile app, on paper document or email you send, provide your customers with an option for opting-in to receive payment request for invoices in the Vipps app.
-1. They view their invoice in your website or app.
-1. Present them also with the *Pay with Vipps* option.
-1. When they select *Pay with Vipps*, send the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
-
-   Request access to the user' phone number by including the `scope` parameter with a value of `phoneNumber`. In the `paymentDescription` field provide relevant information about the invoice.
+* `reference` - The `orderId` of the payment request.
+* `expiresAt` - The expiration date for the payment. This is what seperates the long living payment request from a regular payment.
+* `userFlow`  - Must be `"PUSH_MESSAGE"` or `"QR"`.
+* `paymentDescription` - Short description with relevant information about the payment request.
+* `receiptInfo` (might be renamed)- Order Lines for the payment. The orderlines are the same as referenced in the [Order Management](https://developer.vippsmobilepay.com/docs/APIs/order-management-api) API. This **must** be present 
+* `customer.phoneNumber` - The customer's phone number. This is optional, and will be used if the users phone number is known in advance.
+* `scope` - This can be used to request the user to share their telephone number.
 
 
-   <details>
-   <summary>Detailed example</summary>
-   <div>
-   Here is an example of a valid request body:
+For more information about extended expiration dates, see [Extended expiration for payments to merchants](../long-expiry-time-for-payments-to-merchants/README.md).
 
-   ```json
-   {
-      "amount":{
-         "currency":"NOK",
-         "value":2000
-      },
-      "customer":{
-         "phoneNumber":4791234567
-      },
-      "paymentMethod":{
-         "type":"WALLET"
-      },
-      "profile":{
-         "scope":"phoneNumber"
-      },
-      "receiptInfo":{
-         "category": "GENERAL",
-         "orderDetailsUrl": "https://example.com/orderdetails/acme-shop-123-order123abc"
-      },
-      "reference":"acme-shop-123-order123abc",
-      "paymentDescription": "Invoice# 424242, due date: 31 Dec 2024",
-      "returnUrl":"https://example.com/redirect?orderId=1512202",
-      "userFlow":"WEB_REDIRECT"
-   }
-   ```
-   </div>
-   </details>
 
-1. If the customer is on a desktop computer, the
-   [Vipps Landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page)
-   opens. If on a mobile device, the Vipps app opens.
-1. The customer consents to share their phone number.
-1. The customer approves the payment in the Vipps app.
 
-   These steps can be visualized as:
-
-   ![First time payment of an invoice](images/first-time-invoice-payment.png)
-
-1. To retrieve the user's phone number, start by making a request to
-   [Get Payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment) to get the `sub` value.
-1. Then, make a request to
-   [getUserinfo](https://developer.vippsmobilepay.com/api/userinfo#operation/getUserinfo).
-   For details and more examples, see the
-   [UserInfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api).
-
-1. Finally, use the customer's phone number to send them direct payment requests in the future.
