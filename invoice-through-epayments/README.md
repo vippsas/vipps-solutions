@@ -145,7 +145,4 @@ To create a _payment request_, the following parameters can/must be used, depend
 * `scope` - This can be used to request the user to share their telephone number.
 
 
-For more information about extended expiration dates, see [Extended expiration for payments to merchants](../long-expiry-time-for-payments-to-merchants/README.md).
-
-
-
+For more information about extended expiration dates, see [Long-living payments](../long-expiry-time-for-payments-to-merchants/README.md).
