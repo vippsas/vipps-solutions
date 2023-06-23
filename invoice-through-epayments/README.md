@@ -1,7 +1,7 @@
 <!-- START_METADATA
 ---
-title: Vipps MobilePay Payment Request
-sidebar_label: Payment Request
+title: Vipps MobilePay Payment Requests
+sidebar_label: Payment Requests
 description: Using Vipps MobilePay for sending payment requests.
 hide_table_of_contents: true
 pagination_next: null
