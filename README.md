@@ -33,7 +33,6 @@ Examples of how to combine APIs for specific use cases:
 * [In-store payments using static QR](./static-qr-at-pos/README.md)
 * [Vending machines](./vending-machines/README.md)
 * [Payment requests](./invoice-through-epayments/README.md)
-* [Long-living payments](./long-expiry-time-for-payments-to-merchants/README.md)
 * [Subscriptions](./recurring-and-login/README.md)
 * [Electric vehicle charging](./ev-charging/README.md)
 * [Parking and "Pay-as-you-go"](./parking/README.md)
