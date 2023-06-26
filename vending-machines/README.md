@@ -3,7 +3,7 @@
 title: Vipps MobilePay vending machine flow
 sidebar_label: Vending machines
 sidebar_position: 60
-description: Using Vipps with vending machines
+description: Using Vipps MobilePay with vending machines
 pagination_next: null
 pagination_prev: null
 ---
@@ -11,7 +11,7 @@ END_METADATA -->
 
 # Vending machines
 
-Vipps can make it easier for your customers to pay for products in vending machines.
+Vipps MobilePay can make it easier for your customers to pay for products in vending machines.
 The following are the most common scenarios:
 
 * [Dynamic QR directing to the app for payment](one-time-payment.md) *(screen necessary)*

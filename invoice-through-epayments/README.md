@@ -24,13 +24,14 @@ The following section will explain how to implement this feature for a couple sc
 
 ## 1. Payment request sent directly to app
 
-If you have the customer's phone number and their consent to send payment requests through Vipps MobilePay, you can send payment requests directly to the customer.
+If you have the customer's phone number and their consent to send payment requests through Vipps MobilePay,
+you can send payment requests directly to the customer.
 
 The flow for the customer will look like this: ![Payment Request Push flow](images/Payment-request-sent-directly-to-app.png)
 
 1. To create this payment, you first need to make a [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request where `customer.phoneNumber` is set.
-2. The customer will receive a push notification in their Vipps app.
-3. When the customer selects `See details` in the payment confirmation screen, they are presented with the order information provided by the merchant without leaving the Vipps MobilePay app.
+2. The customer will receive a push notification in their Vipps or MobilePay app.
+3. When the customer selects `See details` in the payment confirmation screen, they are presented with the order information provided by the merchant without leaving the app.
 4. The customer approves the payment.
 
    Users also have the option of soft-dismissing the payment and postponing it for later.
@@ -41,12 +42,12 @@ When a merchant does not know the phone number of the user and want to start a p
 
 The flow for the customer will look like this: ![Payment Request landing page flow](images/Payment-request-with-link.png)
 
-1. In your website, mobile app, on paper document or email you send, provide your customers with an option for opting-in to receive payment request for payment Requests in the Vipps app.
-2. Present them with the *Pay with Vipps* option.
+1. In your website, mobile app, on paper document or email you send, provide your customers with an option for opting-in to receive payment request for payment requests in the Vipps or MobilePay app.
+2. Present them with the *Pay with Vipps* or *Pay with MobilePay* option.
 3. Send the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
 
 4. If the customer is on a desktop computer, the
-   [Vipps Landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page)
+   [Vipps MobilePay Landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page)
    opens. If on a mobile device, the Vipps MobilePay app opens automatically.
 
 ## 3. Payment request with sharing of telephone number
@@ -76,7 +77,7 @@ Example body:
       "receiptInfo":{
          "orderLines": [
             {
-               "name": "Vipps socks",
+               "name": "MobilePay socks",
                "id": "line_item_1",
                "totalAmount": 1000,
                "totalAmountExcludingTax": 800,

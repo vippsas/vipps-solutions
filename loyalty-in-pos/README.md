@@ -12,12 +12,12 @@ END_METADATA -->
 
 # In-store payments with customer club
 
-This solution combines multiple Vipps products and makes a great product-market fit for
+This flow makes a great product-market fit for
 retail stores that want to combine loyalty with payments.
 It's a great way to improve the payment experience for customers and simplify the process
 of adding customers to the merchant loyalty club.
 
-The solution is a combination of the personal QR codes in the Vipps app,
+The solution is a combination of the personal QR codes in the Vipps or MobilePay app,
 the
 [Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api),
 the
@@ -141,7 +141,7 @@ With body:
 </div>
 </details>
 
-A notification will appear on the customer's Vipps app.
+A notification will appear on the customer's Vipps or MobilePay app.
 
 Once they authorize the payment, the POS will be updated with the status.
 

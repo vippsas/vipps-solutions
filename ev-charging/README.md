@@ -1,9 +1,8 @@
 <!-- START_METADATA
 ---
-title: Vipps MobilePay electric vehicle charging flow
+title: Electric vehicle charging flow
 sidebar_label: Electric vehicle charging
 sidebar_position: 80
-description: Using Vipps MobilePay for EV charging.
 hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
@@ -12,11 +11,11 @@ END_METADATA -->
 
 # Electric vehicle charging
 
-Vipps is an excellent choice for Electric vehicle (EV) charging as practically all Norwegians have
-the Vipps app in their pocket. This removes the need to download a
+Vipps is an excellent choice for Electric vehicle (EV) charging as practically all Nordic people have
+the Vipps app on their phone. This removes the need to download a
 specific charging app.
 
-Implemented correctly, EV charging with Vipps, is a simple and efficient
+This is a simple and efficient
 solution that lets your customers use your charging network with no hassle.
 
 ![EV charging with Vipps](images/ev-charging-process-icons.png)
@@ -25,7 +24,7 @@ Drop-in charging with Vipps is best implemented using QR codes, scanned either
 with the Vipps app or the phone's camera. Vipps provides a
 [QR API](https://developer.vippsmobilepay.com/docs/APIs/qr-api)
 that can be used in combination with the
-[Vipps ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api)
+[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api)
 to set up and start a Vipps payment.
 
 ## User experience

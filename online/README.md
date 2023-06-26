@@ -12,11 +12,11 @@ END_METADATA -->
 
 # Online payments
 
-This flow combines multiple Vipps products to illustrate the recommended online payment flow.
+This flow combines multiple products to illustrate the recommended online payment flow.
 
-## Step 1. Pay with Vipps
+## Step 1. Pay with Vipps or MobilePay
 
-The user chooses *Pay with Vipps*, on the product page of your website or app.
+The user chooses *Pay with Vipps* or *Pay with MobilePay*, on the product page of your website or app.
 
 Your system can send the payment request by using the
 [create payment endpoint](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/create/).
@@ -53,21 +53,21 @@ Set `userFlow` to `WEB_REDIRECT` and users browser will either do an automatic a
 </div>
 </details>
 
-![Pay with Vipps](images/vipps-ecom-step1-2.png)
+![Pay with Vipps MobilePay](images/vipps-ecom-step1-2.png)
 
-## Step 2. The Vipps landing page (If customer started on desktop)
+## Step 2. The landing page (If customer started on desktop)
 
 If the payment was started on a desktop device, the user will be sent to the
-[Vipps landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page/).
-The user confirms their number and is prompted to log in to Vipps.
+[Vipps MobilePay landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page/).
+The user confirms their number and is prompted to log in to Vipps MobilePay.
 
 If the payment was started from a mobile device, the app automatically switches over to the app.
 
-![Vipps landing page](images/vipps-ecom-step2.svg)
+![Vipps MobilePay landing page](images/vipps-ecom-step2.svg)
 
-## Step 3. Confirm payment in Vipps
+## Step 3. Confirm payment
 
-The user receives a push notification on their phone. They log in to Vipps and confirm the payment.
+The user receives a push notification in their Vipps or MobilePay app. They log in and confirm the payment.
 The payment is reserved, and the user gets a receipt of the successful payment.
 
 ![Confirm payment](images/vipps-ecom-confirm2.png)
@@ -80,7 +80,7 @@ The user is redirected back to your store, and the order is confirmed.
 
 ## Step 5. Add order receipts
 
-After payment, add a payment receipt. This will appear in the Vipps MobilePay app.
+After payment, add a payment receipt. This will appear in the Vipps or MobilePay app.
 
 This `postReceipt` endpoint,
 [`POST:/order-management/v2/{paymentType}/receipts/{orderId}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2),

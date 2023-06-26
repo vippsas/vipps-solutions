@@ -3,7 +3,6 @@
 title: Vipps MobilePay in-store using static QR flow
 sidebar_label: In-store using QR
 sidebar_position: 40
-description: Using Vipps in a physical setting with a static QR code
 pagination_next: null
 pagination_prev: null
 ---
@@ -11,15 +10,17 @@ END_METADATA -->
 
 # In-store using static QR
 
-In this solution, a user pays by scanning a QR (could be on a sticker), followed by the merchant sending a payment request to that user.
+In this flow, a user pays by scanning a QR (could be on a sticker), followed by the merchant sending a payment request to that user. The user will get notified in the Vipps or MobilePay app.
 
-The solution is a combination of the
-[Merchant Callback QRs](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-callback-qr-codes) and the
-[Vipps ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
+**Please note:** This flow requires a customer-facing scanner.
+
+The flow is a combination of the
+[QR API: Merchant Callback QRs](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-callback-qr-codes) and the
+[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 
 The following describes the process at a high level.
 
-![Loyalty Flow](images/static_qr_at_pos.png)
+![User scans QR. Merchant gets ID and sends payment. User pays and gets receipt.](images/static_qr_at_pos.png)
 
 ## Step 1: The user scans the QR
 
@@ -29,13 +30,15 @@ or be printed out and placed on a cash register, a portable POS, or a vending ma
 ## Step 2: Merchant receives an ID
 
 When the user scans the QR, the merchant will receive a notification that the QR has been scanned.
-Meanwhile, the Vipps/MobilePay app will show a waiting screen to the user. Thus, the user understands that the scan was successful.
+Meanwhile, the Vipps or MobilePay app will show a waiting screen to the user. Thus, the user understands that the scan was successful.
 
 ## Step 3: Merchant sends the payment request
 
 When the merchant is ready to get paid, the merchant uses the ID received in previous step to send the payment request to the user through the ePayment API.
 
-## Step 4: The user pays and get a receipt in the app
+## Step 4: The user pays
 
 If the user has the app open, the payment screen will open automatically.
 Otherwise, the payment screen will appear to them upon opening and logging into the app.
+
+The merchant sends a receipt to the user's app.

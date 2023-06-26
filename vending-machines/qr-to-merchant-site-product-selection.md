@@ -19,7 +19,7 @@ A merchant-generated QR code is posted on the vending machine.
 
 When the customer scans the QR code,
 they are taken to the merchant's landing page, where products can select.
-The price is presented, and the user pays for the product in their Vipps app.
+The price is presented, and the user pays for the product in their Vipps or MobilePay app.
 
 **When to use:**
 
@@ -31,6 +31,6 @@ The price is presented, and the user pays for the product in their Vipps app.
 linking to a webshop connected to the specific vending machine. The user selects the products and clicks the `pay` button that generates a
 [Create payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment) based on the selected products.
 
-* Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to Vipps.
+* Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to Vipps or MobilePay.
 
 ![3_qr_to_landing_page_providing_selection](images/3_qr_to_landing_page_providing_selection.png)

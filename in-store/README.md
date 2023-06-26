@@ -13,7 +13,7 @@ END_METADATA -->
 # In-store payments
 
 This is the recommended flow for in-store payments.
-This solution is a combination of the personal QR codes in the Vipps app
+This solution is a combination of the personal QR codes in the Vipps or MobilePay app
 and the
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 
