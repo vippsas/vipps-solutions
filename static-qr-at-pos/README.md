@@ -23,23 +23,28 @@ The following describes the process at a high level.
 
 ![User scans QR. Merchant gets ID and sends payment. User pays and gets receipt.](images/static_qr_at_pos.png)
 
-### Step 1: The user scans the QR
+### Step 1: The customer scans the static QR
 
 The user scans the static merchant callback QR. The QR could for example be shown on a screen,
 or be printed out and placed on a cash register, a portable POS, or a vending machine.
 
-### Step 2: Merchant receives an ID
+### Step 2: Customer sees the waiting screen
+
+The Vipps or MobilePay app will show a waiting screen to the user. Thus, the user understands that the scan was successful.
+
+### Step 3: Merchant receives an ID
 
 When the user scans the QR, the merchant will receive a notification that the QR has been scanned.
-Meanwhile, the Vipps or MobilePay app will show a waiting screen to the user. Thus, the user understands that the scan was successful.
 
-### Step 3: Merchant sends the payment request
+### Step 4: Merchant sends the payment request
 
-When the merchant is ready to get paid, the merchant uses the ID received in previous step to send the payment request to the user through the ePayment API.
+The merchant uses the customer's ID to send the payment request to the user through Vipps MobilePay.
 
-### Step 4: The user pays
+### Step 5: The customer authorizes the payment in their app
 
 If the user has the app open, the payment screen will open automatically.
 Otherwise, the payment screen will appear to them upon opening and logging into the app.
 
-The merchant sends a receipt to the user's app.
+### Step 6: The customer gets a receipt
+
+The merchant sends a receipt through Vipps MobilePay.
