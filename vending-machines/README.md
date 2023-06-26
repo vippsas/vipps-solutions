@@ -2,6 +2,7 @@
 ---
 title: Vipps MobilePay vending machine flow
 sidebar_label: Vending machines
+sidebar_position: 60
 description: Using Vipps with vending machines
 pagination_next: null
 pagination_prev: null

@@ -2,6 +2,7 @@
 ---
 title: Vipps MobilePay Payment Requests
 sidebar_label: Payment Requests
+sidebar_position: 50
 description: Using Vipps MobilePay for sending payment requests.
 hide_table_of_contents: true
 pagination_next: null
@@ -10,12 +11,6 @@ pagination_prev: null
 END_METADATA -->
 
 # Payment Requests
-
-There are some cases where customers need more time to complete a payment, such as:
-
-* Paying at a doctor's office, where the payment request may arrive as the patient
-  is leaving the office and doesn't notice it.
-* Paying at a toll road where the driver cannot stop to complete the payment.
 
 Use Vipps MobilePay to make *long-living payment requests* for your customers by using the `"expiresAt"` feature in
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api)
@@ -149,5 +144,3 @@ To create a *payment request*, the following parameters can/must be used, depend
 * `receiptInfo` (might be renamed)- Order Lines for the payment. The orderlines are the same as referenced in the [Order Management](https://developer.vippsmobilepay.com/docs/APIs/order-management-api) API. This **must** be present.
 * `customer.phoneNumber` - The customer's phone number. This is optional, and will be used if the users phone number is known in advance.
 * `scope` - This can be used to request the user to share their telephone number.
-
-For more information about extended expiration dates, see [Long-living payments](../long-expiry-time-for-payments-to-merchants/README.md).

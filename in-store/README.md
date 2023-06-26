@@ -2,6 +2,7 @@
 ---
 title: Vipps MobilePay in-store payments
 sidebar_label: In-store payments
+sidebar_position: 20
 description: Using Vipps MobilePay in a physical setting
 hide_table_of_contents: true
 pagination_next: null

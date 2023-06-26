@@ -2,6 +2,7 @@
 ---
 title: Vipps MobilePay online payments flow
 sidebar_label: Online payments
+sidebar_position: 10
 description: Using Vipps MobilePay in an online setting
 hide_table_of_contents: true
 pagination_next: null
