@@ -3,6 +3,7 @@
 title: In-store using static QR flow
 sidebar_label: In-store using static QR
 sidebar_position: 40
+hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
 ---
