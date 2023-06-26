@@ -11,16 +11,25 @@ END_METADATA -->
 
 # Payment Requests
 
-Use Vipps MobilePay to make *long living payment requests* for your customers by using the `"expiresAt"` feature in
-[ePayment](https://developer.vippsmobilepay.com/docs/APIs/epayment-api)
-API and receipt information from
-[Order Management](https://developer.vippsmobilepay.com/docs/APIs/order-management-api) API. This will create payment requests that can be seen and postponed by the user, up to 28 days. Note: The APIs are ready, but it is not testable before app updates planned summer 2023.
+There are some cases where customers need more time to complete a payment, such as:
+
+* Paying at a doctor's office, where the payment request may arrive as the patient
+  is leaving the office and doesn't notice it.
+* Paying at a toll road where the driver cannot stop to complete the payment.
+
+Use Vipps MobilePay to make *long-living payment requests* for your customers by using the `"expiresAt"` feature in
+[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api)
+and receipt information from
+[Order Management API](https://developer.vippsmobilepay.com/docs/APIs/order-management-api).
+This will create payment requests that can be seen and postponed by the user, up to 28 days.
+
+Note: The API is ready, but not testable before app updates that are planned summer 2023.
 
 The following section will explain how to implement this feature for a couple scenarios:
 
 ## 1. Payment request sent directly to app
 
-If you have the customer's phone number and their consent to send payment requests through Vipps, you can send payment requests directly to the customer.
+If you have the customer's phone number and their consent to send payment requests through Vipps MobilePay, you can send payment requests directly to the customer.
 
 The flow for the customer will look like this: ![Payment Request Push flow](images/Payment-request-sent-directly-to-app.png)
 
