@@ -2,6 +2,7 @@
 ---
 title: 'Vipps MobilePay parking and "Pay-as-you-go" flow'
 sidebar_label: 'Parking and "Pay-as-you-go"'
+sidebar_position: 90
 description: Using Vipps MobilePay in a parking solution
 hide_table_of_contents: true
 pagination_next: null

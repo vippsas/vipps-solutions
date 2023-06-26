@@ -2,6 +2,7 @@
 ---
 title: Vipps MobilePay in-store using static QR flow
 sidebar_label: In-store using QR
+sidebar_position: 40
 description: Using Vipps in a physical setting with a static QR code
 pagination_next: null
 pagination_prev: null

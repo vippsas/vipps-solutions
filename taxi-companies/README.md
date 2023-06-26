@@ -2,6 +2,7 @@
 ---
 title: Vipps MobilePay taxi payments flow
 sidebar_label: Taxi payments
+sidebar_position: 100
 description: Using Vipps for taxi payments
 hide_table_of_contents: true
 pagination_next: null

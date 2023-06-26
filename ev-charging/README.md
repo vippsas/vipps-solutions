@@ -2,6 +2,7 @@
 ---
 title: Vipps MobilePay electric vehicle charging flow
 sidebar_label: Electric vehicle charging
+sidebar_position: 80
 description: Using Vipps MobilePay for EV charging.
 hide_table_of_contents: true
 pagination_next: null

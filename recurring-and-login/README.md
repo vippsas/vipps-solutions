@@ -2,6 +2,7 @@
 ---
 title: Vipps MobilePay subscriptions flow
 sidebar_label: Subscriptions
+sidebar_position: 70
 description: Simplify subscriptions by using the Login API and Recurring API together.
 pagination_next: null
 pagination_prev: null
