@@ -116,10 +116,10 @@ Finally, capture the payment using the
 </div>
 </details>
 
-![Shipping](images/vipps-shipping.svg)
+![Shipping](images/vipps-shipping.png)
 
 ## 7. Money in the bank
 
 The payment is transferred to your account. This may take 2-3 days depending on your bank.
 
-![Money](images/vipps-money.svg)
+![Money](images/money_bag.png)
