@@ -13,10 +13,13 @@ END_METADATA -->
 
 In this flow, a user pays by scanning a QR, such as a sticker with their Vipps or MobilePay app. The merchant gets their ID and sends a payment request to their app. They approve it, and the merchant sends them a receipt.
 
+Before implementing this flow, please see the recommended [in-store payments flow](../in-store/README.md).
+
 ## Details
 
 The flow is a combination of the
-[QR API: Merchant Callback QRs](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-callback-qr-codes) and the
+[QR API: Merchant Callback QRs](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-callback-qr-codes)
+and the
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 
 The following describes the process at a high level.
