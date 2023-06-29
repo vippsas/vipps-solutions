@@ -19,7 +19,9 @@ and the
 
 ![Loyalty Flow](./images/POS_simple_flow.png)
 
-## Step 1: Identify the customer
+## Details
+
+### Step 1: Identify the customer
 
 The flow begins with the customer presenting their QR code to the merchant. This can happen in two ways:
 
@@ -35,13 +37,13 @@ The customer's personal QR code contains a URL like this:
 When this QR code is scanned, your POS system will get their phone number.
 If you don't have a scanner, you can enter the customer's phone number manually.
 
-## Step 2: Add the products to be purchased
+### Step 2: Add the products to be purchased
 
 Add the products that the customer wants to buy in the POS system.
 
 ![The POS system](images/vipps-in-store-step1.png)
 
-## Step 3: Send a payment request
+### Step 3: Send a payment request
 
 You already have the phone number from step 1, so you don't need to ask for it again.
 Just provide a button in your user interface to allow the cashier to send the payment request.
@@ -82,17 +84,21 @@ With body:
 </div>
 </details>
 
-## Step 4: Customer confirms the order
+### Step 4: Customer confirms the order
 
 The customer confirms the payment in the app.
 
 ![Confirm payment](images/vipps-in-store-step3-2.png)
 
-## Step 5: Register the payment
+### Step 5: Register the payment
 
-Once the customer authorizes the payment, update the POS system with the status.
+Once the customer authorizes the payment, capture the payment and update the POS system with the status.
 
-## Step 6. Add the order receipt
+The
+[`capturePayment` endpoint](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+allows you to capture an ePayment payment.
+
+### Step 6. Add the order receipt
 
 Add a payment receipt that will appear in the Vipps MobilePay app.
 
@@ -101,3 +107,25 @@ The
 allows you to send receipt information to the customer's app.
 This is a combination of *order lines* and a *bottom line* with sum and VAT.
 An *order line* is a description of each item present in the order.
+
+## Sequence diagram
+
+Sequence diagram for the standard in-store payment.
+
+``` mermaid
+sequenceDiagram
+    participant M as Merchant
+    participant ePayment as ePayment API
+    participant ordermanagement as Order Managment API
+    actor U as User
+    M->>U: Scan for customer ID
+    M->>M: Add products to sale
+    M->>ePayment: Initiate payment request
+    ePayment->>U: Request payment
+    U->>ePayment: Authorize payment
+    M->>ePayment: Poll for status
+    ePayment->>M: Callback with status
+    M->>ePayment: Capture payment
+    M->> ordermanagement: Attach receipt
+    ordermanagement->>U: Provide receipt
+```
