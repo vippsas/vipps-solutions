@@ -83,7 +83,7 @@ The user is redirected back to your store, and the order is confirmed.
 After payment, add a payment receipt. This will appear in the Vipps or MobilePay app.
 
 This `postReceipt` endpoint,
-[`POST:/order-management/v2/{paymentType}/receipts/{orderId}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2),
+[`POST:/order-management/v2/ecom/receipts/{reference}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2),
 is for sending receipt information.
 This is a combination of *order lines* and a *bottom line* with sum and VAT.
 An *order line* is a description of each item present in the order.
