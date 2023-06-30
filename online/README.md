@@ -136,7 +136,7 @@ sequenceDiagram
     actor C as Customer
     participant M as Merchant
     participant ePayment as ePayment API
-    participant ordermanagement as Order Managment API
+    participant ordermanagement as Order Management API
     M->>C: Get payment method
     M->>ePayment: Initiate payment request
     ePayment->>C: Request payment

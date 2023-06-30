@@ -117,7 +117,7 @@ sequenceDiagram
     actor U as User
     participant M as Merchant
     participant ePayment as ePayment API
-    participant ordermanagement as Order Managment API
+    participant ordermanagement as Order Management API
     M->>U: Scan for customer ID
     M->>M: Add products to sale
     M->> ordermanagement: Attach receipt

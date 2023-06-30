@@ -159,7 +159,7 @@ sequenceDiagram
     participant M as Merchant
     participant login as Login API
     participant ePayment as ePayment API
-    participant ordermanagement as Order Managment API
+    participant ordermanagement as Order Management API
     M->>U: Scan for customer ID
     M->>M: Check membership
     M->>login: Request membership
