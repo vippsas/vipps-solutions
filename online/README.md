@@ -16,7 +16,7 @@ This flow combines multiple products to illustrate the recommended online paymen
 
 ## Details
 
-### Step 1. Pay with Vipps or MobilePay
+### Step 1. The user selects payment method
 
 The user chooses *Pay with Vipps* or *Pay with MobilePay*, on the product page of your website or app.
 
@@ -26,38 +26,38 @@ Your system can send the payment request by using the
 Set `userFlow` to `WEB_REDIRECT` and users browser will either do an automatic app-switch or open the landing page to confirm the mobile number.
 
 <details>
-  <summary>Detailed example</summary>
-  <div>
-    Here is an example HTTP POST:
+<summary>Detailed example</summary>
+<div>
+Here is an example HTTP POST:
 
-    [`POST:/epayment/v1/payments`](/api/epayment#tag/CreatePayments/operation/createPayment)
+[`POST:/epayment/v1/payments`](/api/epayment#tag/CreatePayments/operation/createPayment)
 
-    With body:
+With body:
 
-    ```json
-    {
-      "amount": {
-        "value": 49900,
-        "currency": "NOK"
-      },
-      "paymentMethod": {
-        "type": "WALLET"
-      },
-      "customer": {
-        "phoneNumber": 4796574209
-      },
-      "reference": 2486791679658155992,
-      "userFlow": "WEB_REDIRECT",
-      "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
-      "paymentDescription": "Purchase of socks"
-    }
-    ```
+```json
+{
+  "amount": {
+    "value": 49900,
+    "currency": "NOK"
+  },
+  "paymentMethod": {
+    "type": "WALLET"
+  },
+  "customer": {
+    "phoneNumber": 4796574209
+  },
+  "reference": 2486791679658155992,
+  "userFlow": "WEB_REDIRECT",
+  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
+  "paymentDescription": "Purchase of socks"
+}
+```
 </div>
 </details>
 
 ![Pay with Vipps MobilePay](images/vipps-ecom-step1-2.png)
 
-### Step 2. The landing page (If customer started on desktop)
+### Step 2. The landing page appears (If customer started on desktop)
 
 If the payment was started on a desktop device, the user will be sent to the
 [Vipps MobilePay landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page/).
@@ -67,22 +67,22 @@ If the payment was started from a mobile device, the app automatically switches 
 
 ![Vipps MobilePay landing page](images/vipps-ecom-step2.svg)
 
-### Step 3. Confirm payment
+### Step 3. The user confirms the payment
 
-The user receives a push notification in their Vipps or MobilePay app. They log in and confirm the payment.
-The payment is reserved, and the user gets a receipt of the successful payment.
+The user receives a push notification in their app. They log in and confirm the payment.
+Reserve the payment, and provide a receipt for the successful payment.
 
 ![Confirm payment](images/vipps-ecom-confirm2.png)
 
-### Step 4. Order Confirmation
+### Step 4. Confirm the order
 
-The user is redirected back to your store, and the order is confirmed.
+The app redirects the user back to your store, where you confirm that the order has been successful.
 
 ![Order confirmation](images/vipps-ecom-step4-2.png)
 
-### Step 5. Add order receipts
+### Step 5. Add a receipt
 
-After payment, add a payment receipt. This will appear in the Vipps or MobilePay app.
+Add a payment receipt to the order. This will appear in their app.
 
 This `postReceipt` endpoint,
 [`POST:/order-management/v2/ecom/receipts/{reference}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2),
@@ -92,36 +92,30 @@ An *order line* is a description of each item present in the order.
 
 ![Order receipt](images/order-receipt.png)
 
-### Step 6. Completing the order and shipping
+### Step 6. Complete and ship the order
 
-The merchant completes the order and ships the order to the customer.
-Finally, capture the payment using the
-[Capture endpoint](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture/).
+Complete and ship the order to the customer before capturing the payment.
 
 <details>
-  <summary>Detailed example</summary>
-  <div>
-    Here is an example HTTP POST:
+<summary>Detailed example</summary>
+<div>
+Here is an example HTTP POST:
 
-    [`POST:/epayment/v1/payments/{reference}/capture`](/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+[`POST:/epayment/v1/payments/{reference}/capture`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
 
-    With body:
+With body:
 
-    ```json
-    {
-      "modificationAmount": {
-        "value": 49900,
-        "currency": "NOK"
-      }
-    }
-    ```
+```json
+{
+  "modificationAmount": {
+    "value": 49900,
+    "currency": "NOK"
+  }
+}
+```
 </div>
 </details>
 
-![Shipping](images/vipps-shipping.png)
-
-### Step 7. Money in the bank
-
 The payment is transferred to your account. This may take 2-3 days depending on your bank.
 
-![Money](images/money_bag.png)
+![Shipping](images/vipps-shipping.png)
