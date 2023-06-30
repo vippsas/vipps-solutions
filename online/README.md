@@ -16,14 +16,24 @@ This flow combines multiple products to illustrate the recommended online paymen
 
 ## Details
 
-### Step 1. The user selects payment method
+### Step 1. Get the customer's the payment method
 
-The user chooses *Pay with Vipps* or *Pay with MobilePay*, on the product page of your website or app.
+Display an option to *Pay with Vipps* or *Pay with MobilePay*, on the product page of your website or app.
 
-Your system can send the payment request by using the
-[create payment endpoint](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/create/).
+### Step 2. Send the payment request to Vipps
 
-Set `userFlow` to `WEB_REDIRECT` and users browser will either do an automatic app-switch or open the landing page to confirm the mobile number.
+Add the products to the order and send the payment request to Vipps.
+
+If the payment was started on a desktop device, the customer will be sent to the
+[Vipps landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page/).
+There, they confirm their number and are prompted to log in through the Vipps app on their phone.
+
+![Landing page](images/vipps-ecom-step2.svg)
+
+If the payment was started from a mobile device, the app automatically switches over to the Vipps app.
+
+![Pay with Vipps MobilePay](images/vipps-ecom-step1-2.png)
+
 
 <details>
 <summary>Detailed example</summary>
@@ -52,31 +62,23 @@ With body:
   "paymentDescription": "Purchase of socks"
 }
 ```
+
+
+Set `userFlow` to `WEB_REDIRECT`, so the customer's browser will either do an automatic app-switch or open the landing page to confirm the mobile number.
 </div>
 </details>
 
-![Pay with Vipps MobilePay](images/vipps-ecom-step1-2.png)
+### Step 3. The customer authorizes the payment
 
-### Step 2. The landing page appears (If customer started on desktop)
-
-If the payment was started on a desktop device, the user will be sent to the
-[Vipps MobilePay landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page/).
-The user confirms their number and is prompted to log in to Vipps MobilePay.
-
-If the payment was started from a mobile device, the app automatically switches over to the app.
-
-![Vipps MobilePay landing page](images/vipps-ecom-step2.svg)
-
-### Step 3. The user confirms the payment
-
-The user receives a push notification in their app. They log in and confirm the payment.
-Reserve the payment, and provide a receipt for the successful payment.
+The customer receives a push notification in their app. They log in and confirm the payment.
+Poll or monitor callbacks to see that the payment is approved, then reserve it and
+provide a receipt.
 
 ![Confirm payment](images/vipps-ecom-confirm2.png)
 
 ### Step 4. Confirm the order
 
-The app redirects the user back to your store, where you confirm that the order has been successful.
+The app redirects the customer back to your store, where you confirm that the order has been successful.
 
 ![Order confirmation](images/vipps-ecom-step4-2.png)
 
@@ -92,9 +94,16 @@ An *order line* is a description of each item present in the order.
 
 ![Order receipt](images/order-receipt.png)
 
-### Step 6. Complete and ship the order
+### Step 6. Ship the order
 
-Complete and ship the order to the customer before capturing the payment.
+Complete and ship the order to the customer.
+![Shipping](images/vipps-shipping.png)
+
+### Step 7. Capture the payment
+
+Capture the payment.
+
+The payment is transferred to your account. This may take 2-3 days depending on your bank.
 
 <details>
 <summary>Detailed example</summary>
@@ -116,6 +125,27 @@ With body:
 </div>
 </details>
 
-The payment is transferred to your account. This may take 2-3 days depending on your bank.
+![Money in the bank](./images/money_bag.png)
 
-![Shipping](images/vipps-shipping.png)
+## Sequence diagram
+
+Sequence diagram for the standard online payment flow.
+
+``` mermaid
+sequenceDiagram
+    actor C as Customer
+    participant M as Merchant
+    participant ePayment as ePayment API
+    participant ordermanagement as Order Managment API
+    M->>C: Get payment method
+    M->>ePayment: Initiate payment request
+    ePayment->>C: Request payment
+    C->>ePayment: Authorize payment
+    ePayment->>ePayment: Reserve payment
+    ePayment->>M: Callback with status
+    M->>C: Display order confirmation
+    M->> ordermanagement: Attach receipt
+    ordermanagement->>C: Provide receipt
+    M->>C: Ship the order
+    M->>ePayment: Capture the payment
+```
