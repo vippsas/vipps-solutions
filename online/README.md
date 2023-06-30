@@ -14,7 +14,9 @@ END_METADATA -->
 
 This flow combines multiple products to illustrate the recommended online payment flow.
 
-## Step 1. Pay with Vipps or MobilePay
+## Details
+
+### Step 1. Pay with Vipps or MobilePay
 
 The user chooses *Pay with Vipps* or *Pay with MobilePay*, on the product page of your website or app.
 
@@ -55,7 +57,7 @@ Set `userFlow` to `WEB_REDIRECT` and users browser will either do an automatic a
 
 ![Pay with Vipps MobilePay](images/vipps-ecom-step1-2.png)
 
-## Step 2. The landing page (If customer started on desktop)
+### Step 2. The landing page (If customer started on desktop)
 
 If the payment was started on a desktop device, the user will be sent to the
 [Vipps MobilePay landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page/).
@@ -65,20 +67,20 @@ If the payment was started from a mobile device, the app automatically switches 
 
 ![Vipps MobilePay landing page](images/vipps-ecom-step2.svg)
 
-## Step 3. Confirm payment
+### Step 3. Confirm payment
 
 The user receives a push notification in their Vipps or MobilePay app. They log in and confirm the payment.
 The payment is reserved, and the user gets a receipt of the successful payment.
 
 ![Confirm payment](images/vipps-ecom-confirm2.png)
 
-## Step 4. Order Confirmation
+### Step 4. Order Confirmation
 
 The user is redirected back to your store, and the order is confirmed.
 
 ![Order confirmation](images/vipps-ecom-step4-2.png)
 
-## Step 5. Add order receipts
+### Step 5. Add order receipts
 
 After payment, add a payment receipt. This will appear in the Vipps or MobilePay app.
 
@@ -90,7 +92,7 @@ An *order line* is a description of each item present in the order.
 
 ![Order receipt](images/order-receipt.png)
 
-## Step 6. Completing the order and shipping
+### Step 6. Completing the order and shipping
 
 The merchant completes the order and ships the order to the customer.
 Finally, capture the payment using the
@@ -118,7 +120,7 @@ Finally, capture the payment using the
 
 ![Shipping](images/vipps-shipping.png)
 
-## 7. Money in the bank
+### Step 7. Money in the bank
 
 The payment is transferred to your account. This may take 2-3 days depending on your bank.
 
