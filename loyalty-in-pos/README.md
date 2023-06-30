@@ -151,7 +151,7 @@ Once they authorize the payment, the POS will be updated with the status.
 
 ## Sequence diagram
 
-Sequence diagram for the standard in-store payment.
+Sequence diagram for in-store payment with customer club.
 
 ``` mermaid
 sequenceDiagram
