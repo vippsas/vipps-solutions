@@ -92,7 +92,7 @@ The customer confirms the payment in the app.
 
 ### Step 5: Register the payment
 
-Once the customer authorizes the payment, capture the payment and update the POS system with the status.
+Once the customer authorizes the payment, update the POS system with the status.
 
 The
 [`capturePayment` endpoint](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
@@ -114,18 +114,17 @@ Sequence diagram for the standard in-store payment.
 
 ``` mermaid
 sequenceDiagram
+    actor U as User
     participant M as Merchant
     participant ePayment as ePayment API
     participant ordermanagement as Order Managment API
-    actor U as User
     M->>U: Scan for customer ID
     M->>M: Add products to sale
+    M->> ordermanagement: Attach receipt
     M->>ePayment: Initiate payment request
     ePayment->>U: Request payment
     U->>ePayment: Authorize payment
-    M->>ePayment: Poll for status
+    ePayment->>ePayment: Capture payment
     ePayment->>M: Callback with status
-    M->>ePayment: Capture payment
-    M->> ordermanagement: Attach receipt
     ordermanagement->>U: Provide receipt
 ```

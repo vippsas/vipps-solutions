@@ -29,7 +29,9 @@ The following describes the process at a high level.
 
 ![Loyalty Flow](images/POS_flow.png)
 
-## Step 1: Scan the QR code
+## Details
+
+### Step 1: Scan the QR code
 
 The flow begins with the customer presenting their QR code to the merchant. This can happen in two ways:
 
@@ -45,7 +47,7 @@ The customer's personal QR code contains a URL like this:
 When this QR code is scanned in the store, the POS will get their phone number.
 This can be used for checking membership, in the next step.
 
-## Step 2: Check membership
+### Step 2: Check membership
 
 In your internal system, check the customer's membership status by using the phone number you received in the previous step.
 
@@ -81,7 +83,7 @@ If they are already a member, skip to step 4.
 
 ![Loyalty Flow](images/POS_step_2.png)
 
-## Step 3: Request membership (optional)
+### Step 3: Request membership (optional)
 
 If the customer is not a member of the loyalty program, you can request to enroll them by using
 the [Vipps Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api).
@@ -98,7 +100,7 @@ When this login flow is completed, the customer will be enrolled in the loyalty 
 
 ![Loyalty Flow](images/POS_step_3.png)
 
-## Step 4: Send a payment request
+### Step 4: Send a payment request
 
 After membership status has been determined and all wares have been scanned, send a payment request to the customer.
 
@@ -146,3 +148,31 @@ A notification will appear on the customer's Vipps or MobilePay app.
 Once they authorize the payment, the POS will be updated with the status.
 
 ![Loyalty Flow](images/POS_step_4.png)
+
+## Sequence diagram
+
+Sequence diagram for in-store payment with customer club.
+
+``` mermaid
+sequenceDiagram
+    actor U as User
+    participant M as Merchant
+    participant login as Login API
+    participant ePayment as ePayment API
+    participant ordermanagement as Order Managment API
+    M->>U: Scan for customer ID
+    M->>M: Check membership
+    M->>login: Request membership
+    login->>U: Consent request
+    U->>login: Give consent
+    login->>M: Get status of request
+    M->>M: If user consents, enroll in membership program
+    M->>M: Add products to sale
+    M->> ordermanagement: Attach receipt
+    M->>ePayment: Initiate payment request
+    ePayment->>U: Request payment
+    U->>ePayment: Authorize payment
+    ePayment->>ePayment: Capture payment
+    ePayment->>M: Callback with status
+    ordermanagement->>U: Provide receipt
+```
