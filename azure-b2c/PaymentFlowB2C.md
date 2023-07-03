@@ -17,7 +17,7 @@
 
 
 
-![Payment flow](./images/paymentflow.png)
+![Payment flow](paymentflow.png)
 
 
 
