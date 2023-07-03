@@ -236,7 +236,7 @@ private async Task PostUser(GraphServiceClient graphClient,string sub, string na
 
 
 
-Make sure that the parameters in `ObjectIdentity` are set to the same values as in the example and that `IssuerAssignedId` is set to the `sub`value received from the Vipps API.
+Make sure that the parameters in `ObjectIdentity` are set to the same values as in the example and that `IssuerAssignedId` is set to the `sub` value received from the Vipps API.
 
 Note: before `PostAsync` can be called, you need to make sure that there are no other users already registered with the same combination of `Issuer` and `IssuerAssignedId`.
 
