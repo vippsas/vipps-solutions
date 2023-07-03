@@ -14,6 +14,8 @@ END_METADATA -->
 
 This flow combines multiple products to illustrate the recommended online payment flow.
 
+![ePayment online process](images/ePayment_online.png)
+
 ## Details
 
 ### Step 1. Get the customer's the payment method
