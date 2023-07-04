@@ -41,7 +41,10 @@ values={[
 </TabItem>
 </Tabs>
 
-1. To create this payment, you first need to make a [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request where `customer.phoneNumber` is set.
+## Details
+
+1. To create this payment, you first send a
+   [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request, where `customer.phoneNumber` is set.
   
   <EX1 />
 
@@ -50,3 +53,25 @@ values={[
 4. The customer approves the payment.
 
    Users also have the option of soft-dismissing the payment and postponing it for later.
+
+## Sequence diagram
+
+Sequence diagram for the standard online payment flow, where payment request is sent directly to app.
+
+``` mermaid
+sequenceDiagram
+    actor C as Customer
+    participant M as Merchant
+    participant ePayment as ePayment API
+
+    M->>ePayment: Initiate payment request
+    M->> ordermanagement: Attach receipt
+    ePayment->>C: Request payment
+    C->>ePayment: Authorize payment
+    ePayment->>ePayment: Reserve payment
+    ePayment->>M: Callback with status
+    M->>C: Display order confirmation
+    ePayment->>C: Provide payment information
+    M->>C: Ship the order
+    M->>ePayment: Capture the payment
+```
