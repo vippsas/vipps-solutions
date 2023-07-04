@@ -17,7 +17,7 @@ END_METADATA -->
 
 # Payment request as a link
 
-When a merchant does not know the phone number of the user and want to start a payment request, you could send them a link to your own landing page that in turn triggers a payment request through Vipps MobilePay API.
+Even if you don't know your customer's phone number, you can start a payment request by sending them a link to your own landing page. This, in turn, can trigger a payment request through Vipps MobilePay API.
 
 The flow for the customer will look like this:
 
@@ -40,12 +40,37 @@ values={[
 </TabItem>
 </Tabs>
 
-1. In your website, mobile app, on paper document or email you send, provide your customers with an option for opting-in to receive payment request for payment requests in the Vipps or MobilePay app.
-2. Present them with the *Pay with Vipps* or *Pay with MobilePay* option.
-3. Send the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
+1. Provide a QR code or link to your payment page where you present your customer with the option to pay with Vipps MobilePay.
+2. When they select to pay with Vipps MobilePay, send the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
 
   <EX1 />
 
-4. If the customer is on a desktop computer, the
-   [Vipps MobilePay Landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page)
-   opens. If on a mobile device, the Vipps MobilePay app opens automatically.
+3. If the customer is a mobile device, the Vipps MobilePay app will open automatically.
+   Otherwise, the
+   [landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page)
+   will open.
+
+4. The customer authorizes the payment, and you provide them with a receipt.
+
+
+## Sequence diagram
+
+Sequence diagram for the standard online payment flow, where payment request is sent as a link.
+
+``` mermaid
+sequenceDiagram
+    actor C as Customer
+    participant M as Merchant
+    participant ePayment as ePayment API
+    
+    M->>ePayment: Initiate payment request
+    M->> ordermanagement: Attach receipt
+    ePayment->>C: Request payment
+    C->>ePayment: Authorize payment
+    ePayment->>ePayment: Reserve payment
+    ePayment->>M: Callback with status
+    M->>C: Display order confirmation
+    ePayment->>C: Provide payment information
+    M-->>C: Ship the order (if applicable)
+    M->>ePayment: Capture the payment
+```
