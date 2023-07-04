@@ -23,22 +23,28 @@ Before implementing this flow, please see the recommended [in-store payments flo
 
 ![User scans QR. Merchant gets ID and sends payment. User pays and gets receipt.](images/static_qr_at_pos.png)
 
-### Step 1: The customer scans the static QR
+### Step 1: Generate a static QR code
 
-The user scans the static merchant callback QR. The QR could for example be shown on a screen,
+Generate a static QR code with a
+[merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+linking to a web page containing the selected product from the vending machine.
+
+The QR could for example be shown on a screen,
 or be printed out and placed on a cash register, a portable POS, or a vending machine.
 
-The Vipps or MobilePay app will show a waiting screen to the user. Thus, the user understands that the scan was successful.
+### Step 2: The customer scans the static QR
 
-### Step 2: Merchant receives an ID
+When the user scans the static merchant callback QR, the Vipps MobilePay app will show a waiting screen to the user.
+
+### Step 3: Merchant receives an ID
 
 When the user scans the QR, the merchant will receive a notification that the QR has been scanned.
 
-### Step 3: Merchant sends the payment request
+### Step 4: Merchant sends the payment request
 
 The merchant uses the customer's ID to send the payment request to the user through Vipps MobilePay.
 
-### Step 4: The customer authorizes the payment in their app
+### Step 5: The customer authorizes the payment in their app
 
 If the user has the app open, the payment screen will open automatically.
 Otherwise, the payment screen will appear to them upon opening and logging into the app.
@@ -53,17 +59,16 @@ Sequence diagram for in-store using static QR.
 
 ``` mermaid
 sequenceDiagram
-    actor App as Vipps app
+    actor C as Customer
     participant M as Merchant
     participant QR as QR API
     participant Webhooks as Webhooks API
     participant ePayment as ePayment API
-    App->>QR: Scan static QR code
-    App->>App: Show waiting screen
+    C->>QR: Scan static QR code
     Webhooks->>M: Callback status
     M->>ePayment: Initiate payment request
-    ePayment->>App: Request payment
-    App->>ePayment: Authorize payment
-    ePayment->>ePayment: Capture payment
-    ePayment->>App: Provide payment information
+    ePayment->>C: Request payment
+    C->>ePayment: Authorize payment
+    M->>ePayment: Capture payment
+    ePayment->>C: Provide payment information
 ```

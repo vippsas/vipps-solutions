@@ -172,7 +172,7 @@ sequenceDiagram
     M->>ePayment: Initiate payment request
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    ePayment->>ePayment: Capture payment
+    M->>ePayment: Capture payment
     ePayment->>M: Callback with status
     ePayment->>C: Provide payment information
 ```

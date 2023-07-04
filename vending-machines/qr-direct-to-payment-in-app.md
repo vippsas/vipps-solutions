@@ -12,13 +12,15 @@ END_METADATA -->
 
 This flow uses a static QR code that is posted on the vending machine. The QR directs the user to the payment screen in their Vipps MobilePay app.
 
-This is a variation of the [In-store using static QR](../static-qr-at-pos/README.md) flow.
+![QR direct to payment](images/1_qr_direct_to_payment.png)
 
 ## When to use
 
 This QR code can be used when you don't have a screen, and it's not possible to present the dynamic [one-time payment QR](one-time-payment.md).
 
 ## Details
+
+This is a variation of the [In-store using static QR](../static-qr-at-pos/README.md) flow.
 
 A Vipps MobilePay [QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes) is posted on the vending machine.
 
@@ -31,7 +33,7 @@ The payment amount should be the max amount of the vending machine products. Aft
 Generate a static QR code with [merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
 linking to a web service.
 
-### Step 2: Your web service generates a payment request
+### Step 2: Generate a payment request
 
 When the user scans the QR code, send a [Create Payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment).
 
@@ -46,25 +48,26 @@ Get the user's approval for the charge and serve the item.
 After reservation and product selection, [capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture) the set amount before
 [cancelling the remaining amount](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture).
 
-![QR direct to payment](images/1_qr_direct_to_payment.png)
-
 ## Sequence diagram
 
 Sequence diagram for the vending machine flow with static QR directing to the app for payment.
 
 ``` mermaid
 sequenceDiagram
-    actor App as Vipps app
+    actor C as Customer
     participant M as Merchant
     participant QR as QR API
     participant Webhooks as Webhooks API
     participant ePayment as ePayment API
-    App->>QR: Scan static QR code
-    App->>App: Show waiting screen
+    
+    C->>M: Select product
+    C->>QR: Scan static QR code
     Webhooks->>M: Callback status
+    M->>M: Add selected product
     M->>ePayment: Initiate payment request
-    ePayment->>App: Request payment
-    App->>ePayment: Authorize payment
-    ePayment->>ePayment: Capture payment
-    ePayment->>App: Provide payment information
+    ePayment->>C: Request payment
+    C->>ePayment: Authorize payment
+    M->>ePayment: Capture payment
+    ePayment->>C: Provide payment information
+    M->>C: Provide sales item
 ```

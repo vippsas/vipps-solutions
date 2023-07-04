@@ -13,6 +13,14 @@ END_METADATA -->
 This flow uses a static QR code that is posted on the vending machine.
 The QR directs the user to the merchant's landing page which provides a user interface for selecting products and paying.
 
+![3_qr_to_landing_page_providing_selection](images/3_qr_to_landing_page_providing_selection.png)
+
+## When to use
+
+This QR code can be used when you don't have a screen, and it's not possible to present the dynamic
+[one-time payment QR](one-time-payment.md)
+and when you want to offer product selection through your user interface.
+
 ## Details
 
 A merchant-generated QR code is posted on the vending machine.
@@ -21,16 +29,40 @@ When the customer scans the QR code,
 they are taken to the merchant's landing page, where products can select.
 The price is presented, and the user pays for the product in their Vipps or MobilePay app.
 
-**When to use:**
+### Step 1: Generate a static QR code
 
-* The merchant redirect QR code can be used when it is not possible to present the dynamic [one-time payment QR](one-time-payment.md).
+Generate a static QR code with a
+[merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+linking to a webshop connected to the specific vending machine.
 
-**How to use:**
+### Step 2: Generate a payment request
 
-* Generate a static QR code with a [merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
-linking to a webshop connected to the specific vending machine. The user selects the products and clicks the `pay` button that generates a
-[Create payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment) based on the selected products.
+When the user selects the products and clicks the `pay` button, generate a
+[Create payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment)
+based on the selected products.
 
-* Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to Vipps or MobilePay.
+Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to Vipps MobilePay.
 
-![3_qr_to_landing_page_providing_selection](images/3_qr_to_landing_page_providing_selection.png)
+## Sequence diagram
+
+Sequence diagram for the vending machine flow with static QR directing to the merchant site for product selection and payment.
+
+``` mermaid
+sequenceDiagram
+    actor App as Vipps app
+    participant M as Merchant
+    participant QR as QR API
+    participant Webhooks as Webhooks API
+    participant ePayment as ePayment API
+
+    App->>QR: Scan static QR code
+    App->>App: Show waiting screen
+    Webhooks->>M: Callback status
+    M->>M: Add selected product(s)
+    M->>ePayment: Initiate payment request
+    ePayment->>App: Request payment
+    App->>ePayment: Authorize payment
+    M->>ePayment: Capture payment
+    ePayment->>App: Provide payment information
+    M->>C: Provide sales item(s)
+```

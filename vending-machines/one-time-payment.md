@@ -11,26 +11,56 @@ END_METADATA -->
 # Dynamic QR directing to the app for payment
 
 This flow uses a one-time payment QR (i.e., a dynamic QR) that is shown on a screen.
-The QR directs the user to the Vipps or MobilePay app, where they authorize the payment.
+The QR directs the customer to the Vipps MobilePay app, where they authorize the payment.
 
-**Please note:** This flow requires that you have a screen connected.
+![One-time payment QR](images/0_one_time_payment_qr.jpg)
+
+## When to use
+
+This is the preferred flow when it's possible to show a dynamic QR code on the vending machine.
+
+Use this flow when you have a screen connected.
 
 ## Details
 
-A [Vipps MobilePay QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#one-time-payment-qr-codes) is presented on the vending machine.
+A [one-time payment QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#one-time-payment-qr-codes) is presented on the vending machine.
+The QR code is a dynamic representation of the payment URL, and the customer needs to scan the QR code within 5 minutes. 
 
 When the customer scans the QR code, they go directly to the Vipps or MobilePay payment screen on their phone, where they can approve the payment.
 
-The QR code is a dynamic representation of the payment URL, and the user needs to scan the QR code within 5 minutes.  
+### Step 1: Generate a dynamic QR code and payment request
 
-**When to use:**
+When the customer selects a product, generate the dynamic QR code and display it on the screen.
 
-* The One-Time payment QR code is the preferred flow when it's possible to show a dynamic QR code on the vending machine.
+To generate the dynamic QR code and associated payment request, send the
+[Create Payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request
+with `"customerInteraction": "CUSTOMER_PRESENT"` and  `"userFlow": "QR"`.
 
-**How to use:**
+### Step 2: Get approval and capture the payment
 
-* [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api) supports both the one-time payment QR and payment in the
-[`CreatePayments` request](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments).
-Specify `"customerInteraction": "CUSTOMER_PRESENT"` and  `"userFlow": "QR"` to generate the QR code to be presented on the customer facing screen.
+When the customer scans the QR code, their Vipps MobilePay app will open, where they can approve the payment.
+You can then capture the payment and supply the product.
+The order confirmation will appear in the customer's app.
 
-![One-time payment QR](images/0_one_time_payment_qr.jpg)
+## Sequence diagram
+
+Sequence diagram for the vending machine flow with dynamic QR directing to the app for payment.
+
+``` mermaid
+sequenceDiagram
+    actor C as Customer
+    participant M as Merchant
+    participant QR as QR API
+    participant Webhooks as Webhooks API
+    participant ePayment as ePayment API
+
+    C->>M: Select product(s)
+    M->>ePayment: Generate dynamic QR code and payment request
+    M->>C: Display QR code on screen
+    C->>QR: Scan QR code
+    ePayment->>C: Request payment
+    C->>ePayment: Authorize payment
+    M->>ePayment: Capture payment
+    ePayment->>C: Provide payment information
+    M->>C: Provide sales item(s)
+```
