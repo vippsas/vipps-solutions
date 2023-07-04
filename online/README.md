@@ -141,13 +141,13 @@ sequenceDiagram
     participant ordermanagement as Order Management API
     M->>C: Get payment method
     M->>ePayment: Initiate payment request
+    M->> ordermanagement: Attach receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
     ePayment->>ePayment: Reserve payment
     ePayment->>M: Callback with status
     M->>C: Display order confirmation
-    M->> ordermanagement: Attach receipt
-    ordermanagement->>C: Provide receipt
+    ePayment->>C: Provide payment information
     M->>C: Ship the order
     M->>ePayment: Capture the payment
 ```
