@@ -114,17 +114,17 @@ Sequence diagram for the standard in-store payment.
 
 ``` mermaid
 sequenceDiagram
-    actor U as User
+    actor C as Customer
     participant M as Merchant
     participant ePayment as ePayment API
     participant ordermanagement as Order Management API
-    M->>U: Scan for customer ID
+    M->>C: Scan for customer ID
     M->>M: Add products to sale
     M->> ordermanagement: Attach receipt
     M->>ePayment: Initiate payment request
-    ePayment->>U: Request payment
-    U->>ePayment: Authorize payment
+    ePayment->>C: Request payment
+    C->>ePayment: Authorize payment
     ePayment->>ePayment: Capture payment
     ePayment->>M: Callback with status
-    ordermanagement->>U: Provide receipt
+    ePayment->>C: Provide payment information
 ```
