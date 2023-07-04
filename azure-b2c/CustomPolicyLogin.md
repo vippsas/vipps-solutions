@@ -1,5 +1,16 @@
-# Vipps login in Azure AD B2C using Custom Policies
+<!-- START_METADATA
+---
+title: Vipps login in Azure AD B2C using custom policies
+sidebar_label: Login with custom policy
+sidebar_position: 200
+pagination_next: null
+pagination_prev: null
+---
+END_METADATA -->
 
+# Vipps login in Azure AD B2C using custom policies
+
+<!-- START_COMMENT -->
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -10,10 +21,11 @@
 - [Upload the policy](#upload-the-policy)
 - [Sequence Diagram of the flow implementation](#sequence-diagram-of-the-flow-implementation)
 - [References](#references)
+<!-- END_COMMENT -->
 
 ## Introduction
 
-This guide will describe how to use Azure AD B2C's custom policies to automatically create and log users in using Vipps. The custom policy implementation will provide the same login process as described in the [Vipps Login API documentation](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-api-howitworks/#the-login-process).
+This guide will describe how to use Azure AD B2C's custom policies to automatically create and log users in using Vipps. The custom policy implementation will provide the same login process as described in the [Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-api-howitworks/#the-login-process) section.
 
 With Azure AD B2C's custom policies, merchants can implement a Vipps login flow by using Vipps as an identity provider. Other identity providers can be configured to correspond to the same user in Azure AD B2C as Vipps. For more details on creating custom policies with identity providers in Azure AD B2C, see [References](#references).
 
@@ -51,13 +63,13 @@ To make the custom policy work with your Azure AD B2C tenant, all files must hav
 
 ## Client ID and secret
 
-To configure the client ID, locate the `<TechnicalProfile Id="Vipps-OpenIdConnect">` in the TrustFrameworkExtentions file. Under `<Metadata>`, locate the `<Item Key="client_id">` field and enter the client id of your test unit.
+To configure the client ID, locate the `<TechnicalProfile Id="Vipps-OpenIdConnect">` in the `TrustFrameworkExtentions` file. Under `<Metadata>`, locate the `<Item Key="client_id">` field and enter the client ID of your test unit.
 
 Also, enter your Merchant Serial number in the field `<Item Key="Merchant-Serial-Number">`.
 
-### Create a policy key
+## Create a policy key
 
-Follow the steps in the _Create a policy key_ section in the [Generic OpenID Connect](https://learn.microsoft.com/en-us/azure/active-directory-b2c/identity-provider-generic-openid-connect?pivots=b2c-custom-policy) documentation. Under `<CryptographicKeys>` enter the name of your policy key.
+To create a policy key, follow the steps in the *Create a policy key* section in the [Generic OpenID Connect](https://learn.microsoft.com/en-us/azure/active-directory-b2c/identity-provider-generic-openid-connect?pivots=b2c-custom-policy) documentation. Under `<CryptographicKeys>` enter the name of your policy key.
 
 For example:
 `<Key Id="client_secret" StorageReferenceId="B2C_1A_VippsSecret"/>`
@@ -66,12 +78,12 @@ For example:
 
 Scope defines the information you are requesting from the users. The `openid` scope must be specified, but the Vipps custom policy template also supports `name`, `email`, and `phoneNumber`. These attributes will be used to create a user in Azure AD B2C.
 
-Additional [scopes provided by Vipps](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/#scopes) can be added, by adding them to _TrustFrameworkExtensions.xml_ and _SignUpOrSignin.xml_.
+Additional [scopes provided by Vipps](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/#scopes) can be added, by adding them to *TrustFrameworkExtensions.xml* and *SignUpOrSignin.xml*.
 
 ## Upload the policy
 
-1. Select the **Identity Experience Framework** menu in your B2C tenant in the Azure portal.
-2. Select _Upload custom policy_.
+1. Select the *Identity Experience Framework* menu in your B2C tenant in the Azure portal.
+2. Select *Upload custom policy*.
 3. In this order, upload the policy files:
 
    a. TrustFrameworkBase.xml
@@ -82,7 +94,7 @@ Additional [scopes provided by Vipps](https://developer.vippsmobilepay.com/docs/
 
    d. SignUpOrSignin.xml
 
-To test the policy select _B2C_1A_signup_signin_, select the web application you wish to test, specify a Reply URL (for example https://jwt.ms), and click _Run Now_.
+To test the policy select *B2C_1A_signup_signin*, select the web application you wish to test, specify a Reply URL (for example <https://jwt.ms>), and click *Run Now*.
 
 ## Sequence Diagram of the flow implementation
 
@@ -125,13 +137,13 @@ sequenceDiagram
 
 ## References
 
-Creating a custom policy
+Creating a custom policy:
 
 - [Azure AD B2C custom policy overview](https://learn.microsoft.com/en-us/azure/active-directory-b2c/custom-policy-overview)
 - [Create user flows and custom policies in Azure Active Directory B2C](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-user-flows?pivots=b2c-custom-policy)
 - [Set up sign-up and sign-in with generic OpenID Connect using Azure Active Directory B2C](https://learn.microsoft.com/en-us/azure/active-directory-b2c/identity-provider-generic-openid-connect?pivots=b2c-custom-policy)
 
-Calling a REST API using a custom policy
+Calling a REST API using a custom policy:
 
 - [Define a RESTful technical profile in an Azure Active Directory B2C custom policy](https://learn.microsoft.com/en-us/azure/active-directory-b2c/restful-technical-profile)
 - [Call a REST API by using Azure Active Directory B2C custom policy](https://learn.microsoft.com/en-us/azure/active-directory-b2c/custom-policies-series-call-rest-api)

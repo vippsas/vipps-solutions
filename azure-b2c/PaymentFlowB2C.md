@@ -1,5 +1,16 @@
-# Vipps login in Azure AD B2C using Custom Policies
+<!-- START_METADATA
+---
+title: Vipps payment flow using Azure AD B2C
+sidebar_label: Payment flow
+sidebar_position: 200
+pagination_next: null
+pagination_prev: null
+---
+END_METADATA -->
 
+# Vipps payment flow using Azure AD B2C
+
+<!-- START_COMMENT -->
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -9,12 +20,13 @@
 - [Store user in Azure AD B2C](#store-user-in-azure-ad-b2c)
 - [Note about custom policies](#note-about-custom-policies)
 - [References](#references)
+<!-- END_COMMENT -->
 
 ## Introduction
 
 ![Payment flow](./images/Paymentflow.png)
 
-The first part of this guide will describe how to implement a simple payment flow where a user can pay for an order and give consent to sharing user info without the need of being signed in. The second part will show how the payment can be used to get information to store a user in Azure AD B2C. The code snippets are using the [Vipps .NET SDK](https://developer.vippsmobilepay.com/docs/SDKs/dotnet-sdk/) to communicate with the internal Vipps APIs. By following these steps, a user can pay for an order and later use Vipps Login to get an overview of his/her orders.
+The first part of this guide will describe how to implement a simple payment flow where a user can pay for an order and give consent to sharing user info without the need of being signed in. The second part will show how the payment can be used to get information to store a user in Azure AD B2C. The code snippets are using the [Vipps .NET SDK](https://developer.vippsmobilepay.com/docs/SDKs/dotnet-sdk/) to communicate with the Vipps API platform. By following these steps, a user can pay for an order and later use Vipps Login to get an overview of his/her orders.
 
 ## Prerequisites
 
@@ -35,7 +47,7 @@ The first part of this guide will describe how to implement a simple payment flo
   };
   ```
 
-  For further explanation refer to the [Vipps SDK](https://developer.vippsmobilepay.com/docs/SDKs/) Documentation.
+  For further explanation, refer to the [SDKs](https://developer.vippsmobilepay.com/docs/SDKs/) section.
 
 ## Sequence Diagram
 
@@ -94,7 +106,7 @@ sequenceDiagram
 
 ## Initiate payment session with profile sharing
 
-To initiate a payment the merchant backend requires the [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/) to create a payment endpoint. The endpoint will return a redirect URL. The redirect URL is where the user is sent to confirm the payment. The Return URL is the URL that the user will be sent to after a successful payment. For example an order confirmation page/endpoint.
+To initiate a payment, the merchant backend requires the [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/) to create a payment endpoint. The endpoint will return a redirect URL. The redirect URL is where the user is sent to confirm the payment. The Return URL is the URL that the user will be sent to after a successful payment. For example, an order confirmation page/endpoint.
 
 The parameters needed to create a payment are:
 
@@ -137,7 +149,7 @@ public async Task<string> CreatePayment(string phoneNumber, long amount, string 
 
 ## Store user in Azure AD B2C
 
-If the user confirms the payment and gives consent to user information, he/she will be redirected to the `ReturnURL`. The merchant is now able to collect user information and store it in Azure AD B2C. In this part, the merchant will have to:
+If the user confirms the payment and gives consent to user information, he/she will be redirected to the `ReturnURL`. The merchant is now able to collect user information and store it in Azure AD B2C. In this part, the merchant must do the following:
 
 1. Get the payment by the reference, and collect the user's sub
 2. Use the sub to collect user information
@@ -178,7 +190,7 @@ public async Task<User?> GetUserInfo(string sub)
 
 ### Store the user information in Azure AD B2C
 
-Once user info has been received from Vipps, we can create and store the users in Azure AD B2C. This can be done through the [Microsoft Graph API](https://learn.microsoft.com/en-us/azure/active-directory-b2c/microsoft-graph-operations). An example of how this can be implemented using the [Microsoft Graph .NET Client Library](https://www.nuget.org/packages/Microsoft.Graph) is shown below
+Once user info has been received from Vipps, you can create and store the users in Azure AD B2C. This can be done through the [Microsoft Graph API](https://learn.microsoft.com/en-us/azure/active-directory-b2c/microsoft-graph-operations). An example of how this can be implemented using the [Microsoft Graph .NET Client Library](https://www.nuget.org/packages/Microsoft.Graph) is shown below.
 
 ```c#
 private async Task PostUser(GraphServiceClient graphClient,string sub, string name, string email, string phoneNumber)
@@ -204,7 +216,7 @@ private async Task PostUser(GraphServiceClient graphClient,string sub, string na
 
 Make sure that the parameters in `ObjectIdentity` are set to the same values as in the example and that `IssuerAssignedId` is set to the `sub` value received from the Vipps API.
 
-Note: before `PostAsync` can be called, you need to make sure that there are no other users already registered with the same combination of `Issuer` and `IssuerAssignedId`.
+Note: before `PostAsync` can be called, make sure that there are no other users already registered with the same combination of `Issuer` and `IssuerAssignedId`.
 
 An example of how to receive a user from B2C is shown below.
 
@@ -225,7 +237,7 @@ This can be used to check if a user has already been created.
 
 ## Note about custom policies
 
-We investigated the possibility of implementing a Vipps payment flow while storing users in B2C as a custom policy similar to [Vipps login using a custom policy](./CustomPolicyLogin.md). One could create multiple policies for each step in the payment process that is called sequentially, but since there currently is no support for passing parameters to a custom policy before it is called, this flow will require a backend. Ultimately this means that it is arguably more cumbersome to use custom policies rather than using the Vipps APIs directly.
+It is possible to implement a Vipps payment flow while storing users in B2C as a custom policy, similar to [Vipps login using a custom policy](./CustomPolicyLogin.md). One could create multiple policies for each step in the payment process that is called sequentially, but since there currently is no support for passing parameters to a custom policy before it is called, this flow will require a backend. Ultimately, this means that it is arguably more cumbersome to use custom policies rather than using the Vipps APIs directly.
 
 ## References
 
