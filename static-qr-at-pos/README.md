@@ -50,4 +50,32 @@ Otherwise, the payment screen will appear to them upon opening and logging into 
 
 ### Step 6: The customer gets a receipt
 
-The merchant sends a receipt through Vipps MobilePay.
+The customer sees the receipt in their Vipps MobilePay app.
+
+## Sequence diagram
+
+Sequence diagram for in-store using static QR.
+
+``` mermaid
+sequenceDiagram
+    actor C as Customer
+    participant M as Merchant
+    participant login as Login API
+    participant ePayment as ePayment API
+    participant ordermanagement as Order Management API
+    M->>C: Scan for customer ID
+    M->>M: Check membership
+    M->>login: Request membership
+    login->>C: Consent request
+    C->>login: Give consent
+    login->>M: Get status of request
+    M->>M: If user consents, enroll in membership program
+    M->>M: Add products to sale
+    M->> ordermanagement: Attach receipt
+    M->>ePayment: Initiate payment request
+    ePayment->>C: Request payment
+    C->>ePayment: Authorize payment
+    ePayment->>ePayment: Capture payment
+    ePayment->>M: Callback with status
+    ordermanagement->>C: Provide receipt
+```
