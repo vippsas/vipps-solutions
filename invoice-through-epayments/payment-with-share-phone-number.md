@@ -37,6 +37,8 @@ values={[
 </TabItem>
 </Tabs>
 
+## Details
+
 This is very similar to [Payment request as a link](payment-sent-as-link.md).
 The difference is that you will also ask the user to share their telephone number.
 This is done by setting the `scope` parameter with a value of `phoneNumber` in the
@@ -45,3 +47,25 @@ This is done by setting the `scope` parameter with a value of `phoneNumber` in t
 After the user have finished the payment, you will get the phone number of the customer. This means you can proceed with scenario 1 in the future and send the payment request directly to the customer. There is more info about fetching user data in the
 [profile sharing](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/profile-sharing/)
 section of the ePayment API guide.
+
+## Sequence diagram
+
+Sequence diagram for the payment request with sharing of telephone number.
+
+``` mermaid
+sequenceDiagram
+    actor C as Customer
+    participant M as Merchant
+    participant ePayment as ePayment API
+    
+    M->>ePayment: Initiate payment request
+    M->> ordermanagement: Attach receipt
+    ePayment->>C: Request payment and consent to phoneNumber
+    C->>ePayment: Authorize payment
+    ePayment->>ePayment: Reserve payment
+    ePayment->>M: Callback with status
+    M->>C: Display order confirmation
+    ePayment->>C: Provide payment information
+    M-->>C: Ship the order (if applicable)
+    M->>ePayment: Capture the payment
+```
