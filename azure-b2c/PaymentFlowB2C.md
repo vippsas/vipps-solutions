@@ -26,7 +26,9 @@ END_METADATA -->
 
 ![Payment flow](./images/Paymentflow.png)
 
-The first part of this guide will describe how to implement a simple payment flow where a user can pay for an order and give consent to sharing user info without the need of being signed in. The second part will show how the payment can be used to get information to store a user in Azure AD B2C. The code snippets are using the [Vipps .NET SDK](https://developer.vippsmobilepay.com/docs/SDKs/dotnet-sdk/) to communicate with the Vipps API platform. By following these steps, a user can pay for an order and later use Vipps Login to get an overview of his/her orders.
+The first part of this guide will describe how to implement a simple payment flow where a user can pay for an order and give consent to sharing user info without the need of being signed in. The second part will show how the payment can be used to get information to store a user in Azure AD B2C.
+
+The code snippets are using the [.NET SDK](https://developer.vippsmobilepay.com/docs/SDKs/dotnet-sdk/) to communicate with the API platform. By following these steps, a user can pay for an order and later use Vipps Login to get an overview of his/her orders.
 
 ## Prerequisites
 
@@ -34,7 +36,7 @@ The first part of this guide will describe how to implement a simple payment flo
 - [Register a web application](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications?tabs=app-reg-ga) to use the [Microsoft Graph API](https://learn.microsoft.com/en-us/azure/active-directory-b2c/microsoft-graph-operations)
 - Create a test unit in the [Vipps portal](https://developer.vippsmobilepay.com/docs/vipps-developers/developer-resources/portal/).
   - Save the `client_id` and `client_secret` for use in later steps.
-- Add the Vipps configuration to Program.cs -
+- Add the Vipps configuration to Program.cs.
 
   ```c#
   var vippsConfigurationOptions = new VippsConfigurationOptions

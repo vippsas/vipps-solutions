@@ -47,7 +47,7 @@ https://yourtenantname.b2clogin.com/yourtenantname.onmicrosoft.com/oauth2/authre
 
 ## Custom policy template
 
-To implement Vipps login as a custom policy you must download the modified version of the Azure AD B2C Custom Policy starter pack. The provided files consist of the essential elements for registration and login using Vipps as an identity provider.
+To implement Vipps login as a custom policy, you must download the modified version of the Azure AD B2C Custom Policy starter pack. The provided files consist of the essential elements for registration and login using Vipps as an identity provider.
 
 Download the following files:
 
@@ -69,7 +69,7 @@ Also, enter your Merchant Serial number in the field `<Item Key="Merchant-Serial
 
 ## Create a policy key
 
-To create a policy key, follow the steps in the *Create a policy key* section in the [Generic OpenID Connect](https://learn.microsoft.com/en-us/azure/active-directory-b2c/identity-provider-generic-openid-connect?pivots=b2c-custom-policy) documentation. Under `<CryptographicKeys>` enter the name of your policy key.
+To create a policy key, follow the steps in the *Create a policy key* section in the [Generic OpenID Connect](https://learn.microsoft.com/en-us/azure/active-directory-b2c/identity-provider-generic-openid-connect?pivots=b2c-custom-policy) documentation. Under `<CryptographicKeys>`, enter the name of your policy key.
 
 For example:
 `<Key Id="client_secret" StorageReferenceId="B2C_1A_VippsSecret"/>`
