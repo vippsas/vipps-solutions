@@ -2,7 +2,6 @@
 
 ## Table of Contents
 
-
 - [Introduction](#introduction)
 - [Prerequisites](#prerequisites)
 - [Sequence Diagram](#sequence-diagram)
@@ -11,28 +10,19 @@
 - [Note about custom policies](#note-about-custom-policies)
 - [References](#references)
 
-
-
 ## Introduction
 
-
-
-![Payment flow](paymentflow.png)
-
-
+![Payment flow](./images/Paymentflow.png)
 
 The first part of this guide will describe how to implement a simple payment flow where a user can pay for an order and give consent to sharing user info without the need of being signed in. The second part will show how the payment can be used to get information to store a user in Azure AD B2C. The code snippets are using the [Vipps .NET SDK](https://developer.vippsmobilepay.com/docs/SDKs/dotnet-sdk/) to communicate with the internal Vipps APIs. By following these steps, a user can pay for an order and later use Vipps Login to get an overview of his/her orders.
 
 ## Prerequisites
-
 
 - [Create an Azure AD B2C tenant](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant).
 - [Register a web application](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications?tabs=app-reg-ga) to use the [Microsoft Graph API](https://learn.microsoft.com/en-us/azure/active-directory-b2c/microsoft-graph-operations)
 - Create a test unit in the [Vipps portal](https://developer.vippsmobilepay.com/docs/vipps-developers/developer-resources/portal/).
   - Save the `client_id` and `client_secret` for use in later steps.
 - Add the Vipps configuration to Program.cs -
-
-
 
   ```c#
   var vippsConfigurationOptions = new VippsConfigurationOptions
@@ -45,20 +35,14 @@ The first part of this guide will describe how to implement a simple payment flo
   };
   ```
 
-
-
   For further explanation refer to the [Vipps SDK](https://developer.vippsmobilepay.com/docs/SDKs/) Documentation.
 
 ## Sequence Diagram
 
 The Azure AD B2C payment flow consists of:
 
-
-
 1. Initiating a payment session
 2. Storing user in Azure AD B2C
-
-
 
 ```mermaid
 
@@ -108,22 +92,16 @@ sequenceDiagram
     Merchant->>User: Display Order Confirmation
 ```
 
-
-
 ## Initiate payment session with profile sharing
 
 To initiate a payment the merchant backend requires the [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/) to create a payment endpoint. The endpoint will return a redirect URL. The redirect URL is where the user is sent to confirm the payment. The Return URL is the URL that the user will be sent to after a successful payment. For example an order confirmation page/endpoint.
 
 The parameters needed to create a payment are:
 
-
-
 - Phone Number: The phone number of the user
 - Amount: The payment amount
 - Payment Description: Description of what the user is paying for
 - Reference: An unique identifier for an order
-
-
 
 ```c#
 public async Task<string> CreatePayment(string phoneNumber, long amount, string paymentDescription, string reference)
@@ -157,7 +135,6 @@ public async Task<string> CreatePayment(string phoneNumber, long amount, string 
     }
 ```
 
-
 ## Store user in Azure AD B2C
 
 If the user confirms the payment and gives consent to user information, he/she will be redirected to the `ReturnURL`. The merchant is now able to collect user information and store it in Azure AD B2C. In this part, the merchant will have to:
@@ -167,8 +144,6 @@ If the user confirms the payment and gives consent to user information, he/she w
 3. Store the user information in Azure AD B2C
 
 ### Get sub from Vipps Payment
-
-
 
 ```c#
 public async Task<string> GetSubFromVippsPayment(string reference)
@@ -181,8 +156,6 @@ public async Task<string> GetSubFromVippsPayment(string reference)
 ### Use the sub to collect user information
 
 To get user information, you will have to use the Login API which is not supported by the SDK. Here, you must configure an HttpClient where you must add a Bearer token in the authorization header. You can get the access token by following the [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/#get-an-access-token) or use the SDK like this:
-
-
 
 ```c#
 public async Task<User?> GetUserInfo(string sub)
@@ -203,14 +176,9 @@ public async Task<User?> GetUserInfo(string sub)
     }
 ```
 
-
-
 ### Store the user information in Azure AD B2C
 
 Once user info has been received from Vipps, we can create and store the users in Azure AD B2C. This can be done through the [Microsoft Graph API](https://learn.microsoft.com/en-us/azure/active-directory-b2c/microsoft-graph-operations). An example of how this can be implemented using the [Microsoft Graph .NET Client Library](https://www.nuget.org/packages/Microsoft.Graph) is shown below
-
-
-
 
 ```c#
 private async Task PostUser(GraphServiceClient graphClient,string sub, string name, string email, string phoneNumber)
@@ -234,15 +202,11 @@ private async Task PostUser(GraphServiceClient graphClient,string sub, string na
 }
 ```
 
-
-
 Make sure that the parameters in `ObjectIdentity` are set to the same values as in the example and that `IssuerAssignedId` is set to the `sub` value received from the Vipps API.
 
 Note: before `PostAsync` can be called, you need to make sure that there are no other users already registered with the same combination of `Issuer` and `IssuerAssignedId`.
 
 An example of how to receive a user from B2C is shown below.
-
-
 
 ```c#
 private async Task<Microsoft.Graph.Models.User?> GetAzureB2CUser(GraphServiceClient graphClient, string sub)
@@ -257,8 +221,6 @@ private async Task<Microsoft.Graph.Models.User?> GetAzureB2CUser(GraphServiceCli
 }
 ```
 
-
-
 This can be used to check if a user has already been created.
 
 ## Note about custom policies
@@ -270,7 +232,7 @@ We investigated the possibility of implementing a Vipps payment flow while stori
 Implementing a payment flow
 
 - [Vipps SDK](https://developer.vippsmobilepay.com/docs/SDKs/)
-- [Vipps ePayment api](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/)
+- [Vipps ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/)
 
 Storing users in Azure AD B2C
 
