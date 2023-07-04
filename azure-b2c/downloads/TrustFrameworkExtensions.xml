@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TrustFrameworkPolicy 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06" 
+  PolicySchemaVersion="0.3.0.0" 
+  TenantId="yourtenantname.onmicrosoft.com" 
+  PolicyId="B2C_1A_TrustFrameworkExtensions" 
+  PublicPolicyUri="http://yourtenantname.onmicrosoft.com/B2C_1A_TrustFrameworkExtensions">
+  
+  <BasePolicy>
+    <TenantId>yourtenantname.onmicrosoft.com</TenantId>
+    <PolicyId>B2C_1A_TrustFrameworkLocalization</PolicyId>
+  </BasePolicy>
+
+  <BuildingBlocks>
+    <ClaimsSchema>
+
+      <ClaimType Id="phoneNumber">
+        <DisplayName>Phone Number</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+
+      <ClaimType Id="identityProviderAccessToken">
+        <DisplayName>Bearer token</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+
+    </ClaimsSchema> 
+
+  </BuildingBlocks>
+
+  <ClaimsProviders>    
+
+    <ClaimsProvider>
+        <DisplayName>User Info REST API</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="VippsUserInfo">
+            <DisplayName>Get User information from Vipps API</DisplayName>
+            <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+            <Metadata>
+              <Item Key="ServiceUrl">https://apitest.vipps.no/vipps-userinfo-api/userinfo</Item>              
+              <Item Key="SendClaimsIn">Header</Item>
+              <Item Key="AuthenticationType">Bearer</Item>
+              <Item Key="UseClaimAsBearerToken">identityProviderAccessToken</Item>
+            </Metadata>
+
+            <InputClaims>
+              <InputClaim ClaimTypeReferenceId="identityProviderAccessToken"/>
+            </InputClaims>
+            
+            <OutputClaims>
+              <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
+              <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+              <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+              <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name" />    
+              <OutputClaim ClaimTypeReferenceId="phoneNumber" PartnerClaimType="phone_number" />            
+            </OutputClaims>             
+
+            <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+          </TechnicalProfile>
+        </TechnicalProfiles>
+      </ClaimsProvider>
+
+
+    <ClaimsProvider>
+        <Domain>yourtenantname.onmicrosoft.com</Domain>
+        <DisplayName>Login with Vipps</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="Vipps-OpenIdConnect">
+            <DisplayName>Vipps</DisplayName>
+            <Description>Login with Vipps</Description>
+            <Protocol Name="OpenIdConnect"/>
+            
+            <Metadata>
+              <Item Key="METADATA">https://apitest.vipps.no/access-management-1.0/access/.well-known/openid-configuration</Item>
+              <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>      
+              <Item Key="response_types">code</Item>
+              <Item Key="Merchant-Serial-Number">000000</Item>          
+              <Item Key="scope">openid email name phoneNumber</Item>
+              <Item Key="response_mode">query</Item>          
+              <Item Key="UsePolicyInRedirectUri">false</Item>
+              <Item Key="HttpBinding">POST</Item>
+            </Metadata>
+
+            <CryptographicKeys>
+              <Key Id="client_secret" StorageReferenceId="B2C_1A_VippsSecret"/>
+            </CryptographicKeys>
+            
+            <OutputClaims>
+              <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub"/>                               
+              <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
+              <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" DefaultValue="https://apitest.vipps.no/access-management-1.0/access/"/>
+              <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="oid"/>
+              <OutputClaim ClaimTypeReferenceId="identityProviderAccessToken" PartnerClaimType="{oauth2:access_token}" />          
+            </OutputClaims>
+            
+            <OutputClaimsTransformations>
+              <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName"/>
+              <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName"/>
+              <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId"/>
+              <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId"/>
+            </OutputClaimsTransformations>
+            <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin"/>
+          </TechnicalProfile>
+        </TechnicalProfiles>
+      </ClaimsProvider>
+
+    </ClaimsProviders>
+
+    <UserJourneys>
+
+      <UserJourney Id="VippsSignUpOrSignIn">
+        <OrchestrationSteps>
+
+          <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+            <ClaimsProviderSelections>
+              <ClaimsProviderSelection TargetClaimsExchangeId="VippsExchange" />
+            </ClaimsProviderSelections>
+          </OrchestrationStep>
+
+          <OrchestrationStep Order="2" Type="ClaimsExchange">
+            <ClaimsExchanges>
+              <ClaimsExchange Id="VippsExchange" TechnicalProfileReferenceId="Vipps-OpenIdConnect" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+
+          <!-- For social IDP authentication, attempt to find the user account in the directory. -->
+          <OrchestrationStep Order="3" Type="ClaimsExchange">
+            <ClaimsExchanges>
+              <ClaimsExchange Id="AADUserReadUsingAlternativeSecurityId" TechnicalProfileReferenceId="AAD-UserReadUsingAlternativeSecurityId-NoError" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+
+          <OrchestrationStep Order="4" Type="ClaimsExchange">
+            <ClaimsExchanges>
+              <ClaimsExchange Id="GetUserInfo" TechnicalProfileReferenceId="VippsUserInfo" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+
+          <!-- Show self-asserted page only if the directory does not have the user account already (i.e. we do not have an objectId).  -->
+          <!-- <OrchestrationStep Order="4" Type="ClaimsExchange">
+            <Preconditions>
+              <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+                <Value>objectId</Value>
+                <Action>SkipThisOrchestrationStep</Action>
+              </Precondition>
+            </Preconditions>
+            <ClaimsExchanges>
+              <ClaimsExchange Id="SelfAsserted-Social" TechnicalProfileReferenceId="SelfAsserted-Social" />
+            </ClaimsExchanges>
+          </OrchestrationStep> -->
+
+          <!-- The previous step (SelfAsserted-Social) could have been skipped if there were no attributes to collect 
+              from the user. So, in that case, create the user in the directory if one does not already exist 
+              (verified using objectId which would be set from the last step if account was created in the directory. -->
+          <OrchestrationStep Order="5" Type="ClaimsExchange">
+            <Preconditions>
+              <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+                <Value>objectId</Value>
+                <Action>SkipThisOrchestrationStep</Action>
+              </Precondition>
+            </Preconditions>
+            <ClaimsExchanges>
+              <ClaimsExchange Id="AADUserWrite" TechnicalProfileReferenceId="AAD-UserWriteUsingAlternativeSecurityId" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+
+          <OrchestrationStep Order="6" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+
+        </OrchestrationSteps>
+        <ClientDefinition ReferenceId="DefaultWeb" />
+      </UserJourney>
+      
+    </UserJourneys>
+
+</TrustFrameworkPolicy>
