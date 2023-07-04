@@ -174,5 +174,5 @@ sequenceDiagram
     C->>ePayment: Authorize payment
     ePayment->>ePayment: Capture payment
     ePayment->>M: Callback with status
-    ordermanagement->>C: Provide receipt
+    ePayment->>C: Provide payment information
 ```
