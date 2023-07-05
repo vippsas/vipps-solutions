@@ -72,5 +72,6 @@ sequenceDiagram
     M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
     M-->>C: Ship the order (if applicable)
-    M->>ePayment: Capture the payment
+    M->>ePayment: Initiate payment capture
+    ePayment->>C: Capture payment
 ```

@@ -70,6 +70,8 @@ The information they have shared with you should be pre-filled in the form, wher
 
 See [Create an agreement](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api/#create-an-agreement) in the Recurring API guide for more information.
 
+If there is an initial payment, specify this in the agreement.
+
 ### Step 6. Accept agreement
 
 The customer accepts the agreement in the Vipps MobilePay app.
@@ -82,11 +84,22 @@ The customer is returned to the merchant's website or app, and the subscription 
 
 ![Confirmation page](images/login-recurring-step7.svg)
 
-### Step 8. Schedule and capture charges
+### Step 8. Capture initial payment (if applicable)
 
-Schedule and capture each specific charge on an agreement.
-See [Charges](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api/#charges)
-in the Recurring API guide for more information.
+If you had an initial payment, the charge for this will have been created as part of the agreement. Then, you will need to capture that reserved amount with the
+[capture](https://developer.vippsmobilepay.com/api/recurring/#tag/Charge-v3-endpoints/operation/RefundChargeV3)
+endpoint.
+
+### Step 9. Schedule and capture charges
+
+Your system must schedule and place all the future agreed charges.
+Use the [create charge](https://developer.vippsmobilepay.com/api/recurring/#tag/Charge-v3-endpoints/operation/CreateChargeV3) endpoint to place the charge and specify the due date. A charge must be scheduled a minimum of two days before the payment will occur.
+It will be automatically captured on the due date.
+
+For more information, see:
+
+* [Recurring API guide: Charges](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api/#charges)
+* [Recurring API quick start guide](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api-quick-start/)
 
 ## Sequence diagram
 
@@ -100,16 +113,18 @@ sequenceDiagram
     participant Recurring as Recurring API
     participant ordermanagement as Order Management API
 
-    M->>Login: Initiate login
-    Login->>C: Initiate login request and information consent
+    M->>Login: Initiate login and userinfo request
+    Login->>C: Request login and userinfo
     C->>Login: Log in and give consent
-    M->>M: If user consents, prefill customer information with option to edit
+    M->>M: If user consents, prefill customer information
     M->>Recurring: Initiate agreement request
     Recurring->>C: Request agreement
     C->>Recurring: Accept agreement
-    M->>C: Display agreement confirmation on product site
     M->> ordermanagement: Attach receipt
     Recurring->>C: Provide agreement information
-    M->>Recurring: Create charges per agreement
-    M->>Recurring: Capture charges per agreement
+    M->>C: Display confirmation on product site
+    M-->>Recurring: Initiate initial payment capture (if applicable)
+    Recurring-->>C: Capture initial payment (if applicable)
+    M->>Recurring: Schedule future charges
+    Recurring->>C: Automatic capture on due dates of scheduled charges
 ```

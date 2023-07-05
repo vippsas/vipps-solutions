@@ -131,8 +131,10 @@ sequenceDiagram
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
     M->>M: Determine amount due after charging
-    M->>ePayment: Capture amount due
-    M->>ePayment: Release remaining amount
-    M->>ordermanagement: Attach receipt showing amount paid
-    M->>C: Provide payment information
+    M->>ordermanagement: Attach receipt showing amount due
+    M->>C: Send a push notification with actual amount paid
+    M->>ePayment: Initiate capture request for amount due
+    M->>ePayment: Release <amount reserved - amount due>
+    ePayment->>C: Capture amount due
+    ePayment->>C: Release amount remaining 
 ```
