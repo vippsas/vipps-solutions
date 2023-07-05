@@ -63,6 +63,7 @@ sequenceDiagram
     participant M as Merchant
     participant ePayment as ePayment API
     
+    C->>M: Customer uses link to get to payment page
     M->>ePayment: Initiate payment request
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
