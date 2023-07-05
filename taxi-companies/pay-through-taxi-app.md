@@ -23,7 +23,7 @@ This flow combines multiple products to illustrate the recommended online paymen
 
 Display an option to pay with Vipps on your app.
 
-### Step 2. Send the payment request to Vipps
+### Step 2. Initiate a payment request to Vipps
 
 Reserve an amount large enough to cover the payment Vipps.
 

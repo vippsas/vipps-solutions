@@ -17,7 +17,7 @@ END_METADATA -->
 
 # Payment request as a link
 
-Even if you don't know your customer's phone number, you can start a payment request by sending them a link to your own landing page. This, in turn, can trigger a payment request through Vipps MobilePay API.
+If you don't know your customer's phone number, you can start by sending them a link to your own landing page. There, you can trigger a payment request through Vipps, which will request their phone number automatically.
 
 The flow for the customer will look like this:
 
