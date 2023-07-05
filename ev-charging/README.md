@@ -11,41 +11,101 @@ END_METADATA -->
 
 # Electric vehicle charging
 
-Vipps is an excellent choice for Electric vehicle (EV) charging as practically all Nordic people have
-the Vipps app on their phone. This removes the need to download a
-specific charging app.
+Vipps is an excellent choice for electric vehicle (EV) charging as practically all Nordic people have
+the app on their phone. This removes the need to download a specific charging app.
 
 This is a simple and efficient
 solution that lets your customers use your charging network with no hassle.
 
-![EV charging with Vipps](images/ev-charging-process-icons.png)
+![EV charging](images/ev-charging-process-icons.png)
 
-Drop-in charging with Vipps is best implemented using QR codes, scanned either
-with the Vipps app or the phone's camera. Vipps provides a
-[QR API](https://developer.vippsmobilepay.com/docs/APIs/qr-api)
-that can be used in combination with the
+Drop-in charging is best implemented using QR codes, scanned either
+with the Vipps app or the phone's camera.
+
+The [QR API](https://developer.vippsmobilepay.com/docs/APIs/qr-api)
+and
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api)
-to set up and start a Vipps payment.
-
-## User experience
+allow you to set up and start a payment.
 
 ![EV charging with Vipps: Screenshots](images/ev-charging-process-screenshots.png)
 
-1. The user scans a QR code on the charging station. Both the camera and the QR scanner in Vipps may be used.
-2. The user is redirected to a website, provided by the charging provider, where they select Vipps as payment option for charging and click *Pay with Vipps*.
-3. Vipps opens automatically, with the maximum reservation amount visible. The user confirms payment.
-4. The user is redirected back to the charging provider's website, where the status of the charge session is presented. The user can stop the charging from this screen or from the charging station's user interface.
-5. When the charging is complete, the user gets a push message stating the final sum that will be deducted from their account.
-6. A receipt with the payment details is available in Vipps.
+## Details
 
-## Charging operator recommendations
+### Step 1. Customer scans the QR code
 
-As the charging provider, we recommend that your technical flow resembles the steps below:
+A Vipps QR code, generated using the [QR API](https://developer.vippsmobilepay.com/docs/APIs/qr-api),
+is placed on the charging station. The QR code contains a link to the merchant's website and identifies the charging station.
 
-1. The QR code on the charging station contains a link to a website provided by the charging provider. It is recommended that the particular charging station / charging point is identified in the QR code. QR codes should be Vipps-branded. This is achieved by generating QR codes using the [QR API](https://developer.vippsmobilepay.com/docs/APIs/qr-api).
-2. The website that the user lands on should contain payment options, in addition to terms and conditions. If the QR code contained an identification of the charging point, the user doesn't have to type in any identification code to start charging. It is also possible to let the user choose maximum amount or reserved amount.
-3. When the user clicks *Pay with Vipps*, your system should [create a payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) with an amount that will cover most charging sessions. Between 350 NOK and 500 NOK is usually sufficient, but with higher electricity costs, this may change.  If payment is approved by the user, this amount will be reserved on user's account.
-4. To get confirmation that payment was approved, monitor [webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and [query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment). Once you know that payment was approved you, can start charging.
-5. When the charging session is completed, you will know the amount the user should pay, and you can [capture](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/capturePayment) the amount due. After you have captured the amount due, you should release the remaining reserved amount on the user's account. This is done by doing a [cancel](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/cancelPayment) API call.
-6. If you are set up in Vipps' systems with the correct MCC (Merchant Category Code) for EV charging (5552), we will automatically send a push notification to the user with the captured amount.
-7. We recommend sending a digital receipt and a hyperlink to the charging session after charging is done. To do this, use the [Order Management API](https://developer.vippsmobilepay.com/docs/APIs/order-management-api).
+The user can scan the QR code using either their mobile camera or the Vipps app.
+
+### Step 2. Customer selects to pay with Vipps
+
+When the customer scans the QR code, they are redirected to the merchant's website, where they select Vipps as payment option for charging and click *Pay with Vipps*.
+
+<details>
+<summary>Details</summary>
+<div>
+
+The website that the user lands on should contain payment options, in addition to terms and conditions. If the QR code contained an identification of the charging point, the user doesn't have to type in any identification code to start charging. It is also possible to let the user choose maximum amount or reserved amount.
+</div>
+</details>
+
+### Step 3. Initiate payment request
+
+When the customer is ready to pay, initiate a
+[payment request](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments).
+
+<details>
+<summary>Details</summary>
+<div>
+
+The payment request amount should be large enough to cover the cost of a charging session. It is usually sufficient to reserve an amount between 350 NOK and 500 NOK, but with higher electricity costs, this may change.
+
+If the payment is approved, this amount will be reserved on user's account. The amount that is unused will be released when they are finished charging.
+</div>
+</details>
+
+
+### Step 4. Customer approves the payment
+
+The customer's Vipps should open automatically, with the maximum reservation amount visible.
+The customer can then confirm the payment.
+
+The user is redirected back to the charging provider's website, where the status of the charge session is presented.
+
+### Step 5. Start charging
+
+Once the user has approved the payment, you can start charging.
+The user can stop the charging at any time from your website screen or from the charging station's user interface.
+
+Stop charging when charging is complete or when the customer selects to stop.
+
+<details>
+<summary>Details</summary>
+<div>
+
+To get confirmation that payment was approved, monitor [webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and [query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment). Once you know that payment was approved you, can start charging.
+
+</div>
+</details>
+
+### Step 5. Capture the payment
+
+When the charging session is completed, [capture](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/capturePayment) the amount due before releasing the remaining reserved amount on the customer's account. This is done by doing a [cancel](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/cancelPayment) API request.
+
+Send a push message stating the final sum that will be deducted from their account.
+
+<details>
+<summary>Details</summary>
+<div>
+
+If you are set up in Vipps' systems with the correct MCC (Merchant Category Code) for EV charging (5552), we will automatically send a push notification to the user with the captured amount.
+</div>
+</details>
+
+### Step 6. Add a receipt
+
+Send a digital receipt and a hyperlink to the charging session after charging is done.
+To do this, use the [Order Management API](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt).
+
+The receipt with the payment details will be provided the customer's Vipps app.
