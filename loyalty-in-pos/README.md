@@ -166,7 +166,6 @@ sequenceDiagram
     M->>login: Request membership
     login->>C: Consent request
     C->>login: Give consent
-    login->>M: Get status of request
     M->>M: If user consents, enroll in membership program
     M->>M: Add product to sale
     M->>ePayment: Initiate payment request
