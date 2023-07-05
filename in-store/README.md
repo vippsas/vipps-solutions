@@ -118,13 +118,13 @@ sequenceDiagram
     participant M as Merchant
     participant ePayment as ePayment API
     participant ordermanagement as Order Management API
-    M->>C: Scan for customer ID
+    
+    QR->>C: Scan for customer ID
     M->>M: Add products to sale
-    M->> ordermanagement: Attach receipt
     M->>ePayment: Initiate payment request
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    M->>ePayment: Capture payment
-    ePayment->>M: Callback with status
+    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
+    M->>ePayment: Capture payment
 ```

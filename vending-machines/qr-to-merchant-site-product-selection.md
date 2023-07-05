@@ -49,20 +49,18 @@ Sequence diagram for the vending machine flow with static QR directing to the me
 
 ``` mermaid
 sequenceDiagram
-    actor App as Vipps app
+    actor C as Customer
     participant M as Merchant
     participant QR as QR API
-    participant Webhooks as Webhooks API
     participant ePayment as ePayment API
+    participant ordermanagement as Order Management API
 
-    App->>QR: Scan static QR code
-    App->>App: Show waiting screen
-    Webhooks->>M: Callback status
-    M->>M: Add selected product(s)
+    QR->>C: Scan for customer ID
+    M->>M: Add product to sale
     M->>ePayment: Initiate payment request
-    ePayment->>App: Request payment
-    App->>ePayment: Authorize payment
+    ePayment->>C: Request payment
+    C->>ePayment: Authorize payment
+    M->> ordermanagement: Attach receipt
+    ePayment->>C: Provide payment information
     M->>ePayment: Capture payment
-    ePayment->>App: Provide payment information
-    M->>C: Provide sales item(s)
 ```

@@ -99,6 +99,7 @@ An *order line* is a description of each item present in the order.
 ### Step 6. Ship the order
 
 Complete and ship the order to the customer.
+
 ![Shipping](images/vipps-shipping.png)
 
 ### Step 7. Capture the payment
@@ -139,13 +140,12 @@ sequenceDiagram
     participant M as Merchant
     participant ePayment as ePayment API
     participant ordermanagement as Order Management API
+
     M->>ePayment: Initiate payment request
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    ePayment->>ePayment: Reserve payment
-    ePayment->>M: Callback with status
     M->>C: Display order confirmation
+    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
     M->>C: Ship the order
     M->>ePayment: Capture the payment

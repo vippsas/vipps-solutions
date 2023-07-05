@@ -64,13 +64,11 @@ sequenceDiagram
     participant ePayment as ePayment API
     
     M->>ePayment: Initiate payment request
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    ePayment->>ePayment: Reserve payment
-    ePayment->>M: Callback with status
-    M->>C: Display order confirmation
-    ePayment->>C: Provide payment information
+    M->>C: Display order confirmation on product page
+    M->> ordermanagement: Attach receipt
+    ePayment->>C: Provide payment information to the app
     M-->>C: Ship the order (if applicable)
     M->>ePayment: Capture the payment
 ```

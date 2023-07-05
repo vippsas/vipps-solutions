@@ -64,11 +64,15 @@ sequenceDiagram
     participant QR as QR API
     participant Webhooks as Webhooks API
     participant ePayment as ePayment API
-    C->>QR: Scan static QR code
+    participant ordermanagement as Order Management API
+
+    QR->>C: Scan for customer ID
     Webhooks->>M: Callback status
+    M->>M: Add product to sale
     M->>ePayment: Initiate payment request
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    M->>ePayment: Capture payment
+    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
+    M->>ePayment: Capture payment
 ```

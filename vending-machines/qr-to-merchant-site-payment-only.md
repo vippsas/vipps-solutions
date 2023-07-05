@@ -56,17 +56,15 @@ sequenceDiagram
     actor C as Customer
     participant M as Merchant
     participant QR as QR API
-    participant Webhooks as Webhooks API
     participant ePayment as ePayment API
+    participant ordermanagement as Order Management API
     
-    C->>M: Select product
-    C->>QR: Scan static QR code
-    Webhooks->>M: Callback with status
-    M->>M: Add selected product
+    QR->>C: Scan for customer ID
+    M->>M: Add product to sale
     M->>ePayment: Initiate payment request
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    M->>ePayment: Capture payment
+    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
-    M->>C: Provide sales item
+    M->>ePayment: Capture payment
 ```
