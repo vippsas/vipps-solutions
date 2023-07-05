@@ -11,39 +11,10 @@ END_METADATA -->
 
 # Taxi payments
 
-Use Vipps MobilePay to simplify the payment flow in your taxi solutions.
+Vipps MobilePay can simplify the payment flow in your taxi solutions.
+The following are the most common scenarios:
 
-## Scenario 1 - Customer scans QR code which leads to payment page
-
-The customer scans a QR and follows instructions to pay from the taxi company's landing page.
-
-The flow is described in the
-[merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-redirect-qr-codes) section.
-
-![Labeling in the taxi](images/labeling_in_the_taxi.png)
-
-## Scenario 2 - Customer orders and pays through taxi app
-
-The customer pays the taxi company from their app when ordering the taxi. The amount is reserved until the final amount is known, at which time the payment is captured.
-
-Read more about the flow in our [how it works guide](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/how-it-works/vipps-epayment-api-how-it-works-online).
-
-![Taxi route](images/taxi_route.png)
-
-## Scenario 3 - Customer orders through taxi app and taximeter initiates the payment request
-
-The customer orders a taxi in the taxi company's app. After the journey, the taximeter automatically initiates a payment request to Vipps MobilePay with the customer's phone number, which is already known.
-The customer's Vipps or MobilePay app open and the customer pays the amount due.
-
-Use the [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api) with `userFlow:PUSH_MESSAGE` and `customerInteraction: CUSTOMER_PRESENT` while initiating the payment.
-
-After final amount is confirmed do a [partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture)
-and release the remaining amount from reservation with a [partial cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture) request.
-
-## Scenario 4 - Taximeter initiates the payment request with manually entered phone number
-
-The driver enters the customer's mobile number into the taximeter, which initiates a push.
-The Vipps or MobilePay app opens on the customer's phone and the customer pays the amount due.
-
-Use the [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api) with `userFlow:PUSH_MESSAGE` and `"customerInteraction": "CUSTOMER_PRESENT"` while initiating the payment.
-Finally, when reservation is completed perform a [full capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#capture-via-the-api).
+* [Customer scans QR code which leads to payment page](scan-qr-to-payment-page.md)
+* [Customer orders and pays through taxi app](pay-through-taxi-app.md)
+* [Customer orders through taxi app and taximeter initiates the payment request](taximeter-initiates-payment-request-with-app.md)
+* [Taximeter initiates the payment request with manually entered phone number](taximeter-initiates-payment-request-with-phone-request.md)
