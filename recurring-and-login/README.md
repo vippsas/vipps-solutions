@@ -102,7 +102,7 @@ sequenceDiagram
 
     M->>Login: Initiate login
     Login->>C: Initiate login request and information consent
-    C->>Login: Give consent
+    C->>Login: Log in and give consent
     M->>M: If user consents, prefill customer information with option to edit
     M->>Recurring: Initiate agreement request
     Recurring->>C: Request agreement
@@ -110,6 +110,6 @@ sequenceDiagram
     M->>C: Display agreement confirmation on product site
     M->> ordermanagement: Attach receipt
     Recurring->>C: Provide agreement information
-    M->>Recurring: Create charges (at agreed intervals)
-    M->>Recurring: Capture charges (at agreed intervals)
+    M->>Recurring: Create charges per agreement
+    M->>Recurring: Capture charges per agreement
 ```

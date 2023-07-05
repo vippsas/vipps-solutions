@@ -33,10 +33,14 @@ allow you to set up and start a payment.
 
 ### Step 1. Customer scans the QR code
 
-A Vipps QR code, generated using the [QR API](https://developer.vippsmobilepay.com/docs/APIs/qr-api),
-is placed on the charging station. The QR code contains a link to the merchant's website and identifies the charging station.
+A Vipps QR code, generated using the QR API,
+is placed on the charging station.
+The QR code contains a link to the merchant's website and identifies the charging station.
 
 The user can scan the QR code using either their mobile camera or the Vipps app.
+
+See [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+in the QR API guide for more details.
 
 ### Step 2. Customer selects to pay with Vipps
 
