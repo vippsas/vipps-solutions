@@ -11,53 +11,105 @@ END_METADATA -->
 
 # Subscriptions
 
-The [Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api) and the [Recurring API](https://developer.vippsmobilepay.com/docs/APIs/recurring-api)
+The
+[Recurring API](https://developer.vippsmobilepay.com/docs/APIs/recurring-api)
+and the
+[Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api)
 can be used together making registration and payment of subscriptions simple for your customers.
-
-## The process
 
 ![Login and recurring process](images/login-recurring-process-v2.svg)
 
-## Step 1. Buy a subscription
+## Details
 
-A user wants to buy a subscription on a merchant’s website or app.
+### Step 1. Customer buys a subscription
+
+A customer wants to buy a subscription through your website or app.
 
 ![Buy subscription](images/login-recurring-step1-v2.svg)
 
-## Step 2. Log in
+### Step 2. Initiate login
 
-The user logs in with Vipps MobilePay on the merchant’s site.
-If the user is remembered in browser, the login will be completed directly in the browser. If not, the user will be taken to the app to authenticate.
+The customer identifies themselves by logging in with Vipps Login.
+
+From a browser:
+
+* If they are remembered from earlier, the login will be completed directly there.
+* Otherwise, they will enter their phone number and be taken to the app to the Vipps app.
+
+From a mobile app:
+
+* They will be switched over to the Vipps MobilePay app automatically.
 
 ![Log in](images/login-recurring-step2-v2.svg)
 
-## Step 3. Confirm login
+### Step 3. Customer confirms login
 
-If the user needs to authenticate in the app, the user will be taken to the Vipps or MobilePay to confirm the login.
+The customer will confirm the login in the Vipps MobilePay app.
+
+If the customer was remembered from an earlier login to this site or app, they will skip this step.
 
 ![Confirm login](images/login-recurring-step3.svg)
 
-## Step 4. Give consent to share information
+### Step 4. Customer gives consent to share information
 
-If the user has not consented to sharing information with the merchant earlier the user needs to give this consent.
-The user may click "See your information" to see the actual information that will be shared, but this is optional.
+The customer will give consent to sharing information with the merchant.
+
+If the customer has previously consented to sharing information with the merchant, they will skip this step.
 
 ![Give consent to share information](images/login-recurring-step4.svg)
 
-## Step 5. Logged in and ready to check out
+The customer can later see the information they have consented to share, by clicking *See your information* in the Vipps MobilePay app.
 
-This step is controlled and designed by the individual merchant. Typically, the user will now be logged in on the merchant’s page, and can proceed to set up the payment for the subscription. The information the user has shared with the merchant is automatically filled in. The merchant can also provide the user with the possibility to edit or add information if necessary.
+### Step 5. Check out
+
+The customer is now logged in to your service and can proceed to set up the payment for the subscription.
+
+The information they have shared with you should be pre-filled in the form, where they have the possibility to update it.
 
 ![Checkout](images/login-recurring-step5-v3.svg)
 
-## Step 6. Accept agreement
+See [Create an agreement](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api/#create-an-agreement) in the Recurring API guide for more information.
 
-The user accepts the agreement in the Vipps or MobilePay app.
+### Step 6. Accept agreement
+
+The customer accepts the agreement in the Vipps MobilePay app.
 
 ![Accept agreement](images/login-recurring-step6-v2.svg)
 
-## 7. Subscription confirmed
+### Step 7. Customer confirms subscription
 
-The user is returned to the merchant's website or app, and the subscription is confirmed on the merchant's site.
+The customer is returned to the merchant's website or app, and the subscription is confirmed on the merchant's site.
 
 ![Confirmation page](images/login-recurring-step7.svg)
+
+### Step 8. Schedule and capture charges
+
+Schedule and capture each specific charge on an agreement.
+See [Charges](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api/#charges)
+in the Recurring API guide for more information.
+
+## Sequence diagram
+
+Sequence diagram for the subscriptions with login flow.
+
+``` mermaid
+sequenceDiagram
+    actor C as Customer
+    participant M as Merchant
+    participant Login as Login API
+    participant Recurring as Recurring API
+    participant ordermanagement as Order Management API
+
+    M->>Login: Initiate login
+    Login->>C: Initiate login request and information consent
+    C->>Login: Give consent
+    M->>M: If user consents, prefill customer information with option to edit
+    M->>Recurring: Initiate agreement request
+    Recurring->>C: Request agreement
+    C->>Recurring: Accept agreement
+    M->>C: Display agreement confirmation on product site
+    M->> ordermanagement: Attach receipt
+    Recurring->>C: Provide agreement information
+    M->>Recurring: Create charges (at agreed intervals)
+    M->>Recurring: Capture charges (at agreed intervals)
+```
