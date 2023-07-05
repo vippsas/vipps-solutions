@@ -1,6 +1,6 @@
 <!-- START_METADATA
 ---
-title: Vipps MobilePay taxi payments flow: Customer scans QR code which leads to payment page
+title: Customer scans QR code which leads to payment page
 sidebar_label: Customer scans QR code which leads to payment page
 sidebar_position: 101
 hide_table_of_contents: true

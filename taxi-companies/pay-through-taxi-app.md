@@ -1,6 +1,6 @@
 <!-- START_METADATA
 ---
-title: Vipps MobilePay taxi payments flow: Customer orders and pays through taxi app
+title: Customer orders and pays through taxi app
 sidebar_label: Customer orders and pays through taxi app
 sidebar_position: 102
 hide_table_of_contents: true
