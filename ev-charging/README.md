@@ -109,3 +109,26 @@ Send a digital receipt and a hyperlink to the charging session after charging is
 To do this, use the [Order Management API](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt).
 
 The receipt with the payment details will be provided the customer's Vipps app.
+
+## Sequence diagram
+
+Sequence diagram for the electric vehicle charging payment flow.
+
+``` mermaid
+sequenceDiagram
+    actor C as Customer
+    participant M as Merchant
+    participant QR as QR API
+    participant ePayment as ePayment API
+    participant ordermanagement as Order Management API
+
+    C->>M: Customer scans QR to get to payment page
+    M->>ePayment: Initiate payment request
+    ePayment->>C: Request payment
+    C->>ePayment: Authorize payment
+    M->>M: Determine amount due after charging
+    M->>ePayment: Capture amount due
+    M->>ePayment: Release remaining amount
+    M->>ordermanagement: Attach receipt showing amount paid
+    M->>C: Provide payment information
+```
