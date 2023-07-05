@@ -77,7 +77,7 @@ sequenceDiagram
 
     Merchant->>Payment landing page: Redirect to the payment landing page
 
-    Payment landing page->>Vipps app: Recieve push for payment
+    Payment landing page->>Vipps app: Receive push for payment
 
     Vipps app->>User: Display payment info
 
