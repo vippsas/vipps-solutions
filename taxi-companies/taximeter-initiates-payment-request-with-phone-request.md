@@ -7,7 +7,7 @@ pagination_prev: null
 ---
 END_METADATA -->
 
-# Vipps payment with manual phone number entry
+# Payment with manual phone number entry
 
 The driver enters the customer's mobile number into the taximeter
 which then initiates a payment request to Vipps.

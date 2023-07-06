@@ -7,7 +7,7 @@ pagination_prev: null
 ---
 END_METADATA -->
 
-# Vipps payment through company website
+# Payment through company website
 
 The customer scans a Vipps QR code and is directed to the taxi company's landing page.
 There, they follow instructions and pay with Vipps.
