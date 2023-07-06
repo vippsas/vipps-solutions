@@ -66,7 +66,6 @@ Be sure to check the status of the captured payment.
 
 ## Sequence diagram
 
-Sequence diagram for in-store using static QR.
 
 ``` mermaid
 sequenceDiagram

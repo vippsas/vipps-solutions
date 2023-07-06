@@ -106,8 +106,6 @@ Read more about the flow:
 
 ## Sequence diagram
 
-Sequence diagram for the payment through the taxi app.
-
 ``` mermaid
 sequenceDiagram
     actor C as Customer

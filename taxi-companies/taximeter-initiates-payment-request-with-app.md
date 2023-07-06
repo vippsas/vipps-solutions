@@ -65,10 +65,7 @@ allows you to capture a payment.
 
 Be sure to check the status of the captured payment.
 
-
 ## Sequence diagram
-
-Sequence diagram for the standard online payment flow, where payment request is sent directly to app.
 
 ``` mermaid
 sequenceDiagram
