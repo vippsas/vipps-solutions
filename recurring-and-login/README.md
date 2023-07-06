@@ -60,7 +60,7 @@ If the customer has previously consented to sharing information with the merchan
 
 The customer can later see the information they have consented to share, by clicking *See your information* in the Vipps MobilePay app.
 
-### Step 5. Check out
+### Step 5. Create agreement
 
 The customer is now logged in to your service and can proceed to set up the payment for the subscription.
 
@@ -129,5 +129,5 @@ sequenceDiagram
     Recurring-->>C: Capture initial payment (if applicable)
     M->>Recurring: Schedule future charges
     Recurring->>C: Automatic capture on due dates of scheduled charges
-    M->>ePayment: Check the status of captures
+    M->>Recurring: Check the status of captures
 ```

@@ -33,20 +33,50 @@ The same solution can of course be used to charge weekly, monthly, or yearly.
 
 ## Details
 
-1. The customer scans a QR code and is sent to the parking company's website.
-   See [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes).
-2. The customer logs in or creates an account with
-   [Login](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-api-howitworks).
-   The customer now has an account, with verified user data, and is able to both log in and pay.
-3. The customer enters an agreement, as usual. See
-   [Create an agreement](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#create-an-agreement).
-4. The customer parks one or more times.
-5. The accumulated parking fees are used to create one charge with the total amount.
-   Vipps MobilePay supports
-   [Recurring agreements with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
-   See:
-   [Create a charge](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#create-a-charge).
-6. Check the status of captured charges.
+
+### Step 1: Generate a static QR code
+
+Generate a static QR code with a
+[merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+linking to your company website.
+
+### Step 2: The customer scans the static QR
+
+When the customer scans the QR, your system will receive a notification that the QR has been scanned and will be able to get the customer's phone number.
+
+### Step 3. The customer logs in
+
+The customer identifies themselves by logging in with Vipps Login.
+
+See
+[How it works in Vipps Login](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-api-howitworks)
+for more details.
+
+### Step 5. Create agreement
+
+The customer now has an account, with verified user data, and is able to both log in and pay.
+Create an agreement using the
+[Draft agreement](https://developer.vippsmobilepay.com/api/recurring/#tag/Agreement-v3-endpoints/operation/DraftAgreementV3)
+endpoint.
+
+For more details, see
+[Create an agreement](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api/#create-an-agreement).
+
+### Step 6. Customer accepts agreement
+
+The customer accepts the agreement in the Vipps MobilePay app.
+
+### Step 7. Charge for variable amounts
+
+The customer parks one or more times.
+The accumulated parking fees are used to create one charge with the total amount.
+
+Vipps MobilePay supports
+[Recurring agreements with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
+See:
+[Create a charge](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#create-a-charge).
+
+Be sure to check the status of the captured payments.
 
 ## Relevant comments
 
@@ -85,9 +115,7 @@ sequenceDiagram
     M->> ordermanagement: Attach receipt
     Recurring->>C: Provide agreement information
     M->>C: Display confirmation on product site
-    M-->>Recurring: Initiate initial payment capture (if applicable)
-    Recurring-->>C: Capture initial payment (if applicable)
-    M->>Recurring: Schedule future charges
-    Recurring->>C: Automatic capture on due dates of scheduled charges
-    M->>ePayment: Check the status of captures
+    M->>Recurring: Initiate payment request for variable amounts
+    Recurring->>C: Automatic capture
+    M->>Recurring: Check the status of captures
 ```
