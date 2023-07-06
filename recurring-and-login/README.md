@@ -96,9 +96,7 @@ Your system must schedule and place all the future agreed charges.
 Use the [create charge](https://developer.vippsmobilepay.com/api/recurring/#tag/Charge-v3-endpoints/operation/CreateChargeV3) endpoint to place the charge and specify the due date. A charge must be scheduled a minimum of two days before the payment will occur.
 It will be automatically captured on the due date.
 
-### Step 10. Check status of charges
-
-Check the status of the captured charges.
+Be sure to check the status of the captured charges.
 
 For more information, see:
 

@@ -23,7 +23,7 @@ The flow is a variation of the [In-store using static QR](../static-qr-at-pos/RE
 
 Generate a static QR code with a
 [merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
-linking to your taximeter system.
+linking to your website or app.
 
 ### Step 2: The customer scans the static QR
 
