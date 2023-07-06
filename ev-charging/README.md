@@ -93,7 +93,15 @@ To get confirmation that payment was approved, monitor [webhooks](https://develo
 </div>
 </details>
 
-### Step 5. Capture the payment
+### Step 5. Add a receipt
+
+Send a digital receipt and a hyperlink to the charging session after charging is done.
+To do this, use the [Order Management API](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt).
+
+The receipt with the payment details will be provided the customer's Vipps app.
+
+
+### Step 6. Capture the payment
 
 When the charging session is completed, [capture](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/capturePayment) the amount due before releasing the remaining reserved amount on the customer's account. This is done by doing a [cancel](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/cancelPayment) API request.
 
@@ -106,13 +114,6 @@ Send a push message stating the final sum that will be deducted from their accou
 If you are set up in Vipps' systems with the correct MCC (Merchant Category Code) for EV charging (5552), we will automatically send a push notification to the user with the captured amount.
 </div>
 </details>
-
-### Step 6. Add a receipt
-
-Send a digital receipt and a hyperlink to the charging session after charging is done.
-To do this, use the [Order Management API](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt).
-
-The receipt with the payment details will be provided the customer's Vipps app.
 
 ## Sequence diagram
 

@@ -40,17 +40,35 @@ values={[
 </TabItem>
 </Tabs>
 
-1. Provide a QR code or link to your payment page where you present your customer with the option to pay with Vipps MobilePay.
-2. When they select to pay with Vipps MobilePay, send the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
+## Details
 
-  <EX1 />
+### Step 1. Give the customer a QR or link to your page
 
-3. If the customer is a mobile device, the Vipps MobilePay app will open automatically.
-   Otherwise, the
-   [landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page)
-   will open.
+Provide a QR code or link to your payment page where you present your customer with the option to pay with Vipps MobilePay.
 
-4. The customer authorizes the payment, and you provide them with a receipt.
+### Step 2. Create a payment request
+
+When they select to pay with Vipps MobilePay, send the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
+
+<EX1 />
+
+### Step 3. Customer approves the payment
+
+The customer's Vipps should open automatically, with the maximum reservation amount visible.
+The customer can then confirm the payment.
+
+If the customer is a mobile device, the Vipps MobilePay app will open automatically.
+Otherwise, the landing page will open.
+
+### Step 4. Add a receipt
+
+Add a receipt using the [Order Management API](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt).
+
+The receipt with the payment details will be provided the customer's Vipps app.
+
+### Step 5. Capture the payment
+
+[Capture](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/capturePayment) the payment.
 
 
 ## Sequence diagram

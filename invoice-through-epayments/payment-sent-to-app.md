@@ -43,16 +43,33 @@ values={[
 
 ## Details
 
-1. To create this payment, you first send a
-   [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request, where `customer.phoneNumber` is set.
-  
-  <EX1 />
+### Step 1. Create a payment request
 
-2. The customer will receive a push notification in their Vipps or MobilePay app.
-3. When the customer selects `See details` in the payment confirmation screen, they are presented with the order information provided by the merchant without leaving the app.
-4. The customer approves the payment.
+To create this payment, you first send a
+[create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request, where `customer.phoneNumber` is set.
 
-   Users also have the option of soft-dismissing the payment and postponing it for later.
+<EX1 />
+
+The customer will receive a push notification in their Vipps MobilePay app.
+
+### Step 2. Customer approves the payment
+
+When the customer selects `See details` in the payment confirmation screen, they are presented with the order information provided by the merchant without leaving the app.
+
+The customer approves the payment.
+
+For long-living payments, customers also have the option of soft-dismissing the payment and postponing it for later.
+
+
+### Step 3. Add a receipt
+
+Add a receipt using the [Order Management API](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt).
+
+The receipt with the payment details will be provided the customer's Vipps app.
+
+### Step 4. Capture the payment
+
+[Capture](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/capturePayment) the payment.
 
 ## Sequence diagram
 

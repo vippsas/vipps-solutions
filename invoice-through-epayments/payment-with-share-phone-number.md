@@ -41,12 +41,43 @@ values={[
 
 This is very similar to [Payment request as a link](payment-sent-as-link.md).
 The difference is that you will also ask the user to share their telephone number.
+
+### Step 1. Give the customer a QR or link to your page
+
+Provide a QR code or link to your payment page where you present your customer with the option to pay with Vipps MobilePay.
+
+### Step 2. Create a payment request
+
+When they select to pay with Vipps MobilePay, send the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request and include a consent request for the user's phone number.
+
 This is done by setting the `scope` parameter with a value of `phoneNumber` in the
 [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
 
-After the user have finished the payment, you will get the phone number of the customer. This means you can proceed with scenario 1 in the future and send the payment request directly to the customer. There is more info about fetching user data in the
+After the customer has finished the payment, you will get their phone number to keep for future purchases. This means that, in the future, you can send the payment request directly to the customer without requesting them to log in.
+
+ There is more info about fetching user data in the
 [profile sharing](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/profile-sharing/)
 section of the ePayment API guide.
+
+
+### Step 3. Customer approves the payment
+
+The customer's Vipps should open automatically, with the maximum reservation amount visible.
+The customer can then confirm the payment.
+
+If the customer is a mobile device, the Vipps MobilePay app will open automatically.
+Otherwise, the landing page will open.
+
+### Step 4. Add a receipt
+
+Add a receipt using the [Order Management API](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt).
+
+The receipt with the payment details will be provided the customer's Vipps app.
+
+### Step 5. Capture the payment
+
+[Capture](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/capturePayment) the payment.
+
 
 ## Sequence diagram
 
@@ -60,7 +91,7 @@ sequenceDiagram
     
     M->>ePayment: Initiate payment request
     ePayment->>C: Request payment and consent to phoneNumber
-    C->>ePayment: Authorize payment
+    C->>ePayment: Authorize payment and consent
     M->>C: Display order confirmation on product page
     M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
