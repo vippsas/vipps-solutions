@@ -7,6 +7,10 @@ hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
 ---
+
+import PARTIALCAPTURE from '../_common/_partial_capture.md'
+import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
+import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
 # Electric vehicle charging
@@ -76,6 +80,15 @@ They can then confirm the payment.
 
 The user is redirected back to the charging provider's website, where the status of the charge session is presented.
 
+<details>
+<summary>Details</summary>
+<div>
+
+<AUTHORIZEPAYMENT />
+
+</div>
+</details>
+
 ### Step 5. Start charging
 
 Once the user has approved the payment, you can start charging.
@@ -83,34 +96,16 @@ The user can stop the charging at any time from your website screen or from the 
 
 Stop charging when charging is complete or when the customer selects to stop.
 
-<details>
-<summary>Details</summary>
-<div>
-
-To get confirmation that payment was approved, monitor
-[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
-[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
-Once you know that payment was approved you, can start charging.
-
-</div>
-</details>
 
 ### Step 5. Add a receipt
 
 Send a digital receipt and a hyperlink to the charging session after charging is done.
-To do this, use the
-[`postReceipt`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2) endpoint.
 
-The receipt with the payment details will be provided the customer's Vipps app.
-
-See
-[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
-for more details.
+<ATTACHRECEIPT />
 
 ### Step 6. Capture the payment
 
-After final amount is confirmed, do a [partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture)
-and release the remaining amount from reservation with a [partial cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture) request.
+<PARTIALCAPTURE />
 
 <details>
 <summary>Details</summary>
@@ -120,7 +115,6 @@ If you are set up in Vipps' systems with the correct MCC (Merchant Category Code
 </div>
 </details>
 
-Be sure to check the status of the captured payment.
 
 ## Sequence diagram
 

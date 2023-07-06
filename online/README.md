@@ -8,6 +8,8 @@ hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
 ---
+import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
+import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
 # Online payments
@@ -18,31 +20,23 @@ This flow combines multiple products to illustrate the recommended online paymen
 
 ## Details
 
-### Step 1. Get the customer's the payment method
+### Step 1. Add an option to pay with Vipps
 
-Display an option to *Pay with Vipps* or *Pay with MobilePay*, on the product page of your website or app.
+Add the option to pay with Vipps on the product page of your website.
 
 ### Step 2. Send the payment request to Vipps
 
-Add the products to the order and send the payment request to Vipps.
-
-If the payment was started on a desktop device, the customer will be sent to the
-[Vipps landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page/).
-There, they confirm their number and are prompted to log in through the Vipps app on their phone.
-
-![Landing page](images/vipps-ecom-step2.svg)
-
-If the payment was started from a mobile device, the app automatically switches over to the Vipps app.
-
-![Pay with Vipps MobilePay](images/vipps-ecom-step1-2.png)
-
+When the user selects to pay with Vipps, send a payment request through Vipps.
 
 <details>
-<summary>Detailed example</summary>
+<summary>Details</summary>
 <div>
-Here is an example HTTP POST:
 
-[`POST:/epayment/v1/payments`](/api/epayment#tag/CreatePayments/operation/createPayment)
+Your system can send the payment request by using the
+[`createPayment`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+endpoint.
+
+Here is an example of the parameters for this HTTP POST:
 
 With body:
 
@@ -65,22 +59,29 @@ With body:
 }
 ```
 
-
 Set `userFlow` to `WEB_REDIRECT`, so the customer's browser will either do an automatic app-switch or open the landing page to confirm the mobile number.
 </div>
 </details>
 
 ### Step 3. The customer authorizes the payment
 
-The payment request will appear in the customer's Vipps app where they can authorize the payment.
+If the payment was started on a desktop device, the customer will be sent to the
+[Vipps landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page/).
+There, they confirm their number and are prompted to log in through the Vipps app on their phone.
 
-To get confirmation that payment was approved, monitor
-[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
-[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
+![Landing page](images/vipps-ecom-step2.svg)
 
-![Confirm payment](images/vipps-ecom-confirm2.png)
+If the payment was started from a mobile device, the app automatically switches over to the Vipps app.
+
+![Pay with Vipps MobilePay](images/vipps-ecom-step1-2.png)
+
+<AUTHORIZEPAYMENT />
 
 ### Step 4. Confirm the order
+
+When the user confirms the payment, they will get a confirmation in the app.
+
+![Confirm payment](images/vipps-ecom-confirm2.png)
 
 The app redirects the customer back to your store, where you confirm that the order has been successful.
 
@@ -107,11 +108,7 @@ Complete and ship the order to the customer.
 
 ### Step 7. Capture the payment
 
-The
-[`capturePayment`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment) endpoint
-allows you to capture a payment.
-
-Be sure to check the status of the captured payment.
+<FULLCAPTURE />
 
 
 The payment is transferred to your account. This may take 2-3 days depending on your bank.

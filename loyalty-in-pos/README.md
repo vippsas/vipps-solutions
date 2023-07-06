@@ -8,6 +8,10 @@ hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
 ---
+
+import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
+import ATTACHRECEIPT from '../_common/_attach_receipt.md'
+import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
 # In-store payments with customer club
@@ -104,6 +108,12 @@ When this login flow is completed, the customer will be enrolled in the loyalty 
 
 After membership status has been determined and all wares have been scanned, send a payment request to the customer.
 
+
+
+<details>
+<summary>Details</summary>
+<div>
+
 You already have the phone number from step 1, so you don't need to ask for it again.
 Just provide a button in your user interface to allow the cashier to send the payment request.
 
@@ -113,14 +123,7 @@ endpoint.
 
 Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer who scanned the QR code, and after the payment is completed, the POS will be updated with the status of the payment.
 
-<details>
-<summary>Detailed example</summary>
-<div>
-Here is an example HTTP POST:
-
-[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
-
-With body:
+Here is an example of the parameters for this HTTP POST:
 
 ```json
 {
@@ -146,37 +149,17 @@ With body:
 
 ### Step 5. Customer approves the payment
 
-The payment request will appear in the customer's Vipps app where they can authorize the payment.
-
-To get confirmation that payment was approved, monitor
-[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
-[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
-
-### Step 6. Update the POS system
-
-Once the customer authorizes the payment, update the POS system with the status.
+<AUTHORIZEPAYMENT />
 
 ![Loyalty Flow](images/POS_step_4.png)
 
-### Step 7. Attach a receipt to the order
+### Step 6. Attach a receipt to the order
 
-The
-[`postReceipt`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2) endpoint
-allows you to send receipt information to the customer's app.
+<ATTACHRECEIPT />
 
-The customer will get the receipt in their Vipps MobilePay app.
+### Step 7: Capture the payment
 
-See
-[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
-for more details.
-
-### Step 8: Capture the payment
-
-The
-[`capturePayment`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment) endpoint
-allows you to capture a payment.
-
-Be sure to check the status of the captured payment.
+<FULLCAPTURE />
 
 ## Sequence diagram
 

@@ -5,6 +5,10 @@ hide_table_of_contents: false
 pagination_next: null
 pagination_prev: null
 ---
+
+import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
+import ATTACHRECEIPT from '../_common/_attach_receipt.md'
+import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
 # Payment with manual phone number entry
@@ -28,34 +32,18 @@ Use `userFlow:PUSH_MESSAGE` and `"customerInteraction": "CUSTOMER_PRESENT"` whil
 
 ### Step 3. The customer approves the payment
 
-The payment request will appear in the customer's Vipps app where they can authorize the payment.
-
-To get confirmation that payment was approved, monitor
-[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
-[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
+<AUTHORIZEPAYMENT />
 
 ### Step 4. Attach a receipt to the order
 
-The
-[`postReceipt`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2) endpoint
-allows you to send receipt information to the customer's app.
-
-The customer will get the receipt in their Vipps MobilePay app.
-
-See
-[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
-for more details.
+<ATTACHRECEIPT />
 
 ### Step 5. Capture the amount
 
 When reservation is complete, perform a
 [capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#capture-via-the-api).
 
-The
-[`capturePayment`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment) endpoint
-allows you to capture a payment.
-
-Be sure to check the status of the captured payment.
+<FULLCAPTURE />
 
 ## Sequence diagram
 

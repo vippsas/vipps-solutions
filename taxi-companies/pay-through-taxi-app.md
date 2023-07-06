@@ -5,6 +5,11 @@ hide_table_of_contents: false
 pagination_next: null
 pagination_prev: null
 ---
+
+import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
+import ATTACHRECEIPT from '../_common/_attach_receipt.md'
+import PARTIALCAPTURE from '../_common/_partial_capture.md'
+import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
 # Payment through company app
@@ -28,75 +33,49 @@ Reserve an amount large enough to cover the payment Vipps.
 
 The app automatically switches over to the Vipps app.
 
-
-<details>
-<summary>Detailed example</summary>
-<div>
-Here is an example HTTP POST:
-
 [`POST:/epayment/v1/payments`](/api/epayment#tag/CreatePayments/operation/createPayment)
 
-With body:
-
-```json
-{
-  "amount": {
-    "value": 49900,
-    "currency": "NOK"
-  },
-  "paymentMethod": {
-    "type": "WALLET"
-  },
-  "customer": {
-    "phoneNumber": 4796574209
-  },
-  "reference": 2486791679658155992,
-  "userFlow": "WEB_REDIRECT",
-  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
-  "paymentDescription": "Purchase of socks"
-}
-```
-
 Set `userFlow` to `WEB_REDIRECT`, so the customer's browser will either do an automatic app-switch or open the landing page to confirm the mobile number.
-</div>
-</details>
+
 
 ### Step 3. The customer authorizes the payment
 
 The customer's Vipps should open automatically, with the maximum reservation amount visible.
 They can then confirm the payment.
 
-To get confirmation that payment was approved, monitor
-[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
-[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
+
+<details>
+<summary>Details</summary>
+<div>
+
+<AUTHORIZEPAYMENT />
+
+</div>
+</details>
 
 ### Step 4. Confirm the order
 
 Upon authorization, the Vipps app should automatically redirect the customer to your app.
-Confirm that the order has been successful in your app.
+Show that the order has been successful in your app.
 
 ### Step 5. Add a receipt
 
 After the drive is complete, calculate how much the customer owes and provide a receipt.
-Add a payment receipt to the order by using the
-[`postReceipt`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
-endpoint.
 
-This will appear in their app.
 
-See
-[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
-for more details.
+<details>
+<summary>Details</summary>
+<div>
+
+<ATTACHRECEIPT />
+
+</div>
+</details>
 
 ### Step 7. Capture the amount due
 
-[Capture](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/capturePayment)
-the amount due before releasing the remaining reserved amount on the customer's account.
 
-Release the remaining about by sending a
-[cancel](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/cancelPayment) API request.
-
-Check the status of the captured payment.
+<PARTIALCAPTURE />
 
 Read more about the flow:
 
