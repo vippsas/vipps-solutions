@@ -54,7 +54,7 @@ To get confirmation that payment was approved, monitor
 ### Step 4: Attach a receipt to the order
 
 The
-[`postReceipt` endpoint](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+[`postReceipt`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2) endpoint
 allows you to send receipt information to the customer's app.
 
 The customer will get the receipt in their Vipps MobilePay app.
@@ -68,7 +68,7 @@ for more details.
 Once the customer authorizes the payment, update the POS system with the status.
 
 The
-[`capturePayment` endpoint](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+[`capturePayment`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment) endpoint
 allows you to capture a payment.
 
 Be sure to check the status of the captured payment.

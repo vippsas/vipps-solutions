@@ -59,7 +59,7 @@ Check the status of these operations.
 ### Step 5: Attach a receipt to the order
 
 The
-[`postReceipt` endpoint](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+[`postReceipt`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2) endpoint
 allows you to send receipt information to the customer's app.
 
 The customer will get the receipt in their Vipps MobilePay app.

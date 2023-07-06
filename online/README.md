@@ -108,7 +108,7 @@ Complete and ship the order to the customer.
 ### Step 7. Capture the payment
 
 The
-[`capturePayment` endpoint](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+[`capturePayment`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment) endpoint
 allows you to capture a payment.
 
 Be sure to check the status of the captured payment.

@@ -108,7 +108,8 @@ You already have the phone number from step 1, so you don't need to ask for it a
 Just provide a button in your user interface to allow the cashier to send the payment request.
 
 Your system can send the payment request by using the
-[create payment endpoint](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment).
+[`createPayment`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+endpoint.
 
 Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer who scanned the QR code, and after the payment is completed, the POS will be updated with the status of the payment.
 
@@ -160,7 +161,7 @@ Once the customer authorizes the payment, update the POS system with the status.
 ### Step 7. Attach a receipt to the order
 
 The
-[`postReceipt` endpoint](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+[`postReceipt`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2) endpoint
 allows you to send receipt information to the customer's app.
 
 The customer will get the receipt in their Vipps MobilePay app.
@@ -172,7 +173,7 @@ for more details.
 ### Step 8: Capture the payment
 
 The
-[`capturePayment` endpoint](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+[`capturePayment`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment) endpoint
 allows you to capture a payment.
 
 Be sure to check the status of the captured payment.
