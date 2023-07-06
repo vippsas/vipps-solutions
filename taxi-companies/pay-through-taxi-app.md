@@ -1,17 +1,16 @@
 <!-- START_METADATA
 ---
-title: Customer orders and pays through taxi app
-sidebar_label: Customer orders and pays through taxi app
 sidebar_position: 102
-hide_table_of_contents: true
+hide_table_of_contents: false
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Customer orders and pays through taxi app
+# Payment through company app
 
-The customer pays the taxi company from their app when ordering the taxi. The amount is reserved until the final amount is known, at which time the payment is captured.
+The customer pays the taxi company from their app when ordering the taxi and selects to pay with Vipps.
+The amount is reserved until the final amount is known, at which time the payment is captured.
 
 ![Taxi route](images/taxi_route.png)
 

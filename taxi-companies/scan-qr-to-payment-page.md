@@ -1,17 +1,16 @@
 <!-- START_METADATA
 ---
-title: Customer scans QR code which leads to payment page
-sidebar_label: Customer scans QR code which leads to payment page
 sidebar_position: 101
-hide_table_of_contents: true
+hide_table_of_contents: false
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Customer scans QR code which leads to payment page
+# Vipps payment through company website
 
-The customer scans a QR and follows instructions to pay from the taxi company's landing page.
+The customer scans a Vipps QR code and is directed to the taxi company's landing page.
+There, they follow instructions and pay with Vipps.
 
 ![Labeling in the taxi](images/labeling_in_the_taxi.png)
 
@@ -65,7 +64,6 @@ allows you to capture a payment.
 Be sure to check the status of the captured payment.
 
 ## Sequence diagram
-
 
 ``` mermaid
 sequenceDiagram

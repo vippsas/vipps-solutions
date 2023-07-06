@@ -109,9 +109,8 @@ for more details.
 
 ### Step 6. Capture the payment
 
-When the charging session is completed, [capture](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/capturePayment) the amount due before releasing the remaining reserved amount on the customer's account. This is done by doing a [cancel](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/cancelPayment) API request.
-
-Send a push message stating the final sum that will be deducted from their account.
+After final amount is confirmed, do a [partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture)
+and release the remaining amount from reservation with a [partial cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture) request.
 
 <details>
 <summary>Details</summary>

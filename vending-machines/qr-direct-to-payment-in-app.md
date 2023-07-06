@@ -51,10 +51,8 @@ To get confirmation that payment was approved, monitor
 
 ### Step 4: Capture the payment
 
-[Capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture) the set amount.
-
-Release the remaining amount by using the
-[cancel endpoint](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture).
+After final amount is confirmed, do a [partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture)
+and release the remaining amount from reservation with a [partial cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture) request.
 
 Check the status of these operations.
 

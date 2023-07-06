@@ -1,17 +1,16 @@
 <!-- START_METADATA
 ---
-title: Customer orders through taxi app and taximeter initiates the payment request
-sidebar_label: Customer orders through taxi app and taximeter initiates the payment request
 sidebar_position: 103
-hide_table_of_contents: true
+hide_table_of_contents: false
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Taximeter initiates the payment request with manually entered phone number
+# Vipps payment with manual phone number entry
 
-The driver enters the customer's mobile number into the taximeter, which initiates a push.
+The driver enters the customer's mobile number into the taximeter
+which then initiates a payment request to Vipps.
 The Vipps app opens on the customer's phone and the customer pays the amount due.
 
 ## Details

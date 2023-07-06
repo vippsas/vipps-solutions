@@ -14,10 +14,9 @@ END_METADATA -->
 Vipps MobilePay can simplify the payment flow in your taxi solutions.
 The following are the most common scenarios:
 
-* [Customer scans QR code which leads to payment page](scan-qr-to-payment-page.md)
-* [Customer orders and pays through taxi app](pay-through-taxi-app.md)
-* [Customer orders through taxi app and taximeter initiates the payment request](taximeter-initiates-payment-request-with-app.md)
-* [Taximeter initiates the payment request with manually entered phone number](taximeter-initiates-payment-request-with-phone-request.md)
-
+* [Payment through company website](scan-qr-to-payment-page.md)
+* [Payment through company app](pay-through-taxi-app.md)
+* [Payment through taximeter and app](taximeter-initiates-payment-request-with-app.md)
+* [Payment with manual phone number entry](taximeter-initiates-payment-request-with-phone-request.md)
 
 ![Taxi](images/taxi.png)
