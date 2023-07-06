@@ -18,3 +18,6 @@ The following are the most common scenarios:
 * [Customer orders and pays through taxi app](pay-through-taxi-app.md)
 * [Customer orders through taxi app and taximeter initiates the payment request](taximeter-initiates-payment-request-with-app.md)
 * [Taximeter initiates the payment request with manually entered phone number](taximeter-initiates-payment-request-with-phone-request.md)
+
+
+![Taxi](images/taxi.png)
