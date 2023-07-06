@@ -60,16 +60,29 @@ The customer approves the payment.
 
 For long-living payments, customers also have the option of soft-dismissing the payment and postponing it for later.
 
+To get confirmation that payment was approved, monitor
+[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
+[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
 
-### Step 3. Add a receipt
+### Step 3. Attach a receipt to the order
 
-Add a receipt using the [Order Management API](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt).
+The
+[`postReceipt` endpoint](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+allows you to send receipt information to the customer's app.
 
-The receipt with the payment details will be provided the customer's Vipps app.
+The customer will get the receipt in their Vipps MobilePay app.
+
+See
+[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
+for more details.
 
 ### Step 4. Capture the payment
 
-[Capture](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/capturePayment) the payment.
+The
+[`capturePayment` endpoint](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+allows you to capture a payment.
+
+Be sure to check the status of the captured payment.
 
 ## Sequence diagram
 
@@ -91,4 +104,5 @@ sequenceDiagram
     M-->>C: Ship the order (if applicable)
     M->>ePayment: Initiate payment capture
     ePayment->>C: Capture payment
+    M->>ePayment: Check the status of capture
 ```

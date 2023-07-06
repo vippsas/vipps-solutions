@@ -72,9 +72,11 @@ Set `userFlow` to `WEB_REDIRECT`, so the customer's browser will either do an au
 
 ### Step 3. The customer authorizes the payment
 
-The customer receives a push notification in their app. They log in and confirm the payment.
-Poll or monitor callbacks to see that the payment is approved, then reserve it and
-provide a receipt.
+The payment request will appear in the customer's Vipps app where they can authorize the payment.
+
+To get confirmation that payment was approved, monitor
+[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
+[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
 
 ![Confirm payment](images/vipps-ecom-confirm2.png)
 
@@ -93,18 +95,24 @@ This `postReceipt` endpoint,
 is for sending receipt information.
 This is a combination of *order lines* and a *bottom line* with sum and VAT.
 An *order line* is a description of each item present in the order.
+See
+[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
+for more details.
 
 ![Order receipt](images/order-receipt.png)
 
-### Step 6. Ship the order
+### Step 6. Ship the order (if applicable)
 
 Complete and ship the order to the customer.
 
-![Shipping](images/vipps-shipping.png)
-
 ### Step 7. Capture the payment
 
-Capture the payment.
+The
+[`capturePayment` endpoint](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+allows you to capture a payment.
+
+Be sure to check the status of the captured payment.
+
 
 The payment is transferred to your account. This may take 2-3 days depending on your bank.
 
@@ -128,7 +136,6 @@ With body:
 </div>
 </details>
 
-![Money in the bank](./images/money_bag.png)
 
 ## Sequence diagram
 
@@ -150,4 +157,5 @@ sequenceDiagram
     M->>C: Ship the order (if applicable)
     M->>ePayment: Initiate payment capture
     ePayment->>C: Capture payment
+    M->>ePayment: Check the status of capture
 ```

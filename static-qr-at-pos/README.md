@@ -26,32 +26,49 @@ Before implementing this flow, please see the recommended [in-store payments flo
 ### Step 1: Generate a static QR code
 
 Generate a static QR code with a
-[merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
-linking to a web page containing the selected product from the vending machine.
+[merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes) linking to your system.
 
-The QR could for example be shown on a screen,
-or be printed out and placed on a cash register, a portable POS, or a vending machine.
+For example, the QR could be shown on a screen or placed on a cash register, a portable POS, or a [vending machine](../vending-machines/qr-direct-to-payment-in-app.md).
 
 ### Step 2: The customer scans the static QR
 
-When the user scans the static merchant callback QR, the Vipps MobilePay app will show a waiting screen to the user.
+When the customer scans the QR, your system will receive a notification that the QR has been scanned and will be able to get the customer's phone number.
 
-### Step 3: Merchant receives an ID
+### Step 3: Send the payment request
 
-When the user scans the QR, the merchant will receive a notification that the QR has been scanned.
+Use the customer's phone number to send them a [Create Payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment) for the taxi fare through Vipps.
 
-### Step 4: Merchant sends the payment request
+Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
 
-The merchant uses the customer's ID to send the payment request to the user through Vipps MobilePay.
+### Step 4: The customer authorizes the payment
 
-### Step 5: The customer authorizes the payment in their app
+The payment request will appear in the customer's Vipps app where they can authorize the payment.
 
-If the user has the app open, the payment screen will open automatically.
-Otherwise, the payment screen will appear to them upon opening and logging into the app.
+To get confirmation that payment was approved, monitor
+[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
+[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
 
-### Step 6: The customer gets a receipt
+### Step 5: Attach a receipt to the order
 
-The customer sees the receipt in their Vipps MobilePay app.
+The
+[`postReceipt` endpoint](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+allows you to send receipt information to the customer's app.
+
+The customer will get the receipt in their Vipps MobilePay app.
+
+See
+[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
+for more details.
+
+### Step 6: Capture the payment
+
+Once the customer authorizes the payment, update the POS system with the status.
+
+The
+[`capturePayment` endpoint](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+allows you to capture a payment.
+
+Be sure to check the status of the captured payment.
 
 ## Sequence diagram
 
@@ -74,4 +91,5 @@ sequenceDiagram
     ePayment->>C: Provide payment information
     M->>ePayment: Initiate payment capture
     ePayment->>C: Capture payment
+    M->>ePayment: Check the status of capture
 ```

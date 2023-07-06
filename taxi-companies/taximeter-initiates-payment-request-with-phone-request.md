@@ -20,7 +20,7 @@ The Vipps app opens on the customer's phone and the customer pays the amount due
 
 Get the customer's phone number and enter it into your taximeter system.
 
-### Step 2. Initiate a payment request to Vipps
+### Step 2. Initiate a payment request
 
 To create this payment, you first send a
 [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request, where `customer.phoneNumber` is set.
@@ -29,12 +29,34 @@ Use `userFlow:PUSH_MESSAGE` and `"customerInteraction": "CUSTOMER_PRESENT"` whil
 
 ### Step 3. The customer approves the payment
 
-The customer will receive a push notification in their Vipps app and can approve the payment.
+The payment request will appear in the customer's Vipps app where they can authorize the payment.
 
+To get confirmation that payment was approved, monitor
+[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
+[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
 
-### Step 4. Capture the amount
+### Step 4. Attach a receipt to the order
 
-When reservation is complete, perform a [full capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#capture-via-the-api).
+The
+[`postReceipt` endpoint](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+allows you to send receipt information to the customer's app.
+
+The customer will get the receipt in their Vipps MobilePay app.
+
+See
+[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
+for more details.
+
+### Step 5. Capture the amount
+
+When reservation is complete, perform a
+[capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#capture-via-the-api).
+
+The
+[`capturePayment` endpoint](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+allows you to capture a payment.
+
+Be sure to check the status of the captured payment.
 
 ## Sequence diagram
 
@@ -46,10 +68,12 @@ sequenceDiagram
     participant M as Merchant
     participant ePayment as ePayment API
 
+    M->>C: Request phone number verbally
     M->>ePayment: Initiate payment request
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    ePayment->>M: Check the status
+    M->>ePayment: Check the status of authorization
     M->>ePayment: Initiate payment capture
     ePayment->>C: Capture payment
+    M->>ePayment: Check the status of capture
 ```

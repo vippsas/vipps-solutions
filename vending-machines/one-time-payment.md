@@ -36,11 +36,35 @@ To generate the dynamic QR code and associated payment request, send the
 [Create Payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request
 with `"customerInteraction": "CUSTOMER_PRESENT"` and  `"userFlow": "QR"`.
 
-### Step 2: Get approval and capture the payment
+### Step 2: The customer authorizes the payment
 
-When the customer scans the QR code, their Vipps MobilePay app will open, where they can approve the payment.
-You can then capture the payment and supply the product.
-The order confirmation will appear in the customer's app.
+The payment request will appear in the customer's Vipps app where they can authorize the payment.
+
+To get confirmation that payment was approved, monitor
+[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
+[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
+
+### Step 3: Attach a receipt to the order
+
+The
+[`postReceipt` endpoint](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+allows you to send receipt information to the customer's app.
+
+The customer will get the receipt in their Vipps MobilePay app.
+
+See
+[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
+for more details.
+
+### Step 4: Capture the payment
+
+Once the customer authorizes the payment, update the POS system with the status.
+
+The
+[`capturePayment` endpoint](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+allows you to capture a payment.
+
+Be sure to check the status of the captured payment.
 
 ## Sequence diagram
 
@@ -63,4 +87,5 @@ sequenceDiagram
     ePayment->>C: Provide payment information
     M->>ePayment: Initiate payment capture
     ePayment->>C: Capture payment
+    M->>ePayment: Check the status of capture
 ```

@@ -84,29 +84,41 @@ With body:
 </div>
 </details>
 
-### Step 4: Customer confirms the order
+### Step 4: Customer authorizes the payment
 
 The customer confirms the payment in the app.
 
 ![Confirm payment](images/vipps-in-store-step3-2.png)
 
-### Step 5: Register the payment
+To get confirmation that payment was approved, monitor
+[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
+[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
+
+### Step 5. Update the POS system
+
+Once the customer authorizes the payment, update the POS system with the status.
+
+### Step 6. Attach a receipt to the order
+
+The
+[`postReceipt` endpoint](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+allows you to send receipt information to the customer's app.
+
+The customer will get the receipt in their Vipps MobilePay app.
+
+See
+[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
+for more details.
+
+### Step 7: Capture the payment
 
 Once the customer authorizes the payment, update the POS system with the status.
 
 The
 [`capturePayment` endpoint](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
-allows you to capture an ePayment payment.
+allows you to capture a payment.
 
-### Step 6. Add the order receipt
-
-Add a payment receipt that will appear in the Vipps MobilePay app.
-
-The
-[`postReceipt` endpoint](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
-allows you to send receipt information to the customer's app.
-This is a combination of *order lines* and a *bottom line* with sum and VAT.
-An *order line* is a description of each item present in the order.
+Be sure to check the status of the captured payment.
 
 ## Sequence diagram
 
@@ -128,5 +140,5 @@ sequenceDiagram
     ePayment->>C: Provide payment information
     M->>ePayment: Initiate payment capture
     ePayment->>C: Capture payment
-    M->>ePayment: Check status
+    M->>ePayment: Check the status of capture
 ```

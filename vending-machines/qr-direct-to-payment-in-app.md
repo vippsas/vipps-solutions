@@ -31,7 +31,7 @@ The payment amount should be the max amount of the vending machine products. Aft
 ### Step 1: Generate a static QR code
 
 Generate a static QR code with [merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
-linking to a web service.
+linking to your system.
 
 ### Step 2: Generate a payment request
 
@@ -41,12 +41,30 @@ Specify the amount of the most expensive item in your vending machine so that an
 
 Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
 
-### Step 3: Get approval and capture the payment
+### Step 3: Customer authorizes the payment
 
-Get the user's approval for the charge and serve the item.
+The payment request will appear in the customer's Vipps app where they can authorize the payment.
 
-After reservation and product selection, [capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture) the set amount before
-[cancelling the remaining amount](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture).
+To get confirmation that payment was approved, monitor
+[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
+[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
+
+### Step 4: Capture the payment
+
+[Capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture) the set amount.
+
+Release the remaining amount by using the
+[cancel endpoint](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture).
+
+Check the status of these operations.
+
+### Step 6: Attach a receipt to the order
+
+The
+[`postReceipt` endpoint](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+allows you to send receipt information to the customer's app.
+
+The customer will get the receipt in their Vipps MobilePay app.
 
 ## Sequence diagram
 
@@ -65,8 +83,12 @@ sequenceDiagram
     M->>ePayment: Initiate payment request
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
     M->>ePayment: Initiate payment capture
-    ePayment->>C: Capture payment
+    M->>ePayment: Initiate capture request for amount due
+    M->>ePayment: Release <amount reserved - amount due>
+    ePayment->>C: Capture amount due
+    ePayment->>C: Release amount remaining
+    M->> ordermanagement: Attach receipt
+    M->>ePayment: Check the status of capture
 ```

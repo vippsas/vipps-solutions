@@ -59,25 +59,33 @@ After the customer has finished the payment, you will get their phone number to 
 [profile sharing](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/profile-sharing/)
 section of the ePayment API guide.
 
-
 ### Step 3. Customer approves the payment
 
-The customer's Vipps should open automatically, with the maximum reservation amount visible.
-The customer can then confirm the payment.
+The payment request will appear in the customer's Vipps app where they can authorize the payment.
 
-If the customer is a mobile device, the Vipps MobilePay app will open automatically.
-Otherwise, the landing page will open.
+To get confirmation that payment was approved, monitor
+[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
+[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
 
 ### Step 4. Add a receipt
 
-Add a receipt using the [Order Management API](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt).
+The
+[`postReceipt` endpoint](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+allows you to send receipt information to the customer's app.
 
-The receipt with the payment details will be provided the customer's Vipps app.
+The customer will get the receipt in their Vipps MobilePay app.
+
+See
+[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
+for more details.
 
 ### Step 5. Capture the payment
 
-[Capture](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/capturePayment) the payment.
+The
+[`capturePayment` endpoint](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+allows you to capture a payment.
 
+Be sure to check the status of the captured payment.
 
 ## Sequence diagram
 
@@ -98,4 +106,5 @@ sequenceDiagram
     M-->>C: Ship the order (if applicable)
     M->>ePayment: Initiate payment capture
     ePayment->>C: Capture payment
+    M->>ePayment: Check the status of capture
 ```

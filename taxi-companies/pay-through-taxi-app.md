@@ -64,26 +64,40 @@ Set `userFlow` to `WEB_REDIRECT`, so the customer's browser will either do an au
 
 ### Step 3. The customer authorizes the payment
 
-The customer receives a push notification in their app where they confirm the payment.
-Poll or monitor callbacks to see that the payment is approved, then reserve it and
-provide a receipt.
+The customer's Vipps should open automatically, with the maximum reservation amount visible.
+They can then confirm the payment.
+
+To get confirmation that payment was approved, monitor
+[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
+[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
 
 ### Step 4. Confirm the order
 
-The Vipps app redirects the customer back to your app, where you confirm that the order has been successful.
+Upon authorization, the Vipps app should automatically redirect the customer to your app.
+Confirm that the order has been successful in your app.
 
 ### Step 5. Add a receipt
 
 After the drive is complete, calculate how much the customer owes and provide a receipt.
-Add a payment receipt to the order by using [`POST:/order-management/v2/ecom/receipts/{reference}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2).
+Add a payment receipt to the order by using the
+[`postReceipt`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+endpoint.
 
 This will appear in their app.
 
-### Step 7. Capture the payment
+See
+[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
+for more details.
 
-[Capture](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/capturePayment) the amount due before releasing the remaining reserved amount on the customer's account. This is done by doing a [cancel](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/cancelPayment) API request.
+### Step 7. Capture the amount due
 
-The payment is transferred to your account. This may take 2-3 days depending on your bank.
+[Capture](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/capturePayment)
+the amount due before releasing the remaining reserved amount on the customer's account.
+
+Release the remaining about by sending a
+[cancel](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/cancelPayment) API request.
+
+Check the status of the captured payment.
 
 Read more about the flow:
 
@@ -107,10 +121,11 @@ sequenceDiagram
     M->>C: Display order confirmation
     M->>C: Drive
     M->>M: Determine the amount owed
-    M->>ordermanagement: Attach receipt showing amount due
     M->>C: Send a push notification with actual amount paid
     M->>ePayment: Initiate capture request for amount due
     M->>ePayment: Release <amount reserved - amount due>
     ePayment->>C: Capture amount due
-    ePayment->>C: Release amount remaining 
+    ePayment->>C: Release amount remaining
+    M->>ordermanagement: Attach receipt showing amount due
+    M->>ePayment: Check the status of capture
 ```

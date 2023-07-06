@@ -46,6 +46,7 @@ The same solution can of course be used to charge weekly, monthly, or yearly.
    [Recurring agreements with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
    See:
    [Create a charge](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#create-a-charge).
+6. Check the status of captured charges.
 
 ## Relevant comments
 
@@ -88,4 +89,5 @@ sequenceDiagram
     Recurring-->>C: Capture initial payment (if applicable)
     M->>Recurring: Schedule future charges
     Recurring->>C: Automatic capture on due dates of scheduled charges
+    M->>ePayment: Check the status of captures
 ```
