@@ -58,7 +58,7 @@ Release the remaining amount by using the
 
 Check the status of these operations.
 
-### Step 6: Attach a receipt to the order
+### Step 5: Attach a receipt to the order
 
 The
 [`postReceipt` endpoint](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
