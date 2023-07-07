@@ -10,6 +10,7 @@ END_METADATA -->
 
 # Vipps login in Auth0 using Social Connections
 
+<!-- START_COMMENT -->
 ## Table of Contents
 
 * [Introduction](#introduction)
@@ -18,6 +19,7 @@ END_METADATA -->
 * [Add a Social Connection to your Application](#add-a-social-connection-to-your-application)
 * [Test your connection](#test-your-connection)
 * [References](#references)
+<!-- END_COMMENT -->
 
 ## Introduction
 
@@ -30,15 +32,15 @@ With Auth0's Social Connections, merchants can implement a Vipps login flow usin
 * [Create an Auth0 account](https://auth0.com/signup)
 * Configure an Application:
 
-  * Under *Applications*, select *Create Application* and choose your preferred type of application. For this guide we will select a Single Page Application.
+  * Under *Applications*, select *Create Application* and choose your preferred type of application. For this guide, we will select a Single Page Application.
   * Copy the *Domain* for use in later steps.
-  * Under *Allowed Callback URLs* specify where a user will be returned after logging in.
+  * Under *Allowed Callback URLs*, specify where a user will be returned after logging in.
 
 * Create a test unit in the [Vipps portal](https://developer.vippsmobilepay.com/docs/vipps-developers/developer-resources/portal/).
 
   * Save the `client_id` and `client_secret` for use in later steps.
   * Set the Token endpoint authentication method to `client_secret_post`.
-  * Add the following redirect URI to the list of callback URIs, and replace `yourdomainname` with the domain name recorded previously.
+  * Add the following redirect URI to the list of callback URIs and replace `yourdomainname` with the domain name recorded previously.
 
 ```bash
  https://yourdomainname/login/callback
@@ -50,7 +52,7 @@ Log in to the Auth0 portal. Under *Authentication*, select *Social* and click on
 
 ### Name
 
-Name of your connection, for example, VippsLogin.
+Name of your connection, for example, "VippsLogin".
 
 #### Authorization URL
 
@@ -79,9 +81,9 @@ Enter your `client_secret` recorded earlier.
 
 ### Fetch User profile Script
 
-Here you can enter JavaScript code to fetch data from the Vipps API and store them to an Auth0 user.
+Here you can enter JavaScript code to fetch data from the Vipps API and store it to an Auth0 user.
 
-An example script is provided below
+An example script is provided below.
 
 ```js
 function fetchUserProfile(accessToken, context, callback) {
@@ -119,19 +121,19 @@ function fetchUserProfile(accessToken, context, callback) {
 
 Parameters
 
-* `url` - This is the URL to the endpoint used for getting user information from the [Vipps Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/)
-* `headers` - The user info API uses Bearer Token Authentication. For more information see the [Vipps Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/).
+* `url` - This is the URL to the endpoint used for getting user information from the [Vipps Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/).
+* `headers` - The user info API uses Bearer Token Authentication. For more information, see the [Vipps Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/).
 * `profile` - Which attributes will be collected and how they will be used to create an Auth0 user. The `user_id` parameter is used to create a unique identifier for the signed-up user. This should be created from the `sub` which is a unique identifier corresponding to a Vipps user. For more information about Vipps's unique identifier see [What is the sub?](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/userinfo-api-faq/#what-is-the-sub)
 
 ## Add a Social Connection to your Application
 
-Under *Applications* click on *Connections*. Make sure that your new Social Connection is toggled.
+Under *Applications*, click on *Connections*. Make sure that your new *Social Connection* is toggled.
 
 ## Test your connection
 
-Under *Authentication* -> *Social*, select your newly created Social Connection. Click on *Try Connection*. You should be redirected to the Vipps login page.
+Under *Authentication* -> *Social*, select your newly created *Social Connection*. Click *Try Connection*. You should be redirected to the Vipps login page.
 
-To check if a user has been created correctly go to *User Management* -> *Users*. There should be a new user in the Auth0 database. To check if the attributes have been collected click on the user and select *Raw JSON*. It should look something like this
+To check if a user has been created correctly, go to *User Management* -> *Users*. There should be a new user in the Auth0 database. To check if the attributes have been collected, click on the user and select *Raw JSON*. It should look something like this:
 
 ```json
 {

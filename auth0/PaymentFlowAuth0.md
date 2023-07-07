@@ -16,7 +16,7 @@ END_METADATA -->
 
 The first part of this guide will describe how to implement a simple payment flow where a user can pay for an order and give consent to sharing user info without the need of being signed in. The second part will show how the payment can be used to get information to store a user in Auth0. The third part will describe how to link the created user to a Vipps account using [Auth0's Login Flow](https://auth0.com/docs/customize/actions/flows-and-triggers/login-flow).
 
-The code snippets are using the [Vipps .NET SDK](https://developer.vippsmobilepay.com/docs/SDKs/dotnet-sdk/) to communicate with the internal Vipps APIs. By following these steps a user can pay for an order, and later use Vipps Login to get an overview of his/her orders.
+The code snippets are using the [Vipps .NET SDK](https://developer.vippsmobilepay.com/docs/SDKs/dotnet-sdk/) to communicate with the Vipps API platform. By following these steps, a user can pay for an order and later use Vipps Login to get an overview of his/her orders.
 
 ## Prerequisites
 
@@ -36,7 +36,7 @@ The code snippets are using the [Vipps .NET SDK](https://developer.vippsmobilepa
   };
   ```
 
-  For further explanation refer to the [Vipps SDK](https://developer.vippsmobilepay.com/docs/SDKs/) Documentation.
+  For further explanation see the [SDK](https://developer.vippsmobilepay.com/docs/SDKs/) pages.
 
 * Configure the [Auth0 Management API](#configure-auth0-management-api).
 * Implement a [Vipps Social Connection](./SocialConnectionLogin.md).
@@ -111,7 +111,7 @@ sequenceDiagram
 
 ## Initiate payment session with profile sharing
 
-To initiate a payment the merchant backend uses the [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/) to create a payment endpoint. The endpoint will return a redirect URL. The redirect URL is where the user is sent to confirm the payment. The Return URL is the URL that the user will be sent to after a successful payment. This can for example be an order confirmation page/endpoint.
+To initiate a payment, the merchant backend uses the [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/) to create a payment endpoint. The endpoint will return a redirect URL. The redirect URL is where the user is sent to confirm the payment. The Return URL is the URL that the user will be sent to after a successful payment. This can for example be an order confirmation page/endpoint.
 
 The parameters needed to create a payment are:
 
@@ -206,7 +206,7 @@ To create a user we must:
 
 ### Acquire an Auth0 access token
 
-To acquire an Auth0 access token, we will have to make create an HTTP request. The specifics for the request can be found under *Applications* -> *APIs* -> *Auth0 Management API*-> *Test*. An example of how to implement this in .NET is shown below
+To acquire an Auth0 access token, we will have to make create an HTTP request. The specifics for the request can be found under *Applications* > *APIs* > *Auth0 Management API*> *Test*. An example of how to implement this in .NET is shown below
 
 ```c#
     private async Task<string?> GetAuth0Token()
@@ -248,7 +248,7 @@ Make sure to replace `AUTH0_CLIENT_ID`, `AUTH0_CLIENT_SECRET`, and `AUTH_0_DOMAI
 
 ### Create a Management API Client
 
-To create and store a user you can use a Management API Client provided by the [Auth0 Management SDK](https://www.nuget.org/packages/Auth0.ManagementApi). The parameters required are the Auth0 access token and the previously recorded Auth0 Domain.
+To create and store a user, you can use a Management API Client provided by the [Auth0 Management SDK](https://www.nuget.org/packages/Auth0.ManagementApi). The parameters required are the Auth0 access token and the previously recorded Auth0 Domain.
 
 ```c#
 var managementApiClient = new ManagementApiClient(accessToken, "<AUTH_0_DOMAIN>");
@@ -256,15 +256,15 @@ var managementApiClient = new ManagementApiClient(accessToken, "<AUTH_0_DOMAIN>"
 
 ### Check if a user exists
 
-Before a user can be created through the API you must make sure that there are no users already stored with the same user ID. Each user stored in Auth0 will have a unique user ID. It will typically be concatenated of a provider, connection, and a unique string. For [Vipps login in Auth0 using Social Connections](./SocialConnectionLogin.md), it will be in the form;
+Before a user can be created through the API, you must make sure that there are no users already stored with the same user ID. Each user stored in Auth0 will have a unique user ID. It will typically be concatenated of a provider, connection, and a unique string. For [Vipps login in Auth0 using Social Connections](./SocialConnectionLogin.md), it will be in this form:
 
 ```json
 "oauth2|VippsLogin|{sub}"
 ```
 
-In this snippet, the `sub` is a unique identifier provided by Vipps. To read more about the `sub`, check out [What is the sub?](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-faq/#what-is-the-sub) In this case the provider is `oauth2` and the connection is `VippsLogin`.
+Here, the `sub` is a unique identifier provided by Vipps. To read more about the `sub`, check out [What is the sub?](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-faq/#what-is-the-sub) In this case, the provider is `oauth2` and the connection is `VippsLogin`.
 
-To check if a user exists given a user ID, you can use the `Users.GetAsync()` method from the Management API Client. This will get the requested user if it exists, otherwise, it will throw an exception. An example of how this can be implemented is shown below
+To check if a user exists given a user ID, you can use the `Users.GetAsync()` method from the Management API Client. This will get the requested user if it exists, otherwise, it will throw an exception. An example of how this can be implemented is shown below:
 
 ```c#
     private async Task<bool> UserExist(ManagementApiClient managementApiClient, string userId)
@@ -311,7 +311,7 @@ To create an Auth0 user, you can use the `Users.CreateAsync()` method. This need
     }
 ```
 
-When creating the `UserCreateRequest` it is important to specify the following parameters
+When creating the `UserCreateRequest`, it is important to specify the following parameters:
 
 * `Email` - email of the user provided by the Vipps UserInfo endpoint.
 * `VerifyEmail`- must be set to `false` to prevent Auth0 from requesting email verification.
@@ -319,7 +319,7 @@ When creating the `UserCreateRequest` it is important to specify the following p
 * `FullName` - the name of the user provided by the Vipps UserInfo endpoint.
 * `UserId` - must be set to `sub` provided by Vipps to make sure the Auth0 users will be linked correctly.
 
-A complete implementation of checking if a user exists and creating it if not can look like
+A complete implementation of checking if a user exists and creating it if not can look like this:
 
 ```c#
     public async Task<bool> CreateAuth0User(User user, string sub)
@@ -341,11 +341,11 @@ A complete implementation of checking if a user exists and creating it if not ca
     }
 ```
 
-In this example, we check if either an Auth0 user has already been created as a result of a payment or if it has been created as a result of using a [Vipps Login Social Connection](./SocialConnectionLogin.md).
+In this example, we check if either an Auth0 user has already been created as a result of a payment, or if it has been created as a result of using a [Vipps Login Social Connection](./SocialConnectionLogin.md).
 
 ## Link User
 
-If a user first goes through the payment flow and later wants to log in with Vipps, you should link the users to each other. After the linking of the users has been done, only one user will appear in Auth0, but with two identities. This can be done using [Actions in Auth0](https://auth0.com/docs/customize/actions). You can go to *Actions* -> *Library* and click on *Build Custom*. Then you can create a name, and set the trigger to be *Login / Post Login*. Press *Create* and fill in the code below.
+If a user first goes through the payment flow and later wants to log in with Vipps, you should link the users to each other. After the linking of the users has been done, only one user will appear in Auth0, but with two identities. This can be done using [Actions in Auth0](https://auth0.com/docs/customize/actions). You can go to *Actions* > *Library* and click on *Build Custom*. Then you can create a name and set the trigger to be *Login / Post Login*. Press *Create* and fill in the code below.
 
 ```js
 exports.onExecutePostLogin = async (event, api) => {
@@ -388,7 +388,7 @@ Fill out your *Vipps Social Connection Name*. Under the *Secrets* section you sh
 
 Where the values should be set to the values recorded in the [Configure Auth0 Management API](#configure-auth0-management-api) step.
 
-Make sure to add the Action to the login flow under *Actions* -> *Flows* -> *Login*.
+Make sure to add the Action to the login flow under *Actions* > *Flows* > *Login*.
 ![Login flow](./images/LoginFlow.png)
 
 After linking, the *Raw JSON* of the new user in Auth0 will now look like this:
