@@ -7,6 +7,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import PARTIALCAPTURE from '../_common/_partial_capture.md'
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
@@ -57,10 +58,7 @@ To get confirmation that payment was approved, monitor
 
 ### Step 5: Capture the amount due
 
-After final amount is confirmed, do a [partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture)
-and release the remaining amount from reservation with a [partial cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture) request.
-
-Check the status of these operations.
+<PARTIALCAPTURE />
 
 ## Sequence diagram
 
