@@ -8,7 +8,7 @@ Receipt information is a combination of *order lines* and a *bottom line*, with 
 An order line is a description of each item present in the order.
 
 <details>
-<summary>Example request</summary>
+<summary>Detailed example</summary>
 <div>
 
 Body:

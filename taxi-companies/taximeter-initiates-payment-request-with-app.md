@@ -35,7 +35,7 @@ To get confirmation that payment was approved, monitor
 [webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
 [query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
 
-### Step 4. Attach a receipt to the order
+### Step 4. Attach a receipt
 
 <ATTACHRECEIPT />
 
