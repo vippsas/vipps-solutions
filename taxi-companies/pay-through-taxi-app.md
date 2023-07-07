@@ -9,7 +9,6 @@ pagination_prev: null
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import PARTIALCAPTURE from '../_common/_partial_capture.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
 # Payment through company app

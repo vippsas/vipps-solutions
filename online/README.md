@@ -20,21 +20,19 @@ This flow combines multiple products to illustrate the recommended online paymen
 
 ## Details
 
-### Step 1. Add an option to pay with Vipps
+### Step 1. Add an option to pay with Vipps or MobilePay
 
-Add the option to pay with Vipps on the product page of your website.
+Add the option to pay with Vipps or MobilePay on the product page of your website.
 
-### Step 2. Send the payment request to Vipps
+### Step 2. Send the payment request
 
-When the user selects to pay with Vipps, send a payment request through Vipps.
-
-<details>
-<summary>Details</summary>
-<div>
-
-Your system can send the payment request by using the
+Add the products to the order and send the payment request by using the
 [`createPayment`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 endpoint.
+
+<details>
+<summary>Detailed example</summary>
+<div>
 
 Here is an example of the parameters for this HTTP POST:
 
@@ -110,7 +108,6 @@ Complete and ship the order to the customer.
 
 <FULLCAPTURE />
 
-
 The payment is transferred to your account. This may take 2-3 days depending on your bank.
 
 <details>
@@ -130,9 +127,9 @@ With body:
   }
 }
 ```
+
 </div>
 </details>
-
 
 ## Sequence diagram
 
