@@ -8,6 +8,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
@@ -49,11 +50,7 @@ Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRE
 
 ### Step 3: The customer authorizes the payment
 
-The payment request will appear in the customer's Vipps app where they can authorize the payment.
-
-To get confirmation that payment was approved, monitor
-[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
-[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
+<AUTHORIZEPAYMENT />
 
 ### Step 4: Attach a receipt to the order
 

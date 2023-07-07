@@ -12,6 +12,7 @@ import ApiSchema from '@theme/ApiSchema';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
@@ -53,11 +54,9 @@ When they select to pay with Vipps MobilePay, send the [create payment](https://
 
 ### Step 3. Customer approves the payment
 
-The payment request will appear in the customer's Vipps app where they can authorize the payment.
+<AUTHORIZEPAYMENT />
 
-To get confirmation that payment was approved, monitor
-[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
-[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
+Note that, for long-living payments, customers also have the option of soft-dismissing the payment and postponing it for later.
 
 ### Step 4. Add a receipt
 

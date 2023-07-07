@@ -9,6 +9,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
@@ -90,13 +91,10 @@ With body:
 
 ### Step 4: Customer authorizes the payment
 
-The customer confirms the payment in the app.
+<AUTHORIZEPAYMENT />
 
 ![Confirm payment](images/vipps-in-store-step3-2.png)
 
-To get confirmation that payment was approved, monitor
-[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
-[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
 
 ### Step 5. Update the POS system
 

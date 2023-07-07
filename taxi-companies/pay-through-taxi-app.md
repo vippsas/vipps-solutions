@@ -6,6 +6,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import PARTIALCAPTURE from '../_common/_partial_capture.md'
 END_METADATA -->
@@ -35,12 +36,8 @@ Set `userFlow` to `WEB_REDIRECT`, so the customer's browser will either do an au
 
 ### Step 3. The customer authorizes the payment
 
-The customer's Vipps should open automatically, with the maximum reservation amount visible.
-They can then confirm the payment.
+<AUTHORIZEPAYMENT />
 
-To get confirmation that payment was approved, monitor
-[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
-[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
 
 ### Step 4. Confirm the order
 

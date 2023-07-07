@@ -9,6 +9,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
@@ -70,27 +71,22 @@ If the payment was started from a mobile device, the Vipps MobilePay app will au
 
 ![Pay with Vipps MobilePay](images/vipps-ecom-step1-2.png)
 
-Once the customer authorizes the payment, update your system with the status.
-To get confirmation that payment was approved, monitor
-[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
-[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
+![Confirm payment](images/vipps-ecom-confirm2.png)
 
+<AUTHORIZEPAYMENT />
 
 ### Step 4. Confirm the order
 
-When the user confirms the payment, they will get a confirmation in the app.
+When the user confirms the payment, they will get a confirmation in the app and
+then be redirected back to your store.
 
-![Confirm payment](images/vipps-ecom-confirm2.png)
-
-The app redirects the customer back to your store, where you confirm that the order has been successful.
+Confirm to them that the order was successful.
 
 ![Order confirmation](images/vipps-ecom-step4-2.png)
 
 ### Step 5. Add a receipt
 
-
 <ATTACHRECEIPT />
-
 
 ### Step 6. Ship the order (if applicable)
 

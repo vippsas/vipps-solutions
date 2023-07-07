@@ -7,6 +7,8 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import PARTIALCAPTURE from '../_common/_partial_capture.md'
+import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
@@ -45,11 +47,7 @@ Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRE
 
 ### Step 3: Customer authorizes the payment
 
-The payment request will appear in the customer's Vipps app where they can authorize the payment.
-
-To get confirmation that payment was approved, monitor
-[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
-[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
+<AUTHORIZEPAYMENT />
 
 ### Step 4: Attach a receipt to the order
 
@@ -57,10 +55,7 @@ To get confirmation that payment was approved, monitor
 
 ### Step 5: Capture the amount due
 
-After final amount is confirmed, do a [partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture)
-and release the remaining amount from reservation with a [partial cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture) request.
-
-Check the status of these operations.
+<PARTIALCAPTURE />
 
 ## Sequence diagram
 

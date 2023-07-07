@@ -9,6 +9,7 @@ pagination_prev: null
 ---
 
 import PARTIALCAPTURE from '../_common/_partial_capture.md'
+import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
@@ -67,19 +68,12 @@ If the payment is approved, this amount will be reserved on customer's account. 
 The customer's Vipps app should open automatically, with the maximum reservation amount visible.
 They can then confirm the payment.
 
-The customer is redirected back to the charging provider's website, where the status of the charge session is presented.
+Afterwards, they are redirected back to the charging provider's website, where the status of the charge session is presented.
 
-<details>
-<summary>Details</summary>
-<div>
-
-To get confirmation that payment was approved, monitor
+Once you know that payment was approved you, can start charging.
+To get confirmation, monitor
 [webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
 [query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
-Once you know that payment was approved you, can start charging.
-
-</div>
-</details>
 
 ### Step 4. Start charging
 
