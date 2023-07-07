@@ -23,7 +23,7 @@ and the
 
 ### Step 1: Identify the customer
 
-The flow begins with the customer presenting their QR code to the merchant. This can happen in two ways:
+The flow begins with the customer presenting their Vipps MobilePay QR code to the merchant. This can happen in two ways:
 
 * Customer-facing scanner - The store will have a permanent customer-facing scanner and customers can scan their QR code at any time.
 * Cashier scanner - The QR code is scanned by the cashier using a wired scanner. This could happen while the cashier is scanning wares or immediately before the payment.
