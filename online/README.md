@@ -38,7 +38,7 @@ endpoint.
 ```json
 {
   "amount": {
-    "value": 49900,
+    "value": 10000,
     "currency": "NOK"
   },
   "paymentMethod": {
@@ -100,28 +100,6 @@ Complete and ship the order to the customer.
 ### Step 7. Capture the payment
 
 <FULLCAPTURE />
-
-The payment is transferred to your account. This may take 2-3 days depending on your bank.
-
-<details>
-<summary>Detailed example</summary>
-<div>
-
-[`POST:/epayment/v1/payments/{reference}/capture`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
-
-With body:
-
-```json
-{
-  "modificationAmount": {
-    "value": 49900,
-    "currency": "NOK"
-  }
-}
-```
-
-</div>
-</details>
 
 ## Sequence diagram
 

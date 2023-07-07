@@ -69,7 +69,7 @@ With body:
 ```json
 {
   "amount": {
-    "value": 49800,
+    "value": 10000,
     "currency": "NOK"
   },
   "paymentMethod": {
