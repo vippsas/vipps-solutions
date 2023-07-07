@@ -20,10 +20,10 @@ The code snippets are using the [Vipps .NET SDK](https://developer.vippsmobilepa
 
 ## Prerequisites
 
-- [Create an Auth0 tenant](https://auth0.com/docs/get-started/auth0-overview/create-tenants).
-- Create a test unit in the [Vipps portal](https://developer.vippsmobilepay.com/docs/vipps-developers/developer-resources/portal/).
-  - Save the `client_id` and `client_secret` for use in later steps.
-- Add the Vipps SDK configuration to Program.cs.
+* [Create an Auth0 tenant](https://auth0.com/docs/get-started/auth0-overview/create-tenants).
+* Create a test unit in the [Vipps portal](https://developer.vippsmobilepay.com/docs/vipps-developers/developer-resources/portal/).
+  * Save the `client_id` and `client_secret` for use in later steps.
+* Add the Vipps SDK configuration to Program.cs.
 
   ```c#
   var vippsConfigurationOptions = new VippsConfigurationOptions
@@ -38,22 +38,20 @@ The code snippets are using the [Vipps .NET SDK](https://developer.vippsmobilepa
 
   For further explanation refer to the [Vipps SDK](https://developer.vippsmobilepay.com/docs/SDKs/) Documentation.
 
-- Configure the [Auth0 Management API](#configure-auth0-management-api).
-- Implement a [Vipps Social Connection](./SocialConnectionLogin.md).
+* Configure the [Auth0 Management API](#configure-auth0-management-api).
+* Implement a [Vipps Social Connection](./SocialConnectionLogin.md).
 
 ## Configure Auth0 Management API
 
 To be able to use the Auth0 Management API, some configuration is needed in your Auth0 tenant. The Management API is designed for server-side usage, as it requires storing the secrets in a secure location. It will later be used to store users in Auth0.
 
-On the Auth0 dashboard, go to _Applications_ -> _APIs_ and click on _Auth0 Management API_. Select the _Test_ tab and click _Create a test application_. You should now have a new application named Auth0 Management API (Test Application) located under _Applications_.
+On the Auth0 dashboard, go to *Applications* > *APIs* and click on *Auth0 Management API*. Select the *Test* tab and click *Create a test application*. You should now have a new application named Auth0 Management API (Test Application) located under *Applications*.
 
-Select the newly generated _Auth0 Management API (Test Application)_. Under _APIs_, expand _Auth0 Management API_. Make sure that the API is authorized and that all permissions are granted. Under _settings_, make sure to save
+Select the newly generated *Auth0 Management API (Test Application)*. Under *APIs*, expand *Auth0 Management API*. Make sure that the API is authorized and that all permissions are granted. Under *settings*, make sure to save the following for use in later steps:
 
-- Domain
-- Client ID
-- Client Secret
-
-for use in later steps.
+* Domain
+* Client ID
+* Client Secret
 
 ## Sequence Diagram
 
@@ -117,10 +115,10 @@ To initiate a payment the merchant backend uses the [ePayment API](https://devel
 
 The parameters needed to create a payment are:
 
-- Phone Number: The phone number of the user
-- Amount: The payment amount
-- Payment Description: Description of what the user is paying for
-- Reference: An unique identifier for an order
+* Phone Number: The phone number of the user
+* Amount: The payment amount
+* Payment Description: Description of what the user is paying for
+* Reference: An unique identifier for an order
 
 ```c#
 public async Task<string> CreatePayment(string phoneNumber, long amount, string paymentDescription, string reference)
@@ -201,14 +199,14 @@ Once the user info has been received from Vipps, we can create and store the use
 
 To create a user we must:
 
-- [Acquire an access token](#acquire-an-auth0-access-token
-- [Create a Management API Client](#create-a-management-api-client)
-- [Check if a user exists](#check-if-a-user-exists)
-- [Create and store a user](#create-and-store-a-user)
+* [Acquire an access token](#acquire-an-auth0-access-token)
+* [Create a Management API Client](#create-a-management-api-client)
+* [Check if a user exists](#check-if-a-user-exists)
+* [Create and store a user](#create-and-store-a-user)
 
 ### Acquire an Auth0 access token
 
-To acquire an Auth0 access token, we will have to make create an HTTP request. The specifics for the request can be found under _Applications_ -> _APIs_ -> _Auth0 Management API_-> _Test_. An example of how to implement this in .NET is shown below
+To acquire an Auth0 access token, we will have to make create an HTTP request. The specifics for the request can be found under *Applications* -> *APIs* -> *Auth0 Management API*-> *Test*. An example of how to implement this in .NET is shown below
 
 ```c#
     private async Task<string?> GetAuth0Token()
@@ -315,11 +313,11 @@ To create an Auth0 user, you can use the `Users.CreateAsync()` method. This need
 
 When creating the `UserCreateRequest` it is important to specify the following parameters
 
-- `Email` - email of the user provided by the Vipps UserInfo endpoint.
-- `VerifyEmail`- must be set to `false` to prevent Auth0 from requesting email verification.
-- `Password` - will not be used by the user and should be set to an unknown GuID.
-- `FullName` - the name of the user provided by the Vipps UserInfo endpoint.
-- `UserId` - must be set to `sub` provided by Vipps to make sure the Auth0 users will be linked correctly.
+* `Email` - email of the user provided by the Vipps UserInfo endpoint.
+* `VerifyEmail`- must be set to `false` to prevent Auth0 from requesting email verification.
+* `Password` - will not be used by the user and should be set to an unknown GUID.
+* `FullName` - the name of the user provided by the Vipps UserInfo endpoint.
+* `UserId` - must be set to `sub` provided by Vipps to make sure the Auth0 users will be linked correctly.
 
 A complete implementation of checking if a user exists and creating it if not can look like
 
@@ -347,7 +345,7 @@ In this example, we check if either an Auth0 user has already been created as a 
 
 ## Link User
 
-If a user first goes through the payment flow and later wants to log in with Vipps, you should link the users to each other. After the linking of the users has been done, only one user will appear in Auth0, but with two identities. This can be done using [Actions in Auth0](https://auth0.com/docs/customize/actions). You can go to _Actions_ -> _Library_ and click on _Build Custom_. Then you can create a name, and set the trigger to be _Login / Post Login_. Press _Create_ and fill in the code below.
+If a user first goes through the payment flow and later wants to log in with Vipps, you should link the users to each other. After the linking of the users has been done, only one user will appear in Auth0, but with two identities. This can be done using [Actions in Auth0](https://auth0.com/docs/customize/actions). You can go to *Actions* -> *Library* and click on *Build Custom*. Then you can create a name, and set the trigger to be *Login / Post Login*. Press *Create* and fill in the code below.
 
 ```js
 exports.onExecutePostLogin = async (event, api) => {
@@ -381,18 +379,19 @@ exports.onExecutePostLogin = async (event, api) => {
 };
 ```
 
-The linking is only necessary since we are using a Vipps Social Connection. Therefore, you should fill out your _Vipps Social Connection Name_. Under the _Secrets_ section you should create the secrets:
+The linking is only necessary because we are using a Vipps Social Connection.
+Fill out your *Vipps Social Connection Name*. Under the *Secrets* section you should create the secrets:
 
-1.  client_id
-2.  domain
-3.  client_secret
+1. client_id
+2. domain
+3. client_secret
 
 Where the values should be set to the values recorded in the [Configure Auth0 Management API](#configure-auth0-management-api) step.
 
-Make sure to add the Action to the login flow under _Actions_ -> _Flows_ -> _Login_.
+Make sure to add the Action to the login flow under *Actions* -> *Flows* -> *Login*.
 ![Login flow](./images/LoginFlow.png)
 
-After linking, the _Raw JSON_ of the new user in Auth0 will now look like this:
+After linking, the *Raw JSON* of the new user in Auth0 will now look like this:
 
 ```json
 {
@@ -435,13 +434,13 @@ After linking, the _Raw JSON_ of the new user in Auth0 will now look like this:
 
 Implementing a payment flow
 
-- [Vipps SDK](https://developer.vippsmobilepay.com/docs/SDKs/)
-- [Vipps ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/)
+* [Vipps SDK](https://developer.vippsmobilepay.com/docs/SDKs/)
+* [Vipps ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/)
 
 Create and store users in Auth0
 
-- [Auth0 Management API](https://auth0.com/docs/api/management/v2)
+* [Auth0 Management API](https://auth0.com/docs/api/management/v2)
 
 Linking users in Auth0
 
-- [Create custom actions in Ath0](https://auth0.com/docs/customize/actions)
+* [Create custom actions in Ath0](https://auth0.com/docs/customize/actions)

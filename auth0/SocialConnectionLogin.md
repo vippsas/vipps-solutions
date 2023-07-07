@@ -12,12 +12,12 @@ END_METADATA -->
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Prerequisites](#prerequisites)
-- [Configure a Social Connection](#configure-a-social-connection)
-- [Add a Social Connection to your Application](#add-a-social-connection-to-your-application)
-- [Test your connection](#test-your-connection)
-- [References](#references)
+* [Introduction](#introduction)
+* [Prerequisites](#prerequisites)
+* [Configure a Social Connection](#configure-a-social-connection)
+* [Add a Social Connection to your Application](#add-a-social-connection-to-your-application)
+* [Test your connection](#test-your-connection)
+* [References](#references)
 
 ## Introduction
 
@@ -27,18 +27,18 @@ With Auth0's Social Connections, merchants can implement a Vipps login flow usin
 
 ## Prerequisites
 
-- [Create an Auth0 account](https://auth0.com/signup)
-- Configure an Application:
+* [Create an Auth0 account](https://auth0.com/signup)
+* Configure an Application:
 
-  - Under _Applications_, select _Create Application_ and choose your preffered type of application. For this guide we will select a Single Page Application.
-  - Copy the _Domain_ for use in later steps.
-  - Under _Allowed Callback URLs_ specify where a user will be returned after logging in.
+  * Under *Applications*, select *Create Application* and choose your preferred type of application. For this guide we will select a Single Page Application.
+  * Copy the *Domain* for use in later steps.
+  * Under *Allowed Callback URLs* specify where a user will be returned after logging in.
 
-- Create a test unit in the [Vipps portal](https://developer.vippsmobilepay.com/docs/vipps-developers/developer-resources/portal/).
+* Create a test unit in the [Vipps portal](https://developer.vippsmobilepay.com/docs/vipps-developers/developer-resources/portal/).
 
-  - Save the `client_id` and `client_secret` for use in later steps.
-  - Set the Token endpoint authentication method to `client_secret_post`.
-  - Add the following redirect URI to the list of callback URIs, and replace `yourdomainname` with the domain name recorded previously.
+  * Save the `client_id` and `client_secret` for use in later steps.
+  * Set the Token endpoint authentication method to `client_secret_post`.
+  * Add the following redirect URI to the list of callback URIs, and replace `yourdomainname` with the domain name recorded previously.
 
 ```bash
  https://yourdomainname/login/callback
@@ -46,7 +46,7 @@ With Auth0's Social Connections, merchants can implement a Vipps login flow usin
 
 ## Configure a Social Connection
 
-Log in to the Auth0 portal. Under _Authentication_, select _Social_ and click on _Create Social Connection_. To set up Vipps login, fill in the following fields:
+Log in to the Auth0 portal. Under *Authentication*, select *Social* and click on *Create Social Connection*. To set up Vipps login, fill in the following fields:
 
 ### Name
 
@@ -54,17 +54,20 @@ Name of your connection, for example, VippsLogin.
 
 #### Authorization URL
 
-https://apitest.vipps.no/access-management-1.0/access/oauth2/auth
+<https://apitest.vipps.no/access-management-1.0/access/oauth2/auth>
 
 ### Token URL
 
-https://apitest.vipps.no/access-management-1.0/access/oauth2/token
+<https://apitest.vipps.no/access-management-1.0/access/oauth2/token>
 
 ### Scope
 
-Scope defines the information you are requesting from the users. The `openid` scope must be specified, but additional [scope parameters can be provided by Vipps](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/#scopes). The scope parameters will be used to decide which user attributes are used to create an Auth0 user.
+Scope defines the information you are requesting from the users. The `openid` scope must be specified, but additional
+[scope parameters can be provided by Vipps](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/#scopes).
+The scope parameters will be used to decide which user attributes are used to create an Auth0 user.
 
-If multiple scopes are provided separate them with spaces and select _Seperate scopes using a space_. For example will entering `openid name phoneNumber email`, request name, phone number and email from the user.
+If multiple scopes are provided, separate them with spaces and select *Separate scopes using a space*.
+For example, enter `openid name phoneNumber email`, request name, phone number, and the email of the user.
 
 ### Client ID
 
@@ -76,7 +79,7 @@ Enter your `client_secret` recorded earlier.
 
 ### Fetch User profile Script
 
-Here you can enter Javascript code to fetch data from the Vipps API and store them to an Auth0 user.
+Here you can enter JavaScript code to fetch data from the Vipps API and store them to an Auth0 user.
 
 An example script is provided below
 
@@ -116,19 +119,19 @@ function fetchUserProfile(accessToken, context, callback) {
 
 Parameters
 
-- **url** - This is the url to the endpoint used for getting user information from the [Vipps Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/)
-- **headers** - The user info API uses Bearer Token Authentication. For more information see the [Vipps Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/).
-- **profile** - Which attributes will be collected and how they will be used to create an Auth0 user. The `user_id` parameter is used to create a unique identifier for the signed-up user. This should be created from the `sub` which is a unique identifier corresponding to a Vipps user. For more information about Vipps's unique identifier see [What is the sub?](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/userinfo-api-faq/#what-is-the-sub)
+* `url` - This is the URL to the endpoint used for getting user information from the [Vipps Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/)
+* `headers` - The user info API uses Bearer Token Authentication. For more information see the [Vipps Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/).
+* `profile` - Which attributes will be collected and how they will be used to create an Auth0 user. The `user_id` parameter is used to create a unique identifier for the signed-up user. This should be created from the `sub` which is a unique identifier corresponding to a Vipps user. For more information about Vipps's unique identifier see [What is the sub?](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/userinfo-api-faq/#what-is-the-sub)
 
 ## Add a Social Connection to your Application
 
-Under _Applications_ click on _Connections_. Make sure that your new Social Connection is toggled.
+Under *Applications* click on *Connections*. Make sure that your new Social Connection is toggled.
 
 ## Test your connection
 
-Under _Authentication_ -> _Social_, select your newly created Social Connection. Click on _Try Connection_. You should be redirected to the Vipps login page.
+Under *Authentication* -> *Social*, select your newly created Social Connection. Click on *Try Connection*. You should be redirected to the Vipps login page.
 
-To check if a user has been created correctly go to _User Management_ -> _Users_. There should be a new user in the Auth0 database. To check if the attributes have been collected click on the user and select _Raw JSON_. It should look something like this
+To check if a user has been created correctly go to *User Management* -> *Users*. There should be a new user in the Auth0 database. To check if the attributes have been collected click on the user and select *Raw JSON*. It should look something like this
 
 ```json
 {
@@ -158,6 +161,6 @@ To check if a user has been created correctly go to _User Management_ -> _Users_
 
 ## References
 
-Create a custom Social Connection with Vipps as IdP
+Create a custom Social Connection with Vipps as IdP.
 
-- [Connect Apps to Generic OAuth2 Authorization Servers](https://auth0.com/docs/authenticate/identity-providers/social-identity-providers/oauth2)
+* [Connect Apps to Generic OAuth2 Authorization Servers](https://auth0.com/docs/authenticate/identity-providers/social-identity-providers/oauth2)
