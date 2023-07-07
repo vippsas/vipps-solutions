@@ -28,35 +28,6 @@ Reserve an amount large enough to cover the payment Vipps.
 
 The app automatically switches over to the Vipps app.
 
-
-<details>
-<summary>Detailed example</summary>
-<div>
-Here is an example HTTP POST:
-
-[`POST:/epayment/v1/payments`](/api/epayment#tag/CreatePayments/operation/createPayment)
-
-With body:
-
-```json
-{
-  "amount": {
-    "value": 49900,
-    "currency": "NOK"
-  },
-  "paymentMethod": {
-    "type": "WALLET"
-  },
-  "customer": {
-    "phoneNumber": 4796574209
-  },
-  "reference": 2486791679658155992,
-  "userFlow": "WEB_REDIRECT",
-  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
-  "paymentDescription": "Purchase of socks"
-}
-```
-
 Set `userFlow` to `WEB_REDIRECT`, so the customer's browser will either do an automatic app-switch or open the landing page to confirm the mobile number.
 </div>
 </details>

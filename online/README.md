@@ -18,33 +18,19 @@ This flow combines multiple products to illustrate the recommended online paymen
 
 ## Details
 
-### Step 1. Get the customer's the payment method
+### Step 1. Add an option to pay with Vipps or MobilePay
 
-Display an option to *Pay with Vipps* or *Pay with MobilePay*, on the product page of your website or app.
+Add the option to pay with Vipps or MobilePay on the product page of your website.
 
-### Step 2. Send the payment request to Vipps
+### Step 2. Send the payment request
 
-Add the products to the order and send the payment request to Vipps.
-
-If the payment was started on a desktop device, the customer will be sent to the
-[Vipps landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page/).
-There, they confirm their number and are prompted to log in through the Vipps app on their phone.
-
-![Landing page](images/vipps-ecom-step2.svg)
-
-If the payment was started from a mobile device, the app automatically switches over to the Vipps app.
-
-![Pay with Vipps MobilePay](images/vipps-ecom-step1-2.png)
-
+Add the products to the order and send the payment request by using the
+[`createPayment`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+endpoint.
 
 <details>
 <summary>Detailed example</summary>
 <div>
-Here is an example HTTP POST:
-
-[`POST:/epayment/v1/payments`](/api/epayment#tag/CreatePayments/operation/createPayment)
-
-With body:
 
 ```json
 {
@@ -65,22 +51,33 @@ With body:
 }
 ```
 
-
 Set `userFlow` to `WEB_REDIRECT`, so the customer's browser will either do an automatic app-switch or open the landing page to confirm the mobile number.
 </div>
 </details>
 
 ### Step 3. The customer authorizes the payment
 
-The payment request will appear in the customer's Vipps app where they can authorize the payment.
+If the payment was started on a desktop device, the customer will be sent to the
+[Vipps MobilePay landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page/).
+There, they confirm their number and are prompted to log in through the Vipps app on their phone.
 
+![Landing page](images/vipps-ecom-step2.svg)
+
+If the payment was started from a mobile device, the Vipps MobilePay app will automatically open.
+
+![Pay with Vipps MobilePay](images/vipps-ecom-step1-2.png)
+
+Once the customer authorizes the payment, update your system with the status.
 To get confirmation that payment was approved, monitor
 [webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
 [query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
 
-![Confirm payment](images/vipps-ecom-confirm2.png)
 
 ### Step 4. Confirm the order
+
+When the user confirms the payment, they will get a confirmation in the app.
+
+![Confirm payment](images/vipps-ecom-confirm2.png)
 
 The app redirects the customer back to your store, where you confirm that the order has been successful.
 
@@ -133,9 +130,9 @@ With body:
   }
 }
 ```
+
 </div>
 </details>
-
 
 ## Sequence diagram
 
