@@ -10,6 +10,7 @@ pagination_prev: null
 ---
 
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
+import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
 # In-store payments
@@ -68,7 +69,7 @@ With body:
 ```json
 {
   "amount": {
-    "value": 49800,
+    "value": 10000,
     "currency": "NOK"
   },
   "paymentMethod": {
@@ -107,13 +108,7 @@ Once the customer authorizes the payment, update the POS system with the status.
 
 ### Step 7: Capture the payment
 
-Once the customer authorizes the payment, update the POS system with the status.
-
-The
-[`capturePayment`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment) endpoint
-allows you to capture a payment.
-
-Be sure to check the status of the captured payment.
+<FULLCAPTURE />
 
 ## Sequence diagram
 

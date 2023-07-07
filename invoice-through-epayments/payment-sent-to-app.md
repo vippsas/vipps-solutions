@@ -14,6 +14,7 @@ import TabItem from '@theme/TabItem';
 
 import EX1 from './_create_payment_example.md'
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
+import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
 # Payment request sent directly to app
@@ -71,11 +72,7 @@ To get confirmation that payment was approved, monitor
 
 ### Step 4. Capture the payment
 
-The
-[`capturePayment`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment) endpoint
-allows you to capture a payment.
-
-Be sure to check the status of the captured payment.
+<FULLCAPTURE />
 
 ## Sequence diagram
 

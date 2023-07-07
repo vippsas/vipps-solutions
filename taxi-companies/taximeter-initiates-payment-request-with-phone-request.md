@@ -7,6 +7,7 @@ pagination_prev: null
 ---
 
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
+import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
 # Payment with manual phone number entry
@@ -40,16 +41,9 @@ To get confirmation that payment was approved, monitor
 
 <ATTACHRECEIPT />
 
-### Step 5. Capture the amount
+### Step 5. Capture the payment
 
-When reservation is complete, perform a
-[capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#capture-via-the-api).
-
-The
-[`capturePayment`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment) endpoint
-allows you to capture a payment.
-
-Be sure to check the status of the captured payment.
+<FULLCAPTURE />
 
 ## Sequence diagram
 
