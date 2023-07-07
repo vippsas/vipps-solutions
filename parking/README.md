@@ -8,6 +8,8 @@ hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
 ---
+
+import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
 # Parking and "Pay-as-you-go"
@@ -52,7 +54,7 @@ See
 [How it works in Vipps Login](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-api-howitworks)
 for more details.
 
-### Step 5. Create agreement
+### Step 4. Create agreement
 
 The customer now has an account, with verified user data, and is able to both log in and pay.
 Create an agreement using the
@@ -62,11 +64,11 @@ endpoint.
 For more details, see
 [Create an agreement](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api/#create-an-agreement).
 
-### Step 6. Customer accepts agreement
+### Step 5. Customer accepts agreement
 
 The customer accepts the agreement in the Vipps MobilePay app.
 
-### Step 7. Charge for variable amounts
+### Step 6. Charge for variable amounts
 
 The customer parks one or more times.
 The accumulated parking fees are used to create one charge with the total amount.
@@ -77,6 +79,10 @@ See:
 [Create a charge](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#create-a-charge).
 
 Be sure to check the status of the captured payments.
+
+### Step 7. Attach a receipt
+
+<ATTACHRECEIPT />
 
 ## Relevant comments
 
@@ -112,10 +118,10 @@ sequenceDiagram
     M->>Recurring: Initiate agreement request
     Recurring->>C: Request agreement
     C->>Recurring: Accept agreement
-    M->> ordermanagement: Attach receipt
     Recurring->>C: Provide agreement information
     M->>C: Display confirmation on product site
     M->>Recurring: Initiate payment request for variable amounts
     Recurring->>C: Automatic capture
     M->>Recurring: Check the status of captures
+    M->> ordermanagement: Attach receipt for the charge
 ```

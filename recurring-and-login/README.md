@@ -7,6 +7,8 @@ description: Simplify subscriptions by using the Login API and Recurring API tog
 pagination_next: null
 pagination_prev: null
 ---
+
+import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
 # Subscriptions
@@ -98,6 +100,12 @@ It will be automatically captured on the due date.
 
 Be sure to check the status of the captured charges.
 
+### Step 10. Attach a receipt for the charge
+
+<ATTACHRECEIPT />
+
+## Relevant pages
+
 For more information, see:
 
 * [Recurring API guide: Charges](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api/#charges)
@@ -122,7 +130,6 @@ sequenceDiagram
     M->>Recurring: Initiate agreement request
     Recurring->>C: Request agreement
     C->>Recurring: Accept agreement
-    M->> ordermanagement: Attach receipt
     Recurring->>C: Provide agreement information
     M->>C: Display confirmation on product site
     M-->>Recurring: Initiate initial payment capture (if applicable)
@@ -130,4 +137,5 @@ sequenceDiagram
     M->>Recurring: Schedule future charges
     Recurring->>C: Automatic capture on due dates of scheduled charges
     M->>Recurring: Check the status of captures
+    M->> ordermanagement: Attach receipt for the charge
 ```

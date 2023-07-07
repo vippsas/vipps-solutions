@@ -7,6 +7,8 @@ hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
 ---
+
+import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
 # In-store using static QR
@@ -50,15 +52,7 @@ To get confirmation that payment was approved, monitor
 
 ### Step 5: Attach a receipt to the order
 
-The
-[`postReceipt`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2) endpoint
-allows you to send receipt information to the customer's app.
-
-The customer will get the receipt in their Vipps MobilePay app.
-
-See
-[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
-for more details.
+<ATTACHRECEIPT />
 
 ### Step 6: Capture the payment
 

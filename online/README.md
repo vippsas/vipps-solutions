@@ -8,6 +8,8 @@ hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
 ---
+
+import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
 # Online payments
@@ -85,16 +87,8 @@ The app redirects the customer back to your store, where you confirm that the or
 
 ### Step 5. Add a receipt
 
-Add a payment receipt to the order. This will appear in their app.
 
-This `postReceipt` endpoint,
-[`POST:/order-management/v2/ecom/receipts/{reference}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2),
-is for sending receipt information.
-This is a combination of *order lines* and a *bottom line* with sum and VAT.
-An *order line* is a description of each item present in the order.
-See
-[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
-for more details.
+<ATTACHRECEIPT />
 
 ![Order receipt](images/order-receipt.png)
 
@@ -116,7 +110,6 @@ The payment is transferred to your account. This may take 2-3 days depending on 
 <details>
 <summary>Detailed example</summary>
 <div>
-Here is an example HTTP POST:
 
 [`POST:/epayment/v1/payments/{reference}/capture`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
 

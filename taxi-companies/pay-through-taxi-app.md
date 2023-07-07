@@ -5,6 +5,8 @@ hide_table_of_contents: false
 pagination_next: null
 pagination_prev: null
 ---
+
+import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
 # Payment through company app
@@ -44,20 +46,14 @@ To get confirmation that payment was approved, monitor
 Upon authorization, the Vipps app should automatically redirect the customer to your app.
 Confirm that the order has been successful in your app.
 
-### Step 5. Add a receipt
+### Step 5. Attach a receipt
 
 After the drive is complete, calculate how much the customer owes and provide a receipt.
-Add a payment receipt to the order by using the
-[`postReceipt`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
-endpoint.
 
-This will appear in their app.
+<ATTACHRECEIPT />
 
-See
-[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
-for more details.
 
-### Step 7. Capture the amount due
+### Step 6. Capture the amount due
 
 [Capture](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/capturePayment)
 the amount due before releasing the remaining reserved amount on the customer's account.
