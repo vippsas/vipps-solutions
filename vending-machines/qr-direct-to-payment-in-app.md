@@ -51,16 +51,16 @@ To get confirmation that payment was approved, monitor
 [webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
 [query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
 
-### Step 4: Capture the payment
+### Step 4: Attach a receipt to the order
+
+<ATTACHRECEIPT />
+
+### Step 5: Capture the amount due
 
 After final amount is confirmed, do a [partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture)
 and release the remaining amount from reservation with a [partial cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture) request.
 
 Check the status of these operations.
-
-### Step 5: Attach a receipt to the order
-
-<ATTACHRECEIPT />
 
 ## Sequence diagram
 
