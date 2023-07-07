@@ -91,7 +91,6 @@ The app redirects the customer back to your store, where you confirm that the or
 
 <ATTACHRECEIPT />
 
-![Order receipt](images/order-receipt.png)
 
 ### Step 6. Ship the order (if applicable)
 
