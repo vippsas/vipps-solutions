@@ -29,8 +29,6 @@ Reserve an amount large enough to cover the payment Vipps.
 The app automatically switches over to the Vipps app.
 
 Set `userFlow` to `WEB_REDIRECT`, so the customer's browser will either do an automatic app-switch or open the landing page to confirm the mobile number.
-</div>
-</details>
 
 ### Step 3. The customer authorizes the payment
 
