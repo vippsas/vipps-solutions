@@ -4,7 +4,7 @@ title: Vipps MobilePay Payment Requests
 sidebar_label: Payment Requests
 sidebar_position: 50
 description: Using Vipps MobilePay for sending payment requests.
-hide_table_of_contents: true
+hide_table_of_contents: false
 pagination_next: null
 pagination_prev: null
 ---

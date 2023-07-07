@@ -3,6 +3,7 @@
 title: Static QR directing to the merchant site for product selection
 sidebar_label: Static QR direct to merchant site for product selection
 sidebar_position: 40
+hide_table_of_contents: false
 pagination_next: null
 pagination_prev: null
 ---

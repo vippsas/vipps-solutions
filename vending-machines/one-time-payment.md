@@ -3,6 +3,7 @@
 title: Dynamic QR directing to the app for payment
 sidebar_label: Dynamic QR direct to the app for payment
 sidebar_position: 10
+hide_table_of_contents: false
 pagination_next: null
 pagination_prev: null
 ---

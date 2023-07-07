@@ -4,7 +4,7 @@ title: Vipps MobilePay in-store payments with customer club flow
 sidebar_label: In-store payments with customer club
 sidebar_position: 30
 description: Using Vipps MobilePay in a physical setting with customer club
-hide_table_of_contents: true
+hide_table_of_contents: false
 pagination_next: null
 pagination_prev: null
 ---

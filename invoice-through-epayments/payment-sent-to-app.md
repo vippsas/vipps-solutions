@@ -3,7 +3,7 @@
 title: Vipps MobilePay payment request sent directly to app
 sidebar_label: Payment request sent directly to app
 sidebar_position: 51
-hide_table_of_contents: true
+hide_table_of_contents: false
 pagination_next: null
 pagination_prev: null
 ---

@@ -3,7 +3,7 @@
 title: Vipps MobilePay Payment request as a link
 sidebar_label: Payment request as a link
 sidebar_position: 52
-hide_table_of_contents: true
+hide_table_of_contents: false
 pagination_next: null
 pagination_prev: null
 ---

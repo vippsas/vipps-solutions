@@ -3,7 +3,7 @@
 title: Vipps MobilePay payment request with sharing of telephone number
 sidebar_label: Payment request with sharing of telephone number
 sidebar_position: 53
-hide_table_of_contents: true
+hide_table_of_contents: false
 pagination_next: null
 pagination_prev: null
 ---

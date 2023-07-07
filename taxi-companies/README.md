@@ -3,7 +3,7 @@
 title: Vipps MobilePay taxi payments flow
 sidebar_label: Taxi payments
 sidebar_position: 100
-hide_table_of_contents: true
+hide_table_of_contents: false
 pagination_next: null
 pagination_prev: null
 ---

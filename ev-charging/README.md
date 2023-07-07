@@ -3,7 +3,7 @@
 title: Electric vehicle charging flow
 sidebar_label: Electric vehicle charging
 sidebar_position: 80
-hide_table_of_contents: true
+hide_table_of_contents: false
 pagination_next: null
 pagination_prev: null
 ---
