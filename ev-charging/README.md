@@ -46,20 +46,25 @@ in the QR API guide for more details about generating the QR code.
 
 ### Step 2. Initiate payment request
 
-The website that the customer lands on should contain payment options, in addition to terms and conditions. If the QR code contained an identification of the charging point, the customer doesn't have to type in any identification code to start charging.
-
-It is also possible to let the customer choose maximum amount or reserved amount.
-
-When the customer is ready to pay, initiate a
-[payment request](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments).
+The website that the customer lands on should contain payment options, in addition to terms and conditions.
+If the QR code contained an identification of the charging point, the customer doesn't have to type in any identification code to start charging.
 
 <details>
 <summary>Details</summary>
 <div>
 
+
+When the customer is ready to pay, initiate a
+[payment request](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments).
+
 The payment request amount should be large enough to cover the cost of a charging session. It is usually sufficient to reserve an amount between 350 NOK and 500 NOK, but with higher electricity costs, this may change.
 
+It is also possible to let the customer choose maximum amount or reserved amount.
+
 If the payment is approved, this amount will be reserved on customer's account. The amount that is unused will be released when they are finished charging.
+
+Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
+
 </div>
 </details>
 

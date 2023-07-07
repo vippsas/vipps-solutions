@@ -33,8 +33,14 @@ Add the products to the order and send the payment request by using the
 endpoint.
 
 <details>
-<summary>Detailed example</summary>
+<summary>Details</summary>
 <div>
+
+Set `userFlow` to `WEB_REDIRECT`, so the customer's browser will either do an automatic app-switch or open the landing page to confirm the mobile number.
+
+Here is an example HTTP POST:
+
+[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 
 ```json
 {
@@ -53,9 +59,10 @@ endpoint.
   "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
   "paymentDescription": "Purchase of socks"
 }
+
+
 ```
 
-Set `userFlow` to `WEB_REDIRECT`, so the customer's browser will either do an automatic app-switch or open the landing page to confirm the mobile number.
 </div>
 </details>
 

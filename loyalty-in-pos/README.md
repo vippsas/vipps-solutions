@@ -111,15 +111,18 @@ After membership status has been determined and all wares have been scanned, sen
 You already have the phone number from step 1, so you don't need to ask for it again.
 Just provide a button in your user interface to allow the cashier to send the payment request.
 
+
+<details>
+<summary>Details</summary>
+<div>
+
+
 Your system can send the payment request by using the
 [`createPayment`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 endpoint.
 
-Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer who scanned the QR code, and after the payment is completed, the POS will be updated with the status of the payment.
+Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer who scanned the QR code.
 
-<details>
-<summary>Detailed example</summary>
-<div>
 Here is an example HTTP POST:
 
 [`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)

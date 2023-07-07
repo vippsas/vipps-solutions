@@ -26,18 +26,28 @@ This flow combines multiple products to illustrate the recommended online paymen
 
 Display an option to pay with Vipps on your app.
 
-### Step 2. Initiate a payment request to Vipps
+### Step 2. Initiate a payment request
 
-Reserve an amount large enough to cover the payment Vipps.
+When the customer is ready to pay, initiate a
+[payment request](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments).
 
-The app automatically switches over to the Vipps app.
+<details>
+<summary>Details</summary>
+<div>
+
+The payment request amount should be large enough to cover the cost of the journey.
+
+If the payment is approved, this amount will be reserved on customer's account.
+The amount that is unused will be released when the journey is finished.
 
 Set `userFlow` to `WEB_REDIRECT`, so the customer's browser will either do an automatic app-switch or open the landing page to confirm the mobile number.
+
+</div>
+</details>
 
 ### Step 3. The customer authorizes the payment
 
 <AUTHORIZEPAYMENT />
-
 
 ### Step 4. Confirm the order
 
