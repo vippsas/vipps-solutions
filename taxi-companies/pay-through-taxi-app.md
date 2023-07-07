@@ -7,6 +7,7 @@ pagination_prev: null
 ---
 
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
+import PARTIALCAPTURE from '../_common/_partial_capture.md'
 END_METADATA -->
 
 # Payment through company app
@@ -55,15 +56,10 @@ After the drive is complete, calculate how much the customer owes and provide a 
 
 ### Step 6. Capture the amount due
 
-[Capture](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/capturePayment)
-the amount due before releasing the remaining reserved amount on the customer's account.
+<PARTIALCAPTURE />
 
-Release the remaining about by sending a
-[cancel](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/cancelPayment) API request.
+## Related information
 
-Check the status of the captured payment.
-
-Read more about the flow:
 
 * [ePayment how it works guide](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/how-it-works/vipps-epayment-api-how-it-works-online)
 * [Recommended flow for online payments](../online/README.md)

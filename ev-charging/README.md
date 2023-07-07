@@ -8,6 +8,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import PARTIALCAPTURE from '../_common/_partial_capture.md'
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
@@ -96,8 +97,7 @@ Send a digital receipt and a hyperlink to the charging session after charging is
 
 ### Step 6. Capture the payment
 
-After final amount is confirmed, do a [partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture)
-and release the remaining amount from reservation with a [partial cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture) request.
+<PARTIALCAPTURE />
 
 If you are set up in Vipps' systems with the correct MCC (Merchant Category Code) for EV charging (5552), we will automatically send a push notification to the customer with the captured amount.
 

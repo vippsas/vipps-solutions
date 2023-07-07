@@ -7,6 +7,7 @@ pagination_prev: null
 ---
 
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
+import PARTIALCAPTURE from '../_common/_partial_capture.md'
 END_METADATA -->
 
 # Payment through taximeter and app
@@ -41,10 +42,7 @@ To get confirmation that payment was approved, monitor
 
 ### Step 5. Capture the amount due
 
-After final amount is confirmed, do a [partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture)
-and release the remaining amount from reservation with a [partial cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture) request.
-
-Be sure to check the status of the captured payment.
+<PARTIALCAPTURE />
 
 ## Sequence diagram
 

@@ -9,8 +9,6 @@ The payment is transferred to your account. This may take 2-3 days depending on 
 <summary>Detailed example</summary>
 <div>
 
-Here is an example HTTP POST:
-
 [`POST:/epayment/v1/payments/{reference}/capture`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
 
 With body:
