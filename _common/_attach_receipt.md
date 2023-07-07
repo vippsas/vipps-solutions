@@ -11,6 +11,10 @@ An order line is a description of each item present in the order.
 <summary>Detailed example</summary>
 <div>
 
+Here is an example HTTP POST:
+
+[`POST:/order-management/#operation/postReceiptV2`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+
 Body:
 
 ```json
