@@ -46,14 +46,14 @@ To get confirmation that payment was approved, monitor
 Upon authorization, the Vipps app should automatically redirect the customer to your app.
 Confirm that the order has been successful in your app.
 
-### Step 5. Add a receipt
+### Step 5. Attach a receipt
 
 After the drive is complete, calculate how much the customer owes and provide a receipt.
 
 <ATTACHRECEIPT />
 
 
-### Step 7. Capture the amount due
+### Step 6. Capture the amount due
 
 [Capture](https://developer.vippsmobilepay.com/api/epayment#tag/AdjustPayments/operation/capturePayment)
 the amount due before releasing the remaining reserved amount on the customer's account.
