@@ -7,6 +7,8 @@ hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
 ---
+
+import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
 # Electric vehicle charging
@@ -59,7 +61,7 @@ If the payment is approved, this amount will be reserved on customer's account. 
 </div>
 </details>
 
-### Step 4. Customer approves the payment
+### Step 3. Customer approves the payment
 
 The customer's Vipps app should open automatically, with the maximum reservation amount visible.
 They can then confirm the payment.
@@ -78,7 +80,7 @@ Once you know that payment was approved you, can start charging.
 </div>
 </details>
 
-### Step 5. Start charging
+### Step 4. Start charging
 
 Once the customer has approved the payment, you can start charging.
 The customer can stop the charging at any time from your website screen or from the charging station's user interface.
@@ -89,14 +91,8 @@ Stop charging when charging is complete or when the customer selects to stop.
 ### Step 5. Add a receipt
 
 Send a digital receipt and a hyperlink to the charging session after charging is done.
-To do this, use the
-[`postReceipt`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2) endpoint.
 
-The receipt with the payment details will be provided the customer's Vipps app.
-
-See
-[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
-for more details.
+<ATTACHRECEIPT />
 
 ### Step 6. Capture the payment
 
