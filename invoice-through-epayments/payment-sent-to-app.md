@@ -12,6 +12,7 @@ import ApiSchema from '@theme/ApiSchema';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
@@ -19,7 +20,7 @@ END_METADATA -->
 # Payment request sent directly to app
 
 If you have the customer's phone number and their consent to send payment requests through Vipps MobilePay,
-you can send payment requests directly to the customer.
+you can send payment requests directly to them.
 
 The flow for the customer will look like this:
 
@@ -54,15 +55,13 @@ The customer will receive a push notification in their Vipps MobilePay app.
 
 ### Step 2. Customer approves the payment
 
-When the customer selects `See details` in the payment confirmation screen, they are presented with the order information provided by the merchant without leaving the app.
+<AUTHORIZEPAYMENT />
 
-The customer approves the payment.
+<!--
+If you have already attached order information to this payment, the customer will be able to see this in the Vipps app.
+When they select `See details` in the payment confirmation screen, they are presented with the order information without leaving the app. -->
 
-For long-living payments, customers also have the option of soft-dismissing the payment and postponing it for later.
-
-To get confirmation that payment was approved, monitor
-[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
-[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
+Note that, for long-living payments, customers also have the option of soft-dismissing the payment and postponing it for later.
 
 ### Step 3. Attach a receipt to the order
 

@@ -12,6 +12,7 @@ import ApiSchema from '@theme/ApiSchema';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
@@ -55,19 +56,16 @@ When they select to pay with Vipps MobilePay, send the [create payment](https://
 This is done by setting the `scope` parameter with a value of `phoneNumber` in the
 [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
 
-After the customer has finished the payment, you will get their phone number to keep for future purchases. This means that, in the future, you can send the payment request directly to the customer without requesting them to log in.
+After the customer has finished the payment, you will get their phone number to keep for future payments. This means that, in the future, you can send the payment request directly to them without requiring a new login.
 
- There is more info about fetching user data in the
+There is more info about fetching user data in the
 [profile sharing](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/profile-sharing/)
 section of the ePayment API guide.
 
 ### Step 3. Customer approves the payment
 
-The payment request will appear in the customer's Vipps app where they can authorize the payment.
+<AUTHORIZEPAYMENT />
 
-To get confirmation that payment was approved, monitor
-[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
-[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
 
 ### Step 4. Add a receipt
 
