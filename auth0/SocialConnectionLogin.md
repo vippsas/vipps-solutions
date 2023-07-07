@@ -1,3 +1,13 @@
+<!-- START_METADATA
+---
+title: Vipps login in Auth0 using Social Connections
+sidebar_label: Login using Social Connections
+sidebar_position: 191
+pagination_next: null
+pagination_prev: null
+---
+END_METADATA -->
+
 # Vipps login in Auth0 using Social Connections
 
 ## Table of Contents

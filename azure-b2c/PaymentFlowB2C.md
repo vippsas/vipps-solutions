@@ -2,7 +2,7 @@
 ---
 title: Vipps payment flow using Azure AD B2C
 sidebar_label: Payment flow
-sidebar_position: 200
+sidebar_position: 202
 pagination_next: null
 pagination_prev: null
 ---

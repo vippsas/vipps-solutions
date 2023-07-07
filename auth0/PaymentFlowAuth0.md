@@ -1,3 +1,13 @@
+<!-- START_METADATA
+---
+title: Vipps payment flow using Auth0
+sidebar_label: Payment flow
+sidebar_position: 192
+pagination_next: null
+pagination_prev: null
+---
+END_METADATA -->
+
 # Vipps payment flow using Auth0
 
 ## Introduction
@@ -189,14 +199,14 @@ Once the user info has been received from Vipps, we can create and store the use
 
 ## Add user to Auth0
 
-To create a user we must
+To create a user we must:
 
-- [Aquire an access token](#aquire-an-auth0-access-token)
+- [Acquire an access token](#acquire-an-auth0-access-token
 - [Create a Management API Client](#create-a-management-api-client)
-- [Check if a user exists](#)
-- [Create and store a user]()
+- [Check if a user exists](#check-if-a-user-exists)
+- [Create and store a user](#create-and-store-a-user)
 
-### Aquire an Auth0 access token
+### Acquire an Auth0 access token
 
 To acquire an Auth0 access token, we will have to make create an HTTP request. The specifics for the request can be found under _Applications_ -> _APIs_ -> _Auth0 Management API_-> _Test_. An example of how to implement this in .NET is shown below
 
@@ -248,13 +258,13 @@ var managementApiClient = new ManagementApiClient(accessToken, "<AUTH_0_DOMAIN>"
 
 ### Check if a user exists
 
-Before a user can be created through the API you must make sure that there are no users already stored with the same user ID. Each user stored in Auth0 will have a unique user ID. It will typically be concatenated of a provider, connection, and a unique string. For [Vipps login in Auth0 using Social Connections](./SocialConnectionLogin.md) it will be on the form
+Before a user can be created through the API you must make sure that there are no users already stored with the same user ID. Each user stored in Auth0 will have a unique user ID. It will typically be concatenated of a provider, connection, and a unique string. For [Vipps login in Auth0 using Social Connections](./SocialConnectionLogin.md), it will be in the form;
 
 ```json
 "oauth2|VippsLogin|{sub}"
 ```
 
-where the `sub` is a unique identifier provided by Vipps. To read more about the `sub`, check out [What is the sub?](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-faq/#what-is-the-sub) In this case the provider is `oauth2` and the connection is `VippsLogin`.
+In this snippet, the `sub` is a unique identifier provided by Vipps. To read more about the `sub`, check out [What is the sub?](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-faq/#what-is-the-sub) In this case the provider is `oauth2` and the connection is `VippsLogin`.
 
 To check if a user exists given a user ID, you can use the `Users.GetAsync()` method from the Management API Client. This will get the requested user if it exists, otherwise, it will throw an exception. An example of how this can be implemented is shown below
 
@@ -337,7 +347,7 @@ In this example, we check if either an Auth0 user has already been created as a 
 
 ## Link User
 
-If a user first goes through the payment flow and later wants to log in with Vipps you should link the users to each other. After the linking of the users has been done, only one user will appear in Auth0, but with two identities. This can be done using [Actions in Auth0](https://auth0.com/docs/customize/actions). You can go to _Actions_ -> _Library_ and click on _Build Custom_. Then you can create a name, and set the trigger to be _Login / Post Login_. Press _Create_ and fill in the code below.
+If a user first goes through the payment flow and later wants to log in with Vipps, you should link the users to each other. After the linking of the users has been done, only one user will appear in Auth0, but with two identities. This can be done using [Actions in Auth0](https://auth0.com/docs/customize/actions). You can go to _Actions_ -> _Library_ and click on _Build Custom_. Then you can create a name, and set the trigger to be _Login / Post Login_. Press _Create_ and fill in the code below.
 
 ```js
 exports.onExecutePostLogin = async (event, api) => {
@@ -371,7 +381,7 @@ exports.onExecutePostLogin = async (event, api) => {
 };
 ```
 
-The linking is only necessary since we are using a Vipps Social Connection. Therefore you should fill out your _Vipps Social Connection Name_. Under the _Secrets_ section you should create the secrets:
+The linking is only necessary since we are using a Vipps Social Connection. Therefore, you should fill out your _Vipps Social Connection Name_. Under the _Secrets_ section you should create the secrets:
 
 1.  client_id
 2.  domain
@@ -426,7 +436,7 @@ After linking, the _Raw JSON_ of the new user in Auth0 will now look like this:
 Implementing a payment flow
 
 - [Vipps SDK](https://developer.vippsmobilepay.com/docs/SDKs/)
-- [Vipps ePayment api](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/)
+- [Vipps ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/)
 
 Create and store users in Auth0
 

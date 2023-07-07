@@ -2,7 +2,7 @@
 ---
 title: Vipps login in Azure AD B2C using custom policies
 sidebar_label: Login with custom policy
-sidebar_position: 200
+sidebar_position: 201
 pagination_next: null
 pagination_prev: null
 ---
