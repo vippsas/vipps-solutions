@@ -1,3 +1,6 @@
+
+<!-- THIS IS NOT USED AT THE MOMENT BECAUSE IT ISN'T MATCHING THE SPEC FOR EPAYMENTS -->
+
 <details>
 <summary>General create request example</summary>
 <div>

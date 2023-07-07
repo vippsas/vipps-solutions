@@ -12,7 +12,6 @@ import ApiSchema from '@theme/ApiSchema';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import EX1 from './_create_payment_example.md'
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
@@ -51,8 +50,6 @@ Provide a QR code or link to your payment page where you present your customer w
 ### Step 2. Create a payment request
 
 When they select to pay with Vipps MobilePay, send the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
-
-<EX1 />
 
 ### Step 3. Customer approves the payment
 
