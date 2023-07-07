@@ -10,6 +10,7 @@ pagination_prev: null
 ---
 
 import ATTACHRECEIPT from '../_common/_attach_receipt.md'
+import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
 # Online payments
@@ -98,12 +99,7 @@ Complete and ship the order to the customer.
 
 ### Step 7. Capture the payment
 
-The
-[`capturePayment`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment) endpoint
-allows you to capture a payment.
-
-Be sure to check the status of the captured payment.
-
+<FULLCAPTURE />
 
 The payment is transferred to your account. This may take 2-3 days depending on your bank.
 
