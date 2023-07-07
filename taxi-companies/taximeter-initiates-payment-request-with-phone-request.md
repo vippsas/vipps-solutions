@@ -41,7 +41,7 @@ To get confirmation that payment was approved, monitor
 
 <ATTACHRECEIPT />
 
-### Step 5. Capture the amount
+### Step 5. Capture the payment
 
 <FULLCAPTURE />
 
