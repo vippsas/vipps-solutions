@@ -41,9 +41,9 @@ Note: Azure AD B2C provides preconfigured user flows that can be used to authent
   - Set the Token endpoint authentication method to `client_secret_post`.
   - Add the following redirect URI to the list of callback URIs, and replace `yourtenantname` with the name of your tenant.
 
-```bash
-https://yourtenantname.b2clogin.com/yourtenantname.onmicrosoft.com/oauth2/authresp
-```
+  ```bash
+  https://yourtenantname.b2clogin.com/yourtenantname.onmicrosoft.com/oauth2/authresp
+  ```
 
 ## Custom policy template
 
@@ -80,21 +80,25 @@ Scope defines the information you are requesting from the users. The `openid` sc
 
 Additional [scopes provided by Vipps](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/#scopes) can be added, by adding them to *TrustFrameworkExtensions.xml* and *SignUpOrSignin.xml*.
 
+## Vipps environment
+
+You must change the comments `<!-- Vipps environment -->` in *TrustFrameworkExtensions.xml* to the Vipps environment you are using. This could be either api.vipps.no (Prod) or apitest.vipps.no (Test).
+
 ## Upload the policy
 
 1. Select the *Identity Experience Framework* menu in your B2C tenant in the Azure portal.
 2. Select *Upload custom policy*.
 3. In this order, upload the policy files:
 
-   a. TrustFrameworkBase.xml
+   a. *TrustFrameworkBase.xml*
 
-   b. TrustFrameworkLocalization.xml
+   b. *TrustFrameworkLocalization.xml*
 
-   c. TrustFrameworkExtensions.xml
+   c. *TrustFrameworkExtensions.xml*
 
-   d. SignUpOrSignin.xml
+   d. *SignUpOrSignin.xml*
 
-To test the policy select *B2C_1A_signup_signin*, select the web application you wish to test, specify a Reply URL (for example <https://jwt.ms>), and click *Run Now*.
+To test the policy select *B2C_1A_signup_signin*, select the web application you wish to test, specify a Reply URL (for example <https://jwt.ms>), and click *Run Now*. The Reply URL will be the page the user is sent to after a successful login.
 
 ## Sequence Diagram of the flow implementation
 
@@ -147,3 +151,6 @@ Calling a REST API using a custom policy:
 
 - [Define a RESTful technical profile in an Azure Active Directory B2C custom policy](https://learn.microsoft.com/en-us/azure/active-directory-b2c/restful-technical-profile)
 - [Call a REST API by using Azure Active Directory B2C custom policy](https://learn.microsoft.com/en-us/azure/active-directory-b2c/custom-policies-series-call-rest-api)
+
+Terminology
+- [Common terms](#https://developer.vippsmobilepay.com/docs/vipps-developers/terminology/#common-terms)

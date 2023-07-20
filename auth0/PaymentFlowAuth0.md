@@ -36,7 +36,11 @@ The code snippets are using the [Vipps .NET SDK](https://developer.vippsmobilepa
   };
   ```
 
-  For further explanation see the [SDK](https://developer.vippsmobilepay.com/docs/SDKs/) pages.
+  Note: The above example is for illustrating what parameters should be set in the `VippsConfigurationOptions`. Make sure to store your client credentials safely!
+
+  If you are developing in the production environment, do not include `UseTestMode`.
+
+  For further explanation, refer to the [SDKs](https://developer.vippsmobilepay.com/docs/SDKs/) section.
 
 * Configure the [Auth0 Management API](#configure-auth0-management-api).
 * Implement a [Vipps Social Connection](./SocialConnectionLogin.md).
@@ -45,9 +49,9 @@ The code snippets are using the [Vipps .NET SDK](https://developer.vippsmobilepa
 
 To be able to use the Auth0 Management API, some configuration is needed in your Auth0 tenant. The Management API is designed for server-side usage, as it requires storing the secrets in a secure location. It will later be used to store users in Auth0.
 
-On the Auth0 dashboard, go to *Applications* > *APIs* and click on *Auth0 Management API*. Select the *Test* tab and click *Create a test application*. You should now have a new application named Auth0 Management API (Test Application) located under *Applications*.
+On the Auth0 dashboard, go to _Applications_ > _APIs_ and click on _Auth0 Management API_. Select the _Test_ tab and click _Create a test application_. You should now have a new application named Auth0 Management API (Test Application) located under _Applications_.
 
-Select the newly generated *Auth0 Management API (Test Application)*. Under *APIs*, expand *Auth0 Management API*. Make sure that the API is authorized and that all permissions are granted. Under *settings*, make sure to save the following for use in later steps:
+Select the newly generated _Auth0 Management API (Test Application)_. Under _APIs_, expand _Auth0 Management API_. Make sure that the API is authorized and that all permissions are granted. Under _settings_, make sure to save the following for use in later steps:
 
 * Domain
 * Client ID
@@ -65,9 +69,9 @@ The Auth0 payment flow consists of:
 
 sequenceDiagram
     actor User
+    participant Merchant
     participant Payment landing page
     participant Vipps app
-    participant Merchant
     participant ePayment API
     participant Login API
     participant Auth0 API
@@ -115,10 +119,12 @@ To initiate a payment, the merchant backend uses the [ePayment API](https://deve
 
 The parameters needed to create a payment are:
 
-* Phone Number: The phone number of the user
-* Amount: The payment amount
-* Payment Description: Description of what the user is paying for
-* Reference: An unique identifier for an order
+- Phone Number: The phone number of the user
+- Amount: The payment amount
+- Payment Description: Description of what the user is paying for
+- Reference: An unique identifier for an order
+
+Scope defines the information you are requesting from the user. Additional [scopes provided by Vipps](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/#scopes) can be added by adding them to th _Scope_ string in the _ProfileRequest_.
 
 ```c#
 public async Task<string> CreatePayment(string phoneNumber, long amount, string paymentDescription, string reference)
@@ -152,6 +158,8 @@ public async Task<string> CreatePayment(string phoneNumber, long amount, string 
     }
 ```
 
+See [ePayment Api Spec](#https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments) for more details.
+
 ## Store user in Auth0
 
 If the user confirms the payment and gives consent to user information, he/she will be redirected to the `ReturnURL`. The merchant is now able to collect user information and store it in Auth0. In this part, the merchant must do the following:
@@ -169,6 +177,8 @@ public async Task<string> GetSubFromVippsPayment(string reference)
     return request.Profile.Sub;
 }
 ```
+
+The `sub` is an identifier provided by Vipps that will be unique to a given user. For more information about the `sub`, see [What is the sub?](#https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-faq/#what-is-the-sub)
 
 ### Use the sub to collect user information
 
@@ -206,12 +216,12 @@ To create a user we must:
 
 ### Acquire an Auth0 access token
 
-To acquire an Auth0 access token, we will have to make create an HTTP request. The specifics for the request can be found under *Applications* > *APIs* > *Auth0 Management API*> *Test*. An example of how to implement this in .NET is shown below
+To acquire an Auth0 access token, we will have to make create an HTTP request. The specifics for the request can be found under _Applications_ > _APIs_ > _Auth0 Management API_> _Test_. An example of how to implement this in .NET is shown below
 
 ```c#
     private async Task<string?> GetAuth0Token()
     {
-        HttpClient httpClient = new HttpClient();
+        HttpClient client = CreateHttpClient(); // Safely create http client
         var payload = new
         {
             client_id = "<AUTH0_CLIENT_ID>",
@@ -264,21 +274,22 @@ Before a user can be created through the API, you must make sure that there are 
 
 Here, the `sub` is a unique identifier provided by Vipps. To read more about the `sub`, check out [What is the sub?](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-faq/#what-is-the-sub) In this case, the provider is `oauth2` and the connection is `VippsLogin`.
 
-To check if a user exists given a user ID, you can use the `Users.GetAsync()` method from the Management API Client. This will get the requested user if it exists, otherwise, it will throw an exception. An example of how this can be implemented is shown below:
+To check if a user exists given a user ID, you can use the `Users.GetAsync()` method from the Management API Client. This will get the requested user if it exists, otherwise, it will throw an exception. In the examples below we will return `true` or `false` depending on the outcome, but you can choose to handle the exeptions based on your applications needs.
 
 ```c#
-    private async Task<bool> UserExist(ManagementApiClient managementApiClient, string userId)
+private async Task<bool> UserExist(ManagementApiClient managementApiClient, string userId)
+{
+    try
     {
-        try
-        {
-            var userGet = await managementApiClient.Users.GetAsync(userId);
-            return true;
-        }
-        catch (Exception e)
-        {
-            return false;
-        }
+        var userGet = await managementApiClient.Users.GetAsync(userId);
+        return true;
     }
+    catch (Exception e)
+    {
+        // If a user with the userId doesnt exist, the managementApiClient will throw an exception
+        return false;
+    }
+}
 ```
 
 ### Create and store a user
@@ -286,29 +297,30 @@ To check if a user exists given a user ID, you can use the `Users.GetAsync()` me
 To create an Auth0 user, you can use the `Users.CreateAsync()` method. This needs a `UserCreateRequest` as a parameter.
 
 ```c#
-    private async Task<bool> PostUser(ManagementApiClient managementApiClient, string sub, User user)
+private async Task<bool> PostUser(ManagementApiClient managementApiClient, string sub, User user)
+{
+    try
     {
-        try
+        var userCreate = new UserCreateRequest
         {
-            var userCreate = new UserCreateRequest
-            {
-                Email = user.Email,
-                VerifyEmail = false,
-                Password = Guid.NewGuid().ToString(),
-                Connection = "Username-Password-Authentication",
-                FullName = user.Name,
-                UserId = sub
-            };
+            Email = user.Email,
+            VerifyEmail = false,
+            Password = Guid.NewGuid().ToString(),
+            Connection = "Username-Password-Authentication",
+            FullName = user.Name,
+            UserId = sub
+        };
 
-            var createdUser = await managementApiClient.Users.CreateAsync(userCreate);
-            return true;
-        }
-        catch (Exception e)
-        {
-            return false;
-        }
-
+        var createdUser = await managementApiClient.Users.CreateAsync(userCreate);
+        return true;
     }
+    catch (Exception e)
+    {
+        // If a user cannot be created, the managementApiClient will throw an exception
+        return false;
+    }
+
+}
 ```
 
 When creating the `UserCreateRequest`, it is important to specify the following parameters:
@@ -322,30 +334,30 @@ When creating the `UserCreateRequest`, it is important to specify the following 
 A complete implementation of checking if a user exists and creating it if not can look like this:
 
 ```c#
-    public async Task<bool> CreateAuth0User(User user, string sub)
+public async Task<bool> CreateAuth0User(User user, string sub)
+{
+    var token = await GetAuth0Token();
+
+    var managementApiClient = new ManagementApiClient(token, "<AUTH0_DOMAIN>");
+
+    if (await UserExist(managementApiClient, $"oauth2|VippsLogin|{sub}") || await UserExist(managementApiClient, $"auth0|{sub}"))
     {
-        var token = await GetAuth0Token();
-
-        var managementApiClient = new ManagementApiClient(token, "<AUTH0_DOMAIN>");
-
-        if (await UserExist(managementApiClient, $"oauth2|VippsLogin|{sub}") || await UserExist(managementApiClient, $"auth0|{sub}"))
-        {
-            return true;
-        }
-
-        if (await PostUser(managementApiClient, sub, user))
-        {
-            return true;
-        }
-        return false;
+        return true;
     }
+
+    if (await PostUser(managementApiClient, sub, user))
+    {
+        return true;
+    }
+    return false;
+}
 ```
 
 In this example, we check if either an Auth0 user has already been created as a result of a payment, or if it has been created as a result of using a [Vipps Login Social Connection](./SocialConnectionLogin.md).
 
 ## Link User
 
-If a user first goes through the payment flow and later wants to log in with Vipps, you should link the users to each other. After the linking of the users has been done, only one user will appear in Auth0, but with two identities. This can be done using [Actions in Auth0](https://auth0.com/docs/customize/actions). You can go to *Actions* > *Library* and click on *Build Custom*. Then you can create a name and set the trigger to be *Login / Post Login*. Press *Create* and fill in the code below.
+If a user first goes through the payment flow and later wants to log in with Vipps, you should link the users to each other. After the linking of the users has been done, only one user will appear in Auth0, but with two identities. This can be done using [Actions in Auth0](https://auth0.com/docs/customize/actions). You can go to _Actions_ > _Library_ and click on _Build Custom_. Then you can create a name and set the trigger to be _Login / Post Login_. Press _Create_ and fill in the code below.
 
 ```js
 exports.onExecutePostLogin = async (event, api) => {
@@ -380,7 +392,7 @@ exports.onExecutePostLogin = async (event, api) => {
 ```
 
 The linking is only necessary because we are using a Vipps Social Connection.
-Fill out your *Vipps Social Connection Name*. Under the *Secrets* section you should create the secrets:
+Fill out your _Vipps Social Connection Name_. Under the _Secrets_ section you should create the secrets:
 
 1. client_id
 2. domain
@@ -388,10 +400,10 @@ Fill out your *Vipps Social Connection Name*. Under the *Secrets* section you sh
 
 Where the values should be set to the values recorded in the [Configure Auth0 Management API](#configure-auth0-management-api) step.
 
-Make sure to add the Action to the login flow under *Actions* > *Flows* > *Login*.
+Make sure to add the Action to the login flow under _Actions_ > _Flows_ > _Login_.
 ![Login flow](./images/LoginFlow.png)
 
-After linking, the *Raw JSON* of the new user in Auth0 will now look like this:
+After linking, the _Raw JSON_ of the new user in Auth0 will now look like this:
 
 ```json
 {
@@ -444,3 +456,7 @@ Create and store users in Auth0
 Linking users in Auth0
 
 * [Create custom actions in Ath0](https://auth0.com/docs/customize/actions)
+
+Terminology
+
+- [Common terms](#https://developer.vippsmobilepay.com/docs/vipps-developers/terminology/#common-terms)

@@ -49,6 +49,10 @@ The code snippets are using the [.NET SDK](https://developer.vippsmobilepay.com/
   };
   ```
 
+  Note: The above example is for illustrating what parameters should be set in the `VippsConfigurationOptions`. Make sure to store your client credentials safely!
+
+  If you are developing in the production environment, do not include `UseTestMode`.
+
   For further explanation, refer to the [SDKs](https://developer.vippsmobilepay.com/docs/SDKs/) section.
 
 ## Sequence Diagram
@@ -62,12 +66,12 @@ The Azure AD B2C payment flow consists of:
 
 sequenceDiagram
     actor User
+    participant Merchant
     participant Payment landing page
     participant Vipps app
-    participant Merchant
     participant ePayment API
     participant Login API
-    participant Microsoft Graph
+    participant Microsoft Graph API
 
     User->>Merchant: Start payment session
 
@@ -94,12 +98,12 @@ sequenceDiagram
     Login API-->>Merchant: User data
 
     alt is registered
-        Merchant->>Microsoft Graph: Request B2C User
+        Merchant->>Microsoft Graph API: Request B2C User
     else is not registered
-        Merchant->>Microsoft Graph: Post User
+        Merchant->>Microsoft Graph API: Post User
     end
 
-    Microsoft Graph-->>Merchant: Return User
+    Microsoft Graph API-->>Merchant: Return User
 
     Merchant-->>Merchant: Store Order in DB
 
@@ -117,37 +121,41 @@ The parameters needed to create a payment are:
 - Payment Description: Description of what the user is paying for
 - Reference: An unique identifier for an order
 
+Scope defines the information you are requesting from the user. Additional [scopes provided by Vipps](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/#scopes) can be added by adding them to th _Scope_ string in the _ProfileRequest_.
+
 ```c#
 public async Task<string> CreatePayment(string phoneNumber, long amount, string paymentDescription, string reference)
+{
+    var request = new CreatePaymentRequest
     {
-        var request = new CreatePaymentRequest
+        Amount = new Amount
         {
-            Amount = new Amount
-            {
-                Value = amount,
-                Currency = Currency.NOK
-            },
-            PaymentMethod = new PaymentMethod
-            {
-                Type = PaymentMethodType.WALLET
-            },
-            Customer = new Customer
-            {
-                PhoneNumber = phoneNumber
-            },
-            Reference = reference ,
-            UserFlow = CreatePaymentRequestUserFlow.WEB_REDIRECT,
-            ReturnUrl = "<ReturnURL>",
-            PaymentDescription = paymentDescription,
-            Profile = new ProfileRequest
-            {
-                Scope = "name phoneNumber address birthDate"
-            }
-        };
-        var result = await EpaymentService.CreatePayment(request);
-        return result.RedirectUrl.ToString();
-    }
+            Value = amount,
+            Currency = Currency.NOK
+        },
+        PaymentMethod = new PaymentMethod
+        {
+            Type = PaymentMethodType.WALLET
+        },
+        Customer = new Customer
+        {
+            PhoneNumber = phoneNumber
+        },
+        Reference = reference ,
+        UserFlow = CreatePaymentRequestUserFlow.WEB_REDIRECT,
+        ReturnUrl = "<ReturnURL>",
+        PaymentDescription = paymentDescription,
+        Profile = new ProfileRequest
+        {
+            Scope = "name phoneNumber birthDate"
+        }
+    };
+    var result = await EpaymentService.CreatePayment(request);
+    return result.RedirectUrl.ToString();
+}
 ```
+
+See [ePayment Api Spec](#https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments) for more details.
 
 ## Store user in Azure AD B2C
 
@@ -167,32 +175,34 @@ public async Task<string> GetSubFromVippsPayment(string reference)
 }
 ```
 
+The `sub` is an identifier provided by Vipps that will be unique to a given user. For more information about the `sub`, see [What is the sub?](#https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-faq/#what-is-the-sub)
+
 ### Use the sub to collect user information
 
 To get user information, you will have to use the Login API which is not supported by the SDK. Here, you must configure an HttpClient where you must add a Bearer token in the authorization header. You can get the access token by following the [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/#get-an-access-token) or use the SDK like this:
 
 ```c#
 public async Task<User?> GetUserInfo(string sub)
+{
+    var accessToken = await AccessTokenService.GetAccessToken();
+    HttpClient client = CreateHttpClient(); // Safely create http client
+    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
+    var response = await client.GetAsync($"<base_url>/vipps-userinfo-api/userinfo/{sub}");
+
+    if (!response.IsSuccessStatusCode)
     {
-        var accessToken = await AccessTokenService.GetAccessToken();
-        HttpClient client = new HttpClient();
-        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
-        var response = await client.GetAsync($"<base_url>/vipps-userinfo-api/userinfo/{sub}");
-
-        if (!response.IsSuccessStatusCode)
-        {
-            return null;
-        }
-
-        var body = await response.Content.ReadAsStringAsync();
-        User? user = JsonConvert.DeserializeObject<User>(body);
-        return user;
+        return null;
     }
+
+    var body = await response.Content.ReadAsStringAsync();
+    User? user = JsonConvert.DeserializeObject<User>(body);
+    return user;
+}
 ```
 
 ### Store the user information in Azure AD B2C
 
-Once user info has been received from Vipps, you can create and store the users in Azure AD B2C. This can be done through the [Microsoft Graph API](https://learn.microsoft.com/en-us/azure/active-directory-b2c/microsoft-graph-operations). An example of how this can be implemented using the [Microsoft Graph .NET Client Library](https://www.nuget.org/packages/Microsoft.Graph) is shown below.
+Once user info has been received from Vipps, you can create and store the users in Azure AD B2C. This can be done through the [Microsoft Graph API](https://learn.microsoft.com/en-us/azure/active-directory-b2c/microsoft-graph-operations). An example of how this can be implemented using the [Microsoft Graph .NET Client Library](https://www.nuget.org/packages/Microsoft.Graph) is shown below. You must change `<Vipps environment>` to the vipps environment your are using. This could be either api.vipps.no (Prod) or apitest.vipps.no (Test).
 
 ```c#
 private async Task PostUser(GraphServiceClient graphClient,string sub, string name, string email, string phoneNumber)
@@ -207,7 +217,7 @@ private async Task PostUser(GraphServiceClient graphClient,string sub, string na
             new ObjectIdentity
             {
                 SignInType = "federated",
-                Issuer = "https://apitest.vipps.no/access-management-1.0/access/",
+                Issuer = "https://<Your vipps environment>/access-management-1.0/access/",
                 IssuerAssignedId = sub,
             },
         },
@@ -252,3 +262,7 @@ Storing users in Azure AD B2C
 
 - [Setting up Azure AD B2C](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant)
 - [Microsoft Graph API](https://learn.microsoft.com/en-us/azure/active-directory-b2c/microsoft-graph-operations)
+
+Terminology
+
+- [Common terms](#https://developer.vippsmobilepay.com/docs/vipps-developers/terminology/#common-terms)

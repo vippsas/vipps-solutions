@@ -42,54 +42,43 @@ With Auth0's Social Connections, merchants can implement a Vipps login flow usin
   * Set the Token endpoint authentication method to `client_secret_post`.
   * Add the following redirect URI to the list of callback URIs and replace `yourdomainname` with the domain name recorded previously.
 
-```bash
- https://yourdomainname/login/callback
-```
+  ```bash
+  https://yourdomainname/login/callback
+  ```
 
 ## Configure a Social Connection
 
-Log in to the Auth0 portal. Under *Authentication*, select *Social* and click on *Create Social Connection*. To set up Vipps login, fill in the following fields:
+Log in to the Auth0 portal. Under *Authentication*, select *Social* and click on *Create Social Connection*. In the URLs you must change `<Vipps environment>` to the vipps environment your are using. This could be either api.vipps.no (Prod) or apitest.vipps.no (Test). To set up Vipps login, fill in the following fields:
 
-### Name
+- **Name**: Name of your connection, for example, "VippsLogin".
 
-Name of your connection, for example, "VippsLogin".
+- **Authorization URL**: https://`<Vipps environment>`/access-management-1.0/access/oauth2/auth>
 
-#### Authorization URL
+- **Token URL**: <https://`<Vipps environment>`/access-management-1.0/access/oauth2/token>
 
-<https://apitest.vipps.no/access-management-1.0/access/oauth2/auth>
-
-### Token URL
-
-<https://apitest.vipps.no/access-management-1.0/access/oauth2/token>
-
-### Scope
-
-Scope defines the information you are requesting from the users. The `openid` scope must be specified, but additional
+- **Scope**: The scope defines the information you are requesting from the users. The `openid` scope must be specified, but additional
 [scope parameters can be provided by Vipps](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/#scopes).
 The scope parameters will be used to decide which user attributes are used to create an Auth0 user.
 
-If multiple scopes are provided, separate them with spaces and select *Separate scopes using a space*.
+  If multiple scopes are provided, separate them with spaces and select *Separate scopes using a space*.
 For example, enter `openid name phoneNumber email`, request name, phone number, and the email of the user.
 
-### Client ID
+- **Client ID** Enter your `client_id` recorded earlier.
 
-Enter your `client_id` recorded earlier.
+- **Client Secret** Enter your `client_secret` recorded earlier.
 
-### Client Secret
+- **Fetch User profile script**: Here you can enter JavaScript code to fetch data from the Vipps API and store it to an Auth0 user. See [Fetch user profile script](#fetch-user-profile-script) below for an example of how it can be implemented.
 
-Enter your `client_secret` recorded earlier.
+## Fetch user profile script
 
-### Fetch User profile Script
+An example script is provided below. You must change `<Vipps environment>` to the vipps environment your are using. This could be either api.vipps.no (Prod) or apitest.vipps.no (Test).
 
-Here you can enter JavaScript code to fetch data from the Vipps API and store it to an Auth0 user.
-
-An example script is provided below.
 
 ```js
 function fetchUserProfile(accessToken, context, callback) {
   request.get(
     {
-      url: "https://apitest.vipps.no/vipps-userinfo-api/userinfo",
+      url: "https://<Vipps environment>/vipps-userinfo-api/userinfo",
       headers: {
         Authorization: "Bearer " + accessToken,
       },
@@ -119,7 +108,10 @@ function fetchUserProfile(accessToken, context, callback) {
 }
 ```
 
-Parameters
+
+In the body of `profile` you can specify the scope, what data will be provided by the user. The scopes provided by Vipps can be found [here](#https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/#scopes). You can also specify what it will be mapped to in Auth0 as well as how it should be formatted. 
+
+Values
 
 * `url` - This is the URL to the endpoint used for getting user information from the [Vipps Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/).
 * `headers` - The user info API uses Bearer Token Authentication. For more information, see the [Vipps Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/).
@@ -163,6 +155,9 @@ To check if a user has been created correctly, go to *User Management* -> *Users
 
 ## References
 
-Create a custom Social Connection with Vipps as IdP.
+Create a custom Social Connection with Vipps as identity provider.
 
 * [Connect Apps to Generic OAuth2 Authorization Servers](https://auth0.com/docs/authenticate/identity-providers/social-identity-providers/oauth2)
+
+Terminology
+- [Common terms](#https://developer.vippsmobilepay.com/docs/vipps-developers/terminology/#common-terms)

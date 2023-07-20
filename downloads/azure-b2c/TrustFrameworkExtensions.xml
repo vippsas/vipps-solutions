@@ -39,7 +39,7 @@
             <DisplayName>Get User information from Vipps API</DisplayName>
             <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
             <Metadata>
-              <Item Key="ServiceUrl">https://apitest.vipps.no/vipps-userinfo-api/userinfo</Item>              
+              <Item Key="ServiceUrl">https://<!-- Vipps environment -->/vipps-userinfo-api/userinfo</Item>              
               <Item Key="SendClaimsIn">Header</Item>
               <Item Key="AuthenticationType">Bearer</Item>
               <Item Key="UseClaimAsBearerToken">identityProviderAccessToken</Item>
@@ -73,7 +73,7 @@
             <Protocol Name="OpenIdConnect"/>
             
             <Metadata>
-              <Item Key="METADATA">https://apitest.vipps.no/access-management-1.0/access/.well-known/openid-configuration</Item>
+              <Item Key="METADATA">https://<!-- Vipps environment -->/access-management-1.0/access/.well-known/openid-configuration</Item>
               <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>      
               <Item Key="response_types">code</Item>
               <Item Key="Merchant-Serial-Number">000000</Item>          
