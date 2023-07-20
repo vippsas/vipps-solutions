@@ -90,7 +90,7 @@
             <OutputClaims>
               <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub"/>                               
               <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
-              <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" DefaultValue="https://apitest.vipps.no/access-management-1.0/access/"/>
+              <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" DefaultValue="https://<!-- Vipps environment -->/access-management-1.0/access/"/>
               <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="oid"/>
               <OutputClaim ClaimTypeReferenceId="identityProviderAccessToken" PartnerClaimType="{oauth2:access_token}" />          
             </OutputClaims>

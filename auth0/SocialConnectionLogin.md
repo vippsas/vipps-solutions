@@ -48,7 +48,7 @@ With Auth0's Social Connections, merchants can implement a Vipps login flow usin
 
 ## Configure a Social Connection
 
-Log in to the Auth0 portal. Under *Authentication*, select *Social* and click on *Create Social Connection*. In the URLs you must change `<Vipps environment>` to the vipps environment your are using. This could be either api.vipps.no (Prod) or apitest.vipps.no (Test). To set up Vipps login, fill in the following fields:
+Log in to the Auth0 portal. Under *Authentication*, select *Social* and click on *Create Social Connection*. In the URLs you must change `<Vipps environment>` to the vipps environment your are using. This could be either *api.vipps.no* (Prod) or *apitest.vipps.no* (Test). To set up Vipps login, fill in the following fields:
 
 - **Name**: Name of your connection, for example, "VippsLogin".
 
@@ -71,7 +71,7 @@ For example, enter `openid name phoneNumber email`, request name, phone number, 
 
 ## Fetch user profile script
 
-An example script is provided below. You must change `<Vipps environment>` to the vipps environment your are using. This could be either api.vipps.no (Prod) or apitest.vipps.no (Test).
+An example script is provided below. You must change `<Vipps environment>` to the vipps environment your are using. This could be either *api.vipps.no* (Prod) or *apitest.vipps.no* (Test).
 
 
 ```js
@@ -109,7 +109,7 @@ function fetchUserProfile(accessToken, context, callback) {
 ```
 
 
-In the body of `profile` you can specify the scope, what data will be provided by the user. The scopes provided by Vipps can be found [here](#https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/#scopes). You can also specify what it will be mapped to in Auth0 as well as how it should be formatted. 
+In the body of `profile` you can specify the scope, what data will be provided by the user. The scopes provided by Vipps can be found [here](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/#scopes). You can also specify what it will be mapped to in Auth0 as well as how it should be formatted. 
 
 Values
 
@@ -160,4 +160,4 @@ Create a custom Social Connection with Vipps as identity provider.
 * [Connect Apps to Generic OAuth2 Authorization Servers](https://auth0.com/docs/authenticate/identity-providers/social-identity-providers/oauth2)
 
 Terminology
-- [Common terms](#https://developer.vippsmobilepay.com/docs/vipps-developers/terminology/#common-terms)
+- [Common terms](https://developer.vippsmobilepay.com/docs/vipps-developers/terminology/#common-terms)

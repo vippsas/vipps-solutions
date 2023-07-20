@@ -82,7 +82,7 @@ Additional [scopes provided by Vipps](https://developer.vippsmobilepay.com/docs/
 
 ## Vipps environment
 
-You must change the comments `<!-- Vipps environment -->` in *TrustFrameworkExtensions.xml* to the Vipps environment you are using. This could be either api.vipps.no (Prod) or apitest.vipps.no (Test).
+You must change the comments `<!-- Vipps environment -->` in *TrustFrameworkExtensions.xml* to the Vipps environment you are using. This could be either *api.vipps.no* (Prod) or *apitest.vipps.no* (Test).
 
 ## Upload the policy
 
@@ -153,4 +153,4 @@ Calling a REST API using a custom policy:
 - [Call a REST API by using Azure Active Directory B2C custom policy](https://learn.microsoft.com/en-us/azure/active-directory-b2c/custom-policies-series-call-rest-api)
 
 Terminology
-- [Common terms](#https://developer.vippsmobilepay.com/docs/vipps-developers/terminology/#common-terms)
+- [Common terms](https://developer.vippsmobilepay.com/docs/vipps-developers/terminology/#common-terms)
