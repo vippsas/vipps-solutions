@@ -249,7 +249,7 @@ This can be used to check if a user has already been created.
 
 ## Note about custom policies
 
-It is possible to implement a Vipps payment flow while storing users in B2C as a custom policy, similar to [Vipps login using a custom policy](./CustomPolicyLogin.md). One could create multiple policies for each step in the payment process that is called sequentially, but since there currently is no support for passing parameters to a custom policy before it is called, this flow will require a backend. Ultimately, this means that it is arguably more cumbersome to use custom policies rather than using the Vipps APIs directly.
+It could be possible to implement a Vipps payment flow while storing users in B2C as a custom policy, similar to [Vipps login using a custom policy](./CustomPolicyLogin.md). One could create multiple policies for each step in the payment process that is called sequentially, but since there currently is no support for passing parameters to a custom policy before it is called, this flow will require a backend. Ultimately, this means that it is arguably more cumbersome to use custom policies rather than using the Vipps APIs directly.
 
 ## References
 

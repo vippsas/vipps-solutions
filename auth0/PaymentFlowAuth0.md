@@ -188,7 +188,7 @@ To get user information, you will have to use the Login API which is not support
 public async Task<User?> GetUserInfo(string sub)
     {
         var accessToken = await AccessTokenService.GetAccessToken();
-        HttpClient client = new HttpClient();
+        HttpClient client = CreateHttpClient(); // Safely create http client
         client.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
         var response = await client.GetAsync($"<base_url>/vipps-userinfo-api/userinfo/{sub}");
 
