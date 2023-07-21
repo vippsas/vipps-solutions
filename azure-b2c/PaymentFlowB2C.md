@@ -202,7 +202,7 @@ public async Task<User?> GetUserInfo(string sub)
 
 ### Store the user information in Azure AD B2C
 
-Once user info has been received from Vipps, you can create and store the users in Azure AD B2C. This can be done through the [Microsoft Graph API](https://learn.microsoft.com/en-us/azure/active-directory-b2c/microsoft-graph-operations). An example of how this can be implemented using the [Microsoft Graph .NET Client Library](https://www.nuget.org/packages/Microsoft.Graph) is shown below. You must change `<Vipps environment>` to the vipps environment your are using. This could be either *api.vipps.no* (Prod) or *apitest.vipps.no* (Test).
+Once user info has been received from Vipps, you can create and store the users in Azure AD B2C. This can be done through the [Microsoft Graph API](https://learn.microsoft.com/en-us/azure/active-directory-b2c/microsoft-graph-operations). An example of how this can be implemented using the [Microsoft Graph .NET Client Library](https://www.nuget.org/packages/Microsoft.Graph) is shown below. You must change `<Vipps environment>` to the Vipps environment your are using. This could be either *api.vipps.no* (Prod) or *apitest.vipps.no* (Test).
 
 ```c#
 private async Task PostUser(GraphServiceClient graphClient,string sub, string name, string email, string phoneNumber)

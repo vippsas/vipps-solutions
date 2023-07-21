@@ -10,7 +10,7 @@ END_METADATA -->
 
 # Auth0
 
-The following will describe how Vipps ePayment and Login can be integrated with Auth0 to achieve a better flow for user registration and payment. The login and payment flow can be implemented both separately and together, allowing users to be registered during payment and can later log into the registered user.
+The following will describe how Vipps ePayment and Login can be integrated with Auth0 to achieve a better flow for user registration and payment. The login and payment flow can be implemented both separately and together. Implementing the flows together allow users to be registered during payment and later log as a registered user.
 
 Auth0 is a customer identity management solution. Learn more about it on the [Auth0 pages](https://auth0.com/docs/get-started/auth0-overview), as Vipps support will not help you to configure the service.
 

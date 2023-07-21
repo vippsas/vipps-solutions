@@ -158,7 +158,7 @@ public async Task<string> CreatePayment(string phoneNumber, long amount, string 
     }
 ```
 
-See [ePayment Api Spec](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments) for more details.
+See [ePayment API Spec](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments) for more details.
 
 ## Store user in Auth0
 
@@ -274,7 +274,7 @@ Before a user can be created through the API, you must make sure that there are 
 
 Here, the `sub` is a unique identifier provided by Vipps. To read more about the `sub`, check out [What is the sub?](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-faq/#what-is-the-sub) In this case, the provider is `oauth2` and the connection is `VippsLogin`.
 
-To check if a user exists given a user ID, you can use the `Users.GetAsync()` method from the Management API Client. This will get the requested user if it exists, otherwise, it will throw an exception. In the examples below we will return `true` or `false` depending on the outcome, but you can choose to handle the exeptions based on your applications needs.
+To check if a user exists given a user ID, you can use the `Users.GetAsync()` method from the Management API Client. This will get the requested user if it exists, otherwise, it will throw an exception. In the examples below we return `true` or `false` depending on the outcome, but you can choose to handle exceptions differently based on the needs of your applications.
 
 ```c#
 private async Task<bool> UserExist(ManagementApiClient managementApiClient, string userId)

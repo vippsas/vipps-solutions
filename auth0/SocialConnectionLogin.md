@@ -69,9 +69,9 @@ For example, enter `openid name phoneNumber email`, request name, phone number, 
 
 - **Fetch User profile script**: Here you can enter JavaScript code to fetch data from the Vipps API and store it to an Auth0 user. See [Fetch user profile script](#fetch-user-profile-script) below for an example of how it can be implemented.
 
-## Fetch user profile script
+### Fetch user profile script
 
-An example script is provided below. You must change `<Vipps environment>` to the vipps environment your are using. This could be either *api.vipps.no* (Prod) or *apitest.vipps.no* (Test).
+An example script is provided below. You must change `<Vipps environment>` to the Vipps environment your are using. This could be either *api.vipps.no* (Prod) or *apitest.vipps.no* (Test).
 
 
 ```js
@@ -155,7 +155,7 @@ To check if a user has been created correctly, go to *User Management* -> *Users
 
 ## References
 
-Create a custom Social Connection with Vipps as identity provider.
+Create a custom Social Connection with Vipps as an identity provider.
 
 * [Connect Apps to Generic OAuth2 Authorization Servers](https://auth0.com/docs/authenticate/identity-providers/social-identity-providers/oauth2)
 
