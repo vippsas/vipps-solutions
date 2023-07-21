@@ -10,7 +10,7 @@ END_METADATA -->
 
 # Azure AD B2C
 
-The following will describe how Vipps ePayment and Login can be integrated with Azure AD B2C to achieve a better flow for user registration and payment. The login and payment flow can be implemented both separately and together. Implementing the flows together allow users to be registered during payment and later log as a registered user.
+The following will describe how Vipps ePayment and Login can be integrated with Azure AD B2C to achieve a better flow for user registration and payment. The login and payment flow can be implemented both separately and together. Implementing the flows together allow users to be registered during payment and later log in as a registered user.
 
 Azure Active Directory Business-to-Customer (Azure AD B2C) is a customer identity
 management solution. Learn more about it on the
