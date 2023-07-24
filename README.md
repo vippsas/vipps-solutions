@@ -38,7 +38,7 @@ Examples of how to combine APIs for specific use cases:
 * [Parking and "Pay-as-you-go"](./parking/README.md)
 * [Taxi companies](./taxi-companies/README.md)
 
-**Flows using Azure AD B2C:**
+**Vipps login and payment flows using Auth0 and Azure AD B2C:**
 
-* [Vipps login with custom policy](./azure-b2c/CustomPolicyLogin.md)
-* [Vipps payment flow using Azure AD B2C](./azure-b2c/PaymentFlowB2C.md)
+* [Auth0](./auth0/README.md)
+* [Azure AD B2C](./azure-b2c/README.md)
