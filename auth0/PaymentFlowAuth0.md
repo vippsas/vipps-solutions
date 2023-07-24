@@ -286,7 +286,7 @@ private async Task<bool> UserExist(ManagementApiClient managementApiClient, stri
     }
     catch (Exception e)
     {
-        // If a user with the userId doesnt exist, the managementApiClient will throw an exception
+        // If a user with the userId doesn't exist, the managementApiClient will throw an exception
         return false;
     }
 }
