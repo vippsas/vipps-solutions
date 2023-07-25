@@ -95,7 +95,7 @@ With body:
 
 <AUTHORIZEPAYMENT />
 
-![Confirm payment](images/vipps-in-store-step3-2.png)
+![Confirm payment](images/vipps-in-store-step3-2.svg)
 
 
 ### Step 5. Update the POS system
