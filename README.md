@@ -13,7 +13,7 @@ END_METADATA -->
 
 <!-- START_COMMENT -->
 ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/vipps-solutions/).
+[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/solutions/).
 <!-- END_COMMENT -->
 
 Vipps MobilePay offers several APIs that together form the [Vipps MobilePay API platform](https://developer.vippsmobilepay.com/docs/APIs/).
