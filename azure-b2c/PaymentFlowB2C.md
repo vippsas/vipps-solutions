@@ -34,7 +34,7 @@ The code snippets are using the [.NET SDK](https://developer.vippsmobilepay.com/
 
 - [Create an Azure AD B2C tenant](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant).
 - [Register a web application](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications?tabs=app-reg-ga) to use the [Microsoft Graph API](https://learn.microsoft.com/en-us/azure/active-directory-b2c/microsoft-graph-operations)
-- Create a test unit in the [Vipps portal](https://developer.vippsmobilepay.com/docs/vipps-developers/developer-resources/portal/).
+- Create a test unit in the [Vipps portal](https://developer.vippsmobilepay.com/docs/developer-resources/portal/).
   - Save the `client_id` and `client_secret` for use in later steps.
 - Add the Vipps configuration to Program.cs.
 
@@ -265,4 +265,4 @@ Storing users in Azure AD B2C
 
 Terminology
 
-- [Common terms](https://developer.vippsmobilepay.com/docs/vipps-developers/terminology/#common-terms)
+- [Common terms](https://developer.vippsmobilepay.com/docs/terminology/#common-terms)
