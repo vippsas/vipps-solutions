@@ -55,10 +55,7 @@ This can be used for checking membership, in the next step.
 
 In your internal system, check the customer's membership status by using the phone number you received in the previous step.
 
-Use the
-[`POST:/v1/loyalty-check-in`](https://developer.vippsmobilepay.com/api/check-in#tag/Loyalty-check-in)
-endpoint to trigger a *waiting screen* in the app. This will inform the customer whether
-they are a member of your loyalty program and otherwise help them through the payment process.
+Use the [Check-in API](https://developer.vippsmobilepay.com/docs/APIs/check-in-api/) to trigger a *waiting screen* in the app.
 
 <details>
 <summary>Detailed example</summary>
@@ -73,7 +70,7 @@ With body:
 {
     "phoneNumber": "4791234567",
     "loyaltyProgramName": "Acme loyalty club",
-    "isMember": false
+    "isMember": true
 }
 ```
 
@@ -83,13 +80,13 @@ With body:
 If the customer is a not member, proceed to step 3 where you can enroll them by using the
 [Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api).
 
-If they are already a member, skip to step 4.
+If they are already a member, skip step 3 and go to step 4 to send a payment request to the customer.
 
 ![Loyalty Flow](images/POS_step_2.png)
 
-### Step 3: Request membership (optional)
+### Step 3: Request membership (skip if already a member)
 
-If the customer is not a member of the loyalty program, you can request to enroll them by using
+If the customer is not a member of the loyalty program, request to enroll them by using
 the [Vipps Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api).
 
 You already have their phone number from step 1, so just provide a button in
@@ -106,7 +103,7 @@ When this login flow is completed, the customer will be enrolled in the loyalty 
 
 ### Step 4: Send a payment request
 
-After membership status has been determined and all wares have been scanned, send a payment request to the customer.
+After membership status has been determined and all articles have been scanned, send a payment request to the customer.
 
 You already have the phone number from step 1, so you don't need to ask for it again.
 Just provide a button in your user interface to allow the cashier to send the payment request.
@@ -177,13 +174,15 @@ Sequence diagram for in-store payment with customer club.
 sequenceDiagram
     actor C as Customer
     participant M as Merchant
+    participant checkin as Checkin API
     participant login as Login API
     participant ePayment as ePayment API
     participant ordermanagement as Order Management API
 
     QR->>C: Scan for customer ID
     M->>M: Check membership
-    M->>login: Request membership
+    M->>checkin: Post membership status
+    M->>login: If user is not a member, request membership
     login->>C: Consent request
     C->>login: Give consent
     M->>M: If user consents, enroll in membership program
