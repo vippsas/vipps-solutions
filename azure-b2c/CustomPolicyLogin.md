@@ -35,7 +35,7 @@ Note: Azure AD B2C provides preconfigured user flows that can be used to authent
 
 - [Create an Azure AD B2C tenant](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant).
 - [Register a web application](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications?tabs=app-reg-ga). For testing in the Azure portal it is necessary to enable ID token implicit grant.
-- Create a test unit in the [Vipps portal](https://developer.vippsmobilepay.com/docs/vipps-developers/developer-resources/portal/).
+- Create a test unit in the [Vipps portal](https://developer.vippsmobilepay.com/docs/developer-resources/portal/).
 
   - Save the `client_id` and `client_secret` for use in later steps.
   - Set the Token endpoint authentication method to `client_secret_post`.
@@ -153,4 +153,4 @@ Calling a REST API using a custom policy:
 - [Call a REST API by using Azure Active Directory B2C custom policy](https://learn.microsoft.com/en-us/azure/active-directory-b2c/custom-policies-series-call-rest-api)
 
 Terminology
-- [Common terms](https://developer.vippsmobilepay.com/docs/vipps-developers/terminology/#common-terms)
+- [Common terms](https://developer.vippsmobilepay.com/docs/terminology/#common-terms)

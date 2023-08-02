@@ -21,7 +21,7 @@ The code snippets are using the [Vipps .NET SDK](https://developer.vippsmobilepa
 ## Prerequisites
 
 * [Create an Auth0 tenant](https://auth0.com/docs/get-started/auth0-overview/create-tenants).
-* Create a test unit in the [Vipps portal](https://developer.vippsmobilepay.com/docs/vipps-developers/developer-resources/portal/).
+* Create a test unit in the [Vipps portal](https://developer.vippsmobilepay.com/docs/developer-resources/portal/).
   * Save the `client_id` and `client_secret` for use in later steps.
 * Add the Vipps SDK configuration to Program.cs.
 
@@ -459,4 +459,4 @@ Linking users in Auth0
 
 Terminology
 
-- [Common terms](https://developer.vippsmobilepay.com/docs/vipps-developers/terminology/#common-terms)
+- [Common terms](https://developer.vippsmobilepay.com/docs/terminology/#common-terms)

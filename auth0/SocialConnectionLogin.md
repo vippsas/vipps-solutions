@@ -36,7 +36,7 @@ With Auth0's Social Connections, merchants can implement a Vipps login flow usin
   * Copy the *Domain* for use in later steps.
   * Under *Allowed Callback URLs*, specify where a user will be returned after logging in.
 
-* Create a test unit in the [Vipps portal](https://developer.vippsmobilepay.com/docs/vipps-developers/developer-resources/portal/).
+* Create a test unit in the [Vipps portal](https://developer.vippsmobilepay.com/docs/developer-resources/portal/).
 
   * Save the `client_id` and `client_secret` for use in later steps.
   * Set the Token endpoint authentication method to `client_secret_post`.
@@ -160,4 +160,4 @@ Create a custom Social Connection with Vipps as an identity provider.
 * [Connect Apps to Generic OAuth2 Authorization Servers](https://auth0.com/docs/authenticate/identity-providers/social-identity-providers/oauth2)
 
 Terminology
-- [Common terms](https://developer.vippsmobilepay.com/docs/vipps-developers/terminology/#common-terms)
+- [Common terms](https://developer.vippsmobilepay.com/docs/terminology/#common-terms)
