@@ -29,18 +29,21 @@ Before implementing this flow, please see the recommended [in-store payments flo
 
 ### Step 1: Generate a static QR code
 
-Generate a static QR code with a
-[merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes) linking to your system.
+Generate a static QR code using our
+[QR API](https://developer.vippsmobilepay.com/docs/APIss/qr-api/vipps-qr-api/#merchant-callback-qr-codes).
+The QR code contains a `posId` that connects it to a POS or cash register in your store.
 
-For example, the QR could be shown on a screen or placed on a cash register, a portable POS, or a [vending machine](../vending-machines/qr-direct-to-payment-in-app.md).
+For example, the QR could be shown on a screen or placed on a cash register, a portable POS, or a
+[vending machine](../vending-machines/qr-direct-to-payment-in-app.md).
 
 ### Step 2: The customer scans the static QR
 
-When the customer scans the QR, your system will receive a notification that the QR has been scanned and will be able to get the customer's phone number.
+When the customer scans the QR, your system will receive a notification that the customer is ready to pay with Vipps or MobilePay.
+The notification will contain a token the merchant can use to start a payment.
 
 ### Step 3: Send the payment request
 
-Use the customer's phone number to send them a
+Use the token to send the customer a
 [Create Payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment).
 
 <details>
@@ -72,6 +75,7 @@ Here is an example HTTP POST:
 }
 
 ```
+
 </div>
 </details>
 
@@ -106,7 +110,6 @@ sequenceDiagram
     C->>ePayment: Authorize payment
     M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
-    M->>ePayment: Initiate payment capture
-    ePayment->>C: Capture payment
+    M->>ePayment: Capture payment
     M->>ePayment: Check the status of capture
 ```
