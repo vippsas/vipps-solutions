@@ -34,8 +34,8 @@ The payment amount should be the max amount of the vending machine products. Aft
 
 ### Step 1: Generate a static QR code
 
-Generate a static QR code with [merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
-linking to your system.
+Generate a static QR code using our [QR API](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
+linking the QR to your vending-machine.
 
 ### Step 2: Generate a payment request
 
