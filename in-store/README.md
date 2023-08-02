@@ -128,7 +128,6 @@ sequenceDiagram
     C->>ePayment: Authorize payment
     M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
-    M->>ePayment: Initiate payment capture
-    ePayment->>C: Capture payment
+    M->>ePayment: Capture payment 
     M->>ePayment: Check the status of capture
 ```

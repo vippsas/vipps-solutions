@@ -84,7 +84,6 @@ sequenceDiagram
     M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information to the app
     M-->>C: Ship the order (if applicable)
-    M->>ePayment: Initiate payment capture
-    ePayment->>C: Capture payment
+    M->>ePayment: Capture payment 
     M->>ePayment: Check the status of capture
 ```
