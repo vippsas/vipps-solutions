@@ -30,7 +30,7 @@ Before implementing this flow, please see the recommended [in-store payments flo
 ### Step 1: Generate a static QR code
 
 Generate a static QR code using our
-[QR API](https://developer.vippsmobilepay.com/docs/APIss/qr-api/vipps-qr-api/#merchant-callback-qr-codes).
+[QR API](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes).
 The QR code contains a `posId` that connects it to a POS or cash register in your store.
 
 For example, the QR could be shown on a screen or placed on a cash register, a portable POS, or a
