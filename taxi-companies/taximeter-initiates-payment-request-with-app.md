@@ -54,7 +54,6 @@ sequenceDiagram
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
     M->>ePayment: Check the status of authorization
-    M->>ePayment: Initiate payment capture
-    ePayment->>C: Capture payment
+    M->>ePayment: Capture payment 
     M->>ePayment: Check the status of capture
 ```
