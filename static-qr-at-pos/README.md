@@ -66,7 +66,7 @@ Here is an example HTTP POST:
     "type": "WALLET"
   },
   "customer": {
-    "phoneNumber": 4796574209
+    "personalQr": "personalQr_string"
   },
   "reference": 2486791679658155992,
   "userFlow": "WEB_REDIRECT",
