@@ -135,8 +135,10 @@ Body:
     "currency": "NOK",
   }
 }
-
 ```
+
+</div>
+</details>
 
 ## Relevant pages
 
