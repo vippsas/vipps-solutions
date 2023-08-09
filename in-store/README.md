@@ -10,7 +10,6 @@ pagination_prev: null
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
@@ -62,6 +61,7 @@ endpoint.
 
 Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer who scanned the QR code,
 and after the payment is completed, the POS will be updated with the status of the payment.
+Attach the receipt simultaneously.
 
 Here is an example HTTP POST:
 
@@ -79,7 +79,29 @@ With body:
     "type": "WALLET"
   },
   "customer": {
-    "phoneNumber": 4796574209
+    "phoneNumber": 4791234567
+  },
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "socks",
+        "id": "line_item_1",
+        "totalAmount": 10000,
+        "totalAmountExcludingTax": 8000,
+        "totalTaxAmount": 2000,
+        "taxPercentage": 25,
+        "unitInfo": {
+          "unitPrice": 4000,
+          "quantity": "2",
+          "quantityUnit": "PCS"
+        },
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "pos_122"
+    },
+   "receiptNumber": "0527013501"
   },
   "reference": 2486791679658155992,
   "userFlow": "PUSH_MESSAGE",
@@ -87,6 +109,7 @@ With body:
   "paymentDescription": "Payment to Butikken"
 }
 ```
+
 
 </div>
 </details>
@@ -102,11 +125,7 @@ With body:
 
 Once the customer authorizes the payment, update the POS system with the status.
 
-### Step 6. Attach a receipt to the order
-
-<ATTACHRECEIPT />
-
-### Step 7: Capture the payment
+### Step 6: Capture the payment
 
 <FULLCAPTURE />
 
@@ -119,14 +138,12 @@ sequenceDiagram
     actor C as Customer
     participant M as Merchant
     participant ePayment as ePayment API
-    participant ordermanagement as Order Management API
     
     QR->>C: Scan for customer ID
     M->>M: Add products to sale
-    M->>ePayment: Initiate payment request
+    M->>ePayment: Initiate payment request with receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
     M->>ePayment: Capture payment 
     M->>ePayment: Check the status of capture

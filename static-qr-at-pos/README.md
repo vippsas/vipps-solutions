@@ -9,7 +9,6 @@ pagination_prev: null
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
@@ -66,7 +65,29 @@ Here is an example HTTP POST:
     "type": "WALLET"
   },
   "customer": {
-    "phoneNumber": 4796574209
+    "personalQr": "personalQr_string"
+  },
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "socks",
+        "id": "line_item_1",
+        "totalAmount": 10000,
+        "totalAmountExcludingTax": 8000,
+        "totalTaxAmount": 2000,
+        "taxPercentage": 25,
+        "unitInfo": {
+          "unitPrice": 4000,
+          "quantity": "2",
+          "quantityUnit": "PCS"
+        },
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "pos_122"
+    },
+   "receiptNumber": "0527013501"
   },
   "reference": 2486791679658155992,
   "userFlow": "WEB_REDIRECT",
@@ -83,11 +104,7 @@ Here is an example HTTP POST:
 
 <AUTHORIZEPAYMENT />
 
-### Step 5: Attach a receipt to the order
-
-<ATTACHRECEIPT />
-
-### Step 6: Capture the payment
+### Step 5: Capture the payment
 
 <FULLCAPTURE />
 
@@ -101,14 +118,12 @@ sequenceDiagram
     participant M as Merchant
     participant QR as QR API
     participant ePayment as ePayment API
-    participant ordermanagement as Order Management API
 
     QR->>C: Scan for customer ID
     M->>M: Add product to sale
-    M->>ePayment: Initiate payment request
+    M->>ePayment: Initiate payment request and attach receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
     M->>ePayment: Capture payment
     M->>ePayment: Check the status of capture

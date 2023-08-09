@@ -9,7 +9,6 @@ pagination_prev: null
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
@@ -29,7 +28,7 @@ Use this flow when you have a screen connected.
 ## Details
 
 A [one-time payment QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#one-time-payment-qr-codes) is presented on the vending machine.
-The QR code is a dynamic representation of the payment URL, and the customer needs to scan the QR code within 5 minutes. 
+The QR code is a dynamic representation of the payment URL, and the customer needs to scan the QR code within 5 minutes.
 
 When the customer scans the QR code, they go directly to the Vipps or MobilePay payment screen on their phone, where they can approve the payment.
 
@@ -41,15 +40,13 @@ To generate the dynamic QR code and associated payment request, send the
 [Create Payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request
 with `"customerInteraction": "CUSTOMER_PRESENT"` and  `"userFlow": "QR"`.
 
+Include a receipt in the ePayment request.
+
 ### Step 2: The customer authorizes the payment
 
 <AUTHORIZEPAYMENT />
 
-### Step 3: Attach a receipt to the order
-
-<ATTACHRECEIPT />
-
-### Step 4: Capture the payment
+### Step 3: Capture the payment
 
 <FULLCAPTURE />
 
@@ -63,14 +60,12 @@ sequenceDiagram
     participant M as Merchant
     participant QR as QR API
     participant ePayment as ePayment API
-    participant ordermanagement as Order Management API
 
-    M->>ePayment: Generate dynamic QR code and payment request
+    M->>ePayment: Generate dynamic QR code and payment request with receipt
     M->>C: Display QR code on screen
     C->>QR: Scan to get Customer ID
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
     M->>ePayment: Capture payment 
     M->>ePayment: Check the status of capture

@@ -9,7 +9,6 @@ pagination_prev: null
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
@@ -48,15 +47,14 @@ When the user clicks the pay button, generate a
 
 Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect the user to the Vipps MobilePay app.
 
+Include a receipt in the ePayment request.
+
 ### Step 3: The customer authorizes the payment
 
 <AUTHORIZEPAYMENT />
 
-### Step 4: Attach a receipt to the order
 
-<ATTACHRECEIPT />
-
-### Step 5: Capture the payment
+### Step 4: Capture the payment
 
 <FULLCAPTURE />
 
@@ -70,14 +68,12 @@ sequenceDiagram
     participant M as Merchant
     participant QR as QR API
     participant ePayment as ePayment API
-    participant ordermanagement as Order Management API
     
     QR->>C: Scan for customer ID
     M->>M: Add product to sale
-    M->>ePayment: Initiate payment request
+    M->>ePayment: Initiate payment request with receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
     M->>ePayment: Capture payment 
     M->>ePayment: Check the status of capture

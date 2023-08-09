@@ -13,7 +13,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
@@ -53,21 +52,78 @@ where `customer.phoneNumber` is set.
 
 The customer will receive a push notification in their Vipps MobilePay app.
 
+
+<details>
+<summary>Details</summary>
+<div>
+
+Your system can send the payment request by using the
+[`createPayment`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+endpoint.
+
+Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer.
+Attach the receipt simultaneously.
+
+Here is an example HTTP POST:
+
+[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+
+With body:
+
+```json
+{
+  "amount": {
+    "value": 10000,
+    "currency": "NOK"
+  },
+  "paymentMethod": {
+    "type": "WALLET"
+  },
+  "customer": {
+    "phoneNumber": 4791234567
+  },
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "socks",
+        "id": "line_item_1",
+        "totalAmount": 10000,
+        "totalAmountExcludingTax": 8000,
+        "totalTaxAmount": 2000,
+        "taxPercentage": 25,
+        "unitInfo": {
+          "unitPrice": 4000,
+          "quantity": "2",
+          "quantityUnit": "PCS"
+        },
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "pos_122"
+    },
+   "receiptNumber": "0527013501"
+  },
+  "reference": 2486791679658155992,
+  "userFlow": "PUSH_MESSAGE",
+  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
+  "paymentDescription": "Payment to Butikken"
+}
+```
+
+</div>
+</details>
+
 ### Step 2. Customer approves the payment
 
 <AUTHORIZEPAYMENT />
 
-<!--
-If you have already attached order information to this payment, the customer will be able to see this in the Vipps app.
-When they select `See details` in the payment confirmation screen, they are presented with the order information without leaving the app. -->
+Since you have already attached order information to this payment, the customer will be able to see this in the Vipps app.
+When they select `See details` in the payment confirmation screen, they are presented with the order information without leaving the app.
 
 Note that, for long-living payments, customers also have the option of soft-dismissing the payment and postponing it for later.
 
-### Step 3. Attach a receipt to the order
-
-<ATTACHRECEIPT />
-
-### Step 4. Capture the payment
+### Step 3. Capture the payment
 
 <FULLCAPTURE />
 
@@ -82,13 +138,11 @@ sequenceDiagram
     participant ePayment as ePayment API
 
     M->>ePayment: Initiate payment request
-    ePayment->>C: Request payment
+    ePayment->>C: Request payment and attach receipt
     C->>ePayment: Authorize payment
     ePayment->>M: Callback with status
     M->>C: Display order confirmation on product page
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
-    M-->>C: Ship the order (if applicable)
     M->>ePayment: Capture payment 
     M->>ePayment: Check the status of capture
 ```

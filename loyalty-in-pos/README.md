@@ -10,7 +10,6 @@ pagination_prev: null
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
@@ -119,6 +118,7 @@ Your system can send the payment request by using the
 endpoint.
 
 Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer who scanned the QR code.
+Attach the receipt simultaneously.
 
 Here is an example HTTP POST:
 
@@ -136,12 +136,34 @@ With body:
     "type": "WALLET"
   },
   "customer": {
-    "phoneNumber": 4796574209
+    "phoneNumber": 4791234567
+  },
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "socks",
+        "id": "line_item_1",
+        "totalAmount": 10000,
+        "totalAmountExcludingTax": 8000,
+        "totalTaxAmount": 2000,
+        "taxPercentage": 25,
+        "unitInfo": {
+          "unitPrice": 4000,
+          "quantity": "2",
+          "quantityUnit": "PCS"
+        },
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "pos_122"
+    },
+   "receiptNumber": "0527013501"
   },
   "reference": 2486791679658155992,
   "userFlow": "PUSH_MESSAGE",
   "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
-  "paymentDescription": "Winter jacket"
+  "paymentDescription": "Payment to Butikken"
 }
 ```
 
@@ -158,11 +180,7 @@ Once the customer authorizes the payment, update the POS system with the status.
 
 ![Loyalty Flow](images/POS_step_4.png)
 
-### Step 7. Attach a receipt to the order
-
-<ATTACHRECEIPT />
-
-### Step 8: Capture the payment
+### Step 7: Capture the payment
 
 <FULLCAPTURE />
 
@@ -177,7 +195,6 @@ sequenceDiagram
     participant checkin as Checkin API
     participant login as Login API
     participant ePayment as ePayment API
-    participant ordermanagement as Order Management API
 
     QR->>C: Scan for customer ID
     M->>M: Check membership
@@ -187,10 +204,9 @@ sequenceDiagram
     C->>login: Give consent
     M->>M: If user consents, enroll in membership program
     M->>M: Add product to sale
-    M->>ePayment: Initiate payment request
+    M->>ePayment: Initiate payment request and attach a receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
     M->>ePayment: Capture payment 
     M->>ePayment: Check the status of capture

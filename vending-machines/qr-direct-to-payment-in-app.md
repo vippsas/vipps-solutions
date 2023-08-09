@@ -7,9 +7,8 @@ pagination_next: null
 pagination_prev: null
 ---
 
-import PARTIALCAPTURE from '../_common/_partial_capture.md'
+import FULLCAPTURE from '../_common/_full_capture.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
 # Static QR directing to the app for payment
@@ -45,17 +44,15 @@ Specify the amount of the most expensive item in your vending machine so that an
 
 Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
 
+Include a receipt in the ePayment request.
+
 ### Step 3: Customer authorizes the payment
 
 <AUTHORIZEPAYMENT />
 
-### Step 4: Attach a receipt to the order
+### Step 4: Capture the amount
 
-<ATTACHRECEIPT />
-
-### Step 5: Capture the amount due
-
-<PARTIALCAPTURE />
+<FULLCAPTURE />
 
 ## Sequence diagram
 
@@ -67,11 +64,10 @@ sequenceDiagram
     participant M as Merchant
     participant QR as QR API
     participant ePayment as ePayment API
-    participant ordermanagement as Order Management API
     
     QR->>C: Scan for customer ID
     M->>M: Add product to sale
-    M->>ePayment: Initiate payment request
+    M->>ePayment: Initiate payment request with receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
     ePayment->>C: Provide payment information
@@ -80,6 +76,5 @@ sequenceDiagram
     M->>ePayment: Release <amount reserved - amount due>
     ePayment->>C: Capture amount due
     ePayment->>C: Release amount remaining
-    M->> ordermanagement: Attach receipt
     M->>ePayment: Check the status of capture
 ```

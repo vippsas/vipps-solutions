@@ -7,7 +7,6 @@ pagination_prev: null
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
@@ -19,8 +18,6 @@ There, they follow instructions and pay with Vipps.
 ![Labeling in the taxi](images/labeling_in_the_taxi.png)
 
 ## Details
-
-The flow is a variation of the [In-store using static QR](../static-qr-at-pos/README.md) flow.
 
 ### Step 1: Generate a static QR code
 
@@ -34,23 +31,65 @@ When the customer scans the QR, your system will receive a notification that the
 
 ### Step 3: Send the payment request
 
-Use the customer's phone number to send them a [Create Payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment) for the taxi fare through Vipps.
+Use the customer's phone number to send them a request for the taxi fare.
+
+<details>
+<summary>Details</summary>
+<div>
 
 Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
+
+Here is an example HTTP POST:
+
+[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+
+```json
+{
+  "amount": {
+    "value": 10000,
+    "currency": "NOK"
+  },
+  "paymentMethod": {
+    "type": "WALLET"
+  },
+  "customer": {
+    "phoneNumber": 4791234567
+  },
+  "customerInteraction": "CUSTOMER_PRESENT",
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "trip",
+        "id": "line_item_1",
+        "totalAmount": 100000,
+        "totalAmountExcludingTax": 80000,
+        "totalTaxAmount": 20000,
+        "taxPercentage": 25,
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "taxi_122",
+      "tipAmount": 10000
+    },
+   "receiptNumber": "0527013501"
+  },
+  "reference": 2486791679658155992,
+  "userFlow": "WEB_REDIRECT",
+  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
+  "paymentDescription": "Travel from Oslo central station to Oslo airport"
+}
+
+```
+
+</div>
+</details>
 
 ### Step 4: The customer authorizes the payment
 
 <AUTHORIZEPAYMENT />
 
-### Step 5: Attach a receipt
-
-<ATTACHRECEIPT />
-
-See
-[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
-for more details.
-
-### Step 6: Capture the payment
+### Step 5: Capture the payment
 
 <FULLCAPTURE />
 
@@ -62,14 +101,12 @@ sequenceDiagram
     participant M as Merchant
     participant QR as QR API
     participant ePayment as ePayment API
-    participant ordermanagement as Order Management API
 
     QR->>C: Scan for customer ID
     M->>M: Add product to sale
-    M->>ePayment: Initiate payment request
+    M->>ePayment: Initiate payment request with receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
     M->>ePayment: Capture payment 
     M->>ePayment: Check the status of capture

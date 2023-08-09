@@ -13,7 +13,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
@@ -53,8 +52,68 @@ Provide a QR code or link to your payment page where you present your customer w
 
 When they select to pay with Vipps MobilePay, send the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request and include a consent request for the user's phone number.
 
-This is done by setting the `scope` parameter with a value of `phoneNumber` in the
-[create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
+<details>
+<summary>Details</summary>
+<div>
+
+This is done by setting the `scope` parameter with a value of `phoneNumber` in the request.
+
+Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer.
+
+Here is an example HTTP POST:
+
+[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+
+With body:
+
+```json
+{
+  "amount": {
+    "value": 10000,
+    "currency": "NOK"
+  },
+  "paymentMethod": {
+    "type": "WALLET"
+  },
+  "customer": {
+    "phoneNumber": 4791234567
+  },
+   "profile": {
+    "scope": "phoneNumber"
+  },
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "socks",
+        "id": "line_item_1",
+        "totalAmount": 10000,
+        "totalAmountExcludingTax": 8000,
+        "totalTaxAmount": 2000,
+        "taxPercentage": 25,
+        "unitInfo": {
+          "unitPrice": 4000,
+          "quantity": "2",
+          "quantityUnit": "PCS"
+        },
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "pos_122"
+    },
+   "receiptNumber": "0527013501"
+  },
+  "reference": 248679167965815592292,
+  "userFlow": "PUSH_MESSAGE",
+  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
+  "paymentDescription": "Payment to Butikken"
+}
+```
+
+Attach the receipt simultaneously.
+
+</div>
+</details>
 
 After the customer has finished the payment, you will get their phone number to keep for future payments. This means that, in the future, you can send the payment request directly to them without requiring a new login.
 
@@ -66,12 +125,7 @@ section of the ePayment API guide.
 
 <AUTHORIZEPAYMENT />
 
-
-### Step 4. Add a receipt
-
-<ATTACHRECEIPT />
-
-### Step 5. Capture the payment
+### Step 4. Capture the payment
 
 <FULLCAPTURE />
 
@@ -89,9 +143,7 @@ sequenceDiagram
     ePayment->>C: Request payment and consent to phoneNumber
     C->>ePayment: Authorize payment and consent
     M->>C: Display order confirmation on product page
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
-    M-->>C: Ship the order (if applicable)
     M->>ePayment: Capture payment 
     M->>ePayment: Check the status of capture
 ```

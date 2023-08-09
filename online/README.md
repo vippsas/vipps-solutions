@@ -10,7 +10,6 @@ pagination_prev: null
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
@@ -37,6 +36,7 @@ endpoint.
 <div>
 
 Set `userFlow` to `WEB_REDIRECT`, so the customer's browser will either do an automatic app-switch or open the landing page to confirm the mobile number.
+Attach the receipt simultaneously.
 
 Here is an example HTTP POST:
 
@@ -52,14 +52,35 @@ Here is an example HTTP POST:
     "type": "WALLET"
   },
   "customer": {
-    "phoneNumber": 4796574209
+    "phoneNumber": 4791234567
+  },
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "socks",
+        "id": "line_item_1",
+        "totalAmount": 10000,
+        "totalAmountExcludingTax": 8000,
+        "totalTaxAmount": 2000,
+        "taxPercentage": 25,
+        "unitInfo": {
+          "unitPrice": 4000,
+          "quantity": "2",
+          "quantityUnit": "PCS"
+        },
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "pos_122"
+    },
+   "receiptNumber": "0527013501"
   },
   "reference": 2486791679658155992,
   "userFlow": "WEB_REDIRECT",
   "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
   "paymentDescription": "Purchase of socks"
 }
-
 
 ```
 
@@ -91,15 +112,12 @@ Confirm to them that the order was successful.
 
 ![Order confirmation](images/vipps-ecom-step4-2.png)
 
-### Step 5. Add a receipt
 
-<ATTACHRECEIPT />
-
-### Step 6. Ship the order (if applicable)
+### Step 7. Ship the order (if applicable)
 
 Complete and ship the order to the customer.
 
-### Step 7. Capture the payment
+### Step 8. Capture the payment
 
 <FULLCAPTURE />
 
@@ -112,13 +130,11 @@ sequenceDiagram
     actor C as Customer
     participant M as Merchant
     participant ePayment as ePayment API
-    participant ordermanagement as Order Management API
 
     M->>ePayment: Initiate payment request
-    ePayment->>C: Request payment
+    ePayment->>C: Request payment and attach receipt
     C->>ePayment: Authorize payment
     M->>C: Display order confirmation
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
     M->>C: Ship the order (if applicable)
     M->>ePayment: Capture payment 
