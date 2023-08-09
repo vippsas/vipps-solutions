@@ -36,23 +36,17 @@ When the customer scans the QR code, they go directly to the Vipps or MobilePay 
 
 When the customer selects a product, generate the dynamic QR code and display it on the screen.
 
-To generate the dynamic QR code and associated payment request, send the
-[Create Payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request
-with `"customerInteraction": "CUSTOMER_PRESENT"` and  `"userFlow": "QR"`.
-
-Include a receipt in the ePayment request.
 
 
 <details>
 <summary>Detailed example</summary>
 <div>
 
-Your system can send the payment request by using the
-[`createPayment`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
-endpoint.
+To generate the dynamic QR code and associated payment request, send the
+[Create Payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request
+with `"customerInteraction": "CUSTOMER_PRESENT"` and  `"userFlow": "QR"`.
 
-Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer.
-Attach the receipt simultaneously.
+Include a receipt in the ePayment request.
 
 Here is an example HTTP POST:
 
@@ -72,10 +66,11 @@ With body:
   "customer": {
     "phoneNumber": 4791234567
   },
+  "customerInteraction": "CUSTOMER_PRESENT",
   "receipt":{
     "orderLines": [
       {
-        "name": "coke",
+        "name": "Fanta",
         "id": "21231211",
         "totalAmount": 3000,
         "totalAmountExcludingTax": 2250,
@@ -90,7 +85,7 @@ With body:
    "receiptNumber": "0527013501"
   },
   "reference": 2486791679658155992,
-  "userFlow": "PUSH_MESSAGE",
+  "userFlow": "QR",
   "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
   "paymentDescription": "Vending machine purchase"
 }

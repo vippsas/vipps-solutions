@@ -45,9 +45,59 @@ When the user selects the products and clicks the `pay` button, generate a
 [Create payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment)
 based on the selected products.
 
-Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to Vipps MobilePay.
+<details>
+<summary>Detailed example</summary>
+<div>
+
+Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect the user to the Vipps MobilePay app.
 
 Include a receipt in the ePayment request.
+
+Here is an example HTTP POST:
+
+[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+
+With body:
+
+```json
+{
+  "amount": {
+    "value": 3000,
+    "currency": "NOK"
+  },
+  "paymentMethod": {
+    "type": "WALLET"
+  },
+  "customer": {
+    "phoneNumber": 4791234567
+  },
+  "customerInteraction": "CUSTOMER_PRESENT",
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "Fanta",
+        "id": "21231211",
+        "totalAmount": 3000,
+        "totalAmountExcludingTax": 2250,
+        "totalTaxAmount": 750,
+        "taxPercentage": 25,
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "vending_machine_12345"
+    },
+   "receiptNumber": "0527013501"
+  },
+  "reference": 2486791679658155992,
+  "userFlow": "WEB_REDIRECT",
+  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
+  "paymentDescription": "Vending machine purchase"
+}
+```
+
+</div>
+</details>
 
 ### Step 3: The customer authorizes the payment
 
