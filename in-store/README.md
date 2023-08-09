@@ -80,7 +80,7 @@ With body:
 ```json
 {
   "amount": {
-    "value": 10000,
+    "value": 49800,
     "currency": "NOK"
   },
   "paymentMethod": {
@@ -92,22 +92,25 @@ With body:
   "receipt":{
     "orderLines": [
       {
-        "name": "socks",
-        "id": "line_item_1",
-        "totalAmount": 10000,
-        "totalAmountExcludingTax": 8000,
-        "totalTaxAmount": 2000,
+        "name": "Orange hoodie",
+        "id": "hoodie1234",
+        "totalAmount": 29900,
+        "totalAmountExcludingTax": 22425,
+        "totalTaxAmount": 7475,
         "taxPercentage": 25,
-        "unitInfo": {
-          "unitPrice": 4000,
-          "quantity": "2",
-          "quantityUnit": "PCS"
-        },
+      },
+      {
+        "name": "White T-shirt",
+        "id": "tshirt1234",
+        "totalAmount": 19900,
+        "totalAmountExcludingTax": 14925,
+        "totalTaxAmount": 2975,
+        "taxPercentage": 25,
       },
     ],
     "bottomLine": {
       "currency": "NOK",
-      "posId": "pos_122"
+      "posId": "Butikken-23412"
     },
    "receiptNumber": "0527013501"
   },

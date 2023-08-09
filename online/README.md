@@ -44,7 +44,7 @@ Here is an example HTTP POST:
 ```json
 {
   "amount": {
-    "value": 10000,
+    "value": 34900,
     "currency": "NOK"
   },
   "paymentMethod": {
@@ -56,29 +56,24 @@ Here is an example HTTP POST:
   "receipt":{
     "orderLines": [
       {
-        "name": "socks",
-        "id": "line_item_1",
-        "totalAmount": 10000,
-        "totalAmountExcludingTax": 8000,
-        "totalTaxAmount": 2000,
+        "name": "Hoodie",
+        "id": "hoodie1234",
+        "totalAmount": 34900,
+        "totalAmountExcludingTax": 26175,
+        "totalTaxAmount": 8725,
         "taxPercentage": 25,
-        "unitInfo": {
-          "unitPrice": 4000,
-          "quantity": "2",
-          "quantityUnit": "PCS"
-        },
       },
     ],
     "bottomLine": {
       "currency": "NOK",
       "posId": "pos_122"
     },
-   "receiptNumber": "0527013501"
+   "receiptNumber": "789267"
   },
-  "reference": 2486791679658155992,
+  "reference": 58712432,
   "userFlow": "WEB_REDIRECT",
-  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
-  "paymentDescription": "Purchase of socks"
+  "returnUrl": "http://example.com/redirect?reference=58712432",
+  "paymentDescription": "Hoodie"
 }
 
 ```

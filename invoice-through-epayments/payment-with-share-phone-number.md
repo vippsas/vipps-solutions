@@ -70,7 +70,7 @@ With body:
 ```json
 {
   "amount": {
-    "value": 10000,
+    "value": 300000,
     "currency": "NOK"
   },
   "paymentMethod": {
