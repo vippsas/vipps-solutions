@@ -7,7 +7,6 @@ pagination_prev: null
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import PARTIALCAPTURE from '../_common/_partial_capture.md'
 END_METADATA -->
 
 # Payment through company app
@@ -51,7 +50,7 @@ Here is an example HTTP POST:
 ```json
 {
   "amount": {
-    "value": 10000,
+    "value": 150000,
     "currency": "NOK"
   },
   "paymentMethod": {
@@ -128,7 +127,39 @@ Body:
 
 ### Step 7. Capture the amount due
 
-<PARTIALCAPTURE />
+After final amount is confirmed, do a
+[partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture).
+Then, release the remaining amount from the reservation with a
+[cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture).
+
+
+Check the status of the captured payment.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+First, the capture:
+
+[`POST:/epayment/v1/payments/{reference}/capture`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 100000,
+    "currency": "NOK"
+  }
+}
+```
+
+Then, cancel after partial capture:
+
+[`POST:/epayment/v1/payments/{reference}/cancel`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+</div>
+</details>
 
 ## Related information
 

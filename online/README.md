@@ -9,7 +9,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-import FULLCAPTURE from '../_common/_full_capture.md'
+
 END_METADATA -->
 
 # Online payments
@@ -116,7 +116,27 @@ Complete and ship the order to the customer.
 
 ### Step 6. Capture the payment
 
-<FULLCAPTURE />
+Capture the payment and confirm that it was successful.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+[`POST:/epayment/v1/payments/{reference}/capture`](/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 34900,
+    "currency": "NOK"
+  }
+}
+```
+
+</div>
+</details>
 
 ## Sequence diagram
 

@@ -7,7 +7,6 @@ pagination_next: null
 pagination_prev: null
 ---
 
-import FULLCAPTURE from '../_common/_full_capture.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 END_METADATA -->
 
@@ -52,7 +51,25 @@ Include a receipt in the ePayment request.
 
 ### Step 4: Capture the amount
 
-<FULLCAPTURE />
+<details>
+<summary>Detailed example</summary>
+<div>
+
+[`POST:/epayment/v1/payments/{reference}/capture`](/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 3000,
+    "currency": "NOK"
+  }
+}
+```
+
+</div>
+</details>
 
 ## Sequence diagram
 

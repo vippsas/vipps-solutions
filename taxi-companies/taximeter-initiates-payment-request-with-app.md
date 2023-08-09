@@ -7,7 +7,7 @@ pagination_prev: null
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import FULLCAPTURE from '../_common/_full_capture.md'
+
 END_METADATA -->
 
 # Payment through taximeter and app
@@ -44,7 +44,7 @@ Here is an example HTTP POST:
 ```json
 {
   "amount": {
-    "value": 10000,
+    "value": 100000,
     "currency": "NOK"
   },
   "paymentMethod": {
@@ -89,7 +89,27 @@ Here is an example HTTP POST:
 
 ### Step 4. Capture the amount due
 
-<FULLCAPTURE />
+Capture the payment and confirm that it was successful.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+[`POST:/epayment/v1/payments/{reference}/capture`](/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 100000,
+    "currency": "NOK"
+  }
+}
+```
+
+</div>
+</details>
 
 ## Sequence diagram
 

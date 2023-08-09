@@ -13,7 +13,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import FULLCAPTURE from '../_common/_full_capture.md'
+
 END_METADATA -->
 
 # Payment request as a link
@@ -122,7 +122,27 @@ Note that, for long-living payments, customers also have the option of soft-dism
 
 ### Step 4. Capture the payment
 
-<FULLCAPTURE />
+Capture the payment and confirm that it was successful.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+[`POST:/epayment/v1/payments/{reference}/capture`](/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 300000,
+    "currency": "NOK"
+  }
+}
+```
+
+</div>
+</details>
 
 ## Sequence diagram
 

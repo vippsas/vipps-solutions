@@ -9,7 +9,7 @@ pagination_prev: null
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import FULLCAPTURE from '../_common/_full_capture.md'
+
 END_METADATA -->
 
 # Dynamic QR directing to the app for payment
@@ -63,7 +63,7 @@ With body:
 ```json
 {
   "amount": {
-    "value": 10000,
+    "value": 3000,
     "currency": "NOK"
   },
   "paymentMethod": {
@@ -106,7 +106,27 @@ With body:
 
 ### Step 3: Capture the payment
 
-<FULLCAPTURE />
+Capture the payment and confirm that it was successful.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+[`POST:/epayment/v1/payments/{reference}/capture`](/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 3000,
+    "currency": "NOK"
+  }
+}
+```
+
+</div>
+</details>
 
 ## Sequence diagram
 
