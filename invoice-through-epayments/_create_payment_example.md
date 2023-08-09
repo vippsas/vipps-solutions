@@ -1,6 +1,4 @@
 
-<!-- THIS IS NOT USED AT THE MOMENT BECAUSE IT ISN'T MATCHING THE SPEC FOR EPAYMENTS -->
-
 <details>
 <summary>General create request example</summary>
 <div>
@@ -26,7 +24,7 @@ With body:
       "receiptInfo":{
          "orderLines": [
             {
-               "name": "MobilePay socks",
+               "name": "Socks",
                "id": "line_item_1",
                "totalAmount": 1000,
                "totalAmountExcludingTax": 800,
@@ -43,7 +41,7 @@ With body:
                "isShipping": false
             },
             {
-               "name": "Vipps flip-flops",
+               "name": "Flip-flops",
                "id": "line_item_2",
                "totalAmount": 5000,
                "totalAmountExcludingTax": 4000,
@@ -91,7 +89,7 @@ To create a *payment request*, the following parameters can/must be used, depend
 * `expiresAt` - The expiration date for the payment. This is what separates the long living payment request from a regular payment.
 * `userFlow`  - Must be `"PUSH_MESSAGE"` or `"QR"`.
 * `paymentDescription` - Short description with relevant information about the payment request.
-* `receiptInfo` (might be renamed)- Order Lines for the payment. The orderlines are the same as referenced in the [Order Management](https://developer.vippsmobilepay.com/docs/APIs/order-management-api) API. This **must** be present.
+* `receipt` - Order Lines for the payment. The orderlines are the same as referenced in the [Order Management](https://developer.vippsmobilepay.com/docs/APIs/order-management-api) API. This **must** be present.
 * `customer.phoneNumber` - The customer's phone number. This is optional, and will be used if the users phone number is known in advance.
 * `scope` - This can be used to request the user to share their telephone number.
 
