@@ -31,7 +31,7 @@ Add the products to the order and send the payment request by using the
 endpoint.
 
 <details>
-<summary>Details</summary>
+<summary>Detailed example</summary>
 <div>
 
 Set `userFlow` to `WEB_REDIRECT`, so the customer's browser will either do an automatic app-switch or open the landing page to confirm the mobile number.

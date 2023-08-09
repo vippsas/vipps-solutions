@@ -26,7 +26,7 @@ Your system should contain the customer's phone number, since they ordered the t
 Use the customer's phone number to send them a request for the taxi fare.
 
 <details>
-<summary>Details</summary>
+<summary>Detailed example</summary>
 <div>
 
 To create this payment, you first send a

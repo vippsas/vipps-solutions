@@ -34,7 +34,7 @@ When the customer scans the QR, your system will receive a notification that the
 Use the customer's phone number to send them a request for the taxi fare.
 
 <details>
-<summary>Details</summary>
+<summary>Detailed example</summary>
 <div>
 
 Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to the app.

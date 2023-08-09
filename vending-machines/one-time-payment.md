@@ -42,6 +42,64 @@ with `"customerInteraction": "CUSTOMER_PRESENT"` and  `"userFlow": "QR"`.
 
 Include a receipt in the ePayment request.
 
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+Your system can send the payment request by using the
+[`createPayment`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+endpoint.
+
+Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer.
+Attach the receipt simultaneously.
+
+Here is an example HTTP POST:
+
+[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+
+With body:
+
+```json
+{
+  "amount": {
+    "value": 10000,
+    "currency": "NOK"
+  },
+  "paymentMethod": {
+    "type": "WALLET"
+  },
+  "customer": {
+    "phoneNumber": 4791234567
+  },
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "coke",
+        "id": "21231211",
+        "totalAmount": 3000,
+        "totalAmountExcludingTax": 2250,
+        "totalTaxAmount": 750,
+        "taxPercentage": 25,
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "vending_machine_12345"
+    },
+   "receiptNumber": "0527013501"
+  },
+  "reference": 2486791679658155992,
+  "userFlow": "PUSH_MESSAGE",
+  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
+  "paymentDescription": "Vending machine purchase"
+}
+```
+
+</div>
+</details>
+
+
 ### Step 2: The customer authorizes the payment
 
 <AUTHORIZEPAYMENT />

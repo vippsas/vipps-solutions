@@ -51,9 +51,8 @@ If the QR code contained an identification of the charging point, the customer d
 Use the customer's phone number to send them a request for the taxi fare.
 
 <details>
-<summary>Details</summary>
+<summary>Detailed example</summary>
 <div>
-
 
 When the customer is ready to pay, initiate a
 [payment request](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments).

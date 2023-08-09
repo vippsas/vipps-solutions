@@ -34,21 +34,30 @@ The following describes the process at a high level.
 
 ## Details
 
-### Step 1: Scan the QR code
+### Step 1: Identify the customer
 
-The flow begins with the customer presenting their QR code to the merchant. This can happen in two ways:
+The flow begins with the customer presenting their Vipps MobilePay QR code to the merchant.
+
+![Loyalty Flow](images/POS_step_1.png)
+
+<details>
+<summary>How it works</summary>
+<div>
+
+This can happen in two ways:
 
 * Customer-facing scanner - The store will have a permanent customer-facing scanner and customers can scan their QR code at any time.
 * Cashier scanner - The QR code is scanned by the cashier using a wired scanner. This could happen while the cashier is scanning wares or immediately before the payment.
-
-![Loyalty Flow](images/POS_step_1.png)
 
 The customer's personal QR code contains a URL like this:
 `https://qr.vipps.no/28/2/01/031/4791234567?v=1`, where `4791234567` is their phone number in
 [MSISDN](https://en.wikipedia.org/wiki/MSISDN) format.
 
-When this QR code is scanned in the store, the POS will get their phone number.
-This can be used for checking membership, in the next step.
+When this QR code is scanned, your POS system will get their phone number.
+If you don't have a scanner, you can enter the customer's phone number manually.
+
+</div>
+</details>
 
 ### Step 2: Check membership
 
@@ -59,6 +68,7 @@ Use the [Check-in API](https://developer.vippsmobilepay.com/docs/APIs/check-in-a
 <details>
 <summary>Detailed example</summary>
 <div>
+
 Here is an example HTTP POST:
 
 [`POST:/point-of-sale/v1/loyalty-check-in`](https://developer.vippsmobilepay.com/api/check-in#tag/Loyalty-check-in/operation/initiateLoyaltyCheckIn)
@@ -107,11 +117,9 @@ After membership status has been determined and all articles have been scanned, 
 You already have the phone number from step 1, so you don't need to ask for it again.
 Just provide a button in your user interface to allow the cashier to send the payment request.
 
-
 <details>
-<summary>Details</summary>
+<summary>Detailed example</summary>
 <div>
-
 
 Your system can send the payment request by using the
 [`createPayment`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
@@ -141,15 +149,16 @@ With body:
   "receipt":{
     "orderLines": [
       {
-        "name": "socks",
-        "id": "line_item_1",
-        "totalAmount": 10000,
-        "totalAmountExcludingTax": 8000,
-        "totalTaxAmount": 2000,
+        "name": "winter jacket",
+        "id": "jacket1234",
+        "totalAmount": 239900,
+        "totalAmountExcludingTax": 179925,
+        "totalTaxAmount": 59975,
         "taxPercentage": 25,
+        "discount": 80000
         "unitInfo": {
-          "unitPrice": 4000,
-          "quantity": "2",
+          "unitPrice": 319900,
+          "quantity": "1",
           "quantityUnit": "PCS"
         },
       },
@@ -163,7 +172,7 @@ With body:
   "reference": 2486791679658155992,
   "userFlow": "PUSH_MESSAGE",
   "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
-  "paymentDescription": "Payment to Butikken"
+  "paymentDescription": "Winter jacket - blue"
 }
 ```
 

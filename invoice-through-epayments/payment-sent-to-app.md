@@ -54,7 +54,7 @@ The customer will receive a push notification in their Vipps MobilePay app.
 
 
 <details>
-<summary>Details</summary>
+<summary>Detailed example</summary>
 <div>
 
 Your system can send the payment request by using the
@@ -85,29 +85,31 @@ With body:
   "receipt":{
     "orderLines": [
       {
-        "name": "socks",
-        "id": "line_item_1",
-        "totalAmount": 10000,
-        "totalAmountExcludingTax": 8000,
-        "totalTaxAmount": 2000,
+        "name": "Accident insurance",
+        "id": "12345",
+        "totalAmount": 150000,
+        "totalAmountExcludingTax": 112500,
+        "totalTaxAmount": 37500,
         "taxPercentage": 25,
-        "unitInfo": {
-          "unitPrice": 4000,
-          "quantity": "2",
-          "quantityUnit": "PCS"
-        },
+      },
+      {
+        "name": "Travel insurance",
+        "id": "12345",
+        "totalAmount": 150000,
+        "totalAmountExcludingTax": 112500,
+        "totalTaxAmount": 37500,
+        "taxPercentage": 25,
       },
     ],
     "bottomLine": {
       "currency": "NOK",
-      "posId": "pos_122"
     },
    "receiptNumber": "0527013501"
   },
   "reference": 2486791679658155992,
   "userFlow": "PUSH_MESSAGE",
   "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
-  "paymentDescription": "Payment to Butikken"
+  "paymentDescription": "Spendings"
 }
 ```
 

@@ -30,7 +30,7 @@ Display an option to pay with Vipps on your app.
 When the customer is ready to pay, initiate a payment request.
 
 <details>
-<summary>Details</summary>
+<summary>Detailed example</summary>
 <div>
 
 To create this payment, you first send a

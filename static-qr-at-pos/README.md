@@ -46,7 +46,7 @@ Use the token to send the customer a
 [Create Payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment).
 
 <details>
-<summary>Details</summary>
+<summary>Detailed example</summary>
 <div>
 
 Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
