@@ -120,7 +120,7 @@ With body:
 
 Note that, for long-living payments, customers also have the option of soft-dismissing the payment and postponing it for later.
 
-### Step 5. Capture the payment
+### Step 4. Capture the payment
 
 <FULLCAPTURE />
 

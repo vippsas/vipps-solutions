@@ -174,13 +174,10 @@ With body:
 
 <AUTHORIZEPAYMENT />
 
-### Step 6. Update the POS system
-
-Once the customer authorizes the payment, update the POS system with the status.
 
 ![Loyalty Flow](images/POS_step_4.png)
 
-### Step 7: Capture the payment
+### Step 6: Capture the payment
 
 <FULLCAPTURE />
 

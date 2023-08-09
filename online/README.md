@@ -9,7 +9,6 @@ pagination_next: null
 pagination_prev: null
 ---
 
-import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
@@ -21,7 +20,7 @@ This flow combines multiple products to illustrate the recommended online paymen
 
 ## Details
 
-### Step 1. Add an option to pay with Vipps or MobilePay
+### Step 1. Add an option to pay
 
 Add the option to pay with Vipps or MobilePay on the product page of your website.
 
@@ -101,9 +100,13 @@ If the payment was started from a mobile device, the Vipps MobilePay app will au
 
 ![Confirm payment](images/vipps-ecom-confirm2.png)
 
-<AUTHORIZEPAYMENT />
+To get confirmation that payment was approved, monitor
+[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
+[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
 
-### Step 4. Confirm the order
+Once the payment is approved, update the status in your system.
+
+### Step 4. Provide confirmation
 
 When the user confirms the payment, they will get a confirmation in the app and
 then be redirected back to your store.
@@ -112,12 +115,11 @@ Confirm to them that the order was successful.
 
 ![Order confirmation](images/vipps-ecom-step4-2.png)
 
-
-### Step 7. Ship the order (if applicable)
+### Step 5. Ship the order (if applicable)
 
 Complete and ship the order to the customer.
 
-### Step 8. Capture the payment
+### Step 6. Capture the payment
 
 <FULLCAPTURE />
 

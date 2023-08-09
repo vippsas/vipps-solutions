@@ -59,8 +59,7 @@ Your system can send the payment request by using the
 [`createPayment`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 endpoint.
 
-Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer who scanned the QR code,
-and after the payment is completed, the POS will be updated with the status of the payment.
+Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer.
 Attach the receipt simultaneously.
 
 Here is an example HTTP POST:
@@ -120,12 +119,7 @@ With body:
 
 ![Confirm payment](images/vipps-in-store-step3-2.svg)
 
-
-### Step 5. Update the POS system
-
-Once the customer authorizes the payment, update the POS system with the status.
-
-### Step 6: Capture the payment
+### Step 5: Capture the payment
 
 <FULLCAPTURE />
 
