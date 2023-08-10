@@ -14,8 +14,6 @@ END_METADATA -->
 The customer pays the taxi company from their app when ordering the taxi and selects to pay with Vipps.
 The amount is reserved until the final amount is known, at which time the payment is captured.
 
-![Taxi route](images/taxi_route.png)
-
 This flow combines multiple products to illustrate the recommended online payment flow.
 
 ## Details
@@ -28,42 +26,43 @@ Display an option to pay with Vipps on your app.
 
 When the customer is ready to pay, initiate a payment request.
 
+The payment request amount should be large enough to cover the cost of the journey.
+Do not include the receipt yet, since a receipt is immutable and the true amount is not known yet.
+
+This amount will be reserved on the customer's account, and the unused amount will be released when the journey is finished.
+
 <details>
 <summary>Detailed example</summary>
 <div>
 
 To create this payment, you first send a
-[create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request, where `customer.phoneNumber` is set.
+[create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
 
-Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
+Since the customer is selecting this from an app on their phone, you don't need their phone number.
+This payment command can do an app-switch and open their Vipps app with the payment request.
+Specify `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
 
-The payment request amount should be large enough to cover the cost of the journey.
-Do not include the receipt yet, since a receipt is immutable and the true amount is not known yet.
+Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
 
-If the payment is approved, this amount will be reserved on customer's account.
-The amount that is unused will be released when the journey is finished.
 
-Here is an example HTTP POST:
+Here is an example:
 
 [`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 
 ```json
 {
   "amount": {
-    "value": 150000,
+    "value": 31400,
     "currency": "NOK"
   },
   "paymentMethod": {
     "type": "WALLET"
   },
-  "customer": {
-    "phoneNumber": 4791234567
-  },
   "customerInteraction": "CUSTOMER_PRESENT",
   "reference": 2486791679658155992,
   "userFlow": "WEB_REDIRECT",
   "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
-  "paymentDescription": "Travel from Oslo central station to Oslo airport"
+  "paymentDescription": "Travel from Oslo central station to Storo"
 }
 
 ```
@@ -82,15 +81,51 @@ Confirm that the order has been successful in your app.
 
 ### Step 5. Complete the journey
 
-### Step 6. Finalize the payment and attach a receipt
+After the drive is complete, calculate how much the customer owes.
 
-After the drive is complete, calculate how much the customer owes and provide a receipt.
+### Step 6. Capture the amount due
+
+After final amount is confirmed, do a
+[partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture).
+
+Check the status of the captured payment.
 
 <details>
 <summary>Detailed example</summary>
 <div>
 
-Here is an example HTTP POST:
+[`POST:/epayment/v1/payments/{reference}/capture`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 29900,
+    "currency": "NOK"
+  }
+}
+```
+
+</div>
+</details>
+
+### Step 7. Cancel remaining amount
+
+Release the remaining amount from the reservation with a
+[cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture).
+
+[`POST:/epayment/v1/payments/{reference}/cancel`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+### Step 8. Attach a receipt
+
+Attach a receipt with the amount paid.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+Here is an example:
 
 [`POST:/order-management/v2/{paymentType}/receipts/{orderId}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
 
@@ -105,9 +140,9 @@ Body:
     {
         "name": "trip",
         "id": "line_item_1",
-        "totalAmount": 100000,
-        "totalAmountExcludingTax": 80000,
-        "totalTaxAmount": 20000,
+        "totalAmount": 29900,
+        "totalAmountExcludingTax": 22425,
+        "totalTaxAmount": 7475,
         "taxPercentage": 25,
         "productUrl": "https://www.example.com/taxiride",
       },
@@ -116,47 +151,9 @@ Body:
   "bottomLine": {
     "currency": "NOK",
     "posId": "taxi_122",
-    "tipAmount": 10000
   }
 }
 ```
-
-</div>
-</details>
-
-
-### Step 7. Capture the amount due
-
-After final amount is confirmed, do a
-[partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture).
-Then, release the remaining amount from the reservation with a
-[cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture).
-
-
-Check the status of the captured payment.
-
-<details>
-<summary>Detailed example</summary>
-<div>
-
-First, the capture:
-
-[`POST:/epayment/v1/payments/{reference}/capture`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
-
-With body:
-
-```json
-{
-  "modificationAmount": {
-    "value": 100000,
-    "currency": "NOK"
-  }
-}
-```
-
-Then, cancel after partial capture:
-
-[`POST:/epayment/v1/payments/{reference}/cancel`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
 
 </div>
 </details>
@@ -187,5 +184,4 @@ sequenceDiagram
     ePayment->>C: Capture amount due
     ePayment->>C: Release amount remaining
     M->>ordermanagement: Attach receipt showing amount paid
-    M->>ePayment: Check the status of capture
 ```

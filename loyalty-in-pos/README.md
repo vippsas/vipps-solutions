@@ -234,7 +234,5 @@ sequenceDiagram
     M->>ePayment: Initiate payment request and attach a receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    ePayment->>C: Provide payment information
-    M->>ePayment: Capture payment 
-    M->>ePayment: Check the status of capture
+    M->>ePayment: Capture payment
 ```

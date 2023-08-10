@@ -12,10 +12,12 @@ import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 
 END_METADATA -->
 
-# In-store using static QR
+# In-store using Merchant Callback QR
+
+💥 Please note: The Merchant Callback QR feature is being implemented, and is not yet available. Planned release is Q2 2023. 💥
 
 In this flow, a user pays by scanning a QR with their Vipps MobilePay app.
-The merchant requests their ID and sends a payment request to them through the Vipps MobilePay app.
+The merchant gets their ID and sends a payment request to them through the Vipps MobilePay app.
 
 ## Details
 
@@ -23,9 +25,9 @@ Before implementing this flow, please see the recommended [in-store payments flo
 
 ![User scans QR. Merchant gets ID and sends payment. User pays and gets receipt.](images/static_qr_at_pos.png)
 
-### Step 1: Generate a static QR code
+### Step 1: Generate a callback QR code
 
-Generate a static QR code linking to your company landing page.
+Generate a callback QR code linking to your company landing page.
 Print and place the QR code at your cash register or Point of Sale (POS).
 
 
@@ -35,31 +37,51 @@ Print and place the QR code at your cash register or Point of Sale (POS).
 
 The QR code contains a `Id` that connects it to a specific POS or cash register in your store.
 
-Here is an example HTTP POST:
+Here is an example:
 
-[`POST:/qr/v1/merchant-redirect`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
+[`PUT:/qr/v1/merchant-callback/{merchantQrId}`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
+
 
 ```json
 {
-  "id": "pos_2345_qr",
-  "redirectUrl": "https://example.com/myTaxiCompany"
+  "locationDescription": "pos_2345",
 }
 ```
 
 </div>
 </details>
 
-See also:
+### Step 2: Create a webhook
 
-* [Vending machines: Static QR directing to the app for payment](../vending-machines/qr-direct-to-payment-in-app.md)
-* [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
+Create a webhook that will send callbacks when this QR code is scanned by a Vipps user.
 
-### Step 2: The customer scans the static QR
+*The Merchant Callback QR feature is being implemented, and is not yet available.*
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+
+Here is an example:
+
+[`POST:/webhooks/v1/webhooks`](https://developer.vippsmobilepay.com/api/webhooks/#tag/v1/paths/~1v1~1webhooks/post)
+
+```json
+{  
+    "url": "<CALLBACK-URL>", 
+    "events": [<future event is to be provided>] 
+}
+```
+
+</div>
+</details>
+
+### Step 3: The customer scans the QR
 
 When the customer scans the QR, your system will receive a notification that the customer is ready to pay with Vipps or MobilePay.
 The notification will contain a token the merchant can use to start a payment.
 
-### Step 3: Send the payment request
+### Step 4: Send the payment request
 
 Use the token to send the customer a
 [Create Payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment).
@@ -68,9 +90,13 @@ Use the token to send the customer a
 <summary>Detailed example</summary>
 <div>
 
-Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
+Specify `"userFlow": "WEB_REDIRECT"` to redirect the user to the Vipps app.
 
-Here is an example HTTP POST:
+You may attach the receipt at this time.
+
+Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
+
+Here is an example:
 
 [`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 
@@ -84,7 +110,7 @@ Here is an example HTTP POST:
     "type": "WALLET"
   },
   "customer": {
-    "personalQr": "personalQr_string"
+    "customerToken": "123456789"
   },
   "receipt":{
     "orderLines": [
@@ -119,11 +145,11 @@ Here is an example HTTP POST:
 </div>
 </details>
 
-### Step 4: The customer authorizes the payment
+### Step 5: The customer authorizes the payment
 
 <AUTHORIZEPAYMENT />
 
-### Step 5: Capture the payment
+### Step 6: Capture the payment
 
 Capture the payment and confirm that it was successful.
 
@@ -147,6 +173,12 @@ With body:
 </div>
 </details>
 
+## Related links
+
+See:
+
+* [Merchant Callback QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
+
 ## Sequence diagram
 
 Sequence diagram for in-store using static QR.
@@ -157,13 +189,14 @@ sequenceDiagram
     participant M as Merchant
     participant QR as QR API
     participant ePayment as ePayment API
+    participant Webhooks as Webhooks API
 
-    QR->>C: Scan for customer ID
+    M->>QR: Create Callback QR
+    C->>Webhooks: Customer scans QR
+    Webhooks->>M: Get notification of scan
     M->>M: Add product to sale
     M->>ePayment: Initiate payment request and attach receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    ePayment->>C: Provide payment information
     M->>ePayment: Capture payment
-    M->>ePayment: Check the status of capture
 ```

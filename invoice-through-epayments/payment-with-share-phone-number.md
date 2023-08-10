@@ -96,9 +96,6 @@ With body:
   "paymentMethod": {
     "type": "WALLET"
   },
-  "customer": {
-    "phoneNumber": 4791234567
-  },
    "profile": {
     "scope": "phoneNumber"
   },
@@ -183,10 +180,8 @@ sequenceDiagram
     participant ePayment as ePayment API
     
     M->>ePayment: Initiate payment request
-    ePayment->>C: Request payment and consent to phoneNumber
+    ePayment->>C: Request payment and consent to phoneNumber. Attach receipt.
     C->>ePayment: Authorize payment and consent
     M->>C: Display order confirmation on product page
-    ePayment->>C: Provide payment information
-    M->>ePayment: Capture payment 
-    M->>ePayment: Check the status of capture
+    M->>ePayment: Capture payment
 ```

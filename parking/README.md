@@ -34,16 +34,34 @@ The same solution can of course be used to charge weekly, monthly, or yearly.
 
 ## Details
 
+### Step 1: Generate a merchant redirect QR code
 
-### Step 1: Generate a static QR code
-
-Generate a static QR code with a
+Generate a merchant redirect QR code with a
 [merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
 linking to your company website.
 
-### Step 2: The customer scans the static QR
+The customer scans the QR code and is redirected to your website.
 
-When the customer scans the QR, your system will receive a notification that the QR has been scanned and will be able to get the customer's phone number.
+<details>
+<summary>Detailed example</summary>
+<div>
+
+The QR code contains a `Id` that connects it to the taxi where it is located.
+
+Here is an example:
+
+[`POST:/qr/v1/merchant-redirect`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
+
+```json
+{
+  "id": "company_site",
+  "redirectUrl": "https://example.com/myParkingCompany"
+}
+```
+
+</div>
+</details>
+
 
 ### Step 3. The customer logs in
 
@@ -53,7 +71,7 @@ See
 [How it works in Vipps Login](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-api-howitworks)
 for more details.
 
-### Step 4. Create agreement
+### Step 3. Create agreement
 
 The customer now has an account, with verified user data, and is able to both log in and pay.
 Create an agreement using the
@@ -63,11 +81,11 @@ endpoint.
 For more details, see
 [Create an agreement](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api/#create-an-agreement).
 
-### Step 5. Customer accepts agreement
+### Step 4. Customer accepts agreement
 
 The customer accepts the agreement in the Vipps MobilePay app.
 
-### Step 6. Charge for variable amounts
+### Step 5. Charge for variable amounts
 
 The customer parks one or more times.
 The accumulated parking fees are used to create one charge with the total amount.
@@ -79,7 +97,7 @@ See:
 
 Be sure to check the status of the captured payments.
 
-### Step 7. Attach a receipt
+### Step 6. Attach a receipt
 
 Send a digital receipt for the parking session.
 
@@ -103,11 +121,18 @@ Body:
     {
         "name": "parking",
         "id": "line_item_1",
-        "totalAmount": 10000,
-        "totalAmountExcludingTax": 8000,
-        "totalTaxAmount": 2000,
+        "totalAmount": 5200,
+        "totalAmountExcludingTax": 3900,
+        "totalTaxAmount": 1300,
         "taxPercentage": 25,
-        "productUrl": "https://www.example.com/parkingsession",
+      },
+    {
+        "name": "parking",
+        "id": "line_item_1",
+        "totalAmount": 27400,
+        "totalAmountExcludingTax": 20550,
+        "totalTaxAmount": 6850,
+        "taxPercentage": 25,
       },
     },
   ],

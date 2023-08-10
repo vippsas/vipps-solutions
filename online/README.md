@@ -152,8 +152,6 @@ sequenceDiagram
     ePayment->>C: Request payment and attach receipt
     C->>ePayment: Authorize payment
     M->>C: Display order confirmation
-    ePayment->>C: Provide payment information
     M->>C: Ship the order (if applicable)
-    M->>ePayment: Capture payment 
-    M->>ePayment: Check the status of capture
+    M->>ePayment: Capture payment
 ```

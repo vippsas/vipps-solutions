@@ -13,15 +13,17 @@ END_METADATA -->
 # Payment through company website
 
 The customer scans a QR code and is directed to the taxi company's landing page.
-The company requests their ID and sends a payment request to them through the Vipps MobilePay app.
+The company sends a payment request to them through the Vipps MobilePay app.
 
 ![Labeling in the taxi](images/labeling_in_the_taxi.png)
 
 ## Details
 
-### Step 1: Generate a static QR code
+### Step 1: Generate a merchant redirect QR code
 
-Generate a static QR code linking to your website or app.
+Generate a
+[merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+linking to your website or app.
 Print and place the QR code in your taxi.
 
 <details>
@@ -44,23 +46,24 @@ Here is an example HTTP POST:
 </div>
 </details>
 
+### Step 2: The customer scans the QR
 
-### Step 2: The customer scans the static QR
-
-When the customer scans the QR, the user will be redirected to the `redirectUrl`.
-Request the phone number from the website.
+When the customer scans the QR with their phone, they will be redirected to the `redirectUrl`.
 
 ### Step 3: Send the payment request
 
-Use the customer's phone number to send them a request for the taxi fare.
+Send a payment request to the customer
 
 <details>
 <summary>Detailed example</summary>
 <div>
 
-Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
+Since the customer has scanned from their phone, you don't need their phone number.
+This payment command can do an app-switch and open their Vipps app with the payment request.
+Specify `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
+Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
 
-Here is an example HTTP POST:
+Here is an example:
 
 [`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 
@@ -72,9 +75,6 @@ Here is an example HTTP POST:
   },
   "paymentMethod": {
     "type": "WALLET"
-  },
-  "customer": {
-    "phoneNumber": 4791234567
   },
   "customerInteraction": "CUSTOMER_PRESENT",
   "receipt":{
@@ -155,7 +155,5 @@ sequenceDiagram
     M->>ePayment: Initiate payment request with receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    ePayment->>C: Provide payment information
-    M->>ePayment: Capture payment 
-    M->>ePayment: Check the status of capture
+    M->>ePayment: Capture payment
 ```

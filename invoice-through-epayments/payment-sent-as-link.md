@@ -99,9 +99,6 @@ With body:
   "paymentMethod": {
     "type": "WALLET"
   },
-  "customer": {
-    "phoneNumber": 4791234567
-  },
   "receipt":{
     "orderLines": [
       {
@@ -181,8 +178,6 @@ sequenceDiagram
     ePayment->>C: Request payment and attach receipt
     C->>ePayment: Authorize payment
     M->>C: Display order confirmation on product page
-    ePayment->>C: Provide payment information to the app
     M-->>C: Ship the order (if applicable)
-    M->>ePayment: Capture payment 
-    M->>ePayment: Check the status of capture
+    M->>ePayment: Capture payment
 ```

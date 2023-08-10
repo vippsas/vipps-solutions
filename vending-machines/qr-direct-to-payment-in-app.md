@@ -5,14 +5,27 @@ sidebar_label: Static QR direct to the app for payment
 sidebar_position: 20
 pagination_next: null
 pagination_prev: null
+draft: true
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 END_METADATA -->
 
+
+This should use merchant redirect QR, which is not ready.
+ Currently, the qr goes to our landing page which opens their vipps app.
+
+
+
+
 # Static QR directing to the app for payment
 
-This flow uses a static QR code that is posted on the vending machine. The QR directs the user to the payment screen in their Vipps MobilePay app.
+
+
+💥 Please note: The Merchant Callback QR feature is being implemented, and is not yet available. Planned release is Q2 2023. 💥
+
+
+This flow uses a QR code that is posted on the vending machine. The QR directs the user to the payment screen in their Vipps MobilePay app.
 
 ![QR direct to payment](images/1_qr_direct_to_payment.png)
 
@@ -28,26 +41,26 @@ When the customer scans the QR code, they go directly to the Vipps or MobilePay 
 
 The payment amount should be the max amount of the vending machine products. After reservation, the amount of the selected product must be captured, and the remaining amount must be released.
 
-### Step 1: Generate a static QR code
+### Step 1: Generate a callback QR code
 
-Generate a static QR code linking to your company landing page.
-Print and place the QR code on your vending machine.
+Generate a callback QR code linking to your company landing page.
+Print and place the QR code at your cash register or Point of Sale (POS).
 
 
 <details>
 <summary>Detailed example</summary>
 <div>
 
-The QR code contains a `Id` that connects the vending machine it's attached to.
+The QR code contains a `Id` that connects it to a specific POS or cash register in your store.
 
-Here is an example HTTP POST:
+Here is an example:
 
-[`POST:/qr/v1/merchant-redirect`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
+[`PUT:/qr/v1/merchant-callback/{merchantQrId}`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
+
 
 ```json
 {
-  "id": "vending_machine_2345_qr",
-  "redirectUrl": "https://example.com/myTaxiCompany"
+  "locationDescription": "pos_2345",
 }
 ```
 
@@ -55,7 +68,33 @@ Here is an example HTTP POST:
 </details>
 
 
-### Step 2: Generate a payment request
+### Step 2: Create a webhook
+
+Create a webhook that will send callbacks when this QR code is scanned by a Vipps user.
+
+*The Merchant Callback QR feature is being implemented, and is not yet available.*
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+
+Here is an example:
+
+[`POST:/webhooks/v1/webhooks`](https://developer.vippsmobilepay.com/api/webhooks/#tag/v1/paths/~1v1~1webhooks/post)
+
+```json
+{  
+    "url": "<CALLBACK-URL>", 
+    "events": [<future event is to be provided>] 
+}
+```
+
+</div>
+</details>
+
+
+### Step 3: Generate a payment request
 
 When the user scans the QR code, send a
 [Create Payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment).
@@ -67,7 +106,8 @@ When the user scans the QR code, send a
 
 Specify the amount of the most expensive item in your vending machine so that any selection they make can be successful.
 
-Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
+Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
+Specify `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
 
 Here is an example HTTP POST:
 
@@ -85,7 +125,7 @@ With body:
     "type": "WALLET"
   },
   "customer": {
-    "personalQr": "personalQr_string"
+    "customerToken": "123456789"
   },
   "customerInteraction": "CUSTOMER_PRESENT",
   "reference": 2486791679658155992,
@@ -98,20 +138,54 @@ With body:
 </div>
 </details>
 
-### Step 3: Customer authorizes the payment
+### Step 4: Customer authorizes the payment
 
 <AUTHORIZEPAYMENT />
 
-
-### Step 4. Finalize the payment and attach a receipt
+### Step 5. Capture the amount due
 
 After the selection is made, determine how much the customer owes and provide a receipt.
+After final amount is confirmed, do a
+[partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture).
+
+Check the status of the captured payment.
 
 <details>
 <summary>Detailed example</summary>
 <div>
 
-Here is an example HTTP POST:
+[`POST:/epayment/v1/payments/{reference}/capture`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 3000,
+    "currency": "NOK"
+  }
+}
+```
+
+</div>
+</details>
+
+### Step 6. Cancel remaining amount
+
+Release the remaining amount from the reservation with a
+[cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture).
+
+[`POST:/epayment/v1/payments/{reference}/cancel`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+### Step 7. Add a receipt
+
+Attach a receipt with the amount paid.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+Here is an example:
 
 [`POST:/order-management/v2/{paymentType}/receipts/{orderId}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
 
@@ -142,43 +216,6 @@ Body:
 </div>
 </details>
 
-
-### Step 7. Capture the amount due
-
-After final amount is confirmed, do a
-[partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture).
-Then, release the remaining amount from the reservation with a
-[cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture).
-
-
-Check the status of the captured payment.
-
-<details>
-<summary>Detailed example</summary>
-<div>
-
-First, the capture:
-
-[`POST:/epayment/v1/payments/{reference}/capture`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
-
-With body:
-
-```json
-{
-  "modificationAmount": {
-    "value": 3000,
-    "currency": "NOK"
-  }
-}
-```
-
-Then, cancel after partial capture:
-
-[`POST:/epayment/v1/payments/{reference}/cancel`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
-
-</div>
-</details>
-
 ## Related links
 
 See:
@@ -196,17 +233,19 @@ sequenceDiagram
     participant M as Merchant
     participant QR as QR API
     participant ePayment as ePayment API
-    
-    QR->>C: Scan for customer ID
+    participant Webhooks as Webhooks API
+
+    M->>QR: Create Callback QR
+    C->>Webhooks: Customer scans QR
+    Webhooks->>M: Get notification of scan
     M->>M: Add product to sale
     M->>ePayment: Initiate payment request with receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    ePayment->>C: Provide payment information
     M->>ePayment: Initiate payment capture
     M->>ePayment: Initiate capture request for amount due
     M->>ePayment: Release <amount reserved - amount due>
     ePayment->>C: Capture amount due
     ePayment->>C: Release amount remaining
-    M->>ePayment: Check the status of capture
+    ePayment->>C: Attach receipt
 ```

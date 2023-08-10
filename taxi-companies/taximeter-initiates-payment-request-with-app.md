@@ -33,11 +33,11 @@ To create this payment, you first send a
 [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request, where `customer.phoneNumber` is set.
 
 Use `userFlow:PUSH_MESSAGE` and `"customerInteraction": "CUSTOMER_PRESENT"` while initiating the payment.
-Use the customer's phone number to send them a request for the taxi fare.
+You need the customer's phone number to send them a request from the taximeter.
 
-Attach the receipt simultaneously.
+You may also attach the receipt at this time.
 
-Here is an example HTTP POST:
+Here is an example:
 
 [`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 
@@ -124,6 +124,5 @@ sequenceDiagram
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
     M->>ePayment: Check the status of authorization
-    M->>ePayment: Capture payment 
-    M->>ePayment: Check the status of capture
+    M->>ePayment: Capture payment
 ```

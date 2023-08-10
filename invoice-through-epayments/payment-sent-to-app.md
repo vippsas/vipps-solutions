@@ -165,7 +165,5 @@ sequenceDiagram
     C->>ePayment: Authorize payment
     ePayment->>M: Callback with status
     M->>C: Display order confirmation on product page
-    ePayment->>C: Provide payment information
-    M->>ePayment: Capture payment 
-    M->>ePayment: Check the status of capture
+    M->>ePayment: Capture payment
 ```
