@@ -65,7 +65,7 @@ Here is an example HTTP POST:
     "type": "WALLET"
   },
   "customer": {
-    "personalQr": "personalQr_string"
+    "customerToken": "personalQr_string"
   },
   "receipt":{
     "orderLines": [
