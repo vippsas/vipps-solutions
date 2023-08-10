@@ -12,8 +12,8 @@ END_METADATA -->
 
 # Payment through company website
 
-The customer scans a Vipps QR code and is directed to the taxi company's landing page.
-There, they follow instructions and pay with Vipps.
+The customer scans a QR code and is directed to the taxi company's landing page.
+The company requests their ID and sends a payment request to them through the Vipps MobilePay app.
 
 ![Labeling in the taxi](images/labeling_in_the_taxi.png)
 
@@ -21,13 +21,38 @@ There, they follow instructions and pay with Vipps.
 
 ### Step 1: Generate a static QR code
 
-Generate a static QR code with a
-[merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
-linking to your website or app.
+Generate a static QR code linking to your website or app.
+Print and place the QR code in your taxi.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+The QR code contains a `Id` that connects it to the taxi where it is located.
+
+Here is an example HTTP POST:
+
+[`POST:/qr/v1/merchant-redirect`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
+
+```json
+{
+  "id": "taxi_122_qr",
+  "redirectUrl": "https://example.com/myTaxiCompany"
+}
+```
+
+</div>
+</details>
+
+See also:
+
+* [Vending machines: Static QR directing to the app for payment](../vending-machines/qr-direct-to-payment-in-app.md)
+* [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
 
 ### Step 2: The customer scans the static QR
 
-When the customer scans the QR, your system will receive a notification that the QR has been scanned and will be able to get the customer's phone number.
+When the customer scans the QR, the user will be redirected to the `redirectUrl`.
+Request the phone number from the website.
 
 ### Step 3: Send the payment request
 

@@ -56,12 +56,14 @@ Add the products that the customer wants to buy in the POS system.
 
 ### Step 3: Send a payment request
 
-You already have the phone number from step 1, so you don't need to ask for it again.
-Just provide a button in your user interface to allow the cashier to send the payment request.
+Send a payment request to the customer.
 
 <details>
 <summary>Detailed example</summary>
 <div>
+
+You already have the customer's identity from step 1, so you don't need to ask for it.
+Just provide a button in your user interface to allow the cashier to send the payment request.
 
 Your system can send the payment request by using the
 [`createPayment`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
@@ -86,7 +88,7 @@ With body:
     "type": "WALLET"
   },
   "customer": {
-    "phoneNumber": 4791234567
+    "personalQr": "personalQr_string"
   },
   "receipt":{
     "orderLines": [

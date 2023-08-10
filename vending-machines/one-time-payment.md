@@ -27,15 +27,16 @@ Use this flow when you have a screen connected.
 
 ## Details
 
-A [one-time payment QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#one-time-payment-qr-codes) is presented on the vending machine.
+A [one-time payment QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#one-time-payment-qr-codes)
+is presented on the vending machine.
 The QR code is a dynamic representation of the payment URL, and the customer needs to scan the QR code within 5 minutes.
 
 When the customer scans the QR code, they go directly to the Vipps or MobilePay payment screen on their phone, where they can approve the payment.
 
 ### Step 1: Generate a dynamic QR code and payment request
 
-When the customer selects a product, generate the dynamic QR code and display it on the screen.
-
+When the customer selects a product, generate the payment request with a dynamic QR code.
+Display the QR on the screen.
 
 
 <details>
@@ -63,9 +64,6 @@ With body:
   "paymentMethod": {
     "type": "WALLET"
   },
-  "customer": {
-    "phoneNumber": 4791234567
-  },
   "customerInteraction": "CUSTOMER_PRESENT",
   "receipt":{
     "orderLines": [
@@ -87,7 +85,11 @@ With body:
   "reference": 2486791679658155992,
   "userFlow": "QR",
   "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
-  "paymentDescription": "Vending machine purchase"
+  "paymentDescription": "Vending machine purchase",
+  "qrFormat": {
+    "format": "IMAGE/SVG+XML",
+    "size": 1024
+  }
 }
 ```
 
@@ -97,7 +99,10 @@ With body:
 
 ### Step 2: The customer authorizes the payment
 
+The customer scans the QR code to begin authorizing the payment.
+
 <AUTHORIZEPAYMENT />
+
 
 ### Step 3: Capture the payment
 

@@ -22,8 +22,6 @@ This QR code can be used when you don't have a screen, and it's not possible to 
 
 ## Details
 
-This is a variation of the [In-store using static QR](../static-qr-at-pos/README.md) flow.
-
 A Vipps MobilePay [QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes) is posted on the vending machine.
 
 When the customer scans the QR code, they go directly to the Vipps or MobilePay payment screen on their phone, where they can approve the payment.
@@ -32,8 +30,34 @@ The payment amount should be the max amount of the vending machine products. Aft
 
 ### Step 1: Generate a static QR code
 
-Generate a static QR code using our [QR API](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
-linking the QR to your vending-machine.
+Generate a static QR code linking to your company landing page.
+Print and place the QR code on your vending machine.
+
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+The QR code contains a `Id` that connects the vending machine it's attached to.
+
+Here is an example HTTP POST:
+
+[`POST:/qr/v1/merchant-redirect`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
+
+```json
+{
+  "id": "vending_machine_2345_qr",
+  "redirectUrl": "https://example.com/myTaxiCompany"
+}
+```
+
+</div>
+</details>
+
+See also:
+
+* [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
+* [In-store using static QR](../static-qr-at-pos/README.md)
 
 ### Step 2: Generate a payment request
 

@@ -14,26 +14,45 @@ END_METADATA -->
 
 # In-store using static QR
 
-In this flow, a user pays by scanning a QR, such as a sticker with their Vipps or MobilePay app. The merchant gets their ID and sends a payment request to their app. They approve it, and the merchant sends them a receipt.
+In this flow, a user pays by scanning a QR with their Vipps MobilePay app.
+The merchant requests their ID and sends a payment request to them through the Vipps MobilePay app.
 
 ## Details
 
-The flow is a combination of the
-[QR API: Merchant Callback QRs](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-callback-qr-codes)
-and the
-[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 Before implementing this flow, please see the recommended [in-store payments flow](../in-store/README.md).
 
 ![User scans QR. Merchant gets ID and sends payment. User pays and gets receipt.](images/static_qr_at_pos.png)
 
 ### Step 1: Generate a static QR code
 
-Generate a static QR code using our
-[QR API](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes).
-The QR code contains a `posId` that connects it to a POS or cash register in your store.
+Generate a static QR code linking to your company landing page.
+Print and place the QR code at your cash register or Point of Sale (POS).
 
-For example, the QR could be shown on a screen or placed on a cash register, a portable POS, or a
-[vending machine](../vending-machines/qr-direct-to-payment-in-app.md).
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+The QR code contains a `Id` that connects it to a specific POS or cash register in your store.
+
+Here is an example HTTP POST:
+
+[`POST:/qr/v1/merchant-redirect`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
+
+```json
+{
+  "id": "pos_2345_qr",
+  "redirectUrl": "https://example.com/myTaxiCompany"
+}
+```
+
+</div>
+</details>
+
+See also:
+
+* [Vending machines: Static QR directing to the app for payment](../vending-machines/qr-direct-to-payment-in-app.md)
+* [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
 
 ### Step 2: The customer scans the static QR
 
@@ -65,7 +84,7 @@ Here is an example HTTP POST:
     "type": "WALLET"
   },
   "customer": {
-    "customerToken": "personalQr_string"
+    "personalQr": "personalQr_string"
   },
   "receipt":{
     "orderLines": [
