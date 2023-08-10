@@ -44,10 +44,6 @@ Here is an example HTTP POST:
 </div>
 </details>
 
-See also:
-
-* [Vending machines: Static QR directing to the app for payment](../vending-machines/qr-direct-to-payment-in-app.md)
-* [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
 
 ### Step 2: The customer scans the static QR
 
@@ -137,6 +133,13 @@ With body:
 
 </div>
 </details>
+
+## Related links
+
+See:
+
+* [Vending machines: Static QR directing to the app for payment](../vending-machines/qr-direct-to-payment-in-app.md)
+* [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
 
 ## Sequence diagram
 

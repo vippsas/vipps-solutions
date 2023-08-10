@@ -33,21 +33,40 @@ to build this flow.
 
 ![EV charging with Vipps: Screenshots](images/ev-charging-process-screenshots.png)
 
-### Step 1. Customer scans the QR code
 
-Generate a Vipps MobilePay QR code that contains the link to your website and the ID of the charging station and place it on the charging station.
+### Step 1: Generate a static QR code
+
+Generate a Vipps MobilePay QR code that contains the link to your website and the ID of the charging station.
+Place it on the charging station.
 
 The customer scans the QR code and is redirected to your website.
 
-See [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
-in the QR API guide for more details about generating the QR code.
+<details>
+<summary>Detailed example</summary>
+<div>
+
+The QR code contains a `Id` that connects it to the taxi where it is located.
+
+Here is an example HTTP POST:
+
+[`POST:/qr/v1/merchant-redirect`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
+
+```json
+{
+  "id": "charging_unit_122_qr",
+  "redirectUrl": "https://example.com/myChargingSite"
+}
+```
+
+</div>
+</details>
 
 ### Step 2. Initiate payment request
 
 The website that the customer lands on should contain payment options, in addition to terms and conditions.
 If the QR code contained an identification of the charging point, the customer doesn't have to type in any identification code to start charging.
 
-Use the customer's phone number to send them a request for the taxi fare.
+Request the customer's phone number to send them a request for the taxi fare.
 
 <details>
 <summary>Detailed example</summary>
@@ -187,13 +206,16 @@ Then, cancel after partial capture:
 
 [`POST:/epayment/v1/payments/{reference}/cancel`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
 
-
 </div>
 </details>
 
-
 If you are set up in Vipps' systems with the correct MCC (Merchant Category Code) for EV charging (5552), we will automatically send a push notification to the customer with the captured amount.
 
+## Related links
+
+See:
+
+* [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
 
 ## Sequence diagram
 

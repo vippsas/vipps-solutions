@@ -54,14 +54,11 @@ Here is an example HTTP POST:
 </div>
 </details>
 
-See also:
-
-* [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
-* [In-store using static QR](../static-qr-at-pos/README.md)
 
 ### Step 2: Generate a payment request
 
-When the user scans the QR code, send a [Create Payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment).
+When the user scans the QR code, send a
+[Create Payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment).
 
 
 <details>
@@ -104,7 +101,6 @@ With body:
 ### Step 3: Customer authorizes the payment
 
 <AUTHORIZEPAYMENT />
-
 
 
 ### Step 4. Finalize the payment and attach a receipt
@@ -183,6 +179,12 @@ Then, cancel after partial capture:
 </div>
 </details>
 
+## Related links
+
+See:
+
+* [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
+* [In-store using static QR](../static-qr-at-pos/README.md)
 
 ## Sequence diagram
 

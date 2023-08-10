@@ -46,7 +46,27 @@ The difference is that you will also ask the user to share their telephone numbe
 
 ### Step 1. Give the customer a QR or link to your page
 
-Provide a QR code or link to your payment page where you present your customer with the option to pay with Vipps MobilePay.
+Provide a QR code or link to your payment page.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+The QR code contains a `Id` that connects it to the taxi where it is located.
+
+Here is an example HTTP POST:
+
+[`POST:/qr/v1/merchant-redirect`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
+
+```json
+{
+  "id": "user34",
+  "redirectUrl": "https://example.com/mybill/1234678"
+}
+```
+
+</div>
+</details>
 
 ### Step 2. Create a payment request
 
