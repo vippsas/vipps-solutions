@@ -10,8 +10,6 @@ pagination_prev: null
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
-import FULLCAPTURE from '../_common/_full_capture.md'
 END_METADATA -->
 
 # In-store payments
@@ -27,12 +25,18 @@ and the
 
 ### Step 1: Identify the customer
 
-The flow begins with the customer presenting their Vipps MobilePay QR code to the merchant. This can happen in two ways:
+The flow begins with the customer presenting their Vipps MobilePay QR code to the merchant.
+
+![Loyalty Flow](images/POS_step_1.png)
+
+<details>
+<summary>How it works</summary>
+<div>
+
+This can happen in two ways:
 
 * Customer-facing scanner - The store will have a permanent customer-facing scanner and customers can scan their QR code at any time.
 * Cashier scanner - The QR code is scanned by the cashier using a wired scanner. This could happen while the cashier is scanning wares or immediately before the payment.
-
-![Loyalty Flow](images/POS_step_1.png)
 
 The customer's personal QR code contains a URL like this:
 `https://qr.vipps.no/28/2/01/031/4791234567?v=1`, where `4791234567` is their phone number in
@@ -40,6 +44,9 @@ The customer's personal QR code contains a URL like this:
 
 When this QR code is scanned, your POS system will get their phone number.
 If you don't have a scanner, you can enter the customer's phone number manually.
+
+</div>
+</details>
 
 ### Step 2: Add the products to be purchased
 
@@ -53,15 +60,15 @@ You already have the phone number from step 1, so you don't need to ask for it a
 Just provide a button in your user interface to allow the cashier to send the payment request.
 
 <details>
-<summary>Details</summary>
+<summary>Detailed example</summary>
 <div>
 
 Your system can send the payment request by using the
 [`createPayment`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 endpoint.
 
-Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer who scanned the QR code,
-and after the payment is completed, the POS will be updated with the status of the payment.
+Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer.
+Attach the receipt simultaneously.
 
 Here is an example HTTP POST:
 
@@ -72,14 +79,39 @@ With body:
 ```json
 {
   "amount": {
-    "value": 10000,
+    "value": 49800,
     "currency": "NOK"
   },
   "paymentMethod": {
     "type": "WALLET"
   },
   "customer": {
-    "phoneNumber": 4796574209
+    "phoneNumber": 4791234567
+  },
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "Orange hoodie",
+        "id": "hoodie1234",
+        "totalAmount": 29900,
+        "totalAmountExcludingTax": 22425,
+        "totalTaxAmount": 7475,
+        "taxPercentage": 25,
+      },
+      {
+        "name": "White T-shirt",
+        "id": "tshirt1234",
+        "totalAmount": 19900,
+        "totalAmountExcludingTax": 14925,
+        "totalTaxAmount": 2975,
+        "taxPercentage": 25,
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "Butikken-23412"
+    },
+   "receiptNumber": "0527013501"
   },
   "reference": 2486791679658155992,
   "userFlow": "PUSH_MESSAGE",
@@ -97,18 +129,29 @@ With body:
 
 ![Confirm payment](images/vipps-in-store-step3-2.svg)
 
+### Step 5: Capture the payment
 
-### Step 5. Update the POS system
+Capture the payment and confirm that it was successful.
 
-Once the customer authorizes the payment, update the POS system with the status.
+<details>
+<summary>Detailed example</summary>
+<div>
 
-### Step 6. Attach a receipt to the order
+[`POST:/epayment/v1/payments/{reference}/capture`](/api/epayment/#tag/AdjustPayments/operation/capturePayment)
 
-<ATTACHRECEIPT />
+With body:
 
-### Step 7: Capture the payment
+```json
+{
+  "modificationAmount": {
+    "value": 49800,
+    "currency": "NOK"
+  }
+}
+```
 
-<FULLCAPTURE />
+</div>
+</details>
 
 ## Sequence diagram
 
@@ -119,14 +162,12 @@ sequenceDiagram
     actor C as Customer
     participant M as Merchant
     participant ePayment as ePayment API
-    participant ordermanagement as Order Management API
     
     QR->>C: Scan for customer ID
     M->>M: Add products to sale
-    M->>ePayment: Initiate payment request
+    M->>ePayment: Initiate payment request with receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
     M->>ePayment: Capture payment 
     M->>ePayment: Check the status of capture

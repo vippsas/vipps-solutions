@@ -9,9 +9,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
-import FULLCAPTURE from '../_common/_full_capture.md'
+
 END_METADATA -->
 
 # Online payments
@@ -22,7 +20,7 @@ This flow combines multiple products to illustrate the recommended online paymen
 
 ## Details
 
-### Step 1. Add an option to pay with Vipps or MobilePay
+### Step 1. Add an option to pay
 
 Add the option to pay with Vipps or MobilePay on the product page of your website.
 
@@ -33,10 +31,11 @@ Add the products to the order and send the payment request by using the
 endpoint.
 
 <details>
-<summary>Details</summary>
+<summary>Detailed example</summary>
 <div>
 
 Set `userFlow` to `WEB_REDIRECT`, so the customer's browser will either do an automatic app-switch or open the landing page to confirm the mobile number.
+Attach the receipt simultaneously.
 
 Here is an example HTTP POST:
 
@@ -45,21 +44,37 @@ Here is an example HTTP POST:
 ```json
 {
   "amount": {
-    "value": 10000,
+    "value": 34900,
     "currency": "NOK"
   },
   "paymentMethod": {
     "type": "WALLET"
   },
   "customer": {
-    "phoneNumber": 4796574209
+    "phoneNumber": 4791234567
   },
-  "reference": 2486791679658155992,
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "Hoodie",
+        "id": "hoodie1234",
+        "totalAmount": 34900,
+        "totalAmountExcludingTax": 26175,
+        "totalTaxAmount": 8725,
+        "taxPercentage": 25,
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "pos_122"
+    },
+   "receiptNumber": "789267"
+  },
+  "reference": 58712432,
   "userFlow": "WEB_REDIRECT",
-  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
-  "paymentDescription": "Purchase of socks"
+  "returnUrl": "http://example.com/redirect?reference=58712432",
+  "paymentDescription": "Hoodie"
 }
-
 
 ```
 
@@ -80,9 +95,13 @@ If the payment was started from a mobile device, the Vipps MobilePay app will au
 
 ![Confirm payment](images/vipps-ecom-confirm2.png)
 
-<AUTHORIZEPAYMENT />
+To get confirmation that payment was approved, monitor
+[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
+[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
 
-### Step 4. Confirm the order
+Once the payment is approved, update the status in your system.
+
+### Step 4. Provide confirmation
 
 When the user confirms the payment, they will get a confirmation in the app and
 then be redirected back to your store.
@@ -91,17 +110,33 @@ Confirm to them that the order was successful.
 
 ![Order confirmation](images/vipps-ecom-step4-2.png)
 
-### Step 5. Add a receipt
-
-<ATTACHRECEIPT />
-
-### Step 6. Ship the order (if applicable)
+### Step 5. Ship the order (if applicable)
 
 Complete and ship the order to the customer.
 
-### Step 7. Capture the payment
+### Step 6. Capture the payment
 
-<FULLCAPTURE />
+Capture the payment and confirm that it was successful.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+[`POST:/epayment/v1/payments/{reference}/capture`](/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 34900,
+    "currency": "NOK"
+  }
+}
+```
+
+</div>
+</details>
 
 ## Sequence diagram
 
@@ -112,13 +147,11 @@ sequenceDiagram
     actor C as Customer
     participant M as Merchant
     participant ePayment as ePayment API
-    participant ordermanagement as Order Management API
 
     M->>ePayment: Initiate payment request
-    ePayment->>C: Request payment
+    ePayment->>C: Request payment and attach receipt
     C->>ePayment: Authorize payment
     M->>C: Display order confirmation
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
     M->>C: Ship the order (if applicable)
     M->>ePayment: Capture payment 

@@ -8,7 +8,6 @@ pagination_next: null
 pagination_prev: null
 ---
 
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
 # Subscriptions
@@ -100,9 +99,46 @@ It will be automatically captured on the due date.
 
 Be sure to check the status of the captured charges.
 
-### Step 10. Attach a receipt for the charge
+### Step 10. Attach a receipt
 
-<ATTACHRECEIPT />
+Send a digital receipt for the payment.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+
+Here is an example HTTP POST:
+
+[`POST:/order-management/v2/recurring/receipts/{orderId}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+
+For `paymentType`, use `recurring` for recurring payments.
+For `orderId`, use the `chargeId` of the charge.
+
+Body:
+
+```json
+{
+  "orderLines": [
+    {
+        "name": "Webstore subscription",
+        "id": "12k3lj4l3",
+        "totalAmount": 10000,
+        "totalAmountExcludingTax": 8000,
+        "totalTaxAmount": 2000,
+        "taxPercentage": 25,
+        "productUrl": "https://www.example.com/yoursubscription",
+      },
+    },
+  ],
+  "bottomLine": {
+    "currency": "NOK",
+  }
+}
+```
+
+</div>
+</details>
 
 ## Relevant pages
 

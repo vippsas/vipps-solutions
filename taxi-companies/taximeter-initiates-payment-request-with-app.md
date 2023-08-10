@@ -7,8 +7,7 @@ pagination_prev: null
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
-import PARTIALCAPTURE from '../_common/_partial_capture.md'
+
 END_METADATA -->
 
 # Payment through taximeter and app
@@ -24,22 +23,93 @@ Your system should contain the customer's phone number, since they ordered the t
 
 ### Step 2. Initiate a payment request
 
-Send
+Use the customer's phone number to send them a request for the taxi fare.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+To create this payment, you first send a
 [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request, where `customer.phoneNumber` is set.
 
 Use `userFlow:PUSH_MESSAGE` and `"customerInteraction": "CUSTOMER_PRESENT"` while initiating the payment.
+Use the customer's phone number to send them a request for the taxi fare.
+
+Attach the receipt simultaneously.
+
+Here is an example HTTP POST:
+
+[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+
+```json
+{
+  "amount": {
+    "value": 100000,
+    "currency": "NOK"
+  },
+  "paymentMethod": {
+    "type": "WALLET"
+  },
+  "customer": {
+    "phoneNumber": 4791234567
+  },
+  "customerInteraction": "CUSTOMER_PRESENT",
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "trip",
+        "id": "line_item_1",
+        "totalAmount": 100000,
+        "totalAmountExcludingTax": 80000,
+        "totalTaxAmount": 20000,
+        "taxPercentage": 25,
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "taxi_122",
+      "tipAmount": 10000
+    },
+   "receiptNumber": "0527013501"
+  },
+  "reference": 2486791679658155992,
+  "userFlow": "PUSH_MESSAGE",
+  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
+  "paymentDescription": "Travel from Oslo central station to Oslo airport"
+}
+
+```
+
+</div>
+</details>
 
 ### Step 3. The customer approves the payment
 
 <AUTHORIZEPAYMENT />
 
-### Step 4. Attach a receipt
+### Step 4. Capture the amount due
 
-<ATTACHRECEIPT />
+Capture the payment and confirm that it was successful.
 
-### Step 5. Capture the amount due
+<details>
+<summary>Detailed example</summary>
+<div>
 
-<PARTIALCAPTURE />
+[`POST:/epayment/v1/payments/{reference}/capture`](/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 100000,
+    "currency": "NOK"
+  }
+}
+```
+
+</div>
+</details>
 
 ## Sequence diagram
 
@@ -50,7 +120,7 @@ sequenceDiagram
     participant ePayment as ePayment API
 
     M->>C: Get phone number through taxi app
-    M->>ePayment: Initiate payment request
+    M->>ePayment: Initiate payment request and attach receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
     M->>ePayment: Check the status of authorization

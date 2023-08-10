@@ -13,8 +13,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
-import FULLCAPTURE from '../_common/_full_capture.md'
+
 END_METADATA -->
 
 # Payment request as a link
@@ -52,19 +51,98 @@ Provide a QR code or link to your payment page where you present your customer w
 
 When they select to pay with Vipps MobilePay, send the [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
 
+<details>
+<summary>Detailed example</summary>
+<div>
+
+Your system can send the payment request by using the
+[`createPayment`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+endpoint.
+
+Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer.
+Attach the receipt simultaneously.
+
+Here is an example HTTP POST:
+
+[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+
+With body:
+
+```json
+{
+  "amount": {
+    "value": 300000,
+    "currency": "NOK"
+  },
+  "paymentMethod": {
+    "type": "WALLET"
+  },
+  "customer": {
+    "phoneNumber": 4791234567
+  },
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "Accident insurance",
+        "id": "12345",
+        "totalAmount": 150000,
+        "totalAmountExcludingTax": 112500,
+        "totalTaxAmount": 37500,
+        "taxPercentage": 25,
+      },
+      {
+        "name": "Travel insurance",
+        "id": "12345",
+        "totalAmount": 150000,
+        "totalAmountExcludingTax": 112500,
+        "totalTaxAmount": 37500,
+        "taxPercentage": 25,
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+    },
+   "receiptNumber": "0527013501"
+  },
+  "reference": 2486791679658155992,
+  "userFlow": "PUSH_MESSAGE",
+  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
+  "paymentDescription": "Spendings"
+}
+```
+
+</div>
+</details>
+
 ### Step 3. Customer approves the payment
 
 <AUTHORIZEPAYMENT />
 
 Note that, for long-living payments, customers also have the option of soft-dismissing the payment and postponing it for later.
 
-### Step 4. Add a receipt
+### Step 4. Capture the payment
 
-<ATTACHRECEIPT />
+Capture the payment and confirm that it was successful.
 
-### Step 5. Capture the payment
+<details>
+<summary>Detailed example</summary>
+<div>
 
-<FULLCAPTURE />
+[`POST:/epayment/v1/payments/{reference}/capture`](/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 300000,
+    "currency": "NOK"
+  }
+}
+```
+
+</div>
+</details>
 
 ## Sequence diagram
 
@@ -78,10 +156,9 @@ sequenceDiagram
     
     C->>M: Customer uses link to get to payment page
     M->>ePayment: Initiate payment request
-    ePayment->>C: Request payment
+    ePayment->>C: Request payment and attach receipt
     C->>ePayment: Authorize payment
     M->>C: Display order confirmation on product page
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information to the app
     M-->>C: Ship the order (if applicable)
     M->>ePayment: Capture payment 

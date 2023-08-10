@@ -10,8 +10,7 @@ pagination_prev: null
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
-import FULLCAPTURE from '../_common/_full_capture.md'
+
 END_METADATA -->
 
 # In-store payments with customer club
@@ -35,21 +34,30 @@ The following describes the process at a high level.
 
 ## Details
 
-### Step 1: Scan the QR code
+### Step 1: Identify the customer
 
-The flow begins with the customer presenting their QR code to the merchant. This can happen in two ways:
+The flow begins with the customer presenting their Vipps MobilePay QR code to the merchant.
+
+![Loyalty Flow](images/POS_step_1.png)
+
+<details>
+<summary>How it works</summary>
+<div>
+
+This can happen in two ways:
 
 * Customer-facing scanner - The store will have a permanent customer-facing scanner and customers can scan their QR code at any time.
 * Cashier scanner - The QR code is scanned by the cashier using a wired scanner. This could happen while the cashier is scanning wares or immediately before the payment.
-
-![Loyalty Flow](images/POS_step_1.png)
 
 The customer's personal QR code contains a URL like this:
 `https://qr.vipps.no/28/2/01/031/4791234567?v=1`, where `4791234567` is their phone number in
 [MSISDN](https://en.wikipedia.org/wiki/MSISDN) format.
 
-When this QR code is scanned in the store, the POS will get their phone number.
-This can be used for checking membership, in the next step.
+When this QR code is scanned, your POS system will get their phone number.
+If you don't have a scanner, you can enter the customer's phone number manually.
+
+</div>
+</details>
 
 ### Step 2: Check membership
 
@@ -60,6 +68,7 @@ Use the [Check-in API](https://developer.vippsmobilepay.com/docs/APIs/check-in-a
 <details>
 <summary>Detailed example</summary>
 <div>
+
 Here is an example HTTP POST:
 
 [`POST:/point-of-sale/v1/loyalty-check-in`](https://developer.vippsmobilepay.com/api/check-in#tag/Loyalty-check-in/operation/initiateLoyaltyCheckIn)
@@ -108,17 +117,16 @@ After membership status has been determined and all articles have been scanned, 
 You already have the phone number from step 1, so you don't need to ask for it again.
 Just provide a button in your user interface to allow the cashier to send the payment request.
 
-
 <details>
-<summary>Details</summary>
+<summary>Detailed example</summary>
 <div>
-
 
 Your system can send the payment request by using the
 [`createPayment`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 endpoint.
 
 Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer who scanned the QR code.
+Attach the receipt simultaneously.
 
 Here is an example HTTP POST:
 
@@ -129,19 +137,42 @@ With body:
 ```json
 {
   "amount": {
-    "value": 10000,
+    "value": 239900,
     "currency": "NOK"
   },
   "paymentMethod": {
     "type": "WALLET"
   },
   "customer": {
-    "phoneNumber": 4796574209
+    "phoneNumber": 4791234567
+  },
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "winter jacket",
+        "id": "jacket1234",
+        "totalAmount": 239900,
+        "totalAmountExcludingTax": 179925,
+        "totalTaxAmount": 59975,
+        "taxPercentage": 25,
+        "discount": 80000
+        "unitInfo": {
+          "unitPrice": 319900,
+          "quantity": "1",
+          "quantityUnit": "PCS"
+        },
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "pos_122"
+    },
+   "receiptNumber": "0527013501"
   },
   "reference": 2486791679658155992,
   "userFlow": "PUSH_MESSAGE",
   "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
-  "paymentDescription": "Winter jacket"
+  "paymentDescription": "Winter jacket - blue"
 }
 ```
 
@@ -152,19 +183,33 @@ With body:
 
 <AUTHORIZEPAYMENT />
 
-### Step 6. Update the POS system
-
-Once the customer authorizes the payment, update the POS system with the status.
 
 ![Loyalty Flow](images/POS_step_4.png)
 
-### Step 7. Attach a receipt to the order
+### Step 6: Capture the payment
 
-<ATTACHRECEIPT />
+Capture the payment and confirm that it was successful.
 
-### Step 8: Capture the payment
+<details>
+<summary>Detailed example</summary>
+<div>
 
-<FULLCAPTURE />
+[`POST:/epayment/v1/payments/{reference}/capture`](/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 239900,
+    "currency": "NOK"
+  }
+}
+```
+
+</div>
+</details>
+
 
 ## Sequence diagram
 
@@ -177,7 +222,6 @@ sequenceDiagram
     participant checkin as Checkin API
     participant login as Login API
     participant ePayment as ePayment API
-    participant ordermanagement as Order Management API
 
     QR->>C: Scan for customer ID
     M->>M: Check membership
@@ -187,10 +231,9 @@ sequenceDiagram
     C->>login: Give consent
     M->>M: If user consents, enroll in membership program
     M->>M: Add product to sale
-    M->>ePayment: Initiate payment request
+    M->>ePayment: Initiate payment request and attach a receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
     M->>ePayment: Capture payment 
     M->>ePayment: Check the status of capture

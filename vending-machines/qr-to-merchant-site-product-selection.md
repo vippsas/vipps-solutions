@@ -9,8 +9,7 @@ pagination_prev: null
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
-import FULLCAPTURE from '../_common/_full_capture.md'
+
 END_METADATA -->
 
 # Static QR directing to the merchant site for product selection
@@ -46,19 +45,86 @@ When the user selects the products and clicks the `pay` button, generate a
 [Create payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment)
 based on the selected products.
 
-Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to Vipps MobilePay.
+<details>
+<summary>Detailed example</summary>
+<div>
+
+Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect the user to the Vipps MobilePay app.
+
+Include a receipt in the ePayment request.
+
+Here is an example HTTP POST:
+
+[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+
+With body:
+
+```json
+{
+  "amount": {
+    "value": 3000,
+    "currency": "NOK"
+  },
+  "paymentMethod": {
+    "type": "WALLET"
+  },
+  "customer": {
+    "phoneNumber": 4791234567
+  },
+  "customerInteraction": "CUSTOMER_PRESENT",
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "Fanta",
+        "id": "21231211",
+        "totalAmount": 3000,
+        "totalAmountExcludingTax": 2250,
+        "totalTaxAmount": 750,
+        "taxPercentage": 25,
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "vending_machine_12345"
+    },
+   "receiptNumber": "0527013501"
+  },
+  "reference": 2486791679658155992,
+  "userFlow": "WEB_REDIRECT",
+  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
+  "paymentDescription": "Vending machine purchase"
+}
+```
+
+</div>
+</details>
 
 ### Step 3: The customer authorizes the payment
 
 <AUTHORIZEPAYMENT />
 
-### Step 4: Attach a receipt to the order
 
-<ATTACHRECEIPT />
+### Step 4: Capture the payment
 
-### Step 5: Capture the payment
+<details>
+<summary>Detailed example</summary>
+<div>
 
-<FULLCAPTURE />
+[`POST:/epayment/v1/payments/{reference}/capture`](/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 3000,
+    "currency": "NOK"
+  }
+}
+```
+
+</div>
+</details>
 
 ## Sequence diagram
 
@@ -70,14 +136,12 @@ sequenceDiagram
     participant M as Merchant
     participant QR as QR API
     participant ePayment as ePayment API
-    participant ordermanagement as Order Management API
 
     QR->>C: Scan for customer ID
     M->>M: Add product to sale
-    M->>ePayment: Initiate payment request
+    M->>ePayment: Initiate payment request with receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
     M->>ePayment: Capture payment 
     M->>ePayment: Check the status of capture

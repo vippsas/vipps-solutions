@@ -8,9 +8,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-import PARTIALCAPTURE from '../_common/_partial_capture.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
 # Electric vehicle charging
@@ -49,10 +47,11 @@ in the QR API guide for more details about generating the QR code.
 The website that the customer lands on should contain payment options, in addition to terms and conditions.
 If the QR code contained an identification of the charging point, the customer doesn't have to type in any identification code to start charging.
 
-<details>
-<summary>Details</summary>
-<div>
+Use the customer's phone number to send them a request for the taxi fare.
 
+<details>
+<summary>Detailed example</summary>
+<div>
 
 When the customer is ready to pay, initiate a
 [payment request](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments).
@@ -60,10 +59,36 @@ When the customer is ready to pay, initiate a
 The payment request amount should be large enough to cover the cost of a charging session. It is usually sufficient to reserve an amount between 350 NOK and 500 NOK, but with higher electricity costs, this may change.
 
 It is also possible to let the customer choose maximum amount or reserved amount.
+Do not include a receipt, since a receipt is immutable and the true amount is not known yet.
 
 If the payment is approved, this amount will be reserved on customer's account. The amount that is unused will be released when they are finished charging.
 
 Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
+
+Here is an example HTTP POST:
+
+[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+
+```json
+{
+  "amount": {
+    "value": 150000,
+    "currency": "NOK"
+  },
+  "paymentMethod": {
+    "type": "WALLET"
+  },
+  "customer": {
+    "phoneNumber": 4791234567
+  },
+  "customerInteraction": "CUSTOMER_PRESENT",
+  "reference": 2486791679658155992,
+  "userFlow": "WEB_REDIRECT",
+  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
+  "paymentDescription": "Charging session at Ski McDonalds on Dec 21, 2029, 19:04."
+}
+
+```
 
 </div>
 </details>
@@ -87,16 +112,85 @@ The customer can stop the charging at any time from your website screen or from 
 
 Stop charging when charging is complete or when the customer selects to stop.
 
-
 ### Step 5. Add a receipt
 
-Send a digital receipt and a hyperlink to the charging session after charging is done.
+Send a digital receipt for the charging session after charging is done.
 
-<ATTACHRECEIPT />
+<details>
+<summary>Detailed example</summary>
+<div>
+
+Here is an example HTTP POST:
+
+[`POST:/order-management/v2/{paymentType}/receipts/{orderId}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+
+For `paymentType`, use `eCom` for eCom or ePayment payments.
+For `orderId`, use the `chargeId` of the charge.
+
+Body:
+
+```json
+{
+  "orderLines": [
+    {
+        "name": "charging",
+        "id": "line_item_1",
+        "totalAmount": 100000,
+        "totalAmountExcludingTax": 80000,
+        "totalTaxAmount": 20000,
+        "taxPercentage": 25,
+        "productUrl": "https://www.example.com/evcharging",
+      },
+    },
+  ],
+  "bottomLine": {
+    "currency": "NOK",
+    "posId": "charging_station_ski_mcdonalds_043"
+  }
+}
+```
+
+</div>
+</details>
+
 
 ### Step 6. Capture the payment
 
-<PARTIALCAPTURE />
+After final amount is confirmed, do a
+[partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture).
+Then, release the remaining amount from the reservation with a
+[cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture).
+
+
+Check the status of the captured payment.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+First, the capture:
+
+[`POST:/epayment/v1/payments/{reference}/capture`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 10000,
+    "currency": "NOK"
+  }
+}
+```
+
+Then, cancel after partial capture:
+
+[`POST:/epayment/v1/payments/{reference}/cancel`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+
+</div>
+</details>
+
 
 If you are set up in Vipps' systems with the correct MCC (Merchant Category Code) for EV charging (5552), we will automatically send a push notification to the customer with the captured amount.
 

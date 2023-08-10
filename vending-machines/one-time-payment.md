@@ -9,8 +9,7 @@ pagination_prev: null
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
-import FULLCAPTURE from '../_common/_full_capture.md'
+
 END_METADATA -->
 
 # Dynamic QR directing to the app for payment
@@ -29,7 +28,7 @@ Use this flow when you have a screen connected.
 ## Details
 
 A [one-time payment QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#one-time-payment-qr-codes) is presented on the vending machine.
-The QR code is a dynamic representation of the payment URL, and the customer needs to scan the QR code within 5 minutes. 
+The QR code is a dynamic representation of the payment URL, and the customer needs to scan the QR code within 5 minutes.
 
 When the customer scans the QR code, they go directly to the Vipps or MobilePay payment screen on their phone, where they can approve the payment.
 
@@ -37,21 +36,92 @@ When the customer scans the QR code, they go directly to the Vipps or MobilePay 
 
 When the customer selects a product, generate the dynamic QR code and display it on the screen.
 
+
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
 To generate the dynamic QR code and associated payment request, send the
 [Create Payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request
 with `"customerInteraction": "CUSTOMER_PRESENT"` and  `"userFlow": "QR"`.
+
+Include a receipt in the ePayment request.
+
+Here is an example HTTP POST:
+
+[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+
+With body:
+
+```json
+{
+  "amount": {
+    "value": 3000,
+    "currency": "NOK"
+  },
+  "paymentMethod": {
+    "type": "WALLET"
+  },
+  "customer": {
+    "phoneNumber": 4791234567
+  },
+  "customerInteraction": "CUSTOMER_PRESENT",
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "Fanta",
+        "id": "21231211",
+        "totalAmount": 3000,
+        "totalAmountExcludingTax": 2250,
+        "totalTaxAmount": 750,
+        "taxPercentage": 25,
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "vending_machine_12345"
+    },
+   "receiptNumber": "0527013501"
+  },
+  "reference": 2486791679658155992,
+  "userFlow": "QR",
+  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
+  "paymentDescription": "Vending machine purchase"
+}
+```
+
+</div>
+</details>
+
 
 ### Step 2: The customer authorizes the payment
 
 <AUTHORIZEPAYMENT />
 
-### Step 3: Attach a receipt to the order
+### Step 3: Capture the payment
 
-<ATTACHRECEIPT />
+Capture the payment and confirm that it was successful.
 
-### Step 4: Capture the payment
+<details>
+<summary>Detailed example</summary>
+<div>
 
-<FULLCAPTURE />
+[`POST:/epayment/v1/payments/{reference}/capture`](/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 3000,
+    "currency": "NOK"
+  }
+}
+```
+
+</div>
+</details>
 
 ## Sequence diagram
 
@@ -63,14 +133,12 @@ sequenceDiagram
     participant M as Merchant
     participant QR as QR API
     participant ePayment as ePayment API
-    participant ordermanagement as Order Management API
 
-    M->>ePayment: Generate dynamic QR code and payment request
+    M->>ePayment: Generate dynamic QR code and payment request with receipt
     M->>C: Display QR code on screen
     C->>QR: Scan to get Customer ID
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    M->> ordermanagement: Attach receipt
     ePayment->>C: Provide payment information
     M->>ePayment: Capture payment 
     M->>ePayment: Check the status of capture

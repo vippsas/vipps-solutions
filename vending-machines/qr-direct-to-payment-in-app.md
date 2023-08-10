@@ -7,9 +7,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-import PARTIALCAPTURE from '../_common/_partial_capture.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
 # Static QR directing to the app for payment
@@ -41,21 +39,126 @@ linking the QR to your vending-machine.
 
 When the user scans the QR code, send a [Create Payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment).
 
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
 Specify the amount of the most expensive item in your vending machine so that any selection they make can be successful.
 
 Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
+
+Here is an example HTTP POST:
+
+[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+
+With body:
+
+```json
+{
+  "amount": {
+    "value": 5000,
+    "currency": "NOK"
+  },
+  "paymentMethod": {
+    "type": "WALLET"
+  },
+  "customer": {
+    "personalQr": "personalQr_string"
+  },
+  "customerInteraction": "CUSTOMER_PRESENT",
+  "reference": 2486791679658155992,
+  "userFlow": "WEB_REDIRECT",
+  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
+  "paymentDescription": "Vending machine purchase"
+}
+```
+
+</div>
+</details>
 
 ### Step 3: Customer authorizes the payment
 
 <AUTHORIZEPAYMENT />
 
-### Step 4: Attach a receipt to the order
 
-<ATTACHRECEIPT />
 
-### Step 5: Capture the amount due
+### Step 4. Finalize the payment and attach a receipt
 
-<PARTIALCAPTURE />
+After the selection is made, determine how much the customer owes and provide a receipt.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+Here is an example HTTP POST:
+
+[`POST:/order-management/v2/{paymentType}/receipts/{orderId}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+
+For `paymentType`, use `eCom` for eCom or ePayment payments.
+For `orderId`, use the `chargeId` of the charge.
+
+Body:
+
+```json
+{
+  "orderLines": [
+      {
+        "name": "Fanta",
+        "id": "21231211",
+        "totalAmount": 3000,
+        "totalAmountExcludingTax": 2250,
+        "totalTaxAmount": 750,
+        "taxPercentage": 25,
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "vending_machine_12345"
+    }
+}
+```
+
+</div>
+</details>
+
+
+### Step 7. Capture the amount due
+
+After final amount is confirmed, do a
+[partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture).
+Then, release the remaining amount from the reservation with a
+[cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture).
+
+
+Check the status of the captured payment.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+First, the capture:
+
+[`POST:/epayment/v1/payments/{reference}/capture`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 3000,
+    "currency": "NOK"
+  }
+}
+```
+
+Then, cancel after partial capture:
+
+[`POST:/epayment/v1/payments/{reference}/cancel`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+</div>
+</details>
+
 
 ## Sequence diagram
 
@@ -67,11 +170,10 @@ sequenceDiagram
     participant M as Merchant
     participant QR as QR API
     participant ePayment as ePayment API
-    participant ordermanagement as Order Management API
     
     QR->>C: Scan for customer ID
     M->>M: Add product to sale
-    M->>ePayment: Initiate payment request
+    M->>ePayment: Initiate payment request with receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
     ePayment->>C: Provide payment information
@@ -80,6 +182,5 @@ sequenceDiagram
     M->>ePayment: Release <amount reserved - amount due>
     ePayment->>C: Capture amount due
     ePayment->>C: Release amount remaining
-    M->> ordermanagement: Attach receipt
     M->>ePayment: Check the status of capture
 ```

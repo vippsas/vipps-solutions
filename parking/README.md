@@ -9,7 +9,6 @@ pagination_next: null
 pagination_prev: null
 ---
 
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
 # Parking and "Pay-as-you-go"
@@ -82,7 +81,47 @@ Be sure to check the status of the captured payments.
 
 ### Step 7. Attach a receipt
 
-<ATTACHRECEIPT />
+Send a digital receipt for the parking session.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+
+Here is an example HTTP POST:
+
+[`POST:/order-management/v2/{paymentType}/receipts/{orderId}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+
+Use `recurring` for recurring payments.
+For `orderId`, use the `chargeId` of the charge.
+
+Body:
+
+```json
+{
+  "orderLines": [
+    {
+        "name": "parking",
+        "id": "line_item_1",
+        "totalAmount": 10000,
+        "totalAmountExcludingTax": 8000,
+        "totalTaxAmount": 2000,
+        "taxPercentage": 25,
+        "productUrl": "https://www.example.com/parkingsession",
+      },
+    },
+  ],
+  "bottomLine": {
+    "currency": "NOK",
+    "posId": "parking_lot_012"
+  }
+}
+
+```
+
+</div>
+</details>
+
 
 ## Relevant comments
 
