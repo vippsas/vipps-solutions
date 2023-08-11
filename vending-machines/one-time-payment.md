@@ -144,7 +144,7 @@ sequenceDiagram
     M->>C: Display QR code on screen
     C->>QR: Scan to get Customer ID
     ePayment->>C: Request payment
-    C->>ePayment: Authorize payment
-    Webhooks->>M: Callback with status
+    C->>C: Customer clicks pay
+    Webhooks-->>M: Callback with status
     M->>ePayment: Capture payment
 ```

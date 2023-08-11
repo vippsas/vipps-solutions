@@ -161,7 +161,7 @@ If you are set up in Vipps' systems with the correct MCC (Merchant Category Code
 
 ### Step 6. Cancel remaining amount
 
-Cancel the purchase for the remaining amount.
+Cancel the payment for the remaining amount.
 
 [`POST:/epayment/v1/payments/{reference}/cancel`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
 
@@ -226,13 +226,13 @@ sequenceDiagram
     C->>M: Customer scans QR to get to payment page
     M->>ePayment: Initiate payment request
     ePayment->>C: Request payment
-    C->>ePayment: Authorize payment
-    Webhooks->>M: Callback with status
+    C->>C: Customer clicks pay
+    Webhooks-->>M: Callback with status
     M->>M: Determine amount due after charging
     M->>C: Send a push notification with actual amount paid
     M->>ePayment: Initiate capture request for amount due
     M->>ePayment: Release <amount reserved - amount due>
     ePayment->>C: Capture amount due
-    ePayment->>C: Cancel amount remaining
+    ePayment->>C: Cancel payment
     M->>ordermanagement: Attach receipt showing amount paid
 ```

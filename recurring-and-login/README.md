@@ -241,17 +241,16 @@ sequenceDiagram
 
     M->>Login: Initiate login and userinfo request
     Login->>C: Request login and userinfo
-    C->>Login: Log in and give consent
+    C->>C: Log in and give consent
     M->>M: If user consents, prefill customer information
     M->>Recurring: Initiate agreement request
     Recurring->>C: Request agreement
-    C->>Recurring: Accept agreement
+    C->>C: Customer accepts agreement
     Recurring->>C: Provide agreement information
     M->>C: Display confirmation on product site
-    M-->>Recurring: Initiate initial payment capture (if applicable)
-    Recurring-->>C: Capture initial payment (if applicable)
+    M->>Recurring: Initiate initial payment capture (if applicable)
+    Recurring->>C: Capture initial payment (if applicable)
     M->>Recurring: Schedule future charges
-    Recurring->>C: Automatic capture on due dates of scheduled charges
     M->>Recurring: Check the status of captures
-    M->> ordermanagement: Attach receipt for the charge
+    M->> ordermanagement: Attach receipt for the charges
 ```

@@ -239,8 +239,8 @@ sequenceDiagram
     M->>M: Add product to sale
     M->>ePayment: Initiate payment request with receipt
     ePayment->>C: Request payment
-    C->>ePayment: Authorize payment
-    Webhooks->>M: Callback with status
+    C->>C: Customer clicks pay
+    Webhooks-->>M: Callback with status
     M->>ePayment: Initiate payment capture
     M->>ePayment: Initiate capture request for amount due
     M->>ePayment: Release <amount reserved - amount due>

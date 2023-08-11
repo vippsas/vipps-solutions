@@ -123,7 +123,7 @@ sequenceDiagram
     M->>C: Get phone number through taxi app
     M->>ePayment: Initiate payment request and attach receipt
     ePayment->>C: Request payment
-    C->>ePayment: Authorize payment
-    Webhooks->>M: Callback with status
+    C->>C: Customer clicks pay
+    Webhooks-->>M: Callback with status
     M->>ePayment: Capture payment
 ```

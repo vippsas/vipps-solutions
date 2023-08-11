@@ -177,8 +177,8 @@ sequenceDiagram
     C->>M: Customer uses link to get to payment page
     M->>ePayment: Initiate payment request
     ePayment->>C: Request payment and attach receipt
-    C->>ePayment: Authorize payment
-    Webhooks->>M: Callback with status
+    C->>C: Customer clicks pay
+    Webhooks-->>M: Callback with status
     M->>C: Display order confirmation on product page
     M-->>C: Ship the order (if applicable)
     M->>ePayment: Capture payment

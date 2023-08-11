@@ -126,7 +126,7 @@ sequenceDiagram
     M->>C: Request phone number verbally
     M->>ePayment: Initiate payment request
     ePayment->>C: Request payment
-    C->>ePayment: Authorize payment
-    Webhooks->>M: Callback with status
+    C->>C: Customer clicks pay
+    Webhooks-->>M: Callback with status
     M->>ePayment: Capture payment
 ```

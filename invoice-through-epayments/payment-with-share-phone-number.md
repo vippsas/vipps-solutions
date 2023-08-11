@@ -181,8 +181,8 @@ sequenceDiagram
     
     M->>ePayment: Initiate payment request
     ePayment->>C: Request payment and consent to phoneNumber. Attach receipt.
-    C->>ePayment: Authorize payment and consent
-    Webhooks->>M: Callback with status
+    C->>C: Customer clicks pay and consent
+    Webhooks-->>M: Callback with status
     M->>C: Display order confirmation on product page
     M->>ePayment: Capture payment
 ```
