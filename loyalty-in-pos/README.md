@@ -110,6 +110,9 @@ When this login flow is completed, the customer will be enrolled in the loyalty 
 
 ![Loyalty Flow](images/POS_step_3.png)
 
+See [Log in with browser](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-quick-start/#log-in-with-browser) for a detailed example.
+
+
 ### Step 4: Send a payment request
 
 After membership status has been determined and all articles have been scanned, send a payment request to the customer.
