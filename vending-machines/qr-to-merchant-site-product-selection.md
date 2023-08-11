@@ -65,9 +65,9 @@ Here is an example HTTP POST:
 The customer scans the QR code and is redirected to your website.
 They select to pay with Vipps.
 
-### Step 3: Generate a payment request
+### Step 3: Initiate a payment request
 
-Generate a payment request based on the selected products.
+Initiate a payment request based on the selected products.
 
 <details>
 <summary>Detailed example</summary>

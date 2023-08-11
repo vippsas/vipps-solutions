@@ -25,7 +25,7 @@ Before implementing this flow, please see the recommended [in-store payments flo
 
 ![User scans QR. Merchant gets ID and sends payment. User pays and gets receipt.](images/static_qr_at_pos.png)
 
-### Step 1: Generate a callback QR code
+### Step 1: Generate a merchant callback QR code
 
 Generate a callback QR code linking to your company landing page.
 Print and place the QR code at your cash register or Point of Sale (POS).

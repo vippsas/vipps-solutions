@@ -94,7 +94,7 @@ Here is an example HTTP POST:
 </details>
 
 
-### Step 3: Generate a payment request
+### Step 3: Initiate a payment request
 
 When the user scans the QR code, send a
 [Create Payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment).
