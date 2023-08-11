@@ -67,19 +67,48 @@ Here is an example:
 
 The customer identifies themselves by logging in with Vipps Login.
 
-See
-[How it works in Vipps Login](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-api-howitworks)
-for more details.
+See [Log in with browser](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-quick-start/#log-in-with-browser) for a detailed example.
 
 ### Step 3. Create agreement
 
 The customer now has an account, with verified user data, and is able to both log in and pay.
-Create an agreement using the
-[Draft agreement](https://developer.vippsmobilepay.com/api/recurring/#tag/Agreement-v3-endpoints/operation/DraftAgreementV3)
-endpoint.
+Send them an agreement request with a variable amount.
 
-For more details, see
-[Create an agreement](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api/#create-an-agreement).
+<details>
+<summary>Detailed example</summary>
+<div>
+
+Create an agreement and specify `pricing.type="VARIABLE"`.
+Set a `suggestedMaxAmount`. The user can modify this amount later, and that will be set in a `maxAmount` field.
+
+Here is an example:
+
+[`POST:/agreements`](https://developer.vippsmobilepay.com/api/recurring#tag/Agreement-v3-endpoints/operation/DraftAgreementV3)
+
+With body:
+
+```json
+{
+   "interval": {
+      "unit" : "DAY",
+      "count": 365
+   },
+   "pricing": {
+      "suggestedMaxAmount": 200000,
+      "currency": "NOK",
+      "type": "VARIABLE"
+   },
+   "merchantRedirectUrl": "https://example.com/myParkingCompany",
+   "merchantAgreementUrl": "https://example.com/myParkingCompany/agreement-url",
+   "phoneNumber": "91234567",
+   "productName": "Pay-as-you-go"
+}
+```
+
+</div>
+</details>
+
+See [Recurring agreements with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount) for more information.
 
 ### Step 4. Customer accepts agreement
 
@@ -90,12 +119,30 @@ The customer accepts the agreement in the Vipps MobilePay app.
 The customer parks one or more times.
 The accumulated parking fees are used to create one charge with the total amount.
 
-Vipps MobilePay supports
-[Recurring agreements with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
-See:
-[Create a charge](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#create-a-charge).
+<details>
+<summary>Detailed example</summary>
+<div>
 
-Be sure to check the status of the captured payments.
+The amount of the charge/charges in the interval cannot be higher than the `suggestedMaxAmount` or `maxAmount` field, depending on which is highest.
+
+Here is an example:
+
+[POST:/recurring/v3/agreements/{agreementId}/charges](https://developer.vippsmobilepay.com/api/recurring/#tag/Charge-v3-endpoints/operation/CreateChargeV3)
+
+With body:
+
+```json
+{
+  "amount": 32600,
+  "transactionType": "DIRECT_CAPTURE",
+  "description": "Parking on Tuesday.",
+  "due": "2025-08-08",
+  "retryDays": 0
+}
+```
+
+</div>
+</details>
 
 ### Step 6. Attach a receipt
 
