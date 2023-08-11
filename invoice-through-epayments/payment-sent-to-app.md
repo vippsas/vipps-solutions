@@ -149,7 +149,6 @@ With body:
 </div>
 </details>
 
-
 ## Sequence diagram
 
 Sequence diagram for the standard online payment flow, where payment request is sent directly to app.
@@ -159,11 +158,12 @@ sequenceDiagram
     actor C as Customer
     participant M as Merchant
     participant ePayment as ePayment API
+    participant Webhooks as Webhooks API
 
     M->>ePayment: Initiate payment request
     ePayment->>C: Request payment and attach receipt
     C->>ePayment: Authorize payment
-    ePayment->>M: Callback with status
+    Webhooks->>M: Callback with status
     M->>C: Display order confirmation on product page
     M->>ePayment: Capture payment
 ```

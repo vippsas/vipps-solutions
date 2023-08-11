@@ -37,7 +37,7 @@ Print and place the QR code at your cash register or Point of Sale (POS).
 
 The QR code contains a `Id` that connects it to a specific POS or cash register in your store.
 
-Here is an example:
+Here is an example HTTP PUT:
 
 [`PUT:/qr/v1/merchant-callback/{merchantQrId}`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
 
@@ -62,7 +62,7 @@ Create a webhook that will send callbacks when this QR code is scanned by a Vipp
 <div>
 
 
-Here is an example:
+Here is an example HTTP POST:
 
 [`POST:/webhooks/v1/webhooks`](https://developer.vippsmobilepay.com/api/webhooks/#tag/v1/paths/~1v1~1webhooks/post)
 
@@ -96,7 +96,7 @@ You may attach the receipt at this time.
 
 Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
 
-Here is an example:
+Here is an example HTTP POST:
 
 [`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 
@@ -175,8 +175,6 @@ With body:
 
 ## Related links
 
-See:
-
 * [Merchant Callback QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
 
 ## Sequence diagram
@@ -198,5 +196,6 @@ sequenceDiagram
     M->>ePayment: Initiate payment request and attach receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
+    Webhooks->>M: Callback with status
     M->>ePayment: Capture payment
 ```

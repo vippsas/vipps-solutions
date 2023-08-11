@@ -45,7 +45,7 @@ Specify `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
 Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
 
 
-Here is an example:
+Here is an example HTTP POST:
 
 [`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 
@@ -121,7 +121,7 @@ Attach a receipt with the amount paid.
 <summary>Detailed example</summary>
 <div>
 
-Here is an example:
+Here is an example HTTP POST:
 
 [`POST:/order-management/v2/{paymentType}/receipts/{orderId}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
 
@@ -167,10 +167,12 @@ sequenceDiagram
     participant M as Merchant
     participant ePayment as ePayment API
     participant ordermanagement as Order Management API
+    participant Webhooks as Webhooks API
 
     M->>ePayment: Initiate payment request
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
+    Webhooks->>M: Callback with status
     M->>C: Display order confirmation
     M->>C: Drive
     M->>M: Determine the amount owed

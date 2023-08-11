@@ -37,7 +37,7 @@ You need the customer's phone number to send them a request from the taximeter.
 
 You may also attach the receipt at this time.
 
-Here is an example:
+Here is an example HTTP POST:
 
 [`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 
@@ -118,11 +118,12 @@ sequenceDiagram
     actor C as Customer
     participant M as Merchant
     participant ePayment as ePayment API
+    participant Webhooks as Webhooks API
 
     M->>C: Get phone number through taxi app
     M->>ePayment: Initiate payment request and attach receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
-    M->>ePayment: Check the status of authorization
+    Webhooks->>M: Callback with status
     M->>ePayment: Capture payment
 ```

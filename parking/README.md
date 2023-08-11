@@ -18,7 +18,7 @@ Vipps MobilePay can make it easier for your customers to pay for parking and oth
 The solution is a combination of the
 [Login](https://developer.vippsmobilepay.com/docs/APIs/login-api) and
 [Recurring](https://developer.vippsmobilepay.com/docs/APIs/recurring-api) APIs,
-and makes special use of:
+and makes special use of
 [Recurring agreements with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
 
 ## Parking scenario
@@ -48,7 +48,7 @@ The customer scans the QR code and is redirected to your website.
 
 The QR code contains a `Id` that connects it to the taxi where it is located.
 
-Here is an example:
+Here is an example HTTP POST:
 
 [`POST:/qr/v1/merchant-redirect`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
 
@@ -81,7 +81,7 @@ Send them an agreement request with a variable amount.
 Create an agreement and specify `pricing.type="VARIABLE"`.
 Set a `suggestedMaxAmount`. The user can modify this amount later, and that will be set in a `maxAmount` field.
 
-Here is an example:
+Here is an example HTTP POST:
 
 [`POST:/agreements`](https://developer.vippsmobilepay.com/api/recurring#tag/Agreement-v3-endpoints/operation/DraftAgreementV3)
 
@@ -125,7 +125,7 @@ The accumulated parking fees are used to create one charge with the total amount
 
 The amount of the charge/charges in the interval cannot be higher than the `suggestedMaxAmount` or `maxAmount` field, depending on which is highest.
 
-Here is an example:
+Here is an example HTTP POST:
 
 [POST:/recurring/v3/agreements/{agreementId}/charges](https://developer.vippsmobilepay.com/api/recurring/#tag/Charge-v3-endpoints/operation/CreateChargeV3)
 

@@ -145,10 +145,12 @@ sequenceDiagram
     actor C as Customer
     participant M as Merchant
     participant ePayment as ePayment API
+    participant Webhooks as Webhooks API
 
     M->>ePayment: Initiate payment request
     ePayment->>C: Request payment and attach receipt
     C->>ePayment: Authorize payment
+    Webhooks->>M: Callback with status
     M->>C: Display order confirmation
     M->>C: Ship the order (if applicable)
     M->>ePayment: Capture payment

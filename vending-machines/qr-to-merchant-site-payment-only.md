@@ -43,7 +43,7 @@ linking to a web page containing payment options.
 
 The QR code contains a `Id` that connects it to the vending machine where it is located.
 
-Here is an example:
+Here is an example HTTP POST:
 
 [`POST:/qr/v1/merchant-redirect`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
 
@@ -78,7 +78,7 @@ You may include a receipt at this time.
 
 Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
 
-Here is an example:
+Here is an example HTTP POST:
 
 [`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 
@@ -154,8 +154,6 @@ With body:
 
 ## Related links
 
-See:
-
 * [Merchant redirect QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
 
 ## Sequence diagram
@@ -168,11 +166,13 @@ sequenceDiagram
     participant M as Merchant
     participant QR as QR API
     participant ePayment as ePayment API
+    participant Webhooks as Webhooks API
     
     QR->>C: Scan for customer ID
     M->>M: Add product to sale
     M->>ePayment: Initiate payment request with receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
+    Webhooks->>M: Callback with status
     M->>ePayment: Capture payment
 ```

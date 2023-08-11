@@ -63,7 +63,7 @@ This payment command can do an app-switch and open their Vipps app with the paym
 Specify `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
 Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
 
-Here is an example:
+Here is an example HTTP POST:
 
 [`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 
@@ -136,8 +136,6 @@ With body:
 
 ## Related links
 
-See:
-
 * [Vending machines: Static QR directing to the app for payment](../vending-machines/qr-direct-to-payment-in-app.md)
 * [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
 
@@ -149,11 +147,13 @@ sequenceDiagram
     participant M as Merchant
     participant QR as QR API
     participant ePayment as ePayment API
+    participant Webhooks as Webhooks API
 
     QR->>C: Scan for customer ID
     M->>M: Add product to sale
     M->>ePayment: Initiate payment request with receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
+    Webhooks->>M: Callback with status
     M->>ePayment: Capture payment
 ```

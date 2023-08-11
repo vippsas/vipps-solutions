@@ -49,7 +49,7 @@ You can also include a receipt at this time.
 Since the customer will scan from their phone, you don't need their phone number.
 This payment command can do an app-switch and open their Vipps app with the payment request.
 
-Here is an example:
+Here is an example HTTP POST:
 
 [`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 
@@ -138,11 +138,13 @@ sequenceDiagram
     participant M as Merchant
     participant QR as QR API
     participant ePayment as ePayment API
+    participant Webhooks as Webhooks API
 
     M->>ePayment: Generate dynamic QR code and payment request with receipt
     M->>C: Display QR code on screen
     C->>QR: Scan to get Customer ID
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
+    Webhooks->>M: Callback with status
     M->>ePayment: Capture payment
 ```

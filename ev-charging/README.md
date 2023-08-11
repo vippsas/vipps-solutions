@@ -48,7 +48,7 @@ The customer scans the QR code and is redirected to your website.
 
 The QR code contains a `Id` that connects it to the taxi where it is located.
 
-Here is an example:
+Here is an example HTTP POST:
 
 [`POST:/qr/v1/merchant-redirect`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
 
@@ -83,7 +83,7 @@ Specify `"userFlow": "WEB_REDIRECT"` to redirect the user to the Vipps app.
 
 Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
 
-Here is an example:
+Here is an example HTTP POST:
 
 [`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
 
@@ -211,8 +211,6 @@ Body:
 
 ## Related links
 
-See:
-
 * [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
 
 ## Sequence diagram
@@ -225,12 +223,14 @@ sequenceDiagram
     participant M as Merchant
     participant QR as QR API
     participant ePayment as ePayment API
+    participant Webhooks as Webhooks API
     participant ordermanagement as Order Management API
 
     C->>M: Customer scans QR to get to payment page
     M->>ePayment: Initiate payment request
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
+    Webhooks->>M: Callback with status
     M->>M: Determine amount due after charging
     M->>C: Send a push notification with actual amount paid
     M->>ePayment: Initiate capture request for amount due

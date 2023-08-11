@@ -53,7 +53,7 @@ Print and place the QR code at your cash register or Point of Sale (POS).
 
 The QR code contains a `Id` that connects it to a specific POS or cash register in your store.
 
-Here is an example:
+Here is an example HTTP PUT:
 
 [`PUT:/qr/v1/merchant-callback/{merchantQrId}`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
 
@@ -79,7 +79,7 @@ Create a webhook that will send callbacks when this QR code is scanned by a Vipp
 <div>
 
 
-Here is an example:
+Here is an example HTTP POST:
 
 [`POST:/webhooks/v1/webhooks`](https://developer.vippsmobilepay.com/api/webhooks/#tag/v1/paths/~1v1~1webhooks/post)
 
@@ -185,7 +185,7 @@ Attach a receipt with the amount paid.
 <summary>Detailed example</summary>
 <div>
 
-Here is an example:
+Here is an example HTTP POST:
 
 [`POST:/order-management/v2/{paymentType}/receipts/{orderId}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
 
@@ -218,8 +218,6 @@ Body:
 
 ## Related links
 
-See:
-
 * [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
 * [In-store using static QR](../static-qr-at-pos/README.md)
 
@@ -242,6 +240,7 @@ sequenceDiagram
     M->>ePayment: Initiate payment request with receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
+    Webhooks->>M: Callback with status
     M->>ePayment: Initiate payment capture
     M->>ePayment: Initiate capture request for amount due
     M->>ePayment: Release <amount reserved - amount due>

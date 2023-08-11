@@ -225,6 +225,7 @@ sequenceDiagram
     participant checkin as Check-in API
     participant login as Login API
     participant ePayment as ePayment API
+    participant Webhooks as Webhooks API
 
     M->>C: Get customer ID by scanning personal QR
     M->>M: Check membership
@@ -237,5 +238,6 @@ sequenceDiagram
     M->>ePayment: Initiate payment request and attach a receipt
     ePayment->>C: Request payment
     C->>ePayment: Authorize payment
+    Webhooks->>M: Callback with status
     M->>ePayment: Capture payment
 ```
