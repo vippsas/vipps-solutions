@@ -219,11 +219,11 @@ Sequence diagram for in-store payment with customer club.
 sequenceDiagram
     actor C as Customer
     participant M as Merchant
-    participant checkin as Checkin API
+    participant checkin as Check-in API
     participant login as Login API
     participant ePayment as ePayment API
 
-    QR->>C: Scan for customer ID
+    C->>M: Get customer ID by scanning personal QR
     M->>M: Check membership
     M->>checkin: Post membership status
     M->>login: If user is not a member, request membership
