@@ -118,7 +118,7 @@ After membership status has been determined and all articles have been scanned, 
 <summary>Detailed example</summary>
 <div>
 
-You already have the customer's identity from step 1, so you don't need to ask for it.
+You already have the customer's phone number from step 1, so you don't need to ask for it.
 Just provide a button in your user interface to allow the cashier to send the payment request.
 
 Your system can send the payment request by using the
@@ -144,7 +144,7 @@ With body:
     "type": "WALLET"
   },
   "customer": {
-    "personalQr": "personalQr_string"
+    "phoneNumber": 4791234567
   },
   "receipt":{
     "orderLines": [

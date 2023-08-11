@@ -84,16 +84,14 @@ Here is an example HTTP POST:
 ### Step 3. The customer authorizes the payment
 
 If the payment was started on a desktop device, the customer will be sent to the
-[Vipps MobilePay landing page](https://developer.vippsmobilepay.com/docs/common-topics/landing-page/).
+[landing page](https://developer.vippsmobilepay.com/docs/common-topics/landing-page/).
 There, they confirm their number and are prompted to log in through the Vipps app on their phone.
 
 ![Landing page](images/vipps-ecom-step2.svg)
 
-If the payment was started from a mobile device, the Vipps MobilePay app will automatically open.
+If the payment was started from a mobile device, the Vipps or MobilePay app will automatically open.
 
 ![Pay with Vipps MobilePay](images/vipps-ecom-step1-2.png)
-
-![Confirm payment](images/vipps-ecom-confirm2.png)
 
 To get confirmation that payment was approved, monitor
 [webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and

@@ -15,7 +15,7 @@ END_METADATA -->
 # In-store payments
 
 This is the recommended flow for in-store payments.
-This solution is a combination of the personal QR codes in the Vipps or MobilePay app
+This solution is a combination of the personal QR codes in the Vipps MobilePay app
 and the
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 
@@ -25,7 +25,7 @@ and the
 
 ### Step 1: Identify the customer
 
-The flow begins with the customer presenting their Vipps MobilePay QR code to the merchant.
+The customer presents their personal Vipps MobilePay QR code to the merchant.
 
 ![Loyalty Flow](images/POS_step_1.png)
 
@@ -62,7 +62,7 @@ Send a payment request to the customer.
 <summary>Detailed example</summary>
 <div>
 
-You already have the customer's identity from step 1, so you don't need to ask for it.
+You already have the customer's phone number from step 1, so you don't need to ask for it.
 Just provide a button in your user interface to allow the cashier to send the payment request.
 
 Your system can send the payment request by using the
@@ -88,7 +88,7 @@ With body:
     "type": "WALLET"
   },
   "customer": {
-    "personalQr": "personalQr_string"
+    "phoneNumber": 4791234567
   },
   "receipt":{
     "orderLines": [
