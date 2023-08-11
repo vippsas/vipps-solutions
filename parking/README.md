@@ -9,7 +9,6 @@ pagination_next: null
 pagination_prev: null
 ---
 
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
 # Parking and "Pay-as-you-go"
@@ -19,7 +18,7 @@ Vipps MobilePay can make it easier for your customers to pay for parking and oth
 The solution is a combination of the
 [Login](https://developer.vippsmobilepay.com/docs/APIs/login-api) and
 [Recurring](https://developer.vippsmobilepay.com/docs/APIs/recurring-api) APIs,
-and makes special use of:
+and makes special use of
 [Recurring agreements with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
 
 ## Parking scenario
@@ -35,54 +34,166 @@ The same solution can of course be used to charge weekly, monthly, or yearly.
 
 ## Details
 
+### Step 1: Generate a merchant redirect QR code
 
-### Step 1: Generate a static QR code
-
-Generate a static QR code with a
+Generate a merchant redirect QR code with a
 [merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
 linking to your company website.
 
-### Step 2: The customer scans the static QR
+The customer scans the QR code and is redirected to your website.
 
-When the customer scans the QR, your system will receive a notification that the QR has been scanned and will be able to get the customer's phone number.
+<details>
+<summary>Detailed example</summary>
+<div>
 
-### Step 3. The customer logs in
+The QR code contains a `Id` that connects it to the taxi where it is located.
+
+Here is an example HTTP POST:
+
+[`POST:/qr/v1/merchant-redirect`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
+
+```json
+{
+  "id": "company_site",
+  "redirectUrl": "https://example.com/myParkingCompany"
+}
+```
+
+</div>
+</details>
+
+
+### Step 2. The customer logs in
 
 The customer identifies themselves by logging in with Vipps Login.
 
-See
-[How it works in Vipps Login](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-api-howitworks)
-for more details.
+See [Log in with browser](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-quick-start/#log-in-with-browser) for a detailed example.
 
-### Step 4. Create agreement
+### Step 3. Create agreement
 
 The customer now has an account, with verified user data, and is able to both log in and pay.
-Create an agreement using the
-[Draft agreement](https://developer.vippsmobilepay.com/api/recurring/#tag/Agreement-v3-endpoints/operation/DraftAgreementV3)
-endpoint.
+Send them an agreement request with a variable amount.
 
-For more details, see
-[Create an agreement](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api/#create-an-agreement).
+<details>
+<summary>Detailed example</summary>
+<div>
 
-### Step 5. Customer accepts agreement
+Create an agreement and specify `pricing.type="VARIABLE"`.
+Set a `suggestedMaxAmount`. The user can modify this amount later, and that will be set in a `maxAmount` field.
+
+Here is an example HTTP POST:
+
+[`POST:/agreements`](https://developer.vippsmobilepay.com/api/recurring#tag/Agreement-v3-endpoints/operation/DraftAgreementV3)
+
+With body:
+
+```json
+{
+   "interval": {
+      "unit" : "DAY",
+      "count": 1
+   },
+   "pricing": {
+      "suggestedMaxAmount": 200000,
+      "currency": "NOK",
+      "type": "VARIABLE"
+   },
+   "merchantRedirectUrl": "https://example.com/myParkingCompany",
+   "merchantAgreementUrl": "https://example.com/myParkingCompany/agreement-url",
+   "phoneNumber": "91234567",
+   "productName": "Pay-as-you-go"
+}
+```
+
+</div>
+</details>
+
+See [Recurring agreements with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount) for more information.
+
+### Step 4. Customer accepts agreement
 
 The customer accepts the agreement in the Vipps MobilePay app.
 
-### Step 6. Charge for variable amounts
+### Step 5. Charge for variable amounts
 
 The customer parks one or more times.
 The accumulated parking fees are used to create one charge with the total amount.
 
-Vipps MobilePay supports
-[Recurring agreements with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
-See:
-[Create a charge](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#create-a-charge).
+<details>
+<summary>Detailed example</summary>
+<div>
 
-Be sure to check the status of the captured payments.
+The amount of the charge/charges in the interval cannot be higher than the `suggestedMaxAmount` or `maxAmount` field, depending on which is highest.
 
-### Step 7. Attach a receipt
+Here is an example HTTP POST:
 
-<ATTACHRECEIPT />
+[POST:/recurring/v3/agreements/{agreementId}/charges](https://developer.vippsmobilepay.com/api/recurring/#tag/Charge-v3-endpoints/operation/CreateChargeV3)
+
+With body:
+
+```json
+{
+  "amount": 32600,
+  "transactionType": "DIRECT_CAPTURE",
+  "description": "Parking on Tuesday.",
+  "due": "2025-08-08",
+  "retryDays": 0
+}
+```
+
+</div>
+</details>
+
+### Step 6. Attach a receipt
+
+Send a digital receipt for the parking session.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+
+Here is an example HTTP POST:
+
+[`POST:/order-management/v2/{paymentType}/receipts/{orderId}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+
+Use `recurring` for recurring payments.
+For `orderId`, use the `chargeId` of the charge.
+
+Body:
+
+```json
+{
+  "orderLines": [
+    {
+        "name": "parking",
+        "id": "line_item_1",
+        "totalAmount": 5200,
+        "totalAmountExcludingTax": 3900,
+        "totalTaxAmount": 1300,
+        "taxPercentage": 25,
+      },
+    {
+        "name": "parking",
+        "id": "line_item_1",
+        "totalAmount": 27400,
+        "totalAmountExcludingTax": 20550,
+        "totalTaxAmount": 6850,
+        "taxPercentage": 25,
+      },
+    },
+  ],
+  "bottomLine": {
+    "currency": "NOK",
+    "posId": "parking_lot_012"
+  }
+}
+
+```
+
+</div>
+</details>
+
 
 ## Relevant comments
 
@@ -99,9 +210,9 @@ Be sure to check the status of the captured payments.
   the end user will be notified in the Vipps or MobilePay app to increase their limit for this agreement.
 * In general using the Recurring API you need to send in the charge two days before due date. However, for use cases like parking and "pay-as-you-go" we allow for creating charges that will be due the day after (for example you send in the charge at 10pm at day 0, the user will be charged in the morning of day 1). Do get access to this opportunity you need to be part of a whitelist. Contact Vipps MobilePay if this is relevant for you.
 
-## Sequence diagram
+## Sequence diagrams
 
-Sequence diagram for the parking and "Pay-as-you-go" flow.
+Signing up for the "Pay-as-you-go" plan:
 
 ``` mermaid
 sequenceDiagram
@@ -113,15 +224,28 @@ sequenceDiagram
 
     M->>Login: Initiate login and userinfo request
     Login->>C: Request login and userinfo
-    C->>Login: Log in and give consent
+    C->>C: Log in and give consent
     M->>M: If user consents, prefill customer information
+    M->> ordermanagement: Create receipt for the agreement
     M->>Recurring: Initiate agreement request
     Recurring->>C: Request agreement
-    C->>Recurring: Accept agreement
-    Recurring->>C: Provide agreement information
+    C->>C: Customer accepts agreement
     M->>C: Display confirmation on product site
-    M->>Recurring: Initiate payment request for variable amounts
-    Recurring->>C: Automatic capture
-    M->>Recurring: Check the status of captures
-    M->> ordermanagement: Attach receipt for the charge
+```
+
+Daily charges, if parking was done:
+
+``` mermaid
+sequenceDiagram
+    actor C as Customer
+    participant M as Merchant
+    participant Login as Login API
+    participant Recurring as Recurring API
+    participant ordermanagement as Order Management API
+
+    C->>C: Customer parks in the company places
+    M->>Recurring: Initiate payment request
+    Recurring->>C: Inform customer of agreed payment to transpire
+    M->> ordermanagement: Attach receipt showing amount paid
+    Recurring-->>M: Check the status of capture
 ```

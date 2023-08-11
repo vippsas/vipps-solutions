@@ -9,8 +9,7 @@ pagination_prev: null
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
-import FULLCAPTURE from '../_common/_full_capture.md'
+
 END_METADATA -->
 
 # Static QR directing to the merchant site for product selection
@@ -28,37 +27,133 @@ and when you want to offer product selection through your user interface.
 
 ## Details
 
-A merchant-generated QR code is posted on the vending machine.
+A merchant redirect QR code is posted on the vending machine.
 
 When the customer scans the QR code,
 they are taken to the merchant's landing page, where products can select.
 The price is presented, and the user pays for the product in their Vipps or MobilePay app.
 
-### Step 1: Generate a static QR code
+### Step 1: Generate a merchant redirect QR code
 
-Generate a static QR code with a
-[merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+Generate a [merchant redirect QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
 linking to a webshop connected to the specific vending machine.
 
-### Step 2: Generate a payment request
 
-When the user selects the products and clicks the `pay` button, generate a
-[Create payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment)
-based on the selected products.
+<details>
+<summary>Detailed example</summary>
+<div>
 
-Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to Vipps MobilePay.
+The QR code contains a `Id` that connects it to the vending machine where it is located.
 
-### Step 3: The customer authorizes the payment
+Here is an example HTTP POST:
+
+[`POST:/qr/v1/merchant-redirect`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
+
+```json
+{
+  "id": "vending_machine_122_qr",
+  "redirectUrl": "https://example.com/myvendingmachines"
+}
+```
+
+</div>
+</details>
+
+
+### Step 2: The customer scans the code
+
+The customer scans the QR code and is redirected to your website.
+They select to pay with Vipps.
+
+### Step 3: Initiate a payment request
+
+Initiate a payment request based on the selected products.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+Since the customer has scanned from their phone, you don't need their phone number.
+This payment command can do an app-switch and open their Vipps app with the payment request.
+Specify `"userFlow": "WEB_REDIRECT"` to redirect the user to the Vipps app.
+
+You may include a receipt at this time.
+
+Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
+
+Here is an example HTTP POST:
+
+[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+
+With body:
+
+```json
+{
+  "amount": {
+    "value": 1100,
+    "currency": "NOK"
+  },
+  "paymentMethod": {
+    "type": "WALLET"
+  },
+  "customerInteraction": "CUSTOMER_PRESENT",
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "Juice",
+        "id": "21231211",
+        "totalAmount": 1100,
+        "totalAmountExcludingTax": 825,
+        "totalTaxAmount": 275,
+        "taxPercentage": 25,
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "vending_machine_12345"
+    },
+   "receiptNumber": "0527013501"
+  },
+  "reference": "WBN02023022313521298012343384",
+  "userFlow": "WEB_REDIRECT",
+  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
+  "paymentDescription": "Vending machine purchase"
+}
+```
+
+</div>
+</details>
+
+### Step 4: The customer authorizes the payment
 
 <AUTHORIZEPAYMENT />
 
-### Step 4: Attach a receipt to the order
-
-<ATTACHRECEIPT />
 
 ### Step 5: Capture the payment
 
-<FULLCAPTURE />
+<details>
+<summary>Detailed example</summary>
+<div>
+
+[`POST:/epayment/v1/payments/{reference}/capture`](/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 1100,
+    "currency": "NOK"
+  }
+}
+```
+
+</div>
+</details>
+
+## Related links
+
+* [Merchant redirect QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
 
 ## Sequence diagram
 
@@ -70,15 +165,14 @@ sequenceDiagram
     participant M as Merchant
     participant QR as QR API
     participant ePayment as ePayment API
-    participant ordermanagement as Order Management API
+    participant Webhooks as Webhooks API
 
     QR->>C: Scan for customer ID
     M->>M: Add product to sale
-    M->>ePayment: Initiate payment request
+    M->>ePayment: Initiate payment request with receipt
     ePayment->>C: Request payment
-    C->>ePayment: Authorize payment
-    M->> ordermanagement: Attach receipt
-    ePayment->>C: Provide payment information
-    M->>ePayment: Capture payment 
-    M->>ePayment: Check the status of capture
+    C->>C: Customer clicks pay
+    Webhooks-->>M: Callback with status of payment authorization
+    M->>ePayment: Capture payment
+    Webhooks-->>M: Callback with status of capture
 ```
