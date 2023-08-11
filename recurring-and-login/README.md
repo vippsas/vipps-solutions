@@ -84,7 +84,7 @@ With body:
 {
    "interval": {
       "unit" : "YEAR",
-      "count": 10
+      "count": 1
    },
    "initialCharge": {
       "amount": 59900,

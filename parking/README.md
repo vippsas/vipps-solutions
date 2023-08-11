@@ -91,7 +91,7 @@ With body:
 {
    "interval": {
       "unit" : "DAY",
-      "count": 365
+      "count": 1
    },
    "pricing": {
       "suggestedMaxAmount": 200000,
