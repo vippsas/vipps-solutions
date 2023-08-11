@@ -223,7 +223,7 @@ sequenceDiagram
     participant login as Login API
     participant ePayment as ePayment API
 
-    C->>M: Get customer ID by scanning personal QR
+    M->>C: Get customer ID by scanning personal QR
     M->>M: Check membership
     M->>checkin: Post membership status
     M->>login: If user is not a member, request membership

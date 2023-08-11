@@ -165,7 +165,7 @@ sequenceDiagram
     participant M as Merchant
     participant ePayment as ePayment API
     
-    C->>M: Get customer ID by scanning personal QR
+    M->>C: Get customer ID by scanning personal QR
     M->>M: Add products to sale
     M->>ePayment: Initiate payment request with receipt
     ePayment->>C: Request payment
