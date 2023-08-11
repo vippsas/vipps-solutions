@@ -90,20 +90,17 @@ Here is an example HTTP POST:
 ```json
 {
   "amount": {
-    "value": 50000,
+    "value": 35000,
     "currency": "NOK"
   },
   "paymentMethod": {
     "type": "WALLET"
   },
-  "customer": {
-    "phoneNumber": 4791234567
-  },
   "customerInteraction": "CUSTOMER_PRESENT",
   "reference": 2486791679658155992,
   "userFlow": "WEB_REDIRECT",
   "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
-  "paymentDescription": "Charging session at Ski McDonalds on Dec 21, 2029, 19:04."
+  "paymentDescription": "Charging session at station 21678 on October 9, 2029, 13:12."
 }
 ```
 
@@ -151,7 +148,7 @@ With body:
 ```json
 {
   "modificationAmount": {
-    "value": 45500,
+    "value": 21614,
     "currency": "NOK"
   }
 }
@@ -190,10 +187,10 @@ Body:
   "orderLines": [
     {
         "name": "charging",
-        "id": "line_item_1",
-        "totalAmount": 45500,
-        "totalAmountExcludingTax": 34125,
-        "totalTaxAmount": 11375,
+        "id": "21678",
+        "totalAmount": 21614,
+        "totalAmountExcludingTax": 16210,
+        "totalTaxAmount": 5404,
         "taxPercentage": 25,
         "productUrl": "https://www.example.com/evcharging",
       },
@@ -201,7 +198,7 @@ Body:
   ],
   "bottomLine": {
     "currency": "NOK",
-    "posId": "charging_station_ski_mcdonalds_043"
+    "posId": "21678"
   }
 }
 ```
