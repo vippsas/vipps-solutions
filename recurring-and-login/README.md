@@ -229,7 +229,7 @@ For more information, see:
 
 ## Sequence diagram
 
-Sequence diagram for the subscriptions with login flow.
+Sequence diagram for the subscription signup with login flow and initial charge.
 
 ``` mermaid
 sequenceDiagram
@@ -243,14 +243,27 @@ sequenceDiagram
     Login->>C: Request login and userinfo
     C->>C: Log in and give consent
     M->>M: If user consents, prefill customer information
+    M->> ordermanagement: Create receipt for the agreement
     M->>Recurring: Initiate agreement request
     Recurring->>C: Request agreement
     C->>C: Customer accepts agreement
-    Recurring->>C: Provide agreement information
     M->>C: Display confirmation on product site
-    M->>Recurring: Initiate initial payment capture (if applicable)
-    Recurring->>C: Capture initial payment (if applicable)
-    M->>Recurring: Schedule future charges
-    M->>Recurring: Check the status of captures
-    M->> ordermanagement: Attach receipt for the charges
+    M->>Recurring: Initiate initial payment capture
+    Recurring->>C: Capture initial payment
+```
+
+Yearly charges:
+
+``` mermaid
+sequenceDiagram
+    actor C as Customer
+    participant M as Merchant
+    participant Login as Login API
+    participant Recurring as Recurring API
+    participant ordermanagement as Order Management API
+
+    M->>Recurring: Schedule charge
+    Recurring->>C: Inform customer of agreed payment to transpire
+    M->> ordermanagement: Attach receipt showing amount to be paid
+    Recurring-->>M: Check the status of capture
 ```

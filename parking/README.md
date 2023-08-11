@@ -210,9 +210,9 @@ Body:
   the end user will be notified in the Vipps or MobilePay app to increase their limit for this agreement.
 * In general using the Recurring API you need to send in the charge two days before due date. However, for use cases like parking and "pay-as-you-go" we allow for creating charges that will be due the day after (for example you send in the charge at 10pm at day 0, the user will be charged in the morning of day 1). Do get access to this opportunity you need to be part of a whitelist. Contact Vipps MobilePay if this is relevant for you.
 
-## Sequence diagram
+## Sequence diagrams
 
-Sequence diagram for the parking and "Pay-as-you-go" flow.
+Signing up for the "Pay-as-you-go" plan:
 
 ``` mermaid
 sequenceDiagram
@@ -226,12 +226,26 @@ sequenceDiagram
     Login->>C: Request login and userinfo
     C->>C: Log in and give consent
     M->>M: If user consents, prefill customer information
+    M->> ordermanagement: Create receipt for the agreement
     M->>Recurring: Initiate agreement request
     Recurring->>C: Request agreement
-    C->>C: Accept agreement
-    Recurring->>C: Provide agreement information
+    C->>C: Customer accepts agreement
     M->>C: Display confirmation on product site
-    M->>Recurring: Initiate payment request for variable amounts
-    M->>Recurring: Check the status of captures
-    M->> ordermanagement: Attach receipts for the charges
+```
+
+Daily charges, if parking was done:
+
+``` mermaid
+sequenceDiagram
+    actor C as Customer
+    participant M as Merchant
+    participant Login as Login API
+    participant Recurring as Recurring API
+    participant ordermanagement as Order Management API
+
+    C->>C: Customer parks in the company places
+    M->>Recurring: Initiate payment request
+    Recurring->>C: Inform customer of agreed payment to transpire
+    M->> ordermanagement: Attach receipt showing amount paid
+    Recurring-->>M: Check the status of capture
 ```

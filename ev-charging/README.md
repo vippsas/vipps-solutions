@@ -230,9 +230,7 @@ sequenceDiagram
     Webhooks-->>M: Callback with status
     M->>M: Determine amount due after charging
     M->>C: Send a push notification with actual amount paid
-    M->>ePayment: Initiate capture request for amount due
-    M->>ePayment: Release <amount reserved - amount due>
-    ePayment->>C: Capture amount due
-    ePayment->>C: Cancel payment
+    M->>ePayment: Capture amount due
+    M->>ePayment: Cancel payment (release remaining amount)
     M->>ordermanagement: Attach receipt showing amount paid
 ```

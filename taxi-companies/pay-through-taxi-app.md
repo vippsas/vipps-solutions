@@ -174,12 +174,9 @@ sequenceDiagram
     C->>C: Customer clicks pay
     Webhooks-->>M: Callback with status
     M->>C: Display order confirmation
-    M->>C: Drive
     M->>M: Determine the amount owed
     M->>C: Send a push notification with actual amount paid
-    M->>ePayment: Initiate capture request for amount due
-    M->>ePayment: Release <amount reserved - amount due>
-    ePayment->>C: Capture amount due
-    ePayment->>C: Release amount remaining
+    M->>ePayment: Capture amount due
+    M->>ePayment: Cancel payment (release remaining)
     M->>ordermanagement: Attach receipt showing amount paid
 ```

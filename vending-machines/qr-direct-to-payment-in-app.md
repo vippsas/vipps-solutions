@@ -232,19 +232,18 @@ sequenceDiagram
     participant QR as QR API
     participant ePayment as ePayment API
     participant Webhooks as Webhooks API
+    participant ordermanagement as Order Management API
 
-    M->>QR: Create Callback QR
-    C->>Webhooks: Customer scans QR
-    Webhooks->>M: Get notification of scan
+    M->>QR: Create Merchant Callback QR
+    C->>C: Customer scans QR
+    Webhooks-->>M: Get notification of scan
     M->>M: Add product to sale
     M->>ePayment: Initiate payment request with receipt
     ePayment->>C: Request payment
     C->>C: Customer clicks pay
     Webhooks-->>M: Callback with status
-    M->>ePayment: Initiate payment capture
-    M->>ePayment: Initiate capture request for amount due
-    M->>ePayment: Release <amount reserved - amount due>
-    ePayment->>C: Capture amount due
-    ePayment->>C: Release amount remaining
-    ePayment->>C: Attach receipt
+    M->>ePayment: Capture amount due
+    ePayment-->>M: Check the status of capture
+    M->>ePayment: Cancel payment (release remaining amount)
+    M->>ordermanagement: Attach receipt showing amount paid
 ```

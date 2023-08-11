@@ -190,12 +190,12 @@ sequenceDiagram
     participant Webhooks as Webhooks API
 
     M->>QR: Create Callback QR
-    C->>Webhooks: Customer scans QR
-    Webhooks->>M: Get notification of scan
+    C->>C: Customer scans QR
+    Webhooks-->>M: Get notification of scan
     M->>M: Add product to sale
     M->>ePayment: Initiate payment request and attach receipt
     ePayment->>C: Request payment
     C->>C: Customer clicks pay
-    Webhooks-->>M: Callback with status
+    Webhooks-->>M: Callback with status of authorization
     M->>ePayment: Capture payment
 ```
