@@ -79,13 +79,9 @@ Here is an example:
 Upon authorization, the Vipps app should automatically redirect the customer to your app.
 Confirm that the order has been successful in your app.
 
-### Step 5. Complete the journey
+### Step 5. Capture the amount due
 
-After the drive is complete, calculate how much the customer owes.
-
-### Step 6. Capture the amount due
-
-After final amount is confirmed, do a
+After the drive is complete, calculate how much the customer owes and do a
 [partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture).
 
 Check the status of the captured payment.
@@ -110,14 +106,14 @@ With body:
 </div>
 </details>
 
-### Step 7. Cancel remaining amount
+### Step 6. Cancel remaining amount
 
 Release the remaining amount from the reservation with a
 [cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture).
 
 [`POST:/epayment/v1/payments/{reference}/cancel`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
 
-### Step 8. Attach a receipt
+### Step 7. Attach a receipt
 
 Attach a receipt with the amount paid.
 

@@ -129,7 +129,7 @@ With body:
 <AUTHORIZEPAYMENT />
 
 
-### Step 4: Capture the payment
+### Step 5: Capture the payment
 
 <details>
 <summary>Detailed example</summary>

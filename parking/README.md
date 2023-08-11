@@ -63,7 +63,7 @@ Here is an example:
 </details>
 
 
-### Step 3. The customer logs in
+### Step 2. The customer logs in
 
 The customer identifies themselves by logging in with Vipps Login.
 
