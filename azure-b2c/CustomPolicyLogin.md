@@ -25,9 +25,9 @@ END_METADATA -->
 
 ## Introduction
 
-This guide will describe how to use Azure AD B2C's custom policies to automatically create and log users in using Vipps. The custom policy implementation will provide the same login process as described in the [Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-api-howitworks/#the-login-process) section.
+This guide will describe how to use Azure AD B2C's custom policies to automatically create and log users in using Vipps MobilePay. The custom policy implementation will provide the same login process as described in the [Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-api-howitworks/#the-login-process) section.
 
-With Azure AD B2C's custom policies, merchants can implement a Vipps login flow by using Vipps as an identity provider. Other identity providers can be configured to correspond to the same user in Azure AD B2C as Vipps. For more details on creating custom policies with identity providers in Azure AD B2C, see [References](#references).
+With Azure AD B2C's custom policies, merchants can implement a Vipps login flow by using Vipps as an identity provider. Other identity providers can be configured to correspond to the same user in Azure AD B2C as Vipps MobilePay. For more details on creating custom policies with identity providers in Azure AD B2C, see [References](#references).
 
 Note: Azure AD B2C provides preconfigured user flows that can be used to authenticate, create, and log in users. This will however not provide any user information like name, email, etc. To achieve this, a custom policy must be provided.
 
@@ -116,7 +116,7 @@ sequenceDiagram
 
     Vipps Login API->>MerchantApp: Redirect to Authorize request URL
 
-    MerchantApp-->>Vipps App: User opens Vipps app in login client
+    MerchantApp-->>Vipps App: User opens Vipps MobilePay app in login client
 
     Vipps App->>Vipps App: User accepts the login
 

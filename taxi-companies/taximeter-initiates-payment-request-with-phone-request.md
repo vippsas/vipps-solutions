@@ -13,8 +13,8 @@ END_METADATA -->
 # Payment with manual phone number entry
 
 The driver enters the customer's mobile number into the taximeter
-which then initiates a payment request to Vipps.
-The Vipps app opens on the customer's phone and the customer pays the amount due.
+which then initiates a payment request to Vipps MobilePay.
+The Vipps MobilePay app opens on the customer's phone and the customer pays the amount due.
 
 ## Details
 

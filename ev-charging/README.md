@@ -78,8 +78,8 @@ This amount will be reserved on the customer's account and the unused amount wil
 <div>
 
 Since the customer has scanned from their phone, you don't need their phone number.
-This payment command can do an app-switch and open their Vipps app with the payment request.
-Specify `"userFlow": "WEB_REDIRECT"` to redirect the user to the Vipps app.
+This payment command can do an app-switch and open their Vipps MobilePay app with the payment request.
+Specify `"userFlow": "WEB_REDIRECT"` to redirect the user to the app.
 
 Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
 
@@ -109,7 +109,7 @@ Here is an example HTTP POST:
 
 ### Step 3. Customer approves the payment
 
-The customer's Vipps app should open automatically, with the maximum reservation amount visible.
+The customer's Vipps MobilePay app should open automatically, with the maximum reservation amount visible.
 They can then confirm the payment.
 
 Afterwards, they are redirected back to the charging provider's website, where the status of the charge session is presented.

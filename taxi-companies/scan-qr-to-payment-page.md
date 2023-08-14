@@ -59,7 +59,7 @@ Send a payment request to the customer
 <div>
 
 Since the customer has scanned from their phone, you don't need their phone number.
-This payment command can do an app-switch and open their Vipps app with the payment request.
+This payment command can do an app-switch and open their Vipps MobilePay app with the payment request.
 Specify `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
 Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
 

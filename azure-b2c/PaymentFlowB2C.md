@@ -68,7 +68,7 @@ sequenceDiagram
     actor User
     participant Merchant
     participant Payment landing page
-    participant Vipps app
+    participant Vipps MobilePay app
     participant ePayment API
     participant Login API
     participant Microsoft Graph API
@@ -81,11 +81,11 @@ sequenceDiagram
 
     Merchant->>Payment landing page: Redirect to the payment landing page
 
-    Payment landing page->>Vipps app: Receive push for payment
+    Payment landing page->>Vipps MobilePay app: Receive push for payment
 
-    Vipps app->>User: Display payment info
+    Vipps MobilePay app->>User: Display payment info
 
-    User->>Vipps app: Complete payment
+    User->>Vipps MobilePay app: Complete payment
 
     Payment landing page->>Merchant: Redirect to merchant-defined return URL
 

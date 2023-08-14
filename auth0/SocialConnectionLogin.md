@@ -23,7 +23,7 @@ END_METADATA -->
 
 ## Introduction
 
-This guide will describe how to use Auth0's actions to automatically create and login users using Vipps. The following implementation will provide the same login process as described in the [Vipps Login API documentation](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-api-howitworks/#the-login-process).
+This guide will describe how to use Auth0's actions to automatically create and login users using Vipps MobilePay. The following implementation will provide the same login process as described in the [Vipps Login API documentation](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-api-howitworks/#the-login-process).
 
 With Auth0's Social Connections, merchants can implement a Vipps login flow using Vipps as an identity provider.
 

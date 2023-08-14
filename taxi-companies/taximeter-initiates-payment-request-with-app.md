@@ -13,7 +13,7 @@ END_METADATA -->
 # Payment through taximeter and app
 
 The customer orders a taxi in the taxi company's app. After the journey, the taximeter automatically initiates a payment request to Vipps with the customer's phone number, which is already known.
-The customer's Vipps app open and the customer pays the amount due.
+The customer's Vipps MobilePay app opens, and the customer pays the amount due.
 
 ## Details
 

@@ -22,7 +22,7 @@ This flow combines multiple products to illustrate the recommended online paymen
 
 ### Step 1. Add an option to pay
 
-Add the option to pay with Vipps or MobilePay on the product page of your website.
+Add the option to pay with Vipps MobilePay on the product page of your website.
 
 ### Step 2. Send the payment request
 
@@ -85,11 +85,11 @@ Here is an example HTTP POST:
 
 If the payment was started on a desktop device, the customer will be sent to the
 [landing page](https://developer.vippsmobilepay.com/docs/common-topics/landing-page/).
-There, they confirm their number and are prompted to log in through the Vipps app on their phone.
+There, they confirm their number and are prompted to log in through the Vipps MobilePay app on their phone.
 
 ![Landing page](images/vipps-ecom-step2.svg)
 
-If the payment was started from a mobile device, the Vipps or MobilePay app will automatically open.
+If the payment was started from a mobile device, the app will automatically open.
 
 ![Pay with Vipps MobilePay](images/vipps-ecom-step1-2.png)
 

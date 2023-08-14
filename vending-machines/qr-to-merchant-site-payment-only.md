@@ -60,7 +60,7 @@ Here is an example HTTP POST:
 ### Step 2: The customer scans the code
 
 The customer scans the QR code and is redirected to your website.
-They select to pay with Vipps.
+They select to pay with Vipps MobilePay.
 
 ### Step 3: Initiate a payment request
 
@@ -71,8 +71,8 @@ When the user clicks the pay button, create a payment request with the selected 
 <div>
 
 Since the customer has scanned from their phone, you don't need their phone number.
-This payment command can do an app-switch and open their Vipps app with the payment request.
-Specify `"userFlow": "WEB_REDIRECT"` to redirect the user to the Vipps app.
+This payment command can do an app-switch and open their Vipps MobilePay app with the payment request.
+Specify `"userFlow": "WEB_REDIRECT"` to redirect the user to the app.
 
 You may include a receipt at this time.
 

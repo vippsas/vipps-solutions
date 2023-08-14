@@ -71,7 +71,7 @@ sequenceDiagram
     actor User
     participant Merchant
     participant Payment landing page
-    participant Vipps app
+    participant Vipps MobilePay app
     participant ePayment API
     participant Login API
     participant Auth0 API
@@ -84,11 +84,11 @@ sequenceDiagram
 
     Merchant->>Payment landing page: Redirect to the payment landing page
 
-    Payment landing page->>Vipps app: Receive push for payment
+    Payment landing page->>Vipps MobilePay app: Receive push for payment
 
-    Vipps app->>User: Display payment info
+    Vipps MobilePay app->>User: Display payment info
 
-    User->>Vipps app: Complete payment
+    User->>Vipps MobilePay app: Complete payment
 
     Payment landing page->>Merchant: Redirect to merchant-defined return URL
 
@@ -272,7 +272,7 @@ Before a user can be created through the API, you must make sure that there are 
 "oauth2|VippsLogin|{sub}"
 ```
 
-Here, the `sub` is a unique identifier provided by Vipps. To read more about the `sub`, check out [What is the sub?](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-faq/#what-is-the-sub) In this case, the provider is `oauth2` and the connection is `VippsLogin`.
+Here, the `sub` is a unique identifier provided by Vipps MobilePay. To read more about the `sub`, check out [What is the sub?](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-faq/#what-is-the-sub) In this case, the provider is `oauth2` and the connection is `VippsLogin`.
 
 To check if a user exists given a user ID, you can use the `Users.GetAsync()` method from the Management API Client. This will get the requested user if it exists, otherwise, it will throw an exception. In the examples below we return `true` or `false` depending on the outcome, but you can choose to handle exceptions differently based on the needs of your applications.
 

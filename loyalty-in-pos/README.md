@@ -20,7 +20,7 @@ retail stores that want to combine loyalty with payments.
 It's a great way to improve the payment experience for customers and simplify the process
 of adding customers to the merchant loyalty club.
 
-The solution is a combination of the personal QR codes in the Vipps or MobilePay app,
+The solution is a combination of the personal QR codes in the Vipps MobilePay app,
 the
 [Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api),
 the

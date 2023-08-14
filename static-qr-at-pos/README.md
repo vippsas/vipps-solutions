@@ -17,7 +17,7 @@ END_METADATA -->
 💥 Please note: The Merchant Callback QR feature is being implemented, and is not yet available. Planned release is Q2 2023. 💥
 
 In this flow, a user pays by scanning a QR with their Vipps MobilePay app.
-The merchant gets their ID and sends a payment request to them through the Vipps MobilePay app.
+The merchant gets their ID and sends a payment request to them through the app.
 
 ## Details
 
@@ -78,7 +78,7 @@ Here is an example HTTP POST:
 
 ### Step 3: The customer scans the QR
 
-When the customer scans the QR, your system will receive a notification that the customer is ready to pay with Vipps or MobilePay.
+When the customer scans the QR, your system will receive a notification that the customer is ready to pay with Vipps MobilePay.
 The notification will contain a token the merchant can use to start a payment.
 
 ### Step 4: Send the payment request
@@ -90,7 +90,7 @@ Use the token to send the customer a
 <summary>Detailed example</summary>
 <div>
 
-Specify `"userFlow": "WEB_REDIRECT"` to redirect the user to the Vipps app.
+Specify `"userFlow": "WEB_REDIRECT"` to redirect the user to the app.
 
 You may attach the receipt at this time.
 

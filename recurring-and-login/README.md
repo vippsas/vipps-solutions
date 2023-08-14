@@ -35,12 +35,12 @@ The customer identifies themselves by logging in with Vipps Login.
 From a browser:
 
 * If they are remembered from earlier, the login will be completed directly there.
-* Otherwise, they will enter their phone number and be taken to the app to the Vipps app.
+* Otherwise, they will enter their phone number and be taken to the app to the Vipps MobilePay app.
 See [Log in with browser](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-quick-start/#log-in-with-browser) for a detailed example.
 
 From a mobile app:
 
-* They will be switched over to the Vipps MobilePay app automatically.
+* They will be switched over to the app automatically.
 
 ![Log in](images/login-recurring-step2-v2.svg)
 
@@ -60,7 +60,7 @@ If the customer has previously consented to sharing information with the merchan
 
 ![Give consent to share information](images/login-recurring-step4.svg)
 
-The customer can later see the information they have consented to share, by clicking *See your information* in the Vipps MobilePay app.
+The customer can later see the information they have consented to share, by clicking *See your information* in the app.
 
 ### Step 5. Create agreement
 

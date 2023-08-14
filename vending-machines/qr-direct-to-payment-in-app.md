@@ -37,7 +37,7 @@ This QR code can be used when you don't have a screen, and it's not possible to 
 
 A Vipps MobilePay [QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes) is posted on the vending machine.
 
-When the customer scans the QR code, they go directly to the Vipps or MobilePay payment screen on their phone, where they can approve the payment.
+When the customer scans the QR code, they go directly to the payment screen on their phone, where they can approve the payment.
 
 The payment amount should be the max amount of the vending machine products. After reservation, the amount of the selected product must be captured, and the remaining amount must be released.
 

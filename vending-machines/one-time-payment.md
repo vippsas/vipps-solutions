@@ -48,7 +48,7 @@ Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
 You can also include a receipt at this time.
 
 Since the customer will scan from their phone, you don't need their phone number.
-This payment command can do an app-switch and open their Vipps app with the payment request.
+This payment command can do an app-switch and open their Vipps MobilePay app with the payment request.
 
 Here is an example HTTP POST:
 
@@ -101,7 +101,7 @@ With body:
 
 ### Step 2: The customer authorizes the payment
 
-When the customer scans the QR code, they go directly to the Vipps or MobilePay payment screen on their phone, where they can approve the payment.
+When the customer scans the QR code, they go directly to the payment screen on their phone, where they can approve the payment.
 
 <AUTHORIZEPAYMENT />
 

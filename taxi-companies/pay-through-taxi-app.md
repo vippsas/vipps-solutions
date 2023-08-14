@@ -11,7 +11,7 @@ END_METADATA -->
 
 # Payment through company app
 
-The customer pays the taxi company from their app when ordering the taxi and selects to pay with Vipps.
+The customer pays the taxi company from their app when ordering the taxi and selects to pay with Vipps MobilePay.
 The amount is reserved until the final amount is known, at which time the payment is captured.
 
 This flow combines multiple products to illustrate the recommended online payment flow.
@@ -39,11 +39,10 @@ To create this payment, you first send a
 [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request.
 
 Since the customer is selecting this from an app on their phone, you don't need their phone number.
-This payment command can do an app-switch and open their Vipps app with the payment request.
+This payment command can do an app-switch and open their app with the payment request.
 Specify `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
 
 Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
-
 
 Here is an example HTTP POST:
 
@@ -76,7 +75,7 @@ Here is an example HTTP POST:
 
 ### Step 4. Confirm the order
 
-Upon authorization, the Vipps app should automatically redirect the customer to your app.
+Upon authorization, the Vipps MobilePay app should automatically redirect the customer to your app.
 Confirm that the order has been successful in your app.
 
 ### Step 5. Capture the amount due

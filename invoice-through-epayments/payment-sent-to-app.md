@@ -120,7 +120,7 @@ With body:
 
 <AUTHORIZEPAYMENT />
 
-Since you have already attached order information to this payment, the customer will be able to see this in the Vipps app.
+Since you have already attached order information to this payment, the customer will be able to see this in the Vipps MobilePay app.
 When they select `See details` in the payment confirmation screen, they are presented with the order information without leaving the app.
 
 Note that, for long-living payments, customers also have the option of soft-dismissing the payment and postponing it for later.
