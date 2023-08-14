@@ -154,5 +154,6 @@ sequenceDiagram
     M->>C: Display order confirmation
     M->>C: Ship the order (if applicable)
     M->>ePayment: Capture payment
-    Webhooks-->>M: Callback with status of capture
+    ePayment-->>M: Status of capture
+    M->>M: Verify status of POS matches capture
 ```

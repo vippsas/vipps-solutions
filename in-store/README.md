@@ -173,5 +173,6 @@ sequenceDiagram
     C->>C: Customer clicks pay
     Webhooks-->>M: Callback with status of payment authorization
     M->>ePayment: Capture payment
-    Webhooks-->>M: Callback with status of capture
+    ePayment-->>M: Status of capture
+    M->>M: Verify status of POS matches capture
 ```

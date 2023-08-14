@@ -247,5 +247,6 @@ sequenceDiagram
     M->>Recurring: Initiate payment request
     Recurring->>C: Inform customer of agreed payment to transpire
     M->> ordermanagement: Attach receipt showing amount paid
-    Recurring-->>M: Check the status of capture
+    Recurring-->>M: Status of capture
+    M->>M: Verify status of merchant system reflects the capture
 ```
