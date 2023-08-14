@@ -99,7 +99,7 @@ With body:
    "merchantAgreementUrl": "https://example.com/agreement-url",
    "phoneNumber": "91234567",
    "productName": "1 year subscription",
-   "productDescription": "Get 6 editions of our magazing for only 599,- per year.",
+   "productDescription": "Get 6 editions of our magazine for only 599,- per year.",
 }
 ```
 
@@ -201,7 +201,7 @@ Body:
 {
   "orderLines": [
     {
-        "name": "Webstore subscription",
+        "name": "Web store subscription",
         "id": "12k3lj4l3",
         "totalAmount": 10000,
         "totalAmountExcludingTax": 8000,
