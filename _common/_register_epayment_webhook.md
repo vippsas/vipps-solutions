@@ -22,7 +22,8 @@ Here is an example HTTP POST:
 }
 ```
 
-Use the `id` and `secret` to authenticate the message with HMAC.
+Use the `secret` to authenticate the message with HMAC. For examples, see
+[Webhooks API: Request authentication](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/request-authentication/).
 
 The [payload](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/webhooks/) from this webhook will be in this form:
 
@@ -42,6 +43,9 @@ The [payload](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/featur
     "success": true
 }
 ```
+
+Note that the payload of the webhook depends on the originating service, in this case the
+[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/webhooks/).
 
 </div>
 </details>
