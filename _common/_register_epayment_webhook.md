@@ -22,18 +22,24 @@ Here is an example HTTP POST:
 }
 ```
 
+Use the `id` and `secret` to authenticate the message with HMAC.
+
 The [payload](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/webhooks/) from this webhook will be in this form:
 
 ```json
 {
     "msn": "123456",
-    "reference": "2486791679658155992",
-    "pspReference": "2486791679658155992",
+    "reference": "24ab7cd6ef658155992",
+    "pspReference": "1234567891",
     "name": "AUTHORIZED",
-    "amount": 35000,
-    "timestamp":"2023-01-01T00:00:00Z",
-    "idempotencyKey": "49ca711a-acee-4d01-993b-9487112e1def",
-    "success": True
+    "amount":
+    {
+        "currency": "NOK",
+        "value": 35000
+    },
+    "timestamp": "2023-08-14T12:48:46.260Z",
+    "idempotencyKey": "49ca711a9487112e1def",
+    "success": true
 }
 ```
 
