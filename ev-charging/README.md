@@ -8,6 +8,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import REGISTERWEBHOOK from '../_common/_register_epayment_webhook.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 END_METADATA -->
 
@@ -32,6 +33,10 @@ and
 to build this flow.
 
 ![EV charging with Vipps: Screenshots](images/ev-charging-process-screenshots.png)
+
+### Prerequisites
+
+<REGISTERWEBHOOK />
 
 ### Step 1: Generate a merchant redirect QR code
 
@@ -112,9 +117,9 @@ Here is an example HTTP POST:
 The customer's Vipps MobilePay app should open automatically, with the maximum reservation amount visible.
 They can then confirm the payment.
 
-Afterwards, they are redirected back to the charging provider's website, where the status of the charge session is presented.
+Afterwards, they are redirected back to the charging website, where the status of the charge session is presented.
 
-Once you know that payment was approved you, can start charging.
+Once you know that payment was approved, you can start charging.
 To get confirmation, monitor
 [webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
 [query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
