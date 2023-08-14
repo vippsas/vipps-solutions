@@ -15,6 +15,5 @@ Vipps MobilePay can make it easier for your customers to pay for products in ven
 The following are the most common scenarios:
 
 * [Dynamic QR directing to the app for payment](one-time-payment.md) *(screen necessary)*
-* [Static QR directing to the app for payment](qr-direct-to-payment-in-app.md)
 * [Static QR directing to the merchant site for payment](qr-to-merchant-site-payment-only.md)
 * [Static QR directing to the merchant site for product selection](qr-to-merchant-site-product-selection.md)
