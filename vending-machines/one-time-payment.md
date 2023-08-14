@@ -41,6 +41,7 @@ Display the QR on the screen.
 <div>
 
 To generate the dynamic QR code and associated payment request, specify `"userFlow": "QR"`.
+You may also specify the `qrFormat` and `size` for the QR.
 
 Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
 
@@ -52,6 +53,7 @@ This payment command can do an app-switch and open their Vipps app with the paym
 Here is an example HTTP POST:
 
 [`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+
 
 With body:
 
