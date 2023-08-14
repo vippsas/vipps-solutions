@@ -13,8 +13,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
-import FULLCAPTURE from '../_common/_full_capture.md'
+
 END_METADATA -->
 
 # Payment request sent directly to app
@@ -53,23 +52,102 @@ where `customer.phoneNumber` is set.
 
 The customer will receive a push notification in their Vipps MobilePay app.
 
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+Your system can send the payment request by using the
+[`createPayment`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+endpoint.
+
+Set `userFlow` to `PUSH_MESSAGE`. This will send a push directly to the customer.
+Attach the receipt simultaneously.
+
+Here is an example HTTP POST:
+
+[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+
+With body:
+
+```json
+{
+  "amount": {
+    "value": 300000,
+    "currency": "NOK"
+  },
+  "paymentMethod": {
+    "type": "WALLET"
+  },
+  "customer": {
+    "phoneNumber": 4791234567
+  },
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "Accident insurance",
+        "id": "12345",
+        "totalAmount": 150000,
+        "totalAmountExcludingTax": 112500,
+        "totalTaxAmount": 37500,
+        "taxPercentage": 25,
+      },
+      {
+        "name": "Travel insurance",
+        "id": "12345",
+        "totalAmount": 150000,
+        "totalAmountExcludingTax": 112500,
+        "totalTaxAmount": 37500,
+        "taxPercentage": 25,
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+    },
+   "receiptNumber": "0527013501"
+  },
+  "reference": 2486791679658155992,
+  "userFlow": "PUSH_MESSAGE",
+  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
+  "paymentDescription": "Spendings"
+}
+```
+
+</div>
+</details>
+
 ### Step 2. Customer approves the payment
 
 <AUTHORIZEPAYMENT />
 
-<!--
-If you have already attached order information to this payment, the customer will be able to see this in the Vipps app.
-When they select `See details` in the payment confirmation screen, they are presented with the order information without leaving the app. -->
+Since you have already attached order information to this payment, the customer will be able to see this in the Vipps app.
+When they select `See details` in the payment confirmation screen, they are presented with the order information without leaving the app.
 
 Note that, for long-living payments, customers also have the option of soft-dismissing the payment and postponing it for later.
 
-### Step 3. Attach a receipt to the order
+### Step 3. Capture the payment
 
-<ATTACHRECEIPT />
+Capture the payment and confirm that it was successful.
 
-### Step 4. Capture the payment
+<details>
+<summary>Detailed example</summary>
+<div>
 
-<FULLCAPTURE />
+[`POST:/epayment/v1/payments/{reference}/capture`](/api/epayment/#tag/AdjustPayments/operation/capturePayment)
+
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 300000,
+    "currency": "NOK"
+  }
+}
+```
+
+</div>
+</details>
 
 ## Sequence diagram
 
@@ -80,15 +158,13 @@ sequenceDiagram
     actor C as Customer
     participant M as Merchant
     participant ePayment as ePayment API
+    participant Webhooks as Webhooks API
 
     M->>ePayment: Initiate payment request
-    ePayment->>C: Request payment
-    C->>ePayment: Authorize payment
-    ePayment->>M: Callback with status
+    ePayment->>C: Request payment and attach receipt
+    C->>C: Customer clicks pay
+    Webhooks-->>M: Callback with status of payment authorization
     M->>C: Display order confirmation on product page
-    M->> ordermanagement: Attach receipt
-    ePayment->>C: Provide payment information
-    M-->>C: Ship the order (if applicable)
-    M->>ePayment: Capture payment 
-    M->>ePayment: Check the status of capture
+    M->>ePayment: Capture payment
+    Webhooks-->>M: Callback with status of capture
 ```

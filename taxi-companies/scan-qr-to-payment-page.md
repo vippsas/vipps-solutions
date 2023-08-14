@@ -7,52 +7,136 @@ pagination_prev: null
 ---
 
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
-import FULLCAPTURE from '../_common/_full_capture.md'
+
 END_METADATA -->
 
 # Payment through company website
 
-The customer scans a Vipps QR code and is directed to the taxi company's landing page.
-There, they follow instructions and pay with Vipps.
+The customer scans a QR code and is directed to the taxi company's landing page.
+The company sends a payment request to them through the Vipps MobilePay app.
 
 ![Labeling in the taxi](images/labeling_in_the_taxi.png)
 
 ## Details
 
-The flow is a variation of the [In-store using static QR](../static-qr-at-pos/README.md) flow.
+### Step 1: Generate a merchant redirect QR code
 
-### Step 1: Generate a static QR code
-
-Generate a static QR code with a
+Generate a
 [merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
 linking to your website or app.
+Print and place the QR code in your taxi.
 
-### Step 2: The customer scans the static QR
+<details>
+<summary>Detailed example</summary>
+<div>
 
-When the customer scans the QR, your system will receive a notification that the QR has been scanned and will be able to get the customer's phone number.
+The QR code contains a `Id` that connects it to the taxi where it is located.
+
+Here is an example HTTP POST:
+
+[`POST:/qr/v1/merchant-redirect`](https://developer.vippsmobilepay.com/api/qr/#operation/CreateMerchantRedirectQr)
+
+```json
+{
+  "id": "taxi_122_qr",
+  "redirectUrl": "https://example.com/myTaxiCompany"
+}
+```
+
+</div>
+</details>
+
+### Step 2: The customer scans the QR
+
+When the customer scans the QR with their phone, they will be redirected to the `redirectUrl`.
 
 ### Step 3: Send the payment request
 
-Use the customer's phone number to send them a [Create Payment request](https://developer.vippsmobilepay.com/api/epayment/#tag/CreatePayments/operation/createPayment) for the taxi fare through Vipps.
+Send a payment request to the customer
 
-Specify `"customerInteraction": "CUSTOMER_PRESENT"` and `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
+<details>
+<summary>Detailed example</summary>
+<div>
+
+Since the customer has scanned from their phone, you don't need their phone number.
+This payment command can do an app-switch and open their Vipps app with the payment request.
+Specify `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
+Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
+
+Here is an example HTTP POST:
+
+[`POST:/epayment/v1/payments`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
+
+```json
+{
+  "amount": {
+    "value": 10000,
+    "currency": "NOK"
+  },
+  "paymentMethod": {
+    "type": "WALLET"
+  },
+  "customerInteraction": "CUSTOMER_PRESENT",
+  "receipt":{
+    "orderLines": [
+      {
+        "name": "trip",
+        "id": "line_item_1",
+        "totalAmount": 100000,
+        "totalAmountExcludingTax": 80000,
+        "totalTaxAmount": 20000,
+        "taxPercentage": 25,
+      },
+    ],
+    "bottomLine": {
+      "currency": "NOK",
+      "posId": "taxi_122",
+      "tipAmount": 10000
+    },
+   "receiptNumber": "0527013501"
+  },
+  "reference": 2486791679658155992,
+  "userFlow": "WEB_REDIRECT",
+  "returnUrl": "http://example.com/redirect?reference=2486791679658155992",
+  "paymentDescription": "Travel from Oslo central station to Oslo airport"
+}
+
+```
+
+</div>
+</details>
 
 ### Step 4: The customer authorizes the payment
 
 <AUTHORIZEPAYMENT />
 
-### Step 5: Attach a receipt
+### Step 5: Capture the payment
 
-<ATTACHRECEIPT />
+Capture the payment and confirm that it was successful.
 
-See
-[Adding a receipt](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api/#adding-a-receipt)
-for more details.
+<details>
+<summary>Detailed example</summary>
+<div>
 
-### Step 6: Capture the payment
+[`POST:/epayment/v1/payments/{reference}/capture`](/api/epayment/#tag/AdjustPayments/operation/capturePayment)
 
-<FULLCAPTURE />
+With body:
+
+```json
+{
+  "modificationAmount": {
+    "value": 10000,
+    "currency": "NOK"
+  }
+}
+```
+
+</div>
+</details>
+
+## Related links
+
+* [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
 
 ## Sequence diagram
 
@@ -62,15 +146,14 @@ sequenceDiagram
     participant M as Merchant
     participant QR as QR API
     participant ePayment as ePayment API
-    participant ordermanagement as Order Management API
+    participant Webhooks as Webhooks API
 
     QR->>C: Scan for customer ID
     M->>M: Add product to sale
-    M->>ePayment: Initiate payment request
+    M->>ePayment: Initiate payment request with receipt
     ePayment->>C: Request payment
-    C->>ePayment: Authorize payment
-    M->> ordermanagement: Attach receipt
-    ePayment->>C: Provide payment information
-    M->>ePayment: Capture payment 
-    M->>ePayment: Check the status of capture
+    C->>C: Customer clicks pay
+    Webhooks-->>M: Callback with status of payment authorization
+    M->>ePayment: Capture payment
+    Webhooks-->>M: Callback with status of capture
 ```

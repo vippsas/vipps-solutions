@@ -8,7 +8,6 @@ pagination_next: null
 pagination_prev: null
 ---
 
-import ATTACHRECEIPT from '../_common/_attach_receipt.md'
 END_METADATA -->
 
 # Subscriptions
@@ -37,6 +36,7 @@ From a browser:
 
 * If they are remembered from earlier, the login will be completed directly there.
 * Otherwise, they will enter their phone number and be taken to the app to the Vipps app.
+See [Log in with browser](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-quick-start/#log-in-with-browser) for a detailed example.
 
 From a mobile app:
 
@@ -70,39 +70,155 @@ The information they have shared with you should be pre-filled in the form, wher
 
 ![Checkout](images/login-recurring-step5-v3.svg)
 
-See [Create an agreement](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api/#create-an-agreement) in the Recurring API guide for more information.
+<details>
+<summary>Detailed example</summary>
+<div>
 
-If there is an initial payment, specify this in the agreement.
+Here is an example HTTP POST:
 
-### Step 6. Accept agreement
+[`POST:/agreements`](https://developer.vippsmobilepay.com/api/recurring#tag/Agreement-v3-endpoints/operation/DraftAgreementV3)
+
+With body:
+
+```json
+{
+   "interval": {
+      "unit" : "YEAR",
+      "count": 1
+   },
+   "initialCharge": {
+      "amount": 59900,
+      "description": "Payment of first year",
+      "transactionType": "DIRECT_CAPTURE"
+   },
+   "pricing": {
+      "amount": 59900,
+      "currency": "NOK"
+   },
+   "merchantRedirectUrl": "https://example.com/redirect-url",
+   "merchantAgreementUrl": "https://example.com/agreement-url",
+   "phoneNumber": "91234567",
+   "productName": "1 year subscription",
+   "productDescription": "Get 6 editions of our magazing for only 599,- per year.",
+}
+```
+
+</div>
+</details>
+
+See [Create an agreement](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api/#create-an-agreement) for more information.
+
+### Step 6. Customer confirms subscription
 
 The customer accepts the agreement in the Vipps MobilePay app.
 
 ![Accept agreement](images/login-recurring-step6-v2.svg)
 
-### Step 7. Customer confirms subscription
-
-The customer is returned to the merchant's website or app, and the subscription is confirmed on the merchant's site.
+They are returned to the merchant's website or app where the subscription is confirmed.
 
 ![Confirmation page](images/login-recurring-step7.svg)
 
-### Step 8. Capture initial payment (if applicable)
+### Step 7. Capture initial payment (if applicable)
 
 If you had an initial payment, the charge for this will have been created as part of the agreement. Then, you will need to capture that reserved amount with the
-[capture](https://developer.vippsmobilepay.com/api/recurring/#tag/Charge-v3-endpoints/operation/RefundChargeV3)
+[capture](https://developer.vippsmobilepay.com/api/recurring#tag/Charge-v3-endpoints/operation/CaptureChargeV3)
 endpoint.
 
-### Step 9. Schedule and capture charges
+<details>
+<summary>Detailed example</summary>
+<div>
 
-Your system must schedule and place all the future agreed charges.
-Use the [create charge](https://developer.vippsmobilepay.com/api/recurring/#tag/Charge-v3-endpoints/operation/CreateChargeV3) endpoint to place the charge and specify the due date. A charge must be scheduled a minimum of two days before the payment will occur.
-It will be automatically captured on the due date.
+Here is an example HTTP POST:
+
+[POST:/recurring/v3/agreements/{agreementId}/charges/{chargeId}/capture](https://developer.vippsmobilepay.com/api/recurring#tag/Charge-v3-endpoints/operation/CaptureChargeV3)
+
+With body:
+
+```json
+{
+  "amount": 59900,
+  "description": "Yearly subscription renewal."
+}
+```
+
+</div>
+</details>
 
 Be sure to check the status of the captured charges.
 
-### Step 10. Attach a receipt for the charge
+### Step 8. Schedule charges
 
-<ATTACHRECEIPT />
+Your system must schedule and place all the future agreed charges.
+
+Use the [create charge](https://developer.vippsmobilepay.com/api/recurring/#tag/Charge-v3-endpoints/operation/CreateChargeV3)
+endpoint to place the charge and specify the due date. A charge must be scheduled a minimum of two days before the payment will occur.
+It will be automatically captured on the due date.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+Here is an example HTTP POST:
+
+[POST:/recurring/v3/agreements/{agreementId}/charges](https://developer.vippsmobilepay.com/api/recurring/#tag/Charge-v3-endpoints/operation/CreateChargeV3)
+
+With body:
+
+```json
+{
+  "amount": 59900,
+  "transactionType": "DIRECT_CAPTURE",
+  "description": "Yearly subscription renewal.",
+  "due": "2025-01-01",
+  "retryDays": 0
+}
+```
+
+</div>
+</details>
+
+Be sure to check the status of the charges.
+
+### Step 9. Attach a receipt
+
+Send a digital receipt for the payment.
+
+<details>
+<summary>Detailed example</summary>
+<div>
+
+
+Here is an example HTTP POST:
+
+[`POST:/order-management/v2/recurring/receipts/{orderId}`](https://developer.vippsmobilepay.com/api/order-management/#operation/postReceiptV2)
+
+For `paymentType`, use `recurring` for recurring payments.
+For `orderId`, use the `chargeId` of the charge.
+
+Body:
+
+```json
+{
+  "orderLines": [
+    {
+        "name": "Webstore subscription",
+        "id": "12k3lj4l3",
+        "totalAmount": 10000,
+        "totalAmountExcludingTax": 8000,
+        "totalTaxAmount": 2000,
+        "taxPercentage": 25,
+        "productUrl": "https://www.example.com/yoursubscription",
+      },
+    },
+  ],
+  "bottomLine": {
+    "currency": "NOK",
+  }
+}
+```
+
+</div>
+</details>
 
 ## Relevant pages
 
@@ -113,7 +229,7 @@ For more information, see:
 
 ## Sequence diagram
 
-Sequence diagram for the subscriptions with login flow.
+Sequence diagram for the subscription signup with login flow and initial charge.
 
 ``` mermaid
 sequenceDiagram
@@ -125,17 +241,29 @@ sequenceDiagram
 
     M->>Login: Initiate login and userinfo request
     Login->>C: Request login and userinfo
-    C->>Login: Log in and give consent
+    C->>C: Log in and give consent
     M->>M: If user consents, prefill customer information
+    M->> ordermanagement: Create receipt for the agreement
     M->>Recurring: Initiate agreement request
     Recurring->>C: Request agreement
-    C->>Recurring: Accept agreement
-    Recurring->>C: Provide agreement information
+    C->>C: Customer accepts agreement
     M->>C: Display confirmation on product site
-    M-->>Recurring: Initiate initial payment capture (if applicable)
-    Recurring-->>C: Capture initial payment (if applicable)
-    M->>Recurring: Schedule future charges
-    Recurring->>C: Automatic capture on due dates of scheduled charges
-    M->>Recurring: Check the status of captures
-    M->> ordermanagement: Attach receipt for the charge
+    M->>Recurring: Initiate initial payment capture
+    Recurring->>C: Capture initial payment
+```
+
+Yearly charges:
+
+``` mermaid
+sequenceDiagram
+    actor C as Customer
+    participant M as Merchant
+    participant Login as Login API
+    participant Recurring as Recurring API
+    participant ordermanagement as Order Management API
+
+    M->>Recurring: Schedule charge
+    Recurring->>C: Inform customer of agreed payment to transpire
+    M->> ordermanagement: Attach receipt showing amount to be paid
+    Recurring-->>M: Check the status of capture
 ```
