@@ -9,6 +9,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import REGISTERWEBHOOK from '../_common/_register_epayment_webhook.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 END_METADATA -->
 
@@ -20,6 +21,17 @@ and the
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 
 ![Loyalty Flow](./images/POS_simple_flow.png)
+
+## Prerequisites
+
+### Scanner
+
+Your system needs a QR code scanner that your cashier or the customer can use to scan the
+customer's personal Vipps MobilePay QR code.
+
+### Webhooks for ePayment events
+
+<REGISTERWEBHOOK />
 
 ## Details
 

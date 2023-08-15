@@ -6,6 +6,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import REGISTERWEBHOOK from '../_common/_register_epayment_webhook.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 
 END_METADATA -->
@@ -17,9 +18,9 @@ The company sends a payment request to them through the Vipps MobilePay app.
 
 ![Labeling in the taxi](images/labeling_in_the_taxi.png)
 
-## Details
+## Prerequisites
 
-### Step 1: Generate a merchant redirect QR code
+### QR code in the taxi
 
 Generate a
 [merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
@@ -27,7 +28,7 @@ linking to your website or app.
 Print and place the QR code in your taxi.
 
 <details>
-<summary>Detailed example</summary>
+<summary>How to create a QR code</summary>
 <div>
 
 The QR code contains a `Id` that connects it to the taxi where it is located.
@@ -46,11 +47,17 @@ Here is an example HTTP POST:
 </div>
 </details>
 
-### Step 2: The customer scans the QR
+### Webhooks for ePayment events
+
+<REGISTERWEBHOOK />
+
+## Details
+
+### Step 1: The customer scans the QR
 
 When the customer scans the QR with their phone, they will be redirected to the `redirectUrl`.
 
-### Step 3: Send the payment request
+### Step 2: Send the payment request
 
 Send a payment request to the customer
 
@@ -106,11 +113,11 @@ Here is an example HTTP POST:
 </div>
 </details>
 
-### Step 4: The customer authorizes the payment
+### Step 3: The customer authorizes the payment
 
 <AUTHORIZEPAYMENT />
 
-### Step 5: Capture the payment
+### Step 4: Capture the payment
 
 Capture the payment and confirm that it was successful.
 

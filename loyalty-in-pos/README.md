@@ -9,6 +9,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import REGISTERWEBHOOK from '../_common/_register_epayment_webhook.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 
 END_METADATA -->
@@ -31,6 +32,17 @@ and the
 The following describes the process at a high level.
 
 ![Loyalty Flow](images/POS_flow.png)
+
+## Prerequisites
+
+### Scanner
+
+Your system needs a QR code scanner that your cashier can use to scan the
+customer's personal Vipps MobilePay QR code.
+
+### Webhooks for ePayment events
+
+<REGISTERWEBHOOK />
 
 ## Details
 
@@ -112,8 +124,11 @@ When this login flow is completed, the customer will be enrolled in the loyalty 
 
 See [Log in with browser](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-quick-start/#log-in-with-browser) for a detailed example.
 
+### Step 4: Add the products to be purchased
 
-### Step 4: Send a payment request
+Add the products that the customer wants to buy in the POS system.
+
+### Step 5: Send a payment request
 
 After membership status has been determined and all articles have been scanned, send a payment request to the customer.
 
@@ -182,14 +197,14 @@ With body:
 </div>
 </details>
 
-### Step 5. Customer approves the payment
+### Step 6. Customer approves the payment
 
 <AUTHORIZEPAYMENT />
 
 
 ![Loyalty Flow](images/POS_step_4.png)
 
-### Step 6: Capture the payment
+### Step 7: Capture the payment
 
 Capture the payment and confirm that it was successful.
 

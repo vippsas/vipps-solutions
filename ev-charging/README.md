@@ -8,6 +8,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import REGISTERWEBHOOK from '../_common/_register_epayment_webhook.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 END_METADATA -->
 
@@ -24,26 +25,17 @@ solution that enables your customers to use your charging network with no hassle
 The best drop-in charging flow provides QR codes that can be scanned by
 the customer with their phone's camera or the Vipps MobilePay app.
 
-## Details
+## Prerequisites
 
-Combine the [QR API](https://developer.vippsmobilepay.com/docs/APIs/qr-api)
-and
-[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api)
-to build this flow.
-
-![EV charging with Vipps: Screenshots](images/ev-charging-process-screenshots.png)
-
-### Step 1: Generate a merchant redirect QR code
+### QR code on the charging station
 
 Generate a
 [merchant redirect QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
 that contains the link to your website and the ID of the charging station.
 Place it on the charging station.
 
-The customer scans the QR code and is redirected to your website.
-
 <details>
-<summary>Detailed example</summary>
+<summary>How to create a QR code</summary>
 <div>
 
 The QR code contains a `Id` that connects it to the taxi where it is located.
@@ -62,10 +54,28 @@ Here is an example HTTP POST:
 </div>
 </details>
 
-### Step 2. Initiate payment request
-
 The website that the customer lands on should contain payment options, in addition to terms and conditions.
-If the QR code contained an identification of the charging point, the customer doesn't have to type in any identification code to start charging.
+
+### Webhooks for ePayment events
+
+<REGISTERWEBHOOK />
+
+## Details
+
+Combine the [QR API](https://developer.vippsmobilepay.com/docs/APIs/qr-api)
+and
+[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api)
+to build this flow.
+
+![EV charging screenshots](images/ev-charging-process-screenshots.png)
+
+### Step 1: The customer scans the QR code
+
+When customer scans the QR code, they are redirected to your website on their phone.
+
+Since the QR code contains an identification of the charging point, the customer doesn't have to type in any identification code to start charging.
+
+### Step 2. Initiate payment request
 
 When the customer is ready to pay, initiate a payment request.
 
@@ -110,14 +120,12 @@ Here is an example HTTP POST:
 ### Step 3. Customer approves the payment
 
 The customer's Vipps MobilePay app should open automatically, with the maximum reservation amount visible.
-They can then confirm the payment.
+They can select to pay or cancel.
+Afterwards, they are redirected back to the charging website, where the status of the charge session is presented.
 
-Afterwards, they are redirected back to the charging provider's website, where the status of the charge session is presented.
-
-Once you know that payment was approved you, can start charging.
-To get confirmation, monitor
-[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
-[query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
+Once you know that payment was approved, you can start charging.
+To get confirmation that payment was approved, monitor your
+[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api).
 
 ### Step 4. Start charging
 

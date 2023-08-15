@@ -8,6 +8,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import REGISTERWEBHOOK from '../_common/_register_epayment_webhook.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 
 END_METADATA -->
@@ -24,6 +25,17 @@ The QR directs the customer to the Vipps MobilePay app, where they authorize the
 This is the preferred flow when it's possible to show a dynamic QR code on the vending machine.
 
 Use this flow when you have a screen connected.
+
+## Prerequisites
+
+### Screen
+
+You need a screen to display the one-time QR.
+
+### Webhooks for ePayment events
+
+<REGISTERWEBHOOK />
+
 
 ## Details
 

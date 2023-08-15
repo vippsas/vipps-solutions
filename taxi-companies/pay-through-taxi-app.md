@@ -6,6 +6,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import REGISTERWEBHOOK from '../_common/_register_epayment_webhook.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 END_METADATA -->
 
@@ -16,13 +17,15 @@ The amount is reserved until the final amount is known, at which time the paymen
 
 This flow combines multiple products to illustrate the recommended online payment flow.
 
+## Prerequisites
+
+### Webhooks for ePayment events
+
+<REGISTERWEBHOOK />
+
 ## Details
 
-### Step 1. Get the customer's the payment method
-
-Display an option to pay with Vipps on your app.
-
-### Step 2. Initiate a payment request
+### Step 1. Initiate a payment request
 
 When the customer is ready to pay, initiate a payment request.
 
@@ -69,16 +72,16 @@ Here is an example HTTP POST:
 </div>
 </details>
 
-### Step 3. The customer authorizes the payment
+### Step 2. The customer authorizes the payment
 
 <AUTHORIZEPAYMENT />
 
-### Step 4. Confirm the order
+### Step 3. Confirm the order
 
 Upon authorization, the Vipps MobilePay app should automatically redirect the customer to your app.
 Confirm that the order has been successful in your app.
 
-### Step 5. Capture the amount due
+### Step 4. Capture the amount due
 
 After the drive is complete, calculate how much the customer owes and do a
 [partial capture](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/capture#partial-capture).
@@ -105,14 +108,14 @@ With body:
 </div>
 </details>
 
-### Step 6. Cancel remaining amount
+### Step 5. Cancel remaining amount
 
 Release the remaining amount from the reservation with a
 [cancel](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/operations/cancel#cancel-after-a-partial-capture).
 
 [`POST:/epayment/v1/payments/{reference}/cancel`](https://developer.vippsmobilepay.com/api/epayment/#tag/AdjustPayments/operation/capturePayment)
 
-### Step 7. Attach a receipt
+### Step 6. Attach a receipt
 
 Attach a receipt with the amount paid.
 

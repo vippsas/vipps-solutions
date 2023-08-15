@@ -6,20 +6,27 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import REGISTERWEBHOOK from '../_common/_register_epayment_webhook.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 
 END_METADATA -->
 
-# Payment through taximeter and app
+# Payment through taximeter
 
 The customer orders a taxi in the taxi company's app. After the journey, the taximeter automatically initiates a payment request to Vipps with the customer's phone number, which is already known.
 The customer's Vipps MobilePay app opens, and the customer pays the amount due.
 
+## Prerequisites
+
+### Webhooks for ePayment events
+
+<REGISTERWEBHOOK />
+
 ## Details
 
-### Step 1. Get the customer's phone number through taxi app
+### Step 1. Get the customer's phone number
 
-Your system should contain the customer's phone number, since they ordered the taxi through the app.
+Get the customer's phone number through the taxi app or ask them for it and enter it manually.
 
 ### Step 2. Initiate a payment request
 

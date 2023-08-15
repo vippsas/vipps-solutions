@@ -9,6 +9,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import REGISTERWEBHOOK from '../_common/_register_epayment_webhook.md'
 END_METADATA -->
 
 # Parking and "Pay-as-you-go"
@@ -32,9 +33,9 @@ parking every day. They specify the total amount they are allowed to be for all 
 
 The same solution can of course be used to charge weekly, monthly, or yearly.
 
-## Details
+## Prerequisites
 
-### Step 1: Generate a merchant redirect QR code
+### Generate a QR code
 
 Generate a merchant redirect QR code with a
 [merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
@@ -43,7 +44,7 @@ linking to your company website.
 The customer scans the QR code and is redirected to your website.
 
 <details>
-<summary>Detailed example</summary>
+<summary>How to create a QR code</summary>
 <div>
 
 The QR code contains a `Id` that connects it to the taxi where it is located.
@@ -62,6 +63,15 @@ Here is an example HTTP POST:
 </div>
 </details>
 
+### Webhooks for ePayment events
+
+<REGISTERWEBHOOK />
+
+## Details
+
+### Step 1: The customer scans the QR code
+
+When customer scans the QR code, they are redirected to your website on their phone.
 
 ### Step 2. The customer logs in
 

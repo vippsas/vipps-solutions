@@ -8,6 +8,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import REGISTERWEBHOOK from '../_common/_register_epayment_webhook.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 
 END_METADATA -->
@@ -25,22 +26,15 @@ This QR code can be used when you don't have a screen, and it's not possible to 
 [one-time payment QR](one-time-payment.md)
 and when you want to offer product selection through your user interface.
 
-## Details
+## Prerequisites
 
-A merchant redirect QR code is posted on the vending machine.
-
-When the customer scans the QR code,
-they are taken to the merchant's landing page, where products can select.
-The price is presented, and the user pays for the product in their Vipps MobilePay app.
-
-### Step 1: Generate a merchant redirect QR code
+### QR code on the vending machine
 
 Generate a [merchant redirect QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
 linking to a webshop connected to the specific vending machine.
 
-
 <details>
-<summary>Detailed example</summary>
+<summary>How to create a QR code</summary>
 <div>
 
 The QR code contains a `Id` that connects it to the vending machine where it is located.
@@ -59,13 +53,19 @@ Here is an example HTTP POST:
 </div>
 </details>
 
+### Webhooks for ePayment events
 
-### Step 2: The customer scans the code
+<REGISTERWEBHOOK />
 
-The customer scans the QR code and is redirected to your website.
-They select to pay with Vipps MobilePay.
+## Details
 
-### Step 3: Initiate a payment request
+### Step 1: The customer scans the code
+
+When the customer scans the QR code,
+they are taken to the merchant's landing page, where products can select.
+The price is presented, and the user pays for the product in their Vipps MobilePay app.
+
+### Step 2: Initiate a payment request
 
 Initiate a payment request based on the selected products.
 
@@ -124,12 +124,11 @@ With body:
 </div>
 </details>
 
-### Step 4: The customer authorizes the payment
+### Step 3: The customer authorizes the payment
 
 <AUTHORIZEPAYMENT />
 
-
-### Step 5: Capture the payment
+### Step 4: Capture the payment
 
 <details>
 <summary>Detailed example</summary>
