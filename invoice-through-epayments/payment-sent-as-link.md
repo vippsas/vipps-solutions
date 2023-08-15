@@ -12,6 +12,7 @@ import ApiSchema from '@theme/ApiSchema';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+import REGISTERWEBHOOK from '../_common/_register_epayment_webhook.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 
 END_METADATA -->
@@ -41,14 +42,16 @@ values={[
 </TabItem>
 </Tabs>
 
-## Details
+## Prerequisites
 
-### Step 1. Give the customer a QR or link to your page
+### QR code with to your page
 
-Provide a QR code or link to your payment page where you present your customer with the option to pay with Vipps MobilePay.
+Generate a
+[merchant redirect QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+that contains the link to your website.
 
 <details>
-<summary>Detailed example</summary>
+<summary>How to create a QR code</summary>
 <div>
 
 The QR code contains a `Id` that connects it to the taxi where it is located.
@@ -67,6 +70,15 @@ Here is an example HTTP POST:
 </div>
 </details>
 
+### Webhooks for ePayment events
+
+<REGISTERWEBHOOK />
+
+## Details
+
+### Step 1. The customer scans the QR
+
+When customer scans the QR code, they are redirected to your website on their phone.
 
 ### Step 2. Create a payment request
 

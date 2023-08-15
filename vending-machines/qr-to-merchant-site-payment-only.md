@@ -8,6 +8,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import REGISTERWEBHOOK from '../_common/_register_epayment_webhook.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 
 END_METADATA -->
@@ -23,22 +24,15 @@ The QR directs the user to the merchant's landing page where payment is initiate
 
 This QR code can be used when you don't have a screen, and it's not possible to present the dynamic [one-time payment QR](one-time-payment.md).
 
-## Details
+## Prerequisites
 
-This is a variation of the [In-store using static QR](../static-qr-at-pos/README.md) flow.
-
-A merchant-generated QR code is posted on the vending machine.
-
-When the customer scans the QR code, they are taken to the merchant's landing page, which is waiting for the product to be selected on the vending machine.
-The price is presented, and the user pays for the product in their Vipps MobilePay app.
-
-### Step 1: Generate a merchant redirect QR code
+### QR code on the vending machine
 
 Generate a [merchant redirect QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
 linking to a web page containing payment options.
 
 <details>
-<summary>Detailed example</summary>
+<summary>How to create a QR code</summary>
 <div>
 
 The QR code contains a `Id` that connects it to the vending machine where it is located.
@@ -53,16 +47,21 @@ Here is an example HTTP POST:
   "redirectUrl": "https://example.com/myvendingmachines"
 }
 ```
-
 </div>
 </details>
 
-### Step 2: The customer scans the code
+### Webhooks for ePayment events
 
-The customer scans the QR code and is redirected to your website.
-They select to pay with Vipps MobilePay.
+<REGISTERWEBHOOK />
 
-### Step 3: Initiate a payment request
+## Details
+
+### Step 1: The customer scans the code
+
+When the customer scans the QR code, they are taken to the merchant's landing page, which is waiting for the product to be selected on the vending machine.
+The price is presented, and the user pays for the product in their Vipps MobilePay app.
+
+### Step 2: Initiate a payment request
 
 When the user clicks the pay button, create a payment request with the selected amount.
 
@@ -125,12 +124,12 @@ With body:
 </details>
 
 
-### Step 4: The customer authorizes the payment
+### Step 3: The customer authorizes the payment
 
 <AUTHORIZEPAYMENT />
 
 
-### Step 5: Capture the payment
+### Step 4: Capture the payment
 
 <details>
 <summary>Detailed example</summary>

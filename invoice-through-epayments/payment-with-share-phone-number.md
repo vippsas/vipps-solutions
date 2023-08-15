@@ -12,6 +12,7 @@ import ApiSchema from '@theme/ApiSchema';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+import REGISTERWEBHOOK from '../_common/_register_epayment_webhook.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 
 END_METADATA -->
@@ -39,17 +40,16 @@ values={[
 </TabItem>
 </Tabs>
 
-## Details
+## Prerequisites
 
-This is very similar to [Payment request as a link](payment-sent-as-link.md).
-The difference is that you will also ask the user to share their telephone number.
+### QR code with to your page
 
-### Step 1. Give the customer a QR or link to your page
-
-Provide a QR code or link to your payment page.
+Generate a
+[merchant redirect QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+that contains the link to your website.
 
 <details>
-<summary>Detailed example</summary>
+<summary>How to create a QR code</summary>
 <div>
 
 The QR code contains a `Id` that connects it to the taxi where it is located.
@@ -67,6 +67,19 @@ Here is an example HTTP POST:
 
 </div>
 </details>
+
+### Webhooks for ePayment events
+
+<REGISTERWEBHOOK />
+
+## Details
+
+This is very similar to [Payment request as a link](payment-sent-as-link.md).
+In addition, you will ask the user to share their telephone number.
+
+### Step 1. Give the customer a QR to your page
+
+Provide a QR code or link to your payment page.
 
 ### Step 2. Create a payment request
 

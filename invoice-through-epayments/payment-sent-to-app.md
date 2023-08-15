@@ -12,6 +12,7 @@ import ApiSchema from '@theme/ApiSchema';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+import REGISTERWEBHOOK from '../_common/_register_epayment_webhook.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 
 END_METADATA -->
@@ -42,16 +43,21 @@ values={[
 </TabItem>
 </Tabs>
 
+## Prerequisites
+
+### Webhooks for ePayment events
+
+<REGISTERWEBHOOK />
+
 ## Details
 
 ### Step 1. Create a payment request
 
-To create this payment, you first send a
+Send a
 [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request,
 where `customer.phoneNumber` is set.
 
 The customer will receive a push notification in their Vipps MobilePay app.
-
 
 <details>
 <summary>Detailed example</summary>

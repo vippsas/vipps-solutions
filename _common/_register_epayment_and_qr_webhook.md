@@ -1,4 +1,4 @@
-Register a webhook to alert you when your payment requests are approved.
+Register a webhook to alert you when your payment requests are approved and your QR codes are scanned.
 
 <details>
 <summary>What are webhooks?</summary>
@@ -18,14 +18,14 @@ Here is an example HTTP POST:
 ```json
 {  
     "url": "https://example.com/mystore_website_backend",
-    "events": ["epayments.payment.authorized.v1"]
+    "events": ["epayments.payment.authorized.v1", "qr.TO BE PROVIDED"]
 }
 ```
 
 Use the `secret` to authenticate the message with HMAC. For examples, see
 [Webhooks API: Request authentication](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/request-authentication/).
 
-The [payload](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/webhooks/) from the ePayment webhooks will be in this form:
+The [payload](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/webhooks/) from this webhook will be in this form:
 
 ```json
 {
@@ -44,8 +44,13 @@ The [payload](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/featur
 }
 ```
 
-Note that the payload of the webhook depends on the originating service, in this case the
-[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/webhooks/).
+The payload from the QR webhook will be in this form:
+
+```json
+{
+    TO BE PROVIDED
+}
+```
 
 </div>
 </details>

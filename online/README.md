@@ -9,7 +9,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-
+import REGISTERWEBHOOK from '../_common/_register_epayment_webhook.md'
 END_METADATA -->
 
 # Online payments
@@ -18,13 +18,15 @@ This flow combines multiple products to illustrate the recommended online paymen
 
 ![ePayment online process](images/ePayment_online.png)
 
+## Prerequisites
+
+### Webhooks for ePayment events
+
+<REGISTERWEBHOOK />
+
 ## Details
 
-### Step 1. Add an option to pay
-
-Add the option to pay with Vipps MobilePay on the product page of your website.
-
-### Step 2. Send the payment request
+### Step 1. Send the payment request
 
 Add the products to the order and send the payment request by using the
 [`createPayment`](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments/operation/createPayment)
@@ -81,7 +83,7 @@ Here is an example HTTP POST:
 </div>
 </details>
 
-### Step 3. The customer authorizes the payment
+### Step 2. The customer authorizes the payment
 
 If the payment was started on a desktop device, the customer will be sent to the
 [landing page](https://developer.vippsmobilepay.com/docs/common-topics/landing-page/).
@@ -99,7 +101,7 @@ To get confirmation that payment was approved, monitor
 
 Once the payment is approved, update the status in your system.
 
-### Step 4. Provide confirmation
+### Step 3. Provide confirmation
 
 When the user confirms the payment, they will get a confirmation in the app and
 then be redirected back to your store.
@@ -108,11 +110,11 @@ Confirm to them that the order was successful.
 
 ![Order confirmation](images/vipps-ecom-step4-2.png)
 
-### Step 5. Ship the order (if applicable)
+### Step 4. Ship the order (if applicable)
 
 Complete and ship the order to the customer.
 
-### Step 6. Capture the payment
+### Step 5. Capture the payment
 
 Capture the payment and confirm that it was successful.
 
