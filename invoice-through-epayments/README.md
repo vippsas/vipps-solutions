@@ -20,7 +20,7 @@ END_METADATA -->
 
 # Long-living payment requests
 
-💥 Please note: The API is available, but not testable before app updates that are planned summer 2023 💥
+💥 **Please note: The API is available, but not testable before app updates - which are expected to be released by end of Q3 2023** 💥
 
 Vipps MobilePay offers *Long-living payment requests* for creating invoices and payments that can be postponed up to 28 days.
 
