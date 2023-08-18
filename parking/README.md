@@ -143,7 +143,7 @@ With body:
 
 ```json
 {
-  "amount": 32600,
+  "amount": 11000,
   "transactionType": "DIRECT_CAPTURE",
   "description": "Parking on Tuesday.",
   "due": "2025-08-08",
@@ -178,17 +178,9 @@ Body:
     {
         "name": "parking",
         "id": "line_item_1",
-        "totalAmount": 5200,
-        "totalAmountExcludingTax": 3900,
-        "totalTaxAmount": 1300,
-        "taxPercentage": 25,
-      },
-    {
-        "name": "parking",
-        "id": "line_item_1",
-        "totalAmount": 27400,
-        "totalAmountExcludingTax": 20550,
-        "totalTaxAmount": 6850,
+        "totalAmount": 11000,
+        "totalAmountExcludingTax": 8250,
+        "totalTaxAmount": 2750,
         "taxPercentage": 25,
       },
     },
