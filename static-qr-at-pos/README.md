@@ -91,7 +91,7 @@ Here is an example HTTP POST:
     "type": "WALLET"
   },
   "customer": {
-    "customerToken": "123456789"
+    "token": "insert customerToken here"
   },
   "receipt":{
     "orderLines": [
