@@ -95,6 +95,8 @@ If the payment was started from a mobile device, the app will automatically open
 
 ![Pay with Vipps MobilePay](images/vipps-ecom-step1-2.png)
 
+![Order confirmation](images/vipps-ecom-confirm2.png)
+
 To get confirmation that payment was approved, monitor
 [webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
 [query the payment](https://developer.vippsmobilepay.com/api/epayment#tag/QueryPayments/operation/getPayment).
