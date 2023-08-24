@@ -73,9 +73,13 @@ If you don't have a scanner, you can enter the customer's phone number manually.
 
 ### Step 2: Check membership
 
-In your internal system, check the customer's membership status by using the phone number you received in the previous step.
+Check the customer's membership status in your internal system by using the phone number you received in the previous step.
 
-Use the [Check-in API](https://developer.vippsmobilepay.com/docs/APIs/check-in-api/) to trigger a *waiting screen* in the app.
+### Step 3: Provide notification if they are a member (skip if they are not a member)
+
+If the customer is already a member of the loyalty program, use the
+[Check-in API](https://developer.vippsmobilepay.com/docs/APIs/check-in-api/)
+to notify them of that.
 
 <details>
 <summary>Detailed example</summary>
@@ -90,7 +94,6 @@ With body:
 ```json
 {
     "phoneNumber": "4791234567",
-    "loyaltyProgramName": "Acme loyalty club",
     "isMember": true
 }
 ```
@@ -98,19 +101,14 @@ With body:
 </div>
 </details>
 
-If the customer is a not member, proceed to step 3 where you can enroll them by using the
+![Loyalty Flow](images/loyalty_check_in_1.png)
+
+### Step 4: Request membership (skip if already a member)
+
+If the customer is not a member of the loyalty program, request to enroll them by using the
 [Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api).
 
-If they are already a member, skip step 3 and go to step 4 to send a payment request to the customer.
-
-![Loyalty Flow](images/POS_step_2.png)
-
-### Step 3: Request membership (skip if already a member)
-
-If the customer is not a member of the loyalty program, request to enroll them by using
-the [Vipps Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api).
-
-You already have their phone number from step 1, so just provide a button in
+You already have their phone number, so just provide a button in
 your user interface to allow the cashier to initiate the login.
 
 Pressing the button will trigger a
@@ -124,11 +122,11 @@ When this login flow is completed, the customer will be enrolled in the loyalty 
 
 See [Log in with browser](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-quick-start/#log-in-with-browser) for a detailed example.
 
-### Step 4: Add the products to be purchased
+### Step 5: Add the products to be purchased
 
 Add the products that the customer wants to buy in the POS system.
 
-### Step 5: Send a payment request
+### Step 6: Send a payment request
 
 After membership status has been determined and all articles have been scanned, send a payment request to the customer.
 
@@ -136,7 +134,7 @@ After membership status has been determined and all articles have been scanned, 
 <summary>Detailed example</summary>
 <div>
 
-You already have the customer's phone number from step 1, so you don't need to ask for it.
+You already have the customer's phone number, so you don't need to ask for it.
 Just provide a button in your user interface to allow the cashier to send the payment request.
 
 Your system can send the payment request by using the
@@ -197,14 +195,14 @@ With body:
 </div>
 </details>
 
-### Step 6. Customer approves the payment
+### Step 7. Customer approves the payment
 
 <AUTHORIZEPAYMENT />
 
 
 ![Loyalty Flow](images/POS_step_4.png)
 
-### Step 7: Capture the payment
+### Step 8: Capture the payment
 
 Capture the payment and confirm that it was successful.
 
