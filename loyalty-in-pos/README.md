@@ -120,7 +120,7 @@ When this login flow is completed, the customer will be enrolled in the loyalty 
 
 ![Loyalty Flow](images/POS_step_3.png)
 
-See [Log in with browser](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-quick-start/#log-in-with-browser) for a detailed example.
+See [Log in with phone number](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-from-phone-number-api-howitworks/) for a detailed example.
 
 ### Step 5: Add the products to be purchased
 
