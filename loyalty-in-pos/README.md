@@ -75,7 +75,7 @@ If you don't have a scanner, you can enter the customer's phone number manually.
 
 Check the customer's membership status in your internal system by using the phone number you received in the previous step.
 
-### Step 3: Provide notification if they are a member (skip if they are not a member)
+### Step 3: Provide notification if they are a member (only if they are a member)
 
 If the customer is already a member of the loyalty program, use the
 [Check-in API](https://developer.vippsmobilepay.com/docs/APIs/check-in-api/)
@@ -103,7 +103,7 @@ With body:
 
 ![Loyalty Flow](images/loyalty_check_in_1.png)
 
-### Step 4: Request membership (skip if already a member)
+### Step 4: Request membership (only if they are not a member)
 
 If the customer is not a member of the loyalty program, request to enroll them by using the
 [Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api).
