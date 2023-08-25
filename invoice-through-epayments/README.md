@@ -30,7 +30,7 @@ consistent as possible, so this should only be used in special cases. To request
 
 <Tabs
 defaultValue="vipps"
-groupId="app-choice"
+groupId="brand"
 values={[
 {label: 'Vipps', value: 'vipps'},
 {label: 'MobilePay', value: 'mobilepay'},
