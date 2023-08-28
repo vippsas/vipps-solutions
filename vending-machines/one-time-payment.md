@@ -46,7 +46,6 @@ The QR code is a dynamic representation of the payment URL, and the customer nee
 ### Step 1: Generate a dynamic QR code and payment request
 
 When the customer selects a product, generate the payment request with a dynamic QR code.
-Display the QR on the screen.
 
 <details>
 <summary>Detailed example</summary>
@@ -110,15 +109,21 @@ With body:
 </div>
 </details>
 
+### Step 2: Display the QR on the screen
 
-### Step 2: The customer authorizes the payment
+Display the one-time QR on a screen facing the customer.
 
-When the customer scans the QR code, they go directly to the payment screen on their phone, where they can approve the payment.
+### Step 3: The customer authorizes the payment
 
-<AUTHORIZEPAYMENT />
+The customer scans the QR code and are directed to the Vipps app.
+The payment screen is presented and they click *Pay*.
 
+To get confirmation that payment was approved, monitor your
+[webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api).
 
-### Step 3: Capture the payment
+Once the payment is approved, update the status in your system.
+
+### Step 4: Capture the payment
 
 Capture the payment and confirm that it was successful.
 
@@ -150,15 +155,12 @@ Sequence diagram for the vending machine flow with dynamic QR directing to the a
 sequenceDiagram
     actor C as Customer
     participant M as Merchant
-    participant QR as QR API
     participant ePayment as ePayment API
     participant Webhooks as Webhooks API
 
     M->>ePayment: Generate dynamic QR code and payment request with receipt
-    M->>C: Display QR code on screen
-    C->>QR: Scan to get Customer ID
-    ePayment->>C: Request payment
-    C->>C: Customer clicks pay
+    M->>C: Display one-time QR code
+    C->>C: Customer scans the QR code and selects to pay
     Webhooks-->>M: Callback with status of payment authorization
     M->>ePayment: Capture payment
     ePayment-->>M: Status of capture
