@@ -12,7 +12,7 @@ END_METADATA -->
 
 ## Introduction
 
-![Payment flow](./images/Paymentflow.png)
+[![Payment flow](./images/Paymentflow.png)](./images/Paymentflow.png)
 
 The first part of this guide will describe how to implement a simple payment flow where a user can pay for an order and give consent to sharing user info without the need of being signed in. The second part will show how the payment can be used to get information to store a user in Auth0. The third part will describe how to link the created user to a Vipps account using [Auth0's Login Flow](https://auth0.com/docs/customize/actions/flows-and-triggers/login-flow).
 
@@ -401,7 +401,9 @@ Fill out your _Vipps Social Connection Name_. Under the _Secrets_ section you sh
 Where the values should be set to the values recorded in the [Configure Auth0 Management API](#configure-auth0-management-api) step.
 
 Make sure to add the Action to the login flow under _Actions_ > _Flows_ > _Login_.
-![Login flow](./images/LoginFlow.png)
+
+
+[![Login flow](./images/LoginFlow.png)](./images/LoginFlow.png)
 
 After linking, the _Raw JSON_ of the new user in Auth0 will now look like this:
 

@@ -18,4 +18,4 @@ The following are the most common scenarios:
 * [Payment through company app](pay-through-taxi-app.md)
 * [Payment through taximeter](taximeter-initiates-payment-request-with-app.md)
 
-![Taxi](images/taxi.png)
+[![Taxi](images/taxi.png)](images/taxi.png)

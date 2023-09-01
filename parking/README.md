@@ -26,7 +26,7 @@ and makes special use of
 
 The following illustration shows how the Recurring API can be used to charge for parking.
 
-![Paying for parking](./images/parking-recurring-flow.png)
+[![Paying for parking](./images/parking-recurring-flow.png)](./images/parking-recurring-flow.png)
 
 The customer has entered an agreement that allows the parking company to charge for
 parking every day. They specify the total amount they are allowed to be for all parking that day.

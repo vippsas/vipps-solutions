@@ -31,7 +31,7 @@ and the
 
 The following describes the process at a high level.
 
-![Loyalty Flow](images/POS_flow.png)
+[![Loyalty Flow](images/POS_flow.png)](images/POS_flow.png)
 
 ## Prerequisites
 
@@ -50,7 +50,7 @@ customer's personal Vipps MobilePay QR code.
 
 The flow begins with the customer presenting their Vipps MobilePay QR code to the merchant.
 
-![Loyalty Flow](images/POS_step_1.png)
+[![Loyalty Flow](images/POS_step_1.png)](images/POS_step_1.png)
 
 <details>
 <summary>How it works</summary>
@@ -101,7 +101,7 @@ With body:
 </div>
 </details>
 
-![Loyalty Flow](images/loyalty_check_in_1.png)
+[![Loyalty Flow](images/loyalty_check_in_1.png)](images/loyalty_check_in_1.png)
 
 ### Step 4: Request membership (only if they are not a member)
 
@@ -118,9 +118,11 @@ The CIBA flow will send a push to the user, and once the user has finished the f
 
 When this login flow is completed, the customer will be enrolled in the loyalty program.
 
-![Loyalty Flow](images/POS_step_3.png)
+[![Loyalty Flow](images/POS_step_3.png)](images/POS_step_3.png)
 
-See [Log in with phone number](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-from-phone-number-api-howitworks/) for a detailed example.
+See
+[Log in with phone number](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-from-phone-number-api-howitworks/)
+for a detailed example.
 
 ### Step 5: Add the products to be purchased
 
@@ -200,7 +202,7 @@ With body:
 <AUTHORIZEPAYMENT />
 
 
-![Loyalty Flow](images/POS_step_4.png)
+[![Loyalty Flow](images/POS_step_4.png)](images/POS_step_4.png)
 
 ### Step 8: Capture the payment
 

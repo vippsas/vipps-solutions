@@ -55,7 +55,7 @@ Here is an example HTTP PUT:
 
 ## Details
 
-![User scans QR. Merchant gets ID and sends payment. User pays and gets receipt.](images/static_qr_at_pos.png)
+[![User scans QR. Merchant gets ID and sends payment. User pays and gets receipt.](images/static_qr_at_pos.png)](images/static_qr_at_pos.png)
 
 ### Step 1: The customer scans the QR
 

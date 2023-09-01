@@ -18,7 +18,7 @@ END_METADATA -->
 This flow uses a one-time payment QR (i.e., a dynamic QR) that is shown on a screen.
 The QR directs the customer to the Vipps MobilePay app, where they authorize the payment.
 
-![One-time payment QR](images/0_one_time_payment_qr.jpg)
+[![One-time payment QR](images/0_one_time_payment_qr.jpg)](images/0_one_time_payment_qr.jpg)
 
 ## When to use
 

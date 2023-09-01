@@ -20,7 +20,7 @@ the app on their phone. This removes the need to download a specific charging ap
 This is a simple and efficient
 solution that enables your customers to use your charging network with no hassle.
 
-![EV charging](images/ev-charging-process-icons.png)
+[![EV charging](images/ev-charging-process-icons.png)](images/ev-charging-process-icons.png)
 
 The best drop-in charging flow provides QR codes that can be scanned by
 the customer with their phone's camera or the Vipps MobilePay app.
@@ -67,7 +67,7 @@ and
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api)
 to build this flow.
 
-![EV charging screenshots](images/ev-charging-process-screenshots.png)
+[![EV charging screenshots](images/ev-charging-process-screenshots.png)](images/ev-charging-process-screenshots.png)
 
 ### Step 1: The customer scans the QR code
 

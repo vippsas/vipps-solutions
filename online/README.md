@@ -16,7 +16,7 @@ END_METADATA -->
 
 This flow combines multiple products to illustrate the recommended online payment flow.
 
-![ePayment online process](images/ePayment_online.png)
+[![ePayment online process](images/ePayment_online.png)](images/ePayment_online.png)
 
 ## Prerequisites
 
@@ -89,13 +89,13 @@ If the payment was started on a desktop device, the customer will be sent to the
 [landing page](https://developer.vippsmobilepay.com/docs/common-topics/landing-page/).
 There, they confirm their number and are prompted to log in through the Vipps MobilePay app on their phone.
 
-![Landing page](images/vipps-ecom-step2.svg)
+[![Landing page](images/vipps-ecom-step2.svg)](images/vipps-ecom-step2.svg)
 
 If the payment was started from a mobile device, the app will automatically open.
 
-![Pay with Vipps MobilePay](images/vipps-ecom-step1-2.png)
+[![Pay with Vipps MobilePay](images/vipps-ecom-step1-2.png)](images/vipps-ecom-step1-2.png)
 
-![Order confirmation](images/vipps-ecom-confirm2.png)
+[![Order confirmation](images/vipps-ecom-confirm2.png)](images/vipps-ecom-confirm2.png)
 
 To get confirmation that payment was approved, monitor
 [webhooks](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api) and
@@ -110,7 +110,7 @@ then be redirected back to your store.
 
 Confirm to them that the order was successful.
 
-![Order confirmation](images/vipps-ecom-step4-2.png)
+[![Order confirmation](images/vipps-ecom-step4-2.png)](images/vipps-ecom-step4-2.png)
 
 ### Step 4. Ship the order (if applicable)
 

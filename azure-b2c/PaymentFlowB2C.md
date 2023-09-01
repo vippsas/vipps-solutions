@@ -10,21 +10,9 @@ END_METADATA -->
 
 # Vipps payment flow using Azure AD B2C
 
-<!-- START_COMMENT -->
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Prerequisites](#prerequisites)
-- [Sequence Diagram](#sequence-diagram)
-- [Initiate payment session with profile sharing](#initiate-payment-session-with-profile-sharing)
-- [Store user in Azure AD B2C](#store-user-in-azure-ad-b2c)
-- [Note about custom policies](#note-about-custom-policies)
-- [References](#references)
-<!-- END_COMMENT -->
-
 ## Introduction
 
-![Payment flow](./images/Paymentflow.png)
+[![Payment flow](./images/Paymentflow.png)](./images/Paymentflow.png)
 
 The first part of this guide will describe how to implement a simple payment flow where a user can pay for an order and give consent to sharing user info without the need of being signed in. The second part will show how the payment can be used to get information to store a user in Azure AD B2C.
 

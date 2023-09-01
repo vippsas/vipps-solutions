@@ -22,7 +22,7 @@ This should use merchant redirect QR, which is not ready.
 
 This flow uses a QR code that is posted on the vending machine. The QR directs the user to the payment screen in their Vipps MobilePay app.
 
-![QR direct to payment](images/1_qr_direct_to_payment.png)
+[![QR direct to payment](images/1_qr_direct_to_payment.png)](images/1_qr_direct_to_payment.png)
 
 ## When to use
 

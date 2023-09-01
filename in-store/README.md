@@ -20,7 +20,7 @@ This solution is a combination of the personal QR codes in the Vipps MobilePay a
 and the
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 
-![Loyalty Flow](./images/POS_simple_flow.png)
+[![Loyalty Flow](./images/POS_simple_flow.png)](./images/POS_simple_flow.png)
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ customer's personal Vipps MobilePay QR code.
 
 The customer presents their personal Vipps MobilePay QR code to the merchant.
 
-![Loyalty Flow](images/POS_step_1.png)
+[![Loyalty Flow](images/POS_step_1.png)](images/POS_step_1.png)
 
 <details>
 <summary>How it works</summary>
@@ -64,7 +64,7 @@ If you don't have a scanner, you can enter the customer's phone number manually.
 
 Add the products that the customer wants to buy in the POS system.
 
-![The POS system](images/vipps-in-store-step1.png)
+[![The POS system](images/vipps-in-store-step1.png)](images/vipps-in-store-step1.png)
 
 ### Step 3: Send a payment request
 
@@ -141,7 +141,7 @@ With body:
 
 <AUTHORIZEPAYMENT />
 
-![Confirm payment](images/vipps-in-store-step3-2.svg)
+[![Confirm payment](images/vipps-in-store-step3-2.svg)](images/vipps-in-store-step3-2.svg)
 
 ### Step 5: Capture the payment
 

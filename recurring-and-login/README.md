@@ -18,7 +18,7 @@ and the
 [Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api)
 can be used together making registration and payment of subscriptions simple for your customers.
 
-![Login and recurring process](images/login-recurring-process-v2.svg)
+[![Login and recurring process](images/login-recurring-process-v2.svg)](images/login-recurring-process-v2.svg)
 
 ## Details
 
@@ -26,7 +26,7 @@ can be used together making registration and payment of subscriptions simple for
 
 A customer wants to buy a subscription through your website or app.
 
-![Buy subscription](images/login-recurring-step1-v2.svg)
+[![Buy subscription](images/login-recurring-step1-v2.svg)](images/login-recurring-step1-v2.svg)
 
 ### Step 2. Initiate login
 
@@ -42,7 +42,7 @@ From a mobile app:
 
 * They will be switched over to the app automatically.
 
-![Log in](images/login-recurring-step2-v2.svg)
+[![Log in](images/login-recurring-step2-v2.svg)](images/login-recurring-step2-v2.svg)
 
 ### Step 3. Customer confirms login
 
@@ -50,7 +50,7 @@ The customer will confirm the login in the Vipps MobilePay app.
 
 If the customer was remembered from an earlier login to this site or app, they will skip this step.
 
-![Confirm login](images/login-recurring-step3.svg)
+[![Confirm login](images/login-recurring-step3.svg)](images/login-recurring-step3.svg)
 
 ### Step 4. Customer gives consent to share information
 
@@ -58,7 +58,7 @@ The customer will give consent to sharing information with the merchant.
 
 If the customer has previously consented to sharing information with the merchant, they will skip this step.
 
-![Give consent to share information](images/login-recurring-step4.svg)
+[![Give consent to share information](images/login-recurring-step4.svg)](images/login-recurring-step4.svg)
 
 The customer can later see the information they have consented to share, by clicking *See your information* in the app.
 
@@ -68,7 +68,7 @@ The customer is now logged in to your service and can proceed to set up the paym
 
 The information they have shared with you should be pre-filled in the form, where they have the possibility to update it.
 
-![Checkout](images/login-recurring-step5-v3.svg)
+[![Checkout](images/login-recurring-step5-v3.svg)](images/login-recurring-step5-v3.svg)
 
 <details>
 <summary>Detailed example</summary>
@@ -112,11 +112,11 @@ See [Create an agreement](https://developer.vippsmobilepay.com/docs/APIs/recurri
 
 The customer accepts the agreement in the Vipps MobilePay app.
 
-![Accept agreement](images/login-recurring-step6-v2.svg)
+[![Accept agreement](images/login-recurring-step6-v2.svg)](images/login-recurring-step6-v2.svg)
 
 They are returned to the merchant's website or app where the subscription is confirmed.
 
-![Confirmation page](images/login-recurring-step7.svg)
+[![Confirmation page](images/login-recurring-step7.svg)](images/login-recurring-step7.svg)
 
 ### Step 7. Capture initial payment (if applicable)
 

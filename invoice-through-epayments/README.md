@@ -37,12 +37,12 @@ values={[
 ]}>
 <TabItem value="vipps">
 
-![Vipps payment request push flow](images/payment-request-sent-directly-to-app-vipps.png)
+[![Vipps payment request push flow](images/payment-request-sent-directly-to-app-vipps.png)](images/payment-request-sent-directly-to-app-vipps.png)
 
 </TabItem>
 <TabItem value="mobilepay">
 
-![MobilePay payment request push flow](images/payment-request-sent-directly-to-app-mobilepay.png)
+[![MobilePay payment request push flow](images/payment-request-sent-directly-to-app-mobilepay.png)](images/payment-request-sent-directly-to-app-mobilepay.png)
 
 </TabItem>
 </Tabs>

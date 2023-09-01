@@ -18,7 +18,7 @@ END_METADATA -->
 This flow uses a static QR code that is posted on the vending machine.
 The QR directs the user to the merchant's landing page which provides a user interface for selecting products and paying.
 
-![3_qr_to_landing_page_providing_selection](images/3_qr_to_landing_page_providing_selection.png)
+[![3_qr_to_landing_page_providing_selection](images/3_qr_to_landing_page_providing_selection.png)](images/3_qr_to_landing_page_providing_selection.png)
 
 ## When to use
 

@@ -16,7 +16,7 @@ END_METADATA -->
 The customer scans a QR code and is directed to the taxi company's landing page.
 The company sends a payment request to them through the Vipps MobilePay app.
 
-![Labeling in the taxi](images/labeling_in_the_taxi.png)
+[![Labeling in the taxi](images/labeling_in_the_taxi.png)](images/labeling_in_the_taxi.png)
 
 ## Prerequisites
 
