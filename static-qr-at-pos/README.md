@@ -17,7 +17,7 @@ END_METADATA -->
 
 Before implementing this flow, please see the recommended [in-store payments flow](../in-store/README.md).
 
-💥 Please note: The APIs are still being implemented, and are not yet available. Planned release is Q2 2023. 💥
+💥 Please note: The APIs are still being implemented, and are not yet available. Planned release is Q4 2023. 💥
 
 In this flow, a user pays by scanning a QR with their Vipps MobilePay app.
 The merchant gets their ID and sends a payment request to them through the app.
