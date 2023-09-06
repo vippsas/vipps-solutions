@@ -55,6 +55,7 @@ Here is an example HTTP POST:
   "customer": {
     "phoneNumber": 4791234567
   },
+  "customerInteraction": "CUSTOMER_NOT_PRESENT",
   "receipt":{
     "orderLines": [
       {
@@ -159,5 +160,5 @@ sequenceDiagram
     M->>C: Ship the order (if applicable)
     M->>ePayment: Capture payment
     ePayment-->>M: Status of capture
-    M->>M: Verify status of POS matches capture
+    M->>M: Verify status of webshop matches capture
 ```
