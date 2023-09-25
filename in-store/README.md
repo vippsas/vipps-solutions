@@ -15,6 +15,10 @@ END_METADATA -->
 
 # In-store payments
 
+![Vipps](../images/vipps.png) *Available for Vipps now.*
+
+![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
+
 This is the recommended flow for in-store payments.
 This solution is a combination of the personal QR codes in the Vipps MobilePay app
 and the

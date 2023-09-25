@@ -14,6 +14,10 @@ END_METADATA -->
 
 # Online payments
 
+![Vipps](../images/vipps.png) *Available for Vipps.*
+
+![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
+
 This flow combines multiple products to illustrate the recommended online payment flow.
 
 ![ePayment online process](images/ePayment_online.png)
