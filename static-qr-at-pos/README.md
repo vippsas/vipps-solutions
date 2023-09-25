@@ -15,11 +15,9 @@ END_METADATA -->
 
 # In-store using Merchant Callback QR
 
-![Vipps](../images/vipps.png) *Partially available for Vipps now.*
+![Vipps](../images/vipps.png) *Available for Vipps in Q4 2023.*
 
 ![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
-
-💥 *The APIs are still being implemented, and are not yet available. Planned release is Q4 2023.* 💥
 
 Before implementing this flow, please see the recommended [in-store payments flow](../in-store/README.md).
 
