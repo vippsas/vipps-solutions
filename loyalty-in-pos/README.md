@@ -18,7 +18,7 @@ END_METADATA -->
 
 ![Vipps](../images/vipps.png) *Available for Vipps.*
 
-![MobilePay](../images/mp.png) *We are not yet sure if this will be available to MobilePay integrations.*
+![MobilePay](../images/mp.png) *To be determined.*
 
 This flow makes a great product-market fit for
 retail stores that want to combine loyalty with payments.
