@@ -24,7 +24,7 @@ END_METADATA -->
 
 ![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
 
-💥 *Please note: The API is available, but the orderlines page is not added to the Vipps app yet. This is expected to be released by end of Q3 2023. In addition, from Q4 2023, we will send a push notification to the user when the payment is getting close to expiring.* 💥
+💥 *Please note: The API is available, but full support is not available in the Vipps app yet. This is expected to be released by end of Q3 2023. In addition, from Q4 2023, we will send a push notification to the user when the payment is getting close to expiring.* 💥
 
 Vipps MobilePay offers *Long-living payment requests* for creating invoices and payments that can be postponed up to 28 days.
 
