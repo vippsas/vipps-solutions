@@ -20,7 +20,7 @@ END_METADATA -->
 
 # Long-living payment requests
 
-![Vipps](../images/vipps.png) *Available for Vipps.*
+![Vipps](../images/vipps.png) *Partially available for Vipps.*
 
 ![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
 
