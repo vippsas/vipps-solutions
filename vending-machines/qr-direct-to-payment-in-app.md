@@ -12,13 +12,13 @@ import REGISTERWEBHOOKQR from '../_common/_register_epayment_and_qr_webhook.md'
 import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 END_METADATA -->
 
-
-This should use merchant redirect QR, which is not ready.
- Currently, the qr goes to our landing page which opens their vipps app.
-
 # Static QR directing to the app for payment
 
-💥 Please note: The Merchant Callback QR feature is being implemented, and is not yet available. Planned release is Q2 2023. 💥
+![Vipps](../images/vipps.png) *Partially available for Vipps now.*
+
+![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
+
+💥 *The APIs are still being implemented, and are not yet available. Planned release is Q4 2023.* 💥
 
 This flow uses a QR code that is posted on the vending machine. The QR directs the user to the payment screen in their Vipps MobilePay app.
 
