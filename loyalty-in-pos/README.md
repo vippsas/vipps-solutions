@@ -16,6 +16,10 @@ END_METADATA -->
 
 # In-store payments with customer club
 
+![Vipps](../images/vipps.png) *Available for Vipps.*
+
+![MobilePay](../images/mp.png) *We are not yet sure if this will be available to MobilePay integrations.*
+
 This flow makes a great product-market fit for
 retail stores that want to combine loyalty with payments.
 It's a great way to improve the payment experience for customers and simplify the process
