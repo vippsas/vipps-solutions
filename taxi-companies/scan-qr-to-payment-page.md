@@ -13,6 +13,10 @@ END_METADATA -->
 
 # Payment through company website
 
+![Vipps](../images/vipps.png) *Available for Vipps.*
+
+![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
+
 The customer scans a QR code and is directed to the taxi company's landing page.
 The company sends a payment request to them through the Vipps MobilePay app.
 

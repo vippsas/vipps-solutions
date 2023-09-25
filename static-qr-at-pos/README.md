@@ -2,7 +2,7 @@
 ---
 title: In-store using static QR flow
 sidebar_label: In-store using static QR
-sidebar_position: 40
+sidebar_position: 150
 hide_table_of_contents: false
 pagination_next: null
 pagination_prev: null
@@ -15,7 +15,11 @@ END_METADATA -->
 
 # In-store using Merchant Callback QR
 
-💥 Please note: The APIs are still being implemented, and are not yet available. Planned release is Q4 2023. 💥
+![Vipps](../images/vipps.png) *Partially available for Vipps now.*
+
+![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
+
+💥 *The APIs are still being implemented, and are not yet available. Planned release is Q4 2023.* 💥
 
 Before implementing this flow, please see the recommended [in-store payments flow](../in-store/README.md).
 

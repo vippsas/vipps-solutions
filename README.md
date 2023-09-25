@@ -24,19 +24,20 @@ We want everyone to get the most out of our API platform, and below are recommen
 
 * [Online payments](./online/README.md)
 * [In-store payments](./in-store/README.md)
-* [In-store payments with customer club](./loyalty-in-pos/README.md)
 
 **Alternative flows:**
 
 Examples of how to combine APIs for specific use cases:
 
-* [In-store payments using static QR](./static-qr-at-pos/README.md)
 * [Long-living payment requests](./invoice-through-epayments/README.md)
 * [Vending machines](./vending-machines/README.md)
 * [Subscriptions](./recurring-and-login/README.md)
 * [Electric vehicle charging](./ev-charging/README.md)
 * [Parking and "Pay-as-you-go"](./parking/README.md)
 * [Taxi companies](./taxi-companies/README.md)
+* [In-store payments with customer club](./loyalty-in-pos/README.md)
+* [In-store payments using static QR](./static-qr-at-pos/README.md)
+
 
 **Vipps login and payment flows using Auth0 and Azure AD B2C:**
 

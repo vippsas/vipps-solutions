@@ -2,7 +2,7 @@
 ---
 title: Vipps MobilePay in-store payments with customer club flow
 sidebar_label: In-store payments with customer club
-sidebar_position: 30
+sidebar_position: 140
 description: Using Vipps MobilePay in a physical setting with customer club
 hide_table_of_contents: false
 pagination_next: null
@@ -15,6 +15,10 @@ import AUTHORIZEPAYMENT from '../_common/_customer_authorizes_epayment.md'
 END_METADATA -->
 
 # In-store payments with customer club
+
+![Vipps](../images/vipps.png) *Available for Vipps.*
+
+![MobilePay](../images/mp.png) *We are not yet sure if this will be available to MobilePay integrations.*
 
 This flow makes a great product-market fit for
 retail stores that want to combine loyalty with payments.

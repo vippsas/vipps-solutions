@@ -14,6 +14,10 @@ END_METADATA -->
 
 # Electric vehicle charging
 
+![Vipps](../images/vipps.png) *Available for Vipps now.*
+
+![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
+
 Vipps MobilePay is an excellent choice for Electric Vehicle (EV) charging, as practically all Nordic people have
 the app on their phone. This removes the need to download a specific charging app.
 
