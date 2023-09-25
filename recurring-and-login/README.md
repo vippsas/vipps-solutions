@@ -12,6 +12,10 @@ END_METADATA -->
 
 # Subscriptions
 
+![Vipps](../images/vipps.png) *Available for Vipps.*
+
+![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
+
 The
 [Recurring API](https://developer.vippsmobilepay.com/docs/APIs/recurring-api)
 and the

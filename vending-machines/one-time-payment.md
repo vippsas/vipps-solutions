@@ -15,6 +15,10 @@ END_METADATA -->
 
 # Dynamic QR directing to the app for payment
 
+![Vipps](../images/vipps.png) *Available for Vipps.*
+
+![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
+
 This flow uses a one-time payment QR (i.e., a dynamic QR) that is shown on a screen.
 The QR directs the customer to the Vipps MobilePay app, where they authorize the payment.
 
