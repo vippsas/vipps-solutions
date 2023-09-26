@@ -21,7 +21,7 @@ END_METADATA -->
 
 Before implementing this flow, please see the recommended [in-store payments flow](../in-store/README.md).
 
-In this flow, a user pays by scanning a QR with their Vipps MobilePay app.
+In this flow, a user pays by scanning a QR with their Vipps or MobilePay app.
 The merchant gets their ID and sends a payment request to them through the app.
 
 ![User scans QR. Merchant gets ID and sends payment. User pays and gets receipt.](images/static_qr_at_pos.png)

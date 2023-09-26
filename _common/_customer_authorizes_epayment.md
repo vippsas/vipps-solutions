@@ -1,4 +1,4 @@
-The payment request will appear in the customer's Vipps MobilePay app,
+The payment request will appear in the customer's Vipps or MobilePay app,
 where they can select to pay or cancel.
 
 To get confirmation that payment was approved, monitor your

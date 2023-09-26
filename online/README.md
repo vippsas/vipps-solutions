@@ -92,7 +92,7 @@ Here is an example HTTP POST:
 
 If the payment was started on a desktop device, the customer will be sent to the
 [landing page](https://developer.vippsmobilepay.com/docs/common-topics/landing-page/).
-There, they confirm their number and are prompted to log in through the Vipps MobilePay app on their phone.
+There, they confirm their number and are prompted to log in through the Vipps or MobilePay app.
 
 ![Landing page](images/vipps-ecom-step2.svg)
 

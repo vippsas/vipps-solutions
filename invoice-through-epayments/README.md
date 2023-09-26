@@ -72,7 +72,7 @@ Send a
 [create payment](https://developer.vippsmobilepay.com/api/epayment#tag/CreatePayments) request,
 where `customer.phoneNumber` is set.
 
-The customer will receive a push notification in their Vipps MobilePay app.
+The customer will receive a push notification in their Vipps or MobilePay app.
 
 <details>
 <summary>Detailed example</summary>
@@ -153,7 +153,7 @@ for more details
 
 <AUTHORIZEPAYMENT />
 
-Since you have already attached order information to this payment, the customer will be able to see this in the Vipps MobilePay app.
+Since you have already attached order information to this payment, the customer will be able to see this in their Vipps or MobilePay app.
 When they select `Show details` in the payment confirmation screen, they are presented with the order information without leaving the app.
 
 Note that, for long-living payments, customers also have the option of soft-dismissing the payment and postponing it for later.
