@@ -20,7 +20,7 @@ END_METADATA -->
 ![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
 
 This flow uses a one-time payment QR (i.e., a dynamic QR) that is shown on a screen.
-The QR directs the customer to the Vipps MobilePay app, where they authorize the payment.
+The QR directs the customer to the Vipps or MobilePay app, where they authorize the payment.
 
 ![One-time payment QR](images/0_one_time_payment_qr.jpg)
 
@@ -63,7 +63,7 @@ Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
 You can also include a receipt at this time.
 
 Since the customer will scan from their phone, you don't need their phone number.
-This payment command can do an app-switch and open their Vipps MobilePay app with the payment request.
+This payment command can do an app-switch and open their Vipps or MobilePay app with the payment request.
 
 Here is an example HTTP POST:
 

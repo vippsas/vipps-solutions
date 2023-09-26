@@ -126,7 +126,7 @@ See [Recurring agreements with variable amount](https://developer.vippsmobilepay
 
 ### Step 4. Customer accepts agreement
 
-The customer accepts the agreement in the Vipps MobilePay app.
+The customer accepts the agreement in the Vipps or MobilePay app.
 
 ### Step 5. Charge for variable amounts
 
@@ -213,7 +213,7 @@ Body:
   than 1000 for that day. Remember that it is you, as the merchant, who set the `suggestMaxAmount`,
   so you can guide the users to a suitable limit.
 * If the total sum is more than `maxAmount` and you create a charge that is larger than `maxAmount`,
-  the end user will be notified in the Vipps MobilePay app to increase their limit for this agreement.
+  the end user will be notified in the Vipps or MobilePay app to increase their limit for this agreement.
 * In general using the Recurring API you need to send in the charge two days before due date. However, for use cases like parking and "pay-as-you-go" we allow for creating charges that will be due the day after (for example you send in the charge at 10pm at day 0, the user will be charged in the morning of day 1). Do get access to this opportunity you need to be part of a whitelist. Contact us if this is relevant for you.
 
 ## Sequence diagrams

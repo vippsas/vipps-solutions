@@ -20,7 +20,7 @@ END_METADATA -->
 ![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
 
 This is the recommended flow for in-store payments.
-This solution is a combination of the personal QR codes in the Vipps MobilePay app
+This solution is a combination of the personal QR codes in the Vipps or MobilePay app
 and the
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 
@@ -41,7 +41,7 @@ customer's personal Vipps MobilePay QR code.
 
 ### Step 1: Identify the customer
 
-The customer presents their personal Vipps MobilePay QR code to the merchant.
+The customer presents their personal Vipps or MobilePay QR code to the merchant.
 
 ![Loyalty Flow](images/POS_step_1.png)
 

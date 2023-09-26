@@ -20,7 +20,7 @@ END_METADATA -->
 
 💥 *The APIs are still being implemented, and are not yet available. Planned release is Q4 2023.* 💥
 
-This flow uses a QR code that is posted on the vending machine. The QR directs the user to the payment screen in their Vipps MobilePay app.
+This flow uses a QR code that is posted on the vending machine. The QR directs the user to the payment screen in their Vipps or MobilePay app.
 
 ![QR direct to payment](images/1_qr_direct_to_payment.png)
 

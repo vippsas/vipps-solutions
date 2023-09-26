@@ -39,7 +39,7 @@ The customer identifies themselves by logging in with Vipps Login.
 From a browser:
 
 * If they are remembered from earlier, the login will be completed directly there.
-* Otherwise, they will enter their phone number and be taken to the app to the Vipps MobilePay app.
+* Otherwise, they will enter their phone number and be taken to the app to the Vipps or MobilePay app.
 See [Log in with browser](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-quick-start/#log-in-with-browser) for a detailed example.
 
 From a mobile app:
@@ -50,7 +50,7 @@ From a mobile app:
 
 ### Step 3. Customer confirms login
 
-The customer will confirm the login in the Vipps MobilePay app.
+The customer will confirm the login in the Vipps or MobilePay app.
 
 If the customer was remembered from an earlier login to this site or app, they will skip this step.
 
@@ -114,7 +114,7 @@ See [Create an agreement](https://developer.vippsmobilepay.com/docs/APIs/recurri
 
 ### Step 6. Customer confirms subscription
 
-The customer accepts the agreement in the Vipps MobilePay app.
+The customer accepts the agreement in the Vipps or MobilePay app.
 
 ![Accept agreement](images/login-recurring-step6-v2.svg)
 

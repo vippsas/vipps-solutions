@@ -82,7 +82,7 @@ Here is an example HTTP POST:
 
 ### Step 3. Confirm the order
 
-Upon authorization, the Vipps MobilePay app should automatically redirect the customer to your app.
+Upon authorization, the Vipps or MobilePay app should automatically redirect the customer to your app.
 Confirm that the order has been successful in your app.
 
 ### Step 4. Capture the amount due

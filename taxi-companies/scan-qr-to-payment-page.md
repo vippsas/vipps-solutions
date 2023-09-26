@@ -18,7 +18,7 @@ END_METADATA -->
 ![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
 
 The customer scans a QR code and is directed to the taxi company's landing page.
-The company sends a payment request to them through the Vipps MobilePay app.
+The company sends a payment request to them through the Vipps or MobilePay app.
 
 ![Labeling in the taxi](images/labeling_in_the_taxi.png)
 
@@ -70,7 +70,7 @@ Send a payment request to the customer
 <div>
 
 Since the customer has scanned from their phone, you don't need their phone number.
-This payment command can do an app-switch and open their Vipps MobilePay app with the payment request.
+This payment command can do an app-switch and open their Vipps or MobilePay app with the payment request.
 Specify `"userFlow": "WEB_REDIRECT"` to redirect user to the app.
 Specify `"customerInteraction": "CUSTOMER_PRESENT"`.
 
