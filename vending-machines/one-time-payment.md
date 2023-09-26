@@ -119,7 +119,7 @@ Display the one-time QR on a screen facing the customer.
 
 ### Step 3: The customer authorizes the payment
 
-The customer scans the QR code and are directed to the Vipps app.
+The customer scans the QR code and are directed to the Vipps or MobilePay app.
 The payment screen is presented and they click *Pay*.
 
 To get confirmation that payment was approved, monitor your

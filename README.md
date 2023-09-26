@@ -16,7 +16,7 @@ END_METADATA -->
 [Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/solutions/).
 <!-- END_COMMENT -->
 
-Vipps MobilePay offers several APIs that together form the [Vipps MobilePay API platform](https://developer.vippsmobilepay.com/docs/APIs/).
+We offer several APIs that together form the [API platform](https://developer.vippsmobilepay.com/docs/APIs/).
 All APIs use the same API keys, authentication methods, terminology, etc. and they can be combined in many ways to offer the best user experience in various scenarios.
 We want everyone to get the most out of our API platform, and below are recommended ways to implement API platform for most common scenarios.
 
@@ -38,7 +38,7 @@ Examples of how to combine APIs for specific use cases:
 * [Parking and "Pay-as-you-go"](./parking/README.md)
 * [Taxi companies](./taxi-companies/README.md)
 
-**Vipps login and payment flows using Auth0 and Azure AD B2C:**
+**Login and payment flows using Auth0 and Azure AD B2C:**
 
 * [Auth0](./auth0/README.md)
 * [Azure AD B2C](./azure-b2c/README.md)
