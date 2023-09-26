@@ -62,7 +62,8 @@ values={[
 If you have the customer's phone number and their consent to send payment requests through Vipps MobilePay,
 you can send payment requests directly to them.
 
-If you don't know your customer's phone number, you can start by sending them a link to your own landing page. There, you can trigger a payment request through Vipps, which will request their phone number automatically.
+If you don't know your customer's phone number, you can start by sending them a link to your own landing page.
+There, you can trigger a payment request through Vipps MobilePay, which will request their phone number automatically.
 
 ## Details
 
@@ -147,7 +148,7 @@ With body:
 
 
 See [ePayment API: Long-living payments](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/long-living-payments)
-for more details
+for more details.
 
 ### Step 2. Customer approves the payment
 
