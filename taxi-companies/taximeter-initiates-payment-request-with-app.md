@@ -17,7 +17,8 @@ END_METADATA -->
 
 ![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
 
-The customer orders a taxi in the taxi company's app. After the journey, the taximeter automatically initiates a payment request to Vipps with the customer's phone number, which is already known.
+The customer orders a taxi in the taxi company's app.
+After the journey, the taximeter automatically initiates a payment request to Vipps or MobilePay with the customer's phone number, which is already known.
 The customer's Vipps or MobilePay app opens, and the customer pays the amount due.
 
 ## Prerequisites

@@ -79,7 +79,7 @@ When customer scans the QR code, they are redirected to your website on their ph
 
 ### Step 2. The customer logs in
 
-The customer identifies themselves by logging in with Vipps Login.
+The customer identifies themselves by logging in with Vipps MobilePay Login.
 
 See [Log in with browser](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-quick-start/#log-in-with-browser) for a detailed example.
 

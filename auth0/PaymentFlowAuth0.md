@@ -1,6 +1,6 @@
 <!-- START_METADATA
 ---
-title: Vipps payment flow using Auth0
+title: Vipps MobilePay payment flow using Auth0
 sidebar_label: Payment flow
 sidebar_position: 192
 pagination_next: null
@@ -8,7 +8,7 @@ pagination_prev: null
 ---
 END_METADATA -->
 
-# Vipps payment flow using Auth0
+# Payment flow using Auth0
 
 ## Introduction
 

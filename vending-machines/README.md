@@ -11,7 +11,7 @@ END_METADATA -->
 
 # Vending machines
 
-Vipps MobilePay can make it easier for your customers to pay for products in vending machines.
+We can make it easier for your customers to pay for products in vending machines.
 The following are the most common scenarios:
 
 * [Dynamic QR directing to the app for payment](one-time-payment.md) *(screen necessary)*

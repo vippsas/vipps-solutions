@@ -169,7 +169,8 @@ With body:
 </div>
 </details>
 
-If you are set up in Vipps' systems with the correct MCC (Merchant Category Code) for EV charging (5552), we will automatically send a push notification to the customer with the captured amount.
+If you are set up in our systems with the correct MCC (Merchant Category Code) for EV charging (5552),
+we will automatically send a push notification to the customer with the captured amount.
 
 ### Step 6. Cancel remaining amount
 

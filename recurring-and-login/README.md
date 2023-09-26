@@ -34,7 +34,7 @@ A customer wants to buy a subscription through your website or app.
 
 ### Step 2. Initiate login
 
-The customer identifies themselves by logging in with Vipps Login.
+The customer identifies themselves by logging in with Vipps MobilePay Login.
 
 From a browser:
 
