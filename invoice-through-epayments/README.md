@@ -143,11 +143,11 @@ With body:
 ```
 
 </div>
-</details>
+</>
 
 
 See [ePayment API: Long-living payments](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/features/long-living-payments)
-for more details
+for more 
 
 ### Step 2. Customer approves the payment
 
