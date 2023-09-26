@@ -24,7 +24,7 @@ END_METADATA -->
 
 ![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
 
-💥 *Please note: From Q4 2023, we will send a push notification to the user when the payment is getting close to expiring.* 💥
+💥 *From Q4 2023, we will additionally send a push notification to the user when the payment is getting close to expiring.* 💥
 
 Vipps MobilePay offers *Long-living payment requests* for creating invoices and payments that can be postponed up to 28 days.
 
