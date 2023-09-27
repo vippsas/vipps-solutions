@@ -18,7 +18,7 @@ END_METADATA -->
 
 ![Vipps](../images/vipps.png) *Available for Vipps.*
 
-![MobilePay](../images/mp.png) *To be determined.*
+![MobilePay](../images/mp.png) *Expected to be available for MobilePay in 2024.*
 
 This flow makes a great product-market fit for
 retail stores that want to combine loyalty with payments.
