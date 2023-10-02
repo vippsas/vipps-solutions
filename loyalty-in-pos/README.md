@@ -185,9 +185,9 @@ With body:
     ],
     "bottomLine": {
       "currency": "NOK",
-      "posId": "pos_122"
+      "posId": "pos_122",
+      "receiptNumber": "0527013501"
     },
-   "receiptNumber": "0527013501"
   },
   "reference": 2486791679658155992,
   "userFlow": "PUSH_MESSAGE",

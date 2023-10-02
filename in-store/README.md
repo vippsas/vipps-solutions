@@ -127,9 +127,9 @@ With body:
     ],
     "bottomLine": {
       "currency": "NOK",
-      "posId": "Butikken-23412"
+      "posId": "Butikken-23412",
+      "receiptNumber": "0527013501"
     },
-   "receiptNumber": "0527013501"
   },
   "reference": 2486791679658155992,
   "userFlow": "PUSH_MESSAGE",
