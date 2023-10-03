@@ -132,8 +132,8 @@ With body:
     ],
     "bottomLine": {
       "currency": "NOK",
+      "receiptNumber": "0527013501"
     },
-   "receiptNumber": "0527013501"
   },
   "reference": 1648738112,
   "userFlow": "PUSH_MESSAGE",

@@ -73,9 +73,9 @@ Here is an example HTTP POST:
     ],
     "bottomLine": {
       "currency": "NOK",
-      "posId": "pos_122"
+      "posId": "pos_122",
+      "receiptNumber": "789267"
     },
-   "receiptNumber": "789267"
   },
   "reference": 58712432,
   "userFlow": "WEB_REDIRECT",

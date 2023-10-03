@@ -80,9 +80,9 @@ Here is an example HTTP POST:
     "bottomLine": {
       "currency": "NOK",
       "posId": "taxi_122",
-      "tipAmount": 10000
+      "tipAmount": 10000,
+      "receiptNumber": "0527013501"
     },
-   "receiptNumber": "0527013501"
   },
   "reference": 2486791679658155992,
   "userFlow": "PUSH_MESSAGE",
