@@ -256,7 +256,7 @@ It could be possible to implement a Vipps payment flow while storing users in B2
 Implementing a payment flow
 
 - [Vipps SDK](https://developer.vippsmobilepay.com/docs/SDKs/)
-- [Vipps ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/)
+- [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/)
 
 Storing users in Azure AD B2C
 

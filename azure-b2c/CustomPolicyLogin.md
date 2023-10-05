@@ -107,14 +107,14 @@ To test the policy select *B2C_1A_signup_signin*, select the web application you
 sequenceDiagram
     participant MerchantApp
     participant Azure AD B2C
-    participant Vipps Login API
+    participant Login API
     participant Vipps App
 
     MerchantApp->>Azure AD B2C: Initiate login
 
-    Azure AD B2C->>Vipps Login API: Authorization code request
+    Azure AD B2C->>Login API: Authorization code request
 
-    Vipps Login API->>MerchantApp: Redirect to Authorize request URL
+    Login API->>MerchantApp: Redirect to Authorize request URL
 
     MerchantApp-->>Vipps App: User opens Vipps MobilePay app in login client
 
@@ -122,13 +122,13 @@ sequenceDiagram
 
     Vipps App-->>Azure AD B2C: Callback to Azure AD B2C with code
 
-    Azure AD B2C->>Vipps Login API: Request Access Token with code
+    Azure AD B2C->>Login API: Request Access Token with code
 
-    Vipps Login API-->>Azure AD B2C: return id and Access token
+    Login API-->>Azure AD B2C: return id and Access token
 
     alt user logs in for the first time
-        Azure AD B2C->>Vipps Login API: Request User Info
-        Vipps Login API-->>Azure AD B2C: Return user info
+        Azure AD B2C->>Login API: Request User Info
+        Login API-->>Azure AD B2C: Return user info
         Azure AD B2C->>Azure AD B2C: Store User
     end
 

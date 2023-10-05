@@ -23,7 +23,7 @@ END_METADATA -->
 
 ## Introduction
 
-This guide will describe how to use Auth0's actions to automatically create and login users using Vipps MobilePay. The following implementation will provide the same login process as described in the [Vipps Login API documentation](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-api-howitworks/#the-login-process).
+This guide will describe how to use Auth0's actions to automatically create and login users using Vipps MobilePay. The following implementation will provide the same login process as described in the [Login API documentation](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-api-howitworks/#the-login-process).
 
 With Auth0's Social Connections, merchants can implement a Vipps login flow using Vipps as an identity provider.
 
@@ -113,8 +113,8 @@ In the body of `profile` you can specify the scope, what data will be provided b
 
 Values
 
-* `url` - This is the URL to the endpoint used for getting user information from the [Vipps Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/).
-* `headers` - The user info API uses Bearer Token Authentication. For more information, see the [Vipps Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/).
+* `url` - This is the URL to the endpoint used for getting user information from the [Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/).
+* `headers` - The user info API uses Bearer Token Authentication. For more information, see the [Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/).
 * `profile` - Which attributes will be collected and how they will be used to create an Auth0 user. The `user_id` parameter is used to create a unique identifier for the signed-up user. This should be created from the `sub` which is a unique identifier corresponding to a Vipps user. For more information about Vipps's unique identifier see [What is the sub?](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/userinfo-api-faq/#what-is-the-sub)
 
 ## Add a Social Connection to your Application

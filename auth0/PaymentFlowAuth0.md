@@ -325,11 +325,11 @@ private async Task<bool> PostUser(ManagementApiClient managementApiClient, strin
 
 When creating the `UserCreateRequest`, it is important to specify the following parameters:
 
-* `Email` - email of the user provided by the Vipps UserInfo endpoint.
+* `Email` - email of the user provided by the Userinfo endpoint.
 * `VerifyEmail`- must be set to `false` to prevent Auth0 from requesting email verification.
 * `Password` - will not be used by the user and should be set to an unknown GUID.
-* `FullName` - the name of the user provided by the Vipps UserInfo endpoint.
-* `UserId` - must be set to `sub` provided by Vipps to make sure the Auth0 users will be linked correctly.
+* `FullName` - the name of the user provided by the Userinfo endpoint.
+* `UserId` - must be set to `sub` provided by the Userinfo endpoint to make sure the Auth0 users will be linked correctly.
 
 A complete implementation of checking if a user exists and creating it if not can look like this:
 
@@ -447,7 +447,7 @@ After linking, the _Raw JSON_ of the new user in Auth0 will now look like this:
 Implementing a payment flow
 
 * [Vipps SDK](https://developer.vippsmobilepay.com/docs/SDKs/)
-* [Vipps ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/)
+* [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/)
 
 Create and store users in Auth0
 
