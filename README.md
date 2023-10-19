@@ -37,8 +37,3 @@ Examples of how to combine APIs for specific use cases:
 * [Electric vehicle charging](./ev-charging/README.md)
 * [Parking and "Pay-as-you-go"](./parking/README.md)
 * [Taxi companies](./taxi-companies/README.md)
-
-**Login and payment flows using Auth0 and Azure AD B2C:**
-
-* [Auth0](./auth0/README.md)
-* [Azure AD B2C](./azure-b2c/README.md)
