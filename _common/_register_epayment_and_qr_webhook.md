@@ -18,7 +18,7 @@ Here is an example HTTP POST:
 ```json
 {  
     "url": "https://example.com/mystore_website_backend",
-    "events": ["epayments.payment.authorized.v1", "qr.TO BE PROVIDED"]
+    "events": ["epayments.payment.authorized.v1", "user.checked-in.v1"]
 }
 ```
 
@@ -48,7 +48,10 @@ The payload from the QR webhook will be in this form:
 
 ```json
 {
-    TO BE PROVIDED
+    "customerToken": "wbA8ceVRKkoYiQAVELHeFCC3Sn5dtNCvvEtVPiOT77j6wx7uR965AG6Q+q0ATP4=",
+    "merchantQrId": "d8b7d76d-49aa-48b8-90c6-38779372c163",
+    "merchantSerialNumber": "12345",
+    "initiatedAt": "2023-10-06T10:45:40.3061965Z"
 }
 ```
 
