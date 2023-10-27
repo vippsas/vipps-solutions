@@ -116,7 +116,7 @@ You already have their phone number, so just provide a button in
 your user interface to allow the cashier to initiate the login.
 
 Pressing the button will trigger a
-[Login flow](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/flows/phone-number-ciba-flows)
+[Login flow](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/merchant-initiated-login-howitworks/)
 to gather consent from the customer. The steps needed to get consent from the user are explained in detail there.
 The CIBA flow will send a push to the user, and once the user has finished the flow, it should be reflected in the POS.
 
@@ -124,7 +124,7 @@ When this login flow is completed, the customer will be enrolled in the loyalty 
 
 ![Loyalty Flow](images/POS_step_3.png)
 
-See [Log in with phone number](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/vipps-login-from-phone-number-api-howitworks/) for a detailed example.
+See [Log in with phone number](https://developer.vippsmobilepay.com/docs/APIs/login-api/how-it-works/user-initiated-login-howitworks//) for a detailed example.
 
 ### Step 5: Add the products to be purchased
 
