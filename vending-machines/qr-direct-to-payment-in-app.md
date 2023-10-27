@@ -16,7 +16,7 @@ END_METADATA -->
 
 ![Vipps](../images/vipps.png) *Partially available for Vipps now.*
 
-![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
+![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/about).*
 
 💥 *The APIs are still being implemented, and are not yet available. Planned release is Q4 2023.* 💥
 

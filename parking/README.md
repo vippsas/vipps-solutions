@@ -16,7 +16,7 @@ END_METADATA -->
 
 ![Vipps](../images/vipps.png) *Available for Vipps.*
 
-![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
+![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/about).*
 
 Make it easier for your customers to pay for parking and other and "pay-as-you-go" services.
 

@@ -22,7 +22,7 @@ END_METADATA -->
 
 ![Vipps](../images/vipps.png) *Available for Vipps.*
 
-![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
+![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/about).*
 
 💥 *From Q4 2023, we will additionally send a push notification to the user when the payment is getting close to expiring.* 💥
 

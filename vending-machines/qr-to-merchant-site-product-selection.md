@@ -17,7 +17,7 @@ END_METADATA -->
 
 ![Vipps](../images/vipps.png) *Available for Vipps.*
 
-![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
+![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/about).*
 
 This flow uses a static QR code that is posted on the vending machine.
 The QR directs the user to the merchant's landing page which provides a user interface for selecting products and paying.

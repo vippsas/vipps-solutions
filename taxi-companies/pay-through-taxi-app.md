@@ -14,7 +14,7 @@ END_METADATA -->
 
 ![Vipps](../images/vipps.png) *Available for Vipps.*
 
-![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/#about).*
+![MobilePay](../images/mp.png) *Available for MobilePay in selected markets at the [Vipps MobilePay joint platform launch](https://www.vippsmobilepay.com/about).*
 
 The customer pays the taxi company from their app when ordering the taxi and selects to pay with Vipps MobilePay.
 The amount is reserved until the final amount is known, at which time the payment is captured.
