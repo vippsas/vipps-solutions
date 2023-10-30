@@ -40,7 +40,7 @@ From a browser:
 
 * If they are remembered from earlier, the login will be completed directly there.
 * Otherwise, they will enter their phone number and be taken to the app to the Vipps or MobilePay app.
-See [Log in with browser](https://developer.vippsmobilepay.com/docs/APIs/login-api/vipps-login-api-quick-start/#log-in-with-browser) for a detailed example.
+See [Log in with browser](https://developer.vippsmobilepay.com/docs/APIs/login-api/login-api-quick-start/#log-in-with-browser) for a detailed example.
 
 From a mobile app:
 
