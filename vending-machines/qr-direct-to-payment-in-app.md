@@ -32,7 +32,7 @@ This QR code can be used when you don't have a screen, and it's not possible to 
 
 ### Merchant Callback QR
 
-Generate a [merchant callback QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes).
+Generate a [merchant callback QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/qr-api-guide/#merchant-callback-qr-codes).
 
 <details>
 <summary>How to create a merchant callback QR code</summary>
@@ -60,7 +60,7 @@ Here is an example HTTP PUT:
 
 ## Details
 
-A Vipps MobilePay [QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes) is posted on the vending machine.
+A Vipps MobilePay [QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/qr-api-guide#merchant-redirect-qr-codes) is posted on the vending machine.
 
 When the customer scans the QR code, they go directly to the payment screen on their phone, where they can approve the payment.
 
@@ -191,7 +191,7 @@ Body:
 
 ## Related links
 
-* [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
+* [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/qr-api-guide/#merchant-callback-qr-codes)
 * [In-store using static QR](../static-qr-at-pos/README.md)
 
 ## Sequence diagram
