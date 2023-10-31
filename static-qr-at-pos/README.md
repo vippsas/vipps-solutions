@@ -30,7 +30,7 @@ The merchant gets their ID and sends a payment request to them through the app.
 
 ### Merchant Callback QR
 
-Generate a [merchant callback QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes).
+Generate a [merchant callback QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/qr-api-guide/#merchant-callback-qr-codes).
 
 <details>
 <summary>How to create a merchant callback QR code</summary>
@@ -159,7 +159,7 @@ With body:
 
 ## Related links
 
-* [Merchant Callback QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
+* [Merchant Callback QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/qr-api-guide/#merchant-callback-qr-codes)
 
 ## Sequence diagram
 

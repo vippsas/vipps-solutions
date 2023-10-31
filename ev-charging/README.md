@@ -34,7 +34,7 @@ the customer with their phone's camera or with their Vipps or MobilePay app.
 ### QR code on the charging station
 
 Generate a
-[merchant redirect QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+[merchant redirect QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/qr-api-guide#merchant-redirect-qr-codes)
 that contains the link to your website and the ID of the charging station.
 Place it on the charging station.
 
@@ -221,7 +221,7 @@ Body:
 
 ## Related links
 
-* [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+* [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/qr-api-guide#merchant-redirect-qr-codes)
 
 ## Sequence diagram
 

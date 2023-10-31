@@ -34,7 +34,7 @@ and when you want to offer product selection through your user interface.
 
 ### QR code on the vending machine
 
-Generate a [merchant redirect QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+Generate a [merchant redirect QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/qr-api-guide#merchant-redirect-qr-codes)
 linking to a webshop connected to the specific vending machine.
 
 <details>
@@ -156,7 +156,7 @@ With body:
 
 ## Related links
 
-* [Merchant redirect QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+* [Merchant redirect QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/qr-api-guide#merchant-redirect-qr-codes)
 
 ## Sequence diagram
 

@@ -43,7 +43,7 @@ You need a screen to display the one-time QR.
 
 ## Details
 
-A [one-time payment QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#one-time-payment-qr-codes)
+A [one-time payment QR code](https://developer.vippsmobilepay.com/docs/APIs/qr-api/qr-api-guide/#one-time-payment-qr-codes)
 is presented on the vending machine.
 The QR code is a dynamic representation of the payment URL, and the customer needs to scan the QR code within 5 minutes.
 

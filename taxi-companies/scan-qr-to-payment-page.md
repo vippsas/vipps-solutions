@@ -27,7 +27,7 @@ The company sends a payment request to them through the Vipps or MobilePay app.
 ### QR code in the taxi
 
 Generate a
-[merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+[merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/qr-api-guide#merchant-redirect-qr-codes)
 linking to your website or app.
 Print and place the QR code in your taxi.
 
@@ -147,7 +147,7 @@ With body:
 
 ## Related links
 
-* [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api/#merchant-callback-qr-codes)
+* [Merchant Redirect QR codes](https://developer.vippsmobilepay.com/docs/APIs/qr-api/qr-api-guide/#merchant-callback-qr-codes)
 
 ## Sequence diagram
 

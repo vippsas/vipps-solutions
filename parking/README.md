@@ -42,7 +42,7 @@ The same solution can of course be used to charge weekly, monthly, or yearly.
 ### Generate a QR code
 
 Generate a merchant redirect QR code with a
-[merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/vipps-qr-api#merchant-redirect-qr-codes)
+[merchant redirect QR](https://developer.vippsmobilepay.com/docs/APIs/qr-api/qr-api-guide#merchant-redirect-qr-codes)
 linking to your company website.
 
 The customer scans the QR code and is redirected to your website.
