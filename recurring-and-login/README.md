@@ -110,7 +110,7 @@ With body:
 </div>
 </details>
 
-See [Create an agreement](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api/#create-an-agreement) for more information.
+See [Create an agreement](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#create-an-agreement) for more information.
 
 ### Step 6. Customer confirms subscription
 
@@ -228,8 +228,8 @@ Body:
 
 For more information, see:
 
-* [Recurring API guide: Charges](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api/#charges)
-* [Recurring API quick start guide](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api-quick-start/)
+* [Recurring API guide: Charges](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#charges)
+* [Recurring API quick start guide](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-quick-start/)
 
 ## Sequence diagram
 
