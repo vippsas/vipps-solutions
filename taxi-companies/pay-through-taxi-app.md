@@ -163,7 +163,7 @@ Body:
 ## Related information
 
 * [ePayment Quick start guide](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/quick-start/)
-* [Order Management Quick start guide](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api-quick-start/)
+* [Order Management Quick start guide](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/order-management-api-quick-start/)
 
 ## Sequence diagram
 
