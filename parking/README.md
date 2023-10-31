@@ -24,7 +24,7 @@ The solution is a combination of the
 [Login](https://developer.vippsmobilepay.com/docs/APIs/login-api) and
 [Recurring](https://developer.vippsmobilepay.com/docs/APIs/recurring-api) APIs,
 and makes special use of
-[Recurring agreements with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount).
+[Recurring agreements with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide#recurring-agreements-with-variable-amount).
 
 ## Parking scenario
 
@@ -122,7 +122,7 @@ With body:
 </div>
 </details>
 
-See [Recurring agreements with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount) for more information.
+See [Recurring agreements with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide#recurring-agreements-with-variable-amount) for more information.
 
 ### Step 4. Customer accepts agreement
 
@@ -204,7 +204,7 @@ Body:
 ## Relevant comments
 
 * For parking and "pay-as-you-go" cases, we usually recommend that you set up a
-  [Recurring agreement with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/vipps-recurring-api#recurring-agreements-with-variable-amount)
+  [Recurring agreement with variable amount](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide#recurring-agreements-with-variable-amount)
   and `daily` interval.
 * You can create as many charges as you want within the interval, but we recommend that you
   sum up the usage over the day and create one charge for that day.
