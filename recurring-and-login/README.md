@@ -134,7 +134,7 @@ endpoint.
 
 Here is an example HTTP POST:
 
-[POST:/recurring/v3/agreements/{agreementId}/charges/{chargeId}/capture](https://developer.vippsmobilepay.com/api/recurring#tag/Charge-v3-endpoints/operation/CaptureChargeV3)
+[`POST:/recurring/v3/agreements/{agreementId}/charges/{chargeId}/capture`](https://developer.vippsmobilepay.com/api/recurring#tag/Charge-v3-endpoints/operation/CaptureChargeV3)
 
 With body:
 
@@ -164,7 +164,7 @@ It will be automatically captured on the due date.
 
 Here is an example HTTP POST:
 
-[POST:/recurring/v3/agreements/{agreementId}/charges](https://developer.vippsmobilepay.com/api/recurring/#tag/Charge-v3-endpoints/operation/CreateChargeV3)
+[`POST:/recurring/v3/agreements/{agreementId}/charges`](https://developer.vippsmobilepay.com/api/recurring/#tag/Charge-v3-endpoints/operation/CreateChargeV3)
 
 With body:
 

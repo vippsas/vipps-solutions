@@ -141,7 +141,7 @@ The amount of the charge/charges in the interval cannot be higher than the `sugg
 
 Here is an example HTTP POST:
 
-[POST:/recurring/v3/agreements/{agreementId}/charges](https://developer.vippsmobilepay.com/api/recurring/#tag/Charge-v3-endpoints/operation/CreateChargeV3)
+[`POST:/recurring/v3/agreements/{agreementId}/charges`](https://developer.vippsmobilepay.com/api/recurring/#tag/Charge-v3-endpoints/operation/CreateChargeV3)
 
 With body:
 
